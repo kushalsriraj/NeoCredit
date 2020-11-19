@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:paddingBottom="10dp"
-    tools:context=".activities.PersonalDetails">
+    tools:context=".activities.PersonalDetailsActivity">
 
     <ScrollView
         android:layout_width="match_parent"

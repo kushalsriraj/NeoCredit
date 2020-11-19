@@ -6,7 +6,7 @@ import android.os.Bundle;
 
 import rutherfordit.com.instasalary.R;
 
-public class PersonalDetails extends AppCompatActivity {
+public class PersonalDetailsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
