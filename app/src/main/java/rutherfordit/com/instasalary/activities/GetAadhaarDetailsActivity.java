@@ -11,6 +11,6 @@ public class GetAadhaarDetailsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_get_aadhar_details);
+        setContentView(R.layout.activity_get_aadhaar_details);
     }
 }
