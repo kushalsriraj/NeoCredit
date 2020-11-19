@@ -6,7 +6,7 @@ import android.os.Bundle;
 
 import rutherfordit.com.instasalary.R;
 
-public class GetAadharDetailsActivity extends AppCompatActivity {
+public class GetAadhaarDetailsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
