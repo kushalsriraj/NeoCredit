@@ -46,4 +46,8 @@ dependencies {
     //Crystal Preloaders
     implementation 'com.crystal:crystalpreloaders:1.0.0'
 
+    // Circular Image
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+
+
 }
