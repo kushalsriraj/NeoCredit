@@ -24,6 +24,7 @@
             app:crs_pl_style="skype_balls"
             app:crs_pl_size="very_small"
             app:crs_pl_fg_color="@color/instapink"
+
             app:crs_pl_bg_color="#fff"/>
 
     </androidx.cardview.widget.CardView>
