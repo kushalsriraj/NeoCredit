@@ -9,4 +9,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="instapink">#D45D85</color>
     <color name="colorAccent">#D81B60</color>
+    <color name="colorash">#36000000</color>
+
 </resources>

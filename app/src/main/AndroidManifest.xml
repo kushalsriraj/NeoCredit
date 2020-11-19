@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.NeoCredit">
-        <activity android:name=".activities.GetPanDetailsActivity"></activity>
+        <activity android:name=".activities.SegmentActivity"></activity>
+        <activity android:name=".activities.GetPanDetailsActivity" />
         <activity android:name=".activities.GetAadhaarDetailsActivity" />
         <activity android:name=".activities.MyProfileActivity" />
         <activity android:name=".activities.EnterOTPActivity" />
