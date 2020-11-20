@@ -7,10 +7,11 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="instapink">#D45D85</color>
     <color name="colorAccent">#D81B60</color>
     <color name="colorash">#36000000</color>
     <color name="background">#FFFFFF</color>
+    <color name="creditbg">#33DC052D</color>
+    <color name="instapink">#dc052d</color>
 
 
 </resources>

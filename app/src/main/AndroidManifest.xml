@@ -10,20 +10,20 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".activities.HomeActivity"></activity>
-        <activity android:name=".activities.BankDetailsActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".activities.BankDetailsActivity"></activity>
         <activity android:name=".activities.ProfessionalDetailsActivity" />
         <activity android:name=".activities.PersonalDetailsActivity" />
         <activity android:name=".activities.SegmentActivity" />
         <activity android:name=".activities.GetPanDetailsActivity" />
         <activity android:name=".activities.GetAadhaarDetailsActivity" />
         <activity android:name=".activities.MyProfileActivity" />
-        <activity android:name=".activities.EnterOTPActivity" />
+        <activity android:name=".activities.EnterOTPActivity" >
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
         <activity android:name=".activities.LoginActivity" />
         <activity android:name=".activities.MainActivity" />
     </application>
