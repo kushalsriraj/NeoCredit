@@ -24,6 +24,8 @@
         <item name="editTextStyle">
             @style/MyCustomEditTextStyle
         </item>
+
+        <item name="pinViewStyle">@style/PinWidget.PinView</item>
     </style>
 
     <style name="TextViewStyle" parent="android:Widget.TextView">
