@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.RelativeLayout;
 
 import com.chaos.view.PinView;
@@ -16,12 +17,15 @@ import rutherfordit.com.instasalary.R;
 
 public class EnterOTPActivity extends AppCompatActivity {
 
+    Button submitadharotp;
 
     @SuppressLint("ResourceAsColor")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_enter_o_t_p);
+
+        submitadharotp = findViewById(R.id.submitadharotp);
 
         final PinView pinView = findViewById(R.id.pinView);
         pinView.setTextColor(
@@ -38,6 +42,15 @@ public class EnterOTPActivity extends AppCompatActivity {
         pinView.setCursorColor(
                 ResourcesCompat.getColor(getResources(), R.color.black, getTheme()));
         pinView.setCursorWidth(getResources().getDimensionPixelSize(R.dimen.pv_pin_view_cursor_width));
-        pinView.setCursorColor(Color.BLUE);
+        pinView.setCursorColor(Color.BLACK);
+
+        submitadharotp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), GetAadhaarDetailsActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 }
