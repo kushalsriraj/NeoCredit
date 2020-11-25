@@ -195,7 +195,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_marginTop="15dp"
                     android:layout_marginRight="10dp"
-                    android:entries="@array/state_array" />
+                    android:entries="@array/address_proof_array" />
 
             </RelativeLayout>
 
@@ -333,7 +333,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_marginTop="15dp"
                     android:layout_marginRight="10dp"
-                    android:entries="@array/state_array" />
+                    android:entries="@array/address_proof_array" />
 
             </RelativeLayout>
 
