@@ -47,10 +47,9 @@ public class EnterOTPActivity extends AppCompatActivity {
         submitadharotp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), GetAadhaarDetailsActivity.class);
+                Intent intent = new Intent(getApplicationContext(), SegmentActivity.class);
                 startActivity(intent);
             }
         });
-
     }
 }

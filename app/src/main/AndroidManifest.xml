@@ -11,13 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.SoleProprietorshipCompanyDetailsActivity"></activity>
+        <activity android:name=".activities.SoleProprietorshipCompanyDetailsActivity">
+        </activity>
         <activity android:name=".activities.SoleProprietorshipDetailsActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".activities.HomeActivity" />
         <activity android:name=".activities.BankDetailsActivity" />
@@ -27,8 +23,12 @@
         <activity android:name=".activities.GetAadhaarDetailsActivity" />
         <activity android:name=".activities.MyProfileActivity" />
         <activity android:name=".activities.EnterOTPActivity" />
-        <activity android:name=".activities.LoginActivity" />
+        <activity android:name=".activities.LoginActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".activities.MainActivity" />
     </application>
-
 </manifest>
