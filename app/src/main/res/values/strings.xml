@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">NeoCredit</string>
 
     <string-array name="address_proof_array">
@@ -40,6 +40,11 @@
         <item>More than 50 crores</item>
     </string-array>
 
+    <string-array name="address_proof">
+        <item>-- Select Address Proof --</item>
+        <item>Landline Bill</item>
+        <item>Current Bill</item>
+    </string-array>
 
 
     <string-array name="city_array">

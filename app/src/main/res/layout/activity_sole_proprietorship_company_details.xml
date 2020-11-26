@@ -72,8 +72,7 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Type Of Service"
-                    >
+                    android:hint="Type Of Service">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/typeOfService"
@@ -107,8 +106,7 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="How Old is the Company ? "
-                    >
+                    android:hint="How Old is the Company ? ">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/howOldIsTheCompany"
@@ -142,8 +140,7 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Annual Turnover"
-                    >
+                    android:hint="Annual Turnover">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/annualTurnover"
@@ -168,25 +165,6 @@
                     android:entries="@array/how_old_is_company_array" />
 
             </RelativeLayout>
-
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
-                android:hint="Company Email">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/entercompanyemail"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ellipsize="end"
-                    android:fontFamily="@font/lato_regular"
-                    android:inputType="textEmailAddress"
-                    android:singleLine="true"
-                    android:textSize="14dp" />
-
-            </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
@@ -243,12 +221,12 @@
             </RelativeLayout>
 
             <Spinner
-                android:visibility="gone"
-                android:spinnerMode="dialog"
+                android:id="@+id/cities_Spinner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:id="@+id/cities_Spinner"/>
+                android:spinnerMode="dialog"
+                android:visibility="gone" />
 
             <!--            <com.google.android.material.textfield.TextInputLayout-->
             <!--                android:layout_width="match_parent"-->
@@ -286,24 +264,6 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <!--            <com.google.android.material.textfield.TextInputLayout-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:layout_marginTop="25dp"-->
-            <!--                android:hint="Company City">-->
-
-            <!--                <com.google.android.material.textfield.TextInputEditText-->
-            <!--                    android:id="@+id/entercompanycity"-->
-            <!--                    android:layout_width="match_parent"-->
-            <!--                    android:layout_height="wrap_content"-->
-            <!--                    android:ellipsize="end"-->
-            <!--                    android:fontFamily="@font/montserrat"-->
-            <!--                    android:inputType="text"-->
-            <!--                    android:singleLine="true"-->
-            <!--                    android:textSize="14dp" />-->
-
-            <!--            </com.google.android.material.textfield.TextInputLayout>-->
-
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -321,6 +281,66 @@
                     android:textSize="14dp" />
 
             </com.google.android.material.textfield.TextInputLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Address Proof">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/addressProof"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:focusableInTouchMode="false"
+                        android:fontFamily="@font/lato_regular"
+                        android:singleLine="true"
+                        android:textSize="14dp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <Spinner
+                    android:id="@+id/addressProofSpinner"
+                    style="@style/CustomSpinnerTheme"
+                    android:layout_width="30dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginRight="10dp"
+                    android:entries="@array/address_proof" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Business Landline">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/businessLandline"
+                        android:digits="123-4567890"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:focusableInTouchMode="false"
+                        android:fontFamily="@font/lato_regular"
+                        android:singleLine="true"
+                        android:textSize="14dp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </RelativeLayout>
+
 
             <RelativeLayout
                 android:id="@+id/salariedprofsubmit"
@@ -350,6 +370,7 @@
                     android:src="@drawable/next" />
 
             </RelativeLayout>
+
 
         </LinearLayout>
 

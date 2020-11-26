@@ -106,7 +106,8 @@ public class SegmentActivity extends AppCompatActivity {
         SegmentsubmitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(getApplicationContext(), SoleProprietorshipDetailsActivity.class);
+                startActivity(intent);
             }
         });
 
