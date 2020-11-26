@@ -1,3 +1,48 @@
 <resources>
     <string name="app_name">NeoCredit</string>
+
+    <string-array name="address_proof_array">
+        <item>-- Select Address Proof --</item>
+        <item>Aadhar</item>
+        <item>Passport</item>
+        <item>Electricity Bill</item>
+        <item>Gas Bill</item>
+        <item>Phone Bill</item>
+    </string-array>
+
+    <string-array name="state_array">
+        <item>-- Select State --</item>
+        <item>AP</item>
+        <item>Telangana</item>
+    </string-array>
+
+    <string-array name="city_array">
+        <item>-- Select City --</item>
+        <item>Hyderabad</item>
+        <item>Secunderabad</item>
+        <item>Warangal</item>
+        <item>Nizamabad</item>
+        <item>Khammam</item>
+        <item>Karimnagar</item>
+        <item>Ramagundam</item>
+        <item>Mahabubnagar</item>
+        <item>Nalgonda</item>
+        <item>Adilabad</item>
+        <item>Suryapet</item>
+        <item>Miryalaguda</item>
+        <item>Jagtial</item>
+        <item>Vikarabad</item>
+        <item>Jangaon</item>
+        <item>Bhadrachalam</item>
+        <item>Wanaparthy</item>
+        <item>Gadwal</item>
+    </string-array>
+
+    <string-array name="housetype">
+        <item>-- Select HouseType --</item>
+        <item>Rented</item>
+        <item>Own</item>
+        <item>Lease</item>
+    </string-array>
+
 </resources>
