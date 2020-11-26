@@ -23,7 +23,23 @@
         <item>Construction Maintenance and Cleaning</item>
         <item>Creative Services</item>
         <item>Design</item>
-        <item>Education and Childcare</item>
+        <item>Event Services</item>
+        <item>Financial Services</item>
+        <item>Food Beverage &amp; Night Economy</item>
+        <item>Government Services</item>
+        <item>Health Care</item>
+        <item>Hospitality</item>
+        <item>Information Technology</item>
+        <item>Insurance</item>
+        <item>Knowledge</item>
+        <item>Non-profit Services</item>
+        <item>Performing Arts &amp; entertainment</item>
+        <item>Professional services</item>
+        <item>Sports and fitness</item>
+        <item>Transport</item>
+        <item>Utilities</item>
+        <item>Wellness &amp; Personal Grooming</item>
+
     </string-array>
 
     <string-array name="how_old_is_company_array">

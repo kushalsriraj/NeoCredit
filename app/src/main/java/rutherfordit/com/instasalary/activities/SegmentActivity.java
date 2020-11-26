@@ -106,8 +106,24 @@ public class SegmentActivity extends AppCompatActivity {
         SegmentsubmitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), SoleProprietorshipDetailsActivity.class);
-                startActivity(intent);
+                if (soleProprietorship.isChecked()){
+
+                    Intent intent = new Intent(getApplicationContext(), SoleProprietorshipDetailsActivity.class);
+                    startActivity(intent);
+
+                }else if (privateLimited.isChecked()){
+
+                    Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                    startActivity(intent);
+
+                }else if (partnershipForm.isChecked()){
+
+                    Intent intent = new Intent(getApplicationContext(), GetPanDetailsActivity.class);
+                    startActivity(intent);
+
+                }
+
+                //
             }
         });
 

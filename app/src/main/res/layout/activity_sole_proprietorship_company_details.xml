@@ -72,7 +72,7 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Type Of Service">
+                    android:hint="Type of Service">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/typeOfService"
@@ -162,7 +162,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_marginTop="15dp"
                     android:layout_marginRight="10dp"
-                    android:entries="@array/how_old_is_company_array" />
+                    android:entries="@array/annual_turnover_array" />
 
             </RelativeLayout>
 
@@ -227,24 +227,6 @@
                 android:layout_marginTop="20dp"
                 android:spinnerMode="dialog"
                 android:visibility="gone" />
-
-            <!--            <com.google.android.material.textfield.TextInputLayout-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:layout_marginTop="25dp"-->
-            <!--                android:hint="Company Door no">-->
-
-            <!--                <com.google.android.material.textfield.TextInputEditText-->
-            <!--                    android:id="@+id/entercompanydoorno"-->
-            <!--                    android:layout_width="match_parent"-->
-            <!--                    android:layout_height="wrap_content"-->
-            <!--                    android:ellipsize="end"-->
-            <!--                    android:fontFamily="@font/montserrat"-->
-            <!--                    android:inputType="text"-->
-            <!--                    android:singleLine="true"-->
-            <!--                    android:textSize="14dp" />-->
-
-            <!--            </com.google.android.material.textfield.TextInputLayout>-->
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
@@ -328,9 +310,9 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/businessLandline"
-                        android:digits="123-4567890"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:digits="123-4567890"
                         android:ellipsize="end"
                         android:focusableInTouchMode="false"
                         android:fontFamily="@font/lato_regular"
@@ -355,7 +337,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginLeft="30dp"
                     android:gravity="center"
-                    android:text="Submit"
+                    android:text="Next"
                     android:textColor="#fff"
                     android:textSize="16dp"
                     android:textStyle="bold" />
