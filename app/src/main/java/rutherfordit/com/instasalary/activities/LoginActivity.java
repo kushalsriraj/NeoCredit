@@ -2,7 +2,9 @@ package rutherfordit.com.instasalary.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
@@ -23,10 +25,12 @@ public class LoginActivity extends AppCompatActivity {
         loginbottombutton = findViewById(R.id.loginbottombutton);
 
         loginbottombutton.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("ResourceAsColor")
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), EnterOTPActivity.class);
                 startActivity(intent);
+                loginbottombutton.setBackgroundColor(Color.rgb(16, 221, 188));
             }
         });
 

@@ -26,13 +26,13 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_centerVertical="true"
-                    android:src="@drawable/pinkbackarrow" />
+                    android:src="@drawable/purplebackarrow" />
 
                 <ImageView
                     android:layout_width="60dp"
                     android:layout_height="40dp"
                     android:layout_alignParentRight="true"
-                    android:src="@drawable/instalogo" />
+                    android:src="@drawable/neocreditlogo" />
 
             </RelativeLayout>
 
@@ -194,7 +194,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="City"
-                    android:textColorHint="@color/instapink">
+                    android:textColorHint="@color/neopurple">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/enterCompanyCity"

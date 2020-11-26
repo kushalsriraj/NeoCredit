@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             app:crs_pl_style="skype_balls"
             app:crs_pl_size="very_small"
-            app:crs_pl_fg_color="@color/instapink"
+            app:crs_pl_fg_color="@color/neopurple"
             app:crs_pl_bg_color="#fff"/>
 
     </androidx.cardview.widget.CardView>
@@ -45,17 +45,16 @@
                 android:layout_height="40dp">
 
                 <ImageView
-                    android:onClick="goback"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_centerVertical="true"
-                    android:src="@drawable/pinkbackarrow" />
+                    android:src="@drawable/purplebackarrow" />
 
                 <ImageView
                     android:layout_width="60dp"
                     android:layout_height="40dp"
                     android:layout_alignParentRight="true"
-                    android:src="@drawable/instalogo" />
+                    android:src="@drawable/neocreditlogo" />
 
             </RelativeLayout>
 
@@ -217,7 +216,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginLeft="30dp"
                     android:gravity="center"
-                    android:text="Proceed"
+                    android:text="Submit"
                     android:textColor="#fff"
                     android:textSize="16dp"
                     android:textStyle="bold" />

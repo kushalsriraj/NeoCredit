@@ -72,7 +72,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="Dashboard"
-                    android:textColor="@color/instapink"
+                    android:textColor="@color/neopurple"
                     android:textSize="10dp" />
 
             </LinearLayout>

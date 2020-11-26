@@ -10,7 +10,6 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 
@@ -45,8 +44,8 @@ public class SegmentActivity extends AppCompatActivity {
                     },
                     new int[]{
 
-                            Color.rgb(212, 93, 133)
-                            , Color.WHITE,
+                            R.color.neopurple
+                            , Color.rgb(16, 221, 188),
                     }
             );
 
@@ -104,28 +103,36 @@ public class SegmentActivity extends AppCompatActivity {
         }
 
         SegmentsubmitButton.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("ResourceAsColor")
             @Override
             public void onClick(View v) {
                 if (soleProprietorship.isChecked()){
 
                     Intent intent = new Intent(getApplicationContext(), SoleProprietorshipDetailsActivity.class);
                     startActivity(intent);
+                    SegmentsubmitButton.setBackgroundColor(Color.rgb(16, 221, 188));
+
 
                 }else if (privateLimited.isChecked()){
 
                     Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                     startActivity(intent);
+                    SegmentsubmitButton.setBackgroundColor(Color.rgb(16, 221, 188));
+
 
                 }else if (partnershipForm.isChecked()){
 
                     Intent intent = new Intent(getApplicationContext(), GetPanDetailsActivity.class);
                     startActivity(intent);
+                    SegmentsubmitButton.setBackgroundColor(Color.rgb(16, 221, 188));
 
                 }
-
-                //
             }
         });
 
+    }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 }

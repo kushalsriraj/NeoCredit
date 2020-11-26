@@ -23,13 +23,13 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:padding="5dp"
-                android:src="@drawable/pinkbackarrow" />
+                android:src="@drawable/purplebackarrow" />
 
             <ImageView
                 android:layout_width="200dp"
                 android:layout_height="150dp"
                 android:layout_gravity="center"
-                android:src="@drawable/instalogo" />
+                android:src="@drawable/neocreditlogo" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -41,7 +41,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Are You a ?"
+                    android:text="Choose ?"
                     android:textColor="#000"
                     android:textSize="20dp"
                     android:textStyle="bold" />
@@ -62,7 +62,9 @@
                         android:paddingStart="10dp"
                         android:paddingLeft="10dp"
                         android:text="Sole Proprietorship"
-                        android:textSize="14dp" />
+                        android:textSize="14dp"
+                        android:layout_marginTop="10dp"
+                        />
 
                     <androidx.appcompat.widget.AppCompatRadioButton
                         android:id="@+id/privateLimited"
@@ -73,7 +75,8 @@
                         android:fontFamily="@font/lato_regular"
                         android:paddingLeft="10dp"
                         android:text="Private Limited"
-                        android:textSize="14dp" />
+                        android:textSize="14dp"
+                        />
 
                     <androidx.appcompat.widget.AppCompatRadioButton
                         android:id="@+id/partnershipForm"
@@ -84,43 +87,13 @@
                         android:paddingStart="10dp"
                         android:paddingLeft="10dp"
                         android:text="Partnership Form"
-                        android:textSize="14dp" />
-
-
-                </RadioGroup>
-
-                <RadioGroup
-                    android:id="@+id/segmentradiogroup"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="5dp">
-
-                    <androidx.appcompat.widget.AppCompatRadioButton
-                        android:id="@+id/driverradioButton"
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:background="@drawable/radiobackground"
-                        android:fontFamily="@font/lato_regular"
-                        android:paddingStart="10dp"
-                        android:paddingLeft="10dp"
-                        android:text="Driver"
                         android:textSize="14dp"
-                        android:visibility="gone" />
+                        android:layout_marginTop="10dp"
+                        />
 
-                    <androidx.appcompat.widget.AppCompatRadioButton
-                        android:visibility="gone"
-                        android:id="@+id/ownerradioButton"
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:layout_marginTop="2dp"
-                        android:background="@drawable/radiobackground"
-                        android:fontFamily="@font/lato_regular"
-                        android:paddingLeft="10dp"
-                        android:text="Owner / Driver"
-                        android:textSize="14dp" />
 
                 </RadioGroup>
+
 
                 <RelativeLayout
                     android:id="@+id/SegmentsubmitButton"
@@ -128,7 +101,7 @@
                     android:layout_height="50dp"
                     android:layout_marginTop="50dp"
                     android:background="#36000000"
-                    android:onClick="enter">
+                    >
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -173,7 +146,7 @@
             android:layout_height="wrap_content"
             app:crs_pl_style="skype_balls"
             app:crs_pl_size="very_small"
-            app:crs_pl_fg_color="@color/instapink"
+            app:crs_pl_fg_color="@color/neopurple"
             app:crs_pl_bg_color="#fff"/>
 
     </androidx.cardview.widget.CardView>

@@ -3,6 +3,7 @@ package rutherfordit.com.instasalary.activities;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.RelativeLayout;
@@ -24,8 +25,10 @@ public class SoleProprietorshipCompanyDetailsActivity extends AppCompatActivity 
         salariedprofsubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), SoleProprietorshipCompanyDetailsActivity.class);
+                salariedprofsubmit.setBackgroundColor(Color.rgb(16, 221, 188));
+                Intent intent = new Intent(getApplicationContext(), SoleProprietorshipBankDetailsActivity.class);
                 startActivity(intent);
+
             }
         });
     }

@@ -9,7 +9,6 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.RelativeLayout;
 
 import com.chaos.view.PinView;
 
@@ -35,7 +34,7 @@ public class EnterOTPActivity extends AppCompatActivity {
         pinView.setLineColor(
                 ResourcesCompat.getColor(getResources(), R.color.black, getTheme()));
         pinView.setLineColor(
-                ResourcesCompat.getColorStateList(getResources(), R.color.instapink, getTheme()));
+                ResourcesCompat.getColorStateList(getResources(), R.color.neopurple, getTheme()));
         pinView.setItemCount(4);
         pinView.setAnimationEnable(true);// start animation when adding text
         pinView.setCursorVisible(true);
@@ -49,6 +48,8 @@ public class EnterOTPActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), SegmentActivity.class);
                 startActivity(intent);
+                submitadharotp.setBackgroundColor(Color.rgb(16, 221, 188));
+
             }
         });
     }
