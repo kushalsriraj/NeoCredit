@@ -20,6 +20,7 @@ public class SoleProprietorshipCompanyDetailsActivity extends AppCompatActivity 
 
         salariedprofsubmit = findViewById(R.id.salariedprofsubmit);
 
+
         salariedprofsubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
