@@ -10,25 +10,23 @@ import android.widget.RelativeLayout;
 
 import rutherfordit.com.instasalary.R;
 
-public class SoleProprietorshipCompanyDetailsActivity extends AppCompatActivity {
+public class PrivateLimitedDirectorSecondDetailsActivity extends AppCompatActivity {
 
-    RelativeLayout salariedprofsubmit;
+    RelativeLayout next2_button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sole_proprietorship_company_details);
+        setContentView(R.layout.activity_private_limited_director_second_details);
 
-        salariedprofsubmit = findViewById(R.id.salariedprofsubmit);
+        next2_button = findViewById(R.id.next2_button);
 
-
-        salariedprofsubmit.setOnClickListener(new View.OnClickListener() {
+        next2_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                salariedprofsubmit.setBackgroundColor(Color.rgb(16, 221, 188));
-                Intent intent = new Intent(getApplicationContext(), SoleProprietorshipBankDetailsActivity.class);
+                Intent intent = new Intent(getApplicationContext(), PrivateLimitedBankDetailsActivity.class);
                 startActivity(intent);
-
+                next2_button.setBackgroundColor(Color.rgb(16, 221, 188));
             }
         });
     }

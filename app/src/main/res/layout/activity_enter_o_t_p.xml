@@ -8,13 +8,13 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:background="@drawable/ic_wave__7_"
-        >
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="100dp"-->
+<!--        android:background="@drawable/ic_wave__7_"-->
+<!--        >-->
 
-    </LinearLayout>
+<!--    </LinearLayout>-->
 
 
     <androidx.cardview.widget.CardView
@@ -32,7 +32,7 @@
             android:layout_height="wrap_content"
             app:crs_pl_style="skype_balls"
             app:crs_pl_size="very_small"
-            app:crs_pl_fg_color="@color/instapink"
+            app:crs_pl_fg_color="@color/neopurple"
             app:crs_pl_bg_color="#fff"/>
 
     </androidx.cardview.widget.CardView>
@@ -98,7 +98,7 @@
             android:id="@+id/submitadharotp"
             android:textStyle="bold"
             android:text="SUBMIT OTP"
-            android:backgroundTint="@color/instapink"
+            android:backgroundTint="@color/neopurple"
             android:layout_marginLeft="50dp"
             android:layout_marginRight="50dp"
             android:layout_marginTop="50dp"
@@ -117,7 +117,7 @@
         <TextView
             android:onClick="gotoadharupload"
             android:layout_marginTop="15dp"
-            android:textColor="@color/instapink"
+            android:textColor="@color/neopurple"
             android:gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

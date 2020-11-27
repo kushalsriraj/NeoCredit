@@ -17,9 +17,9 @@
 
 
         <ImageView
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:src="@drawable/instalogo"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:src="@drawable/neocreditlogo"
             android:layout_gravity="center"
             android:layout_marginTop="50dp"
             android:transitionName="logo_image"
@@ -115,7 +115,7 @@
             android:layout_height="wrap_content"
             app:crs_pl_style="skype_balls"
             app:crs_pl_size="very_small"
-            app:crs_pl_fg_color="@color/instapink"
+            app:crs_pl_fg_color="@color/neopurple"
             app:crs_pl_bg_color="#fff"/>
 
     </androidx.cardview.widget.CardView>

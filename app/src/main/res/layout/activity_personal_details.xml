@@ -29,13 +29,13 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_centerVertical="true"
-                    android:src="@drawable/pinkbackarrow" />
+                    android:src="@drawable/purplebackarrow" />
 
                 <ImageView
                     android:layout_width="60dp"
                     android:layout_height="40dp"
                     android:layout_alignParentRight="true"
-                    android:src="@drawable/instalogo" />
+                    android:src="@drawable/neocreditlogo" />
 
             </RelativeLayout>
 
@@ -174,7 +174,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="State"
-                    android:textColorHint="@color/instapink">
+                    android:textColorHint="@color/neopurple">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/enterstate"
@@ -208,7 +208,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="City"
-                    android:textColorHint="@color/instapink">
+                    android:textColorHint="@color/neopurple">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/entercity"
@@ -312,7 +312,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="State"
-                    android:textColorHint="@color/instapink">
+                    android:textColorHint="@color/neopurple">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/entercur_state"
@@ -346,7 +346,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="City"
-                    android:textColorHint="@color/instapink">
+                    android:textColorHint="@color/neopurple">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/entercur_city"
@@ -398,7 +398,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="House Type"
-                    android:textColorHint="@color/instapink">
+                    android:textColorHint="@color/neopurple">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/entercur_housetype"
@@ -473,7 +473,7 @@
             android:layout_height="wrap_content"
             app:crs_pl_style="skype_balls"
             app:crs_pl_size="very_small"
-            app:crs_pl_fg_color="@color/instapink"
+            app:crs_pl_fg_color="@color/neopurple"
             app:crs_pl_bg_color="#fff"/>
 
     </androidx.cardview.widget.CardView>

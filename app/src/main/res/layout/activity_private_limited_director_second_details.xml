@@ -41,7 +41,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="35dp"
-                android:text="Sole Proprietorship Information"
+                android:text="Director 2 Information"
                 android:textColor="#000"
                 android:textSize="18dp"
                 android:textStyle="bold" />
@@ -90,7 +90,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
-                android:hint="Current Address">
+                android:hint="DIN">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/enterjobrole"
@@ -102,6 +102,42 @@
                     android:singleLine="true"/>
 
             </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:hint="PAN Card Number ">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/entercompanyemail"
+                    android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:inputType="textEmailAddress"
+                    android:singleLine="true"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:hint="Aadhar Card Number">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/enteradharNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:inputType="phone"
+                    android:maxLength="12"
+                    android:singleLine="true" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
@@ -229,41 +265,6 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
-                android:hint="PAN Card Number ">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/entercompanyemail"
-                    android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ellipsize="end"
-                    android:inputType="textEmailAddress"
-                    android:singleLine="true"/>
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
-                android:hint="Aadhar Card Number">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/enteradharNumber"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ellipsize="end"
-                    android:inputType="phone"
-                    android:maxLength="12"
-                    android:singleLine="true" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -292,7 +293,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_marginTop="15dp"
                     android:layout_marginRight="10dp"
-                    android:entries="@array/address_proof_array" />
+                    android:entries="@array/director_address_proof_array" />
 
             </RelativeLayout>
 
@@ -305,7 +306,7 @@
                 android:id="@+id/cities_Spinner"/>
 
             <RelativeLayout
-                android:id="@+id/salariedprofsubmit"
+                android:id="@+id/next2_button"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="50dp"

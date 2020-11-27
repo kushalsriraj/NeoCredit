@@ -24,13 +24,13 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:padding="5dp"
-                android:src="@drawable/pinkbackarrow" />
+                android:src="@drawable/purplebackarrow" />
 
             <ImageView
                 android:layout_width="114dp"
                 android:layout_height="80dp"
                 android:layout_gravity="center"
-                android:src="@drawable/instalogo" />
+                android:src="@drawable/neocreditlogo" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -68,7 +68,7 @@
                     android:visibility="gone"
                     android:onClick="gotoadharupload"
                     android:layout_marginTop="15dp"
-                    android:textColor="@color/instapink"
+                    android:textColor="@color/neopurple"
                     android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -125,7 +125,7 @@
             android:layout_height="wrap_content"
             app:crs_pl_style="skype_balls"
             app:crs_pl_size="very_small"
-            app:crs_pl_fg_color="@color/instapink"
+            app:crs_pl_fg_color="@color/neopurple"
             app:crs_pl_bg_color="#fff"/>
 
     </androidx.cardview.widget.CardView>

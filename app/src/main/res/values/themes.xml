@@ -2,8 +2,8 @@
     <!-- Base application theme. -->
     <style name="Theme.NeoCredit" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/instapink</item>
-        <item name="colorPrimaryVariant">@color/instapink</item>
+        <item name="colorPrimary">@color/neopurple</item>
+        <item name="colorPrimaryVariant">@color/neopurple</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
@@ -29,12 +29,12 @@
     </style>
 
     <style name="TextViewStyle" parent="android:Widget.TextView">
-        <item name="android:fontFamily">@font/lato_black</item>
+        <item name="android:fontFamily">@font/lato_regular</item>
     </style>
 
     <style name="ButtonStyle" parent="android:Widget.Holo.Button">
         <item name="android:fontFamily">@font/lato_light</item>
-        <item name="background">@color/instapink</item>
+        <item name="background">@color/neopurple</item>
     </style>
 
     <style name="CustomSpinnerTheme" parent="android:Widget.Spinner">
@@ -42,12 +42,12 @@
     </style>
 
     <style name="MyCustomTextInputStyle" parent="Widget.Design.TextInputLayout">
-        <item name="android:fontFamily">@font/lato_bold</item>
+        <item name="android:fontFamily">@font/lato_regular</item>
         <item name="android:textSize">15dp</item>
     </style>
 
     <style name="MyCustomEditTextStyle" parent="Widget.AppCompat.EditText">
-        <item name="android:fontFamily">@font/lato_bold</item>
+        <item name="android:fontFamily">@font/lato_regular</item>
         <item name="android:textSize">15dp</item>
     </style>
 
