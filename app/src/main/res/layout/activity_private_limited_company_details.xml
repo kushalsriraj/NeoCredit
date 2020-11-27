@@ -208,7 +208,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <RelativeLayout
-                android:id="@+id/salariedprofsubmit"
+                android:id="@+id/next_button"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="50dp"

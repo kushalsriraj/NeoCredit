@@ -306,7 +306,7 @@
                 android:id="@+id/cities_Spinner"/>
 
             <RelativeLayout
-                android:id="@+id/salariedprofsubmit"
+                android:id="@+id/next2_button"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="50dp"

@@ -13,14 +13,14 @@
         android:theme="@style/AppTheme">
         <activity android:name=".activities.PrivateLimitedBankDetailsActivity"></activity>
         <activity android:name=".activities.PrivateLimitedDirectorSecondDetailsActivity">
+        </activity>
+        <activity android:name=".activities.PrivateLimitedDirectorFirstDetailsActivity" />
+        <activity android:name=".activities.PrivateLimitedCompanyDetailsActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.PrivateLimitedDirectorFirstDetailsActivity" />
-        <activity android:name=".activities.PrivateLimitedCompanyDetailsActivity"></activity>
         <activity android:name=".activities.SoleProprietorshipBankDetailsActivity" />
         <activity android:name=".activities.SoleProprietorshipCompanyDetailsActivity" />
         <activity android:name=".activities.SoleProprietorshipDetailsActivity" />
