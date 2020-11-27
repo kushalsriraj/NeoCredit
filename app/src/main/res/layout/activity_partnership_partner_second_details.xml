@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.PrivateLimitedDirectorFirstDetailsActivity"
+    tools:context=".activities.SoleProprietorshipDetailsActivity"
     >
 
     <ScrollView
@@ -306,7 +306,7 @@
                 android:id="@+id/cities_Spinner"/>
 
             <RelativeLayout
-                android:id="@+id/next1_button"
+                android:id="@+id/next2_button"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="50dp"

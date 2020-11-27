@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="rutherfordit.com.instasalary">
+    package="rutherfordit.com.instasalary" >
 
     <uses-permission android:name="android.permission.VIBRATE" />
 
@@ -10,14 +10,19 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".activities.PrivateLimitedBankDetailsActivity"></activity>
-        <activity android:name=".activities.PrivateLimitedDirectorSecondDetailsActivity">
+        android:theme="@style/AppTheme" >
+        <activity android:name=".activities.PartnershipBankDetailsActivity" >
         </activity>
+        <activity android:name=".activities.PartnershipPartnerSecondDetailsActivity" />
+        <activity android:name=".activities.PartnershipPartnerFirstDetailsActivity" />
+        <activity android:name=".activities.PartnershipCompanyDetailsActivity" />
+        <activity android:name=".activities.PrivateLimitedBankDetailsActivity" />
+        <activity android:name=".activities.PrivateLimitedDirectorSecondDetailsActivity" />
         <activity android:name=".activities.PrivateLimitedDirectorFirstDetailsActivity" />
-        <activity android:name=".activities.PrivateLimitedCompanyDetailsActivity">
+        <activity android:name=".activities.PrivateLimitedCompanyDetailsActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
