@@ -115,14 +115,14 @@ public class SegmentActivity extends AppCompatActivity {
 
                 }else if (privateLimited.isChecked()){
 
-                    Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), PrivateLimitedCompanyDetailsActivity.class);
                     startActivity(intent);
                     SegmentsubmitButton.setBackgroundColor(Color.rgb(16, 221, 188));
 
 
                 }else if (partnershipForm.isChecked()){
 
-                    Intent intent = new Intent(getApplicationContext(), GetPanDetailsActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), PartnershipCompanyDetailsActivity.class);
                     startActivity(intent);
                     SegmentsubmitButton.setBackgroundColor(Color.rgb(16, 221, 188));
 

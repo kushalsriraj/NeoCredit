@@ -28,13 +28,10 @@
         <activity android:name=".activities.BankDetailsActivity" />
         <activity android:name=".activities.PersonalDetailsActivity" />
         <activity android:name=".activities.SegmentActivity" />
-        <activity android:name=".activities.GetPanDetailsActivity" />
-        <activity android:name=".activities.GetAadhaarDetailsActivity" />
-        <activity android:name=".activities.MyProfileActivity" />
         <activity android:name=".activities.EnterOTPActivity" />
         <activity android:name=".activities.LoginActivity" />
-        <activity android:name=".activities.MainActivity" >
-        <intent-filter>
+        <activity android:name=".activities.MainActivity">
+            <intent-filter>
             <action android:name="android.intent.action.MAIN" />
 
             <category android:name="android.intent.category.LAUNCHER" />
