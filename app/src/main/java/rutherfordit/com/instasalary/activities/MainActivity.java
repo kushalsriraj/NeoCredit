@@ -27,7 +27,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
 
         logo = findViewById(R.id.logo);
@@ -66,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent, options.toBundle());
 
             }
-        }, 4000);
+        }, 3000);
 
 
     }

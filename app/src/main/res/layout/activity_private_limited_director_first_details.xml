@@ -41,7 +41,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="35dp"
-                android:text="Partner 2 Information"
+                android:text="Director 1 Information"
                 android:textColor="#000"
                 android:textSize="18dp"
                 android:textStyle="bold" />
@@ -70,7 +70,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
-                android:hint="Date Of Birth (YYYY-MM-DD)">
+                android:hint="Date of Birth (YYYY-MM-DD)">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:clickable="true"
