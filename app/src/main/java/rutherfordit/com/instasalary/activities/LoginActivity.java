@@ -31,6 +31,7 @@ public class LoginActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), EnterOTPActivity.class);
                 startActivity(intent);
                 loginbottombutton.setBackgroundColor(Color.rgb(16, 221, 188));
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
 
@@ -40,5 +41,11 @@ public class LoginActivity extends AppCompatActivity {
     public void onBackPressed() {
         //  super.onBackPressed();
         finishAffinity();
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 }

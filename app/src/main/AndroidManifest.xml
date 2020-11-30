@@ -20,11 +20,6 @@
         <activity android:name=".activities.PrivateLimitedDirectorSecondDetailsActivity" />
         <activity android:name=".activities.PrivateLimitedDirectorFirstDetailsActivity" />
         <activity android:name=".activities.PrivateLimitedCompanyDetailsActivity" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".activities.SoleProprietorshipBankDetailsActivity" />
         <activity android:name=".activities.SoleProprietorshipCompanyDetailsActivity" />
@@ -38,7 +33,13 @@
         <activity android:name=".activities.MyProfileActivity" />
         <activity android:name=".activities.EnterOTPActivity" />
         <activity android:name=".activities.LoginActivity" />
-        <activity android:name=".activities.MainActivity" />
+        <activity android:name=".activities.MainActivity" >
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
     </application>
 
 </manifest>
