@@ -26,7 +26,7 @@ public class PartnershipCompanyDetailsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), PartnershipPartnerFirstDetailsActivity.class);
                 startActivity(intent);
-                next_button.setBackgroundColor(Color.rgb(16, 221, 188));
+                next_button.setBackgroundColor(Color.parseColor("#10ddbc"));
             }
         });
     }

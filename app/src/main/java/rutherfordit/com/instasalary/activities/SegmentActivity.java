@@ -45,7 +45,7 @@ public class SegmentActivity extends AppCompatActivity {
                     new int[]{
 
                             R.color.neopurple
-                            , Color.rgb(16, 221, 188),
+                            ,(Color.parseColor(String.valueOf(R.color.neogreen))),
                     }
             );
 
@@ -61,7 +61,6 @@ public class SegmentActivity extends AppCompatActivity {
                 public void onCheckedChanged(RadioGroup group, int checkedId) {
                     if (soleProprietorship.isChecked()) {
                         soleProprietorship.setTextColor(Color.WHITE);
-                        //vendorradioButton.setBackgroundColor(Color.rgb(212, 93, 133));
                         soleProprietorship.setBackground(getApplicationContext().getResources().getDrawable(R.drawable.radiobackgroundcolor));
 
 
@@ -74,7 +73,6 @@ public class SegmentActivity extends AppCompatActivity {
                     }
                     if (privateLimited.isChecked()){
                         privateLimited.setTextColor(Color.WHITE);
-                        //driverownerradioButton.setBackgroundColor(Color.rgb(212, 93, 133));
                         privateLimited.setBackground(getApplicationContext().getResources().getDrawable(R.drawable.radiobackgroundcolor));
 
                         partnershipForm.setTextColor(Color.BLACK);
@@ -88,7 +86,6 @@ public class SegmentActivity extends AppCompatActivity {
 
                     if (partnershipForm.isChecked()){
                         partnershipForm.setTextColor(Color.WHITE);
-                        //driverownerradioButton.setBackgroundColor(Color.rgb(212, 93, 133));
                         partnershipForm.setBackground(getApplicationContext().getResources().getDrawable(R.drawable.radiobackgroundcolor));
 
                         privateLimited.setTextColor(Color.BLACK);
@@ -110,21 +107,22 @@ public class SegmentActivity extends AppCompatActivity {
 
                     Intent intent = new Intent(getApplicationContext(), SoleProprietorshipDetailsActivity.class);
                     startActivity(intent);
-                    SegmentsubmitButton.setBackgroundColor(Color.rgb(16, 221, 188));
+                    SegmentsubmitButton.setBackgroundColor(Color.parseColor(String.valueOf(R.color.neogreen)));
+
 
 
                 }else if (privateLimited.isChecked()){
 
                     Intent intent = new Intent(getApplicationContext(), PrivateLimitedCompanyDetailsActivity.class);
                     startActivity(intent);
-                    SegmentsubmitButton.setBackgroundColor(Color.rgb(16, 221, 188));
+                    SegmentsubmitButton.setBackgroundColor(Color.parseColor(String.valueOf(R.color.neogreen)));
 
 
                 }else if (partnershipForm.isChecked()){
 
                     Intent intent = new Intent(getApplicationContext(), PartnershipCompanyDetailsActivity.class);
                     startActivity(intent);
-                    SegmentsubmitButton.setBackgroundColor(Color.rgb(16, 221, 188));
+                    SegmentsubmitButton.setBackgroundColor(Color.parseColor(String.valueOf(R.color.neogreen)));
 
                 }
             }

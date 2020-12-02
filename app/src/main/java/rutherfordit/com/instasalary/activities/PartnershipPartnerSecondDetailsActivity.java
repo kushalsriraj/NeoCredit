@@ -26,7 +26,7 @@ public class PartnershipPartnerSecondDetailsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), PartnershipBankDetailsActivity.class);
                 startActivity(intent);
-                next2_button.setBackgroundColor(Color.rgb(16, 221, 188));
+                next2_button.setBackgroundColor(Color.parseColor(String.valueOf(R.color.neogreen)));
             }
         });
     }
