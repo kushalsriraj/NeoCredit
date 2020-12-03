@@ -26,7 +26,7 @@ public class PrivateLimitedCompanyDetailsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), PrivateLimitedDirectorFirstDetailsActivity.class);
                 startActivity(intent);
-                next_button.setBackgroundColor(Color.parseColor(String.valueOf(R.color.neogreen)));
+                next_button.setBackgroundColor(Color.parseColor("#10ddbc"));
             }
         });
     }

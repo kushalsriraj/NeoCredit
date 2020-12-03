@@ -107,7 +107,7 @@ public class SegmentActivity extends AppCompatActivity {
 
                     Intent intent = new Intent(getApplicationContext(), SoleProprietorshipDetailsActivity.class);
                     startActivity(intent);
-                    SegmentsubmitButton.setBackgroundColor(Color.parseColor(String.valueOf(R.color.neogreen)));
+                    SegmentsubmitButton.setBackgroundColor(Color.parseColor("#10ddbc"));
 
 
 
@@ -115,14 +115,14 @@ public class SegmentActivity extends AppCompatActivity {
 
                     Intent intent = new Intent(getApplicationContext(), PrivateLimitedCompanyDetailsActivity.class);
                     startActivity(intent);
-                    SegmentsubmitButton.setBackgroundColor(Color.parseColor(String.valueOf(R.color.neogreen)));
+                    SegmentsubmitButton.setBackgroundColor(Color.parseColor("#10ddbc"));
 
 
                 }else if (partnershipForm.isChecked()){
 
                     Intent intent = new Intent(getApplicationContext(), PartnershipCompanyDetailsActivity.class);
                     startActivity(intent);
-                    SegmentsubmitButton.setBackgroundColor(Color.parseColor(String.valueOf(R.color.neogreen)));
+                    SegmentsubmitButton.setBackgroundColor(Color.parseColor("#10ddbc"));
 
                 }
             }

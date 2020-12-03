@@ -26,7 +26,7 @@ public class SoleProprietorshipDetailsActivity extends AppCompatActivity {
         salariedprofsubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                salariedprofsubmit.setBackgroundColor(Color.parseColor(String.valueOf(R.color.neogreen)));
+                salariedprofsubmit.setBackgroundColor(Color.parseColor("#10ddbc"));
                 Intent intent = new Intent(getApplicationContext(), SoleProprietorshipCompanyDetailsActivity.class);
                 startActivity(intent);
             }
