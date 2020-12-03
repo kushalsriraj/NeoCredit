@@ -14,7 +14,7 @@ import rutherfordit.com.instasalary.R;
 public class SoleProprietorshipDetailsActivity extends AppCompatActivity {
 
     RelativeLayout salariedprofsubmit;
-    ImageView back_pinfo;
+    ImageView purplebackarrow;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +22,14 @@ public class SoleProprietorshipDetailsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sole_proprietorship);
 
         salariedprofsubmit = findViewById(R.id.salariedprofsubmit);
+        purplebackarrow = findViewById(R.id.purplebackarrow);
+
+        purplebackarrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
         salariedprofsubmit.setOnClickListener(new View.OnClickListener() {
             @Override

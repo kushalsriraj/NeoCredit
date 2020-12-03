@@ -9,6 +9,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import com.chaos.view.PinView;
 
@@ -17,6 +18,7 @@ import rutherfordit.com.instasalary.R;
 public class EnterOTPActivity extends AppCompatActivity {
 
     Button submitadharotp;
+    ImageView purplebackarrow;
 
     @SuppressLint("ResourceAsColor")
     @Override
@@ -25,6 +27,7 @@ public class EnterOTPActivity extends AppCompatActivity {
         setContentView(R.layout.activity_enter_o_t_p);
 
         submitadharotp = findViewById(R.id.submitadharotp);
+        purplebackarrow = findViewById(R.id.purplebackarrow);
 
         final PinView pinView = findViewById(R.id.pinView);
         pinView.setTextColor(
@@ -51,6 +54,13 @@ public class EnterOTPActivity extends AppCompatActivity {
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 submitadharotp.setBackgroundColor(Color.parseColor("#10ddbc"));
 
+            }
+        });
+
+        purplebackarrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
             }
         });
     }

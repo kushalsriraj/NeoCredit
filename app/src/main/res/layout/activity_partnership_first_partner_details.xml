@@ -139,24 +139,24 @@
 
 
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:hint="Door No">
+<!--            <com.google.android.material.textfield.TextInputLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="30dp"-->
+<!--                android:hint="Door No">-->
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/enterdoorno"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ellipsize="end"
-                    android:fontFamily="@font/lato_regular"
-                    android:inputType="text"
-                    android:maxLength="12"
-                    android:singleLine="true"
-                    android:textSize="14dp" />
+<!--                <com.google.android.material.textfield.TextInputEditText-->
+<!--                    android:id="@+id/enterdoorno"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:ellipsize="end"-->
+<!--                    android:fontFamily="@font/lato_regular"-->
+<!--                    android:inputType="text"-->
+<!--                    android:maxLength="12"-->
+<!--                    android:singleLine="true"-->
+<!--                    android:textSize="14dp" />-->
 
-            </com.google.android.material.textfield.TextInputLayout>
+<!--            </com.google.android.material.textfield.TextInputLayout>-->
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
