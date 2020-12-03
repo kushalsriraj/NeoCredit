@@ -26,7 +26,7 @@ public class PrivateLimitedDirectorFirstDetailsActivity extends AppCompatActivit
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), PrivateLimitedDirectorSecondDetailsActivity.class);
                 startActivity(intent);
-                next1_button.setBackgroundColor(Color.rgb(16, 221, 188));
+                next1_button.setBackgroundColor(Color.parseColor("#10ddbc"));
             }
         });
     }

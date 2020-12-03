@@ -26,7 +26,7 @@ public class PrivateLimitedDirectorSecondDetailsActivity extends AppCompatActivi
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), PrivateLimitedBankDetailsActivity.class);
                 startActivity(intent);
-                next2_button.setBackgroundColor(Color.rgb(16, 221, 188));
+                next2_button.setBackgroundColor(Color.parseColor("#10ddbc"));
             }
         });
     }

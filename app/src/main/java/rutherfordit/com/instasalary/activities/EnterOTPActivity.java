@@ -49,7 +49,8 @@ public class EnterOTPActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), SegmentActivity.class);
                 startActivity(intent);
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-                submitadharotp.setBackgroundColor(Color.rgb(16, 221, 188));
+                submitadharotp.setBackgroundColor(Color.parseColor("#10ddbc"));
+
             }
         });
     }
