@@ -13,7 +13,7 @@ import rutherfordit.com.instasalary.R;
 
 public class PartnershipPartnerFirstDetailsActivity extends AppCompatActivity {
 
-    RelativeLayout next1_button;
+    RelativeLayout next_button2;
     ImageView purplebackarrow;
 
     @Override
@@ -21,7 +21,7 @@ public class PartnershipPartnerFirstDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_partnership_first_partner_details);
 
-        next1_button = findViewById(R.id.next1_button);
+        next_button2 = findViewById(R.id.next_button2);
         purplebackarrow = findViewById(R.id.purplebackarrow);
 
         purplebackarrow.setOnClickListener(new View.OnClickListener() {
@@ -31,12 +31,13 @@ public class PartnershipPartnerFirstDetailsActivity extends AppCompatActivity {
             }
         });
 
-        next1_button.setOnClickListener(new View.OnClickListener() {
+        next_button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), PartnershipPartnerSecondDetailsActivity.class);
                 startActivity(intent);
-                next1_button.setBackgroundColor(Color.parseColor("#10ddbc"));
+                next_button2.setBackgroundColor(Color.parseColor("#10ddbc"));
+
             }
         });
     }
