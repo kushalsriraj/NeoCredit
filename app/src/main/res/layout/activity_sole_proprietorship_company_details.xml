@@ -22,7 +22,7 @@
                 android:layout_height="40dp">
 
                 <ImageView
-                    android:id="@+id/back_pinfo"
+                    android:id="@+id/purplebackarrow"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_centerVertical="true"
@@ -250,7 +250,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
-                android:hint="Company State">
+                android:hint="State">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/entercompanystate"
@@ -352,7 +352,6 @@
                     android:src="@drawable/next" />
 
             </RelativeLayout>
-
 
         </LinearLayout>
 

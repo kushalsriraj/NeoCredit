@@ -36,8 +36,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), EnterOTPActivity.class);
                 startActivity(intent);
-                loginbottombutton.setBackgroundColor(Color.parseColor(String.valueOf(R.color.neogreen)));
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                loginbottombutton.setBackgroundColor(Color.parseColor("#10ddbc"));
             }
         });
 

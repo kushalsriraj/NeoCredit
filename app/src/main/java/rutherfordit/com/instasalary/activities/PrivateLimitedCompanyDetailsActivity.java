@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import rutherfordit.com.instasalary.R;
@@ -13,6 +14,7 @@ import rutherfordit.com.instasalary.R;
 public class PrivateLimitedCompanyDetailsActivity extends AppCompatActivity {
 
     RelativeLayout next_button;
+    ImageView purplebackarrow;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +22,15 @@ public class PrivateLimitedCompanyDetailsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_private_limited_company_details);
 
         next_button = findViewById(R.id.next_button);
+
+        purplebackarrow = findViewById(R.id.purplebackarrow);
+
+        purplebackarrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
         next_button.setOnClickListener(new View.OnClickListener() {
             @Override

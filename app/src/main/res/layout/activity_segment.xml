@@ -19,7 +19,7 @@
             android:orientation="vertical">
 
             <ImageView
-                android:id="@+id/backarrow_segment"
+                android:id="@+id/purplebackarrow"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:padding="5dp"

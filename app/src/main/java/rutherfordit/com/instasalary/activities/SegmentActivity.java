@@ -10,6 +10,7 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 
@@ -22,6 +23,7 @@ public class SegmentActivity extends AppCompatActivity {
     AppCompatRadioButton soleProprietorship;
      AppCompatRadioButton privateLimited;
      AppCompatRadioButton partnershipForm;
+     ImageView purplebackarrow;
 
     @SuppressLint("RestrictedApi")
     @Override
@@ -34,7 +36,14 @@ public class SegmentActivity extends AppCompatActivity {
         privateLimited = findViewById(R.id.privateLimited);
         partnershipForm = findViewById(R.id.partnershipForm);
         SegmentsubmitButton = findViewById(R.id.SegmentsubmitButton);
+        purplebackarrow = findViewById(R.id.purplebackarrow);
 
+        purplebackarrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
         if(Build.VERSION.SDK_INT>=21) {
             ColorStateList colorStateList = new ColorStateList(
@@ -45,7 +54,7 @@ public class SegmentActivity extends AppCompatActivity {
                     new int[]{
 
                             R.color.neopurple
-                            ,(Color.parseColor(String.valueOf(R.color.neogreen))),
+                            ,Color.rgb(16, 221, 188),
                     }
             );
 
