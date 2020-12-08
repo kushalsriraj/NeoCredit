@@ -96,30 +96,29 @@
 
         <com.chaos.view.PinView
             android:state_selected="true"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="30dp"
             android:id="@+id/pinView"
             style="@style/PinWidget.PinView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:cursorVisible="true"
-            android:inputType="text"
-            android:textSize="18sp"
+            android:inputType="number"
+            android:textSize="16sp"
             android:textStyle="bold"
-            app:cursorWidth="2dp"
+            app:cursorWidth="1dp"
             app:hideLineWhenFilled="false"
             app:itemCount="4"
-            app:itemHeight="48dp"
+            app:itemHeight="40dp"
             app:itemRadius="4dp"
-            app:itemSpacing="0dp"
-            app:itemWidth="48dp"
+            app:itemSpacing="10dp"
+            app:itemWidth="40dp"
             app:lineWidth="2dp"
             app:viewType="rectangle"
             app:lineColor="@color/black"
             app:cursorColor="@color/black"
             android:textCursorDrawable="@color/black"
             android:background="#fff"
-            android:digits="123467890"
-            />
+            android:digits="123467890" />
 
         <Button
             android:id="@+id/submitadharotp"
@@ -130,7 +129,7 @@
             android:layout_marginRight="50dp"
             android:layout_marginTop="50dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="50dp" />
 
         <TextView
             android:layout_marginTop="15dp"
@@ -142,6 +141,7 @@
             android:text="Didn't Recieve OTP ? "/>
 
         <TextView
+            android:visibility="gone"
             android:onClick="gotoadharupload"
             android:layout_marginTop="15dp"
             android:textColor="@color/neopurple"

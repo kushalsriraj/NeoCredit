@@ -1,15 +1,20 @@
 package rutherfordit.com.instasalary.activities;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 import android.widget.RelativeLayout;
 
 import com.google.android.material.textfield.TextInputEditText;
@@ -19,7 +24,7 @@ import rutherfordit.com.instasalary.R;
 public class LoginActivity extends AppCompatActivity {
 
     RelativeLayout loginbottombutton;
-    TextInputEditText enterphoneno_login;
+    EditText enterphoneno_login;
     boolean click = false;
 
     @Override
@@ -29,18 +34,12 @@ public class LoginActivity extends AppCompatActivity {
 
         loginbottombutton = findViewById(R.id.loginbottombutton);
         enterphoneno_login = findViewById(R.id.enterphoneno_login);
-
-        loginbottombutton.setOnClickListener(new View.OnClickListener() {
-            @SuppressLint("ResourceAsColor")
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), EnterOTPActivity.class);
-                startActivity(intent);
-                loginbottombutton.setBackgroundColor(Color.parseColor("#10ddbc"));
-            }
-        });
+        enterphoneno_login.requestFocus();
+        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.showSoftInput(enterphoneno_login, InputMethodManager.SHOW_FORCED);
 
         enterphoneno_login.addTextChangedListener(new TextWatcher() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
             }
@@ -48,34 +47,40 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-                if (enterphoneno_login.getText().toString().trim().length() == 14) {
-                    loginbottombutton.setBackgroundColor(Color.parseColor("#10ddbc"));
-                    click = true;
-                } else {
-                    loginbottombutton.setBackgroundColor(Color.parseColor("#36000000"));
-                    click = false;
+                if (enterphoneno_login.getText().toString().length() == 10)
+                {
+                    loginbottombutton.setBackgroundColor(getResources().getColor(R.color.neopurple));
+                    click=true;
                 }
-
+                else
+                {
+                    loginbottombutton.setBackgroundColor(getResources().getColor(R.color.colorash));
+                    click=false;
+                }
             }
 
             @Override
             public void afterTextChanged(Editable s) {
 
-                String prefix = "+91 ";
-                int count = (s == null) ? 0 : s.toString().length();
-                if (count < prefix.length()) {
-                    enterphoneno_login.setText(prefix);
-                    int selectionIndex = Math.max(count + 1, prefix.length());
-                    enterphoneno_login.setSelection(selectionIndex);
-                }
             }
         });
 
+        loginbottombutton.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("ResourceAsColor")
+            @Override
+            public void onClick(View v) {
+                if (click)
+                {
+                    Intent intent = new Intent(getApplicationContext(), EnterOTPActivity.class);
+                    startActivity(intent);
+                }
+            }
+        });
     }
 
     @Override
-    public void onBackPressed() {
-        //  super.onBackPressed();
+    public void onBackPressed()
+    {
         finishAffinity();
     }
 

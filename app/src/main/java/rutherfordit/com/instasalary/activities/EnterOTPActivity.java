@@ -30,19 +30,14 @@ public class EnterOTPActivity extends AppCompatActivity {
         purplebackarrow = findViewById(R.id.purplebackarrow);
 
         final PinView pinView = findViewById(R.id.pinView);
-        pinView.setTextColor(
-                ResourcesCompat.getColor(getResources(), R.color.black, getTheme()));
-        pinView.setTextColor(
-                ResourcesCompat.getColorStateList(getResources(), R.color.black, getTheme()));
-        pinView.setLineColor(
-                ResourcesCompat.getColor(getResources(), R.color.black, getTheme()));
-        pinView.setLineColor(
-                ResourcesCompat.getColorStateList(getResources(), R.color.neopurple, getTheme()));
+      //  pinView.setTextColor(ResourcesCompat.getColor(getResources(), R.color.black, getTheme()));
+      //  pinView.setTextColor(ResourcesCompat.getColorStateList(getResources(), R.color.black, getTheme()));
+      //  pinView.setLineColor(ResourcesCompat.getColor(getResources(), R.color.black, getTheme()));
+        pinView.setLineColor(ResourcesCompat.getColorStateList(getResources(), R.color.neopurple, getTheme()));
         pinView.setItemCount(4);
         pinView.setAnimationEnable(true);// start animation when adding text
         pinView.setCursorVisible(true);
-        pinView.setCursorColor(
-                ResourcesCompat.getColor(getResources(), R.color.black, getTheme()));
+     //   pinView.setCursorColor(ResourcesCompat.getColor(getResources(), R.color.black, getTheme()));
         pinView.setCursorWidth(getResources().getDimensionPixelSize(R.dimen.pv_pin_view_cursor_width));
         pinView.setCursorColor(Color.BLACK);
 
@@ -52,14 +47,13 @@ public class EnterOTPActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), SegmentActivity.class);
                 startActivity(intent);
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-                submitadharotp.setBackgroundColor(Color.parseColor("#10ddbc"));
-
             }
         });
 
         purplebackarrow.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
                 onBackPressed();
             }
         });

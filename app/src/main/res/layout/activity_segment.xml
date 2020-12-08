@@ -26,8 +26,8 @@
                 android:src="@drawable/purplebackarrow" />
 
             <ImageView
-                android:layout_width="200dp"
-                android:layout_height="150dp"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:layout_gravity="center"
                 android:src="@drawable/neocreditlogo" />
 
@@ -41,7 +41,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Choose ?"
+                    android:text="Choose"
                     android:textColor="#000"
                     android:textSize="20dp"
                     android:textStyle="bold" />
@@ -53,7 +53,7 @@
                     android:id="@+id/radio_group_transfer"
                     >
 
-                    <androidx.appcompat.widget.AppCompatRadioButton
+                    <RadioButton
                         android:id="@+id/soleProprietorship"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
@@ -63,8 +63,7 @@
                         android:paddingLeft="10dp"
                         android:text="Sole Proprietorship"
                         android:textSize="14dp"
-                        android:layout_marginTop="10dp"
-                        />
+                        android:layout_marginTop="10dp" />
 
                     <androidx.appcompat.widget.AppCompatRadioButton
                         android:id="@+id/privateLimited"
