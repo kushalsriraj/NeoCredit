@@ -3,6 +3,7 @@ package rutherfordit.com.instasalary.activities;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
 
+import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
@@ -45,10 +46,21 @@ public class EnterOTPActivity extends AppCompatActivity {
         submitadharotp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), SegmentActivity.class);
-                submitadharotp.setBackgroundColor(getResources().getColor(R.color.neopurple));
-                startActivity(intent);
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
+                if (pinView.getText().toString().length()!=4)
+                {
+                    ObjectAnimator
+                            .ofFloat(pinView, "translationX", 0, 25, -25, 25, -25,15, -15, 6, -6, 0)
+                            .setDuration(1000)
+                            .start();
+                }
+                else {
+                    Intent intent = new Intent(getApplicationContext(), SegmentActivity.class);
+                    startActivity(intent);
+                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                }
+
+
             }
         });
 

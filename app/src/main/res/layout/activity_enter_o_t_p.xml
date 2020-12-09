@@ -116,7 +116,7 @@
                 android:id="@+id/submitadharotp"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:background="#36000000"
+                android:background="@color/neopurple"
                 >
 
                 <TextView
