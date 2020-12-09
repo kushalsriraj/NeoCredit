@@ -166,7 +166,7 @@
 
             </RelativeLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
+            <!--<com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
@@ -226,7 +226,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:spinnerMode="dialog"
-                android:visibility="gone" />
+                android:visibility="gone" />-->
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
@@ -246,7 +246,7 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
+            <!--<com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
@@ -262,7 +262,7 @@
                     android:singleLine="true"
                     android:textSize="14dp" />
 
-            </com.google.android.material.textfield.TextInputLayout>
+            </com.google.android.material.textfield.TextInputLayout>-->
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -272,7 +272,7 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Address Proof">
+                    android:hint="Business Address Proof">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/addressProof"
@@ -325,7 +325,7 @@
 
 
             <RelativeLayout
-                android:id="@+id/salariedprofsubmit"
+                android:id="@+id/submitCompanyInfo"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="50dp"

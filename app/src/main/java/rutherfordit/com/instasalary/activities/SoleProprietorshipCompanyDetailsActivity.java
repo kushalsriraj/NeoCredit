@@ -13,14 +13,14 @@ import rutherfordit.com.instasalary.R;
 
 public class SoleProprietorshipCompanyDetailsActivity extends AppCompatActivity {
 
-    RelativeLayout salariedprofsubmit;
+    RelativeLayout submitCompanyInfo;
     ImageView purplebackarrow;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sole_proprietorship_company_details);
 
-        salariedprofsubmit = findViewById(R.id.salariedprofsubmit);
+        submitCompanyInfo = findViewById(R.id.submitCompanyInfo);
         purplebackarrow = findViewById(R.id.purplebackarrow);
 
         purplebackarrow.setOnClickListener(new View.OnClickListener() {
@@ -31,11 +31,11 @@ public class SoleProprietorshipCompanyDetailsActivity extends AppCompatActivity 
         });
 
 
-        salariedprofsubmit.setOnClickListener(new View.OnClickListener() {
+        submitCompanyInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                salariedprofsubmit.setBackgroundColor(Color.parseColor("#10ddbc"));
-                Intent intent = new Intent(getApplicationContext(), SoleProprietorshipBankDetailsActivity.class);
+              //  salariedprofsubmit.setBackgroundColor(Color.parseColor("#10ddbc"));
+                Intent intent = new Intent(getApplicationContext(), SPDocumentUploadActivity.class);
                 startActivity(intent);
 
             }

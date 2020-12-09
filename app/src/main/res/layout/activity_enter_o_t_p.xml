@@ -118,7 +118,7 @@
             app:cursorColor="@color/black"
             android:textCursorDrawable="@color/black"
             android:background="#fff"
-            android:digits="123467890" />
+            android:digits="1234567890" />
 
         <Button
             android:id="@+id/submitadharotp"
