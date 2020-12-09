@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 import com.chaos.view.PinView;
 
@@ -17,7 +18,7 @@ import rutherfordit.com.instasalary.R;
 
 public class EnterOTPActivity extends AppCompatActivity {
 
-    Button submitadharotp;
+    RelativeLayout submitadharotp;
     ImageView purplebackarrow;
 
     @SuppressLint("ResourceAsColor")
@@ -45,6 +46,7 @@ public class EnterOTPActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), SegmentActivity.class);
+                submitadharotp.setBackgroundColor(getResources().getColor(R.color.neopurple));
                 startActivity(intent);
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
