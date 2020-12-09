@@ -35,6 +35,7 @@ public class SoleProprietorshipCompanyDetailsActivity extends AppCompatActivity 
             public void onClick(View v) {
               //  salariedprofsubmit.setBackgroundColor(Color.parseColor("#10ddbc"));
                 Intent intent = new Intent(getApplicationContext(), SPDocumentUploadActivity.class);
+
                 startActivity(intent);
 
             }
