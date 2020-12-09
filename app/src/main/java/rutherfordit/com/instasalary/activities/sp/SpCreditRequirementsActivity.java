@@ -1,4 +1,4 @@
-package rutherfordit.com.instasalary.activities;
+package rutherfordit.com.instasalary.activities.sp;
 
 import androidx.appcompat.app.AppCompatActivity;
 

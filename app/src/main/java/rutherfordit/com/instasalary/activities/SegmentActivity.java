@@ -15,6 +15,9 @@ import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 
 import rutherfordit.com.instasalary.R;
+import rutherfordit.com.instasalary.activities.partnership.PartnershipCompanyDetailsActivity;
+import rutherfordit.com.instasalary.activities.privatelimited.PrivateLimitedCompanyDetailsActivity;
+import rutherfordit.com.instasalary.activities.sp.SoleProprietorshipDetailsActivity;
 
 public class SegmentActivity extends AppCompatActivity {
 

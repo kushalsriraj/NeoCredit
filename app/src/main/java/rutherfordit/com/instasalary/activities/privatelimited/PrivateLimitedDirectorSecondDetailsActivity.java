@@ -1,4 +1,4 @@
-package rutherfordit.com.instasalary.activities;
+package rutherfordit.com.instasalary.activities.privatelimited;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,17 +11,17 @@ import android.widget.RelativeLayout;
 
 import rutherfordit.com.instasalary.R;
 
-public class SoleProprietorshipDetailsActivity extends AppCompatActivity {
+public class PrivateLimitedDirectorSecondDetailsActivity extends AppCompatActivity {
 
-    RelativeLayout submitSpInfo;
+    RelativeLayout next2_button;
     ImageView purplebackarrow;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sole_proprietorship);
+        setContentView(R.layout.activity_private_limited_director_second_details);
 
-        submitSpInfo = findViewById(R.id.submitSpInfo);
+        next2_button = findViewById(R.id.next2_button);
         purplebackarrow = findViewById(R.id.purplebackarrow);
 
         purplebackarrow.setOnClickListener(new View.OnClickListener() {
@@ -31,19 +31,13 @@ public class SoleProprietorshipDetailsActivity extends AppCompatActivity {
             }
         });
 
-        submitSpInfo.setOnClickListener(new View.OnClickListener() {
+        next2_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              //  salariedprofsubmit.setBackgroundColor(Color.parseColor("#10ddbc"));
-                Intent intent = new Intent(getApplicationContext(), SoleProprietorshipCompanyDetailsActivity.class);
+                Intent intent = new Intent(getApplicationContext(), PrivateLimitedBankDetailsActivity.class);
                 startActivity(intent);
+                next2_button.setBackgroundColor(Color.parseColor("#10ddbc"));
             }
         });
-
-    }
-
-    @Override
-    public void onBackPressed() {
-          super.onBackPressed();
     }
 }

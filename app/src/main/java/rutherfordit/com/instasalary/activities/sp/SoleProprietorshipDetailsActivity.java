@@ -1,9 +1,8 @@
-package rutherfordit.com.instasalary.activities;
+package rutherfordit.com.instasalary.activities.sp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -11,17 +10,17 @@ import android.widget.RelativeLayout;
 
 import rutherfordit.com.instasalary.R;
 
-public class PartnershipPartnerSecondDetailsActivity extends AppCompatActivity {
+public class SoleProprietorshipDetailsActivity extends AppCompatActivity {
 
-    RelativeLayout next_button3;
+    RelativeLayout submitSpInfo;
     ImageView purplebackarrow;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_partnership_partner_second_details);
+        setContentView(R.layout.activity_sole_proprietorship);
 
-        next_button3 = findViewById(R.id.next_button3);
+        submitSpInfo = findViewById(R.id.submitSpInfo);
         purplebackarrow = findViewById(R.id.purplebackarrow);
 
         purplebackarrow.setOnClickListener(new View.OnClickListener() {
@@ -31,13 +30,19 @@ public class PartnershipPartnerSecondDetailsActivity extends AppCompatActivity {
             }
         });
 
-        next_button3.setOnClickListener(new View.OnClickListener() {
+        submitSpInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), PartnershipBankDetailsActivity.class);
+              //  salariedprofsubmit.setBackgroundColor(Color.parseColor("#10ddbc"));
+                Intent intent = new Intent(getApplicationContext(), SoleProprietorshipCompanyDetailsActivity.class);
                 startActivity(intent);
-                next_button3.setBackgroundColor(Color.parseColor("#10ddbc"));
             }
         });
+
+    }
+
+    @Override
+    public void onBackPressed() {
+          super.onBackPressed();
     }
 }

@@ -1,4 +1,4 @@
-package rutherfordit.com.instasalary.activities;
+package rutherfordit.com.instasalary.activities.privatelimited;
 
 import androidx.appcompat.app.AppCompatActivity;
 

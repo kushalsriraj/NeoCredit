@@ -1,4 +1,4 @@
-package rutherfordit.com.instasalary.activities;
+package rutherfordit.com.instasalary.activities.privatelimited;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,17 +11,18 @@ import android.widget.RelativeLayout;
 
 import rutherfordit.com.instasalary.R;
 
-public class PartnershipPartnerFirstDetailsActivity extends AppCompatActivity {
+public class PrivateLimitedDirectorFirstDetailsActivity extends AppCompatActivity {
 
-    RelativeLayout next_button2;
+    RelativeLayout next1_button;
     ImageView purplebackarrow;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_partnership_first_partner_details);
+        setContentView(R.layout.activity_private_limited_director_first_details);
 
-        next_button2 = findViewById(R.id.next_button2);
+        next1_button = findViewById(R.id.next1_button);
+
         purplebackarrow = findViewById(R.id.purplebackarrow);
 
         purplebackarrow.setOnClickListener(new View.OnClickListener() {
@@ -31,13 +32,12 @@ public class PartnershipPartnerFirstDetailsActivity extends AppCompatActivity {
             }
         });
 
-        next_button2.setOnClickListener(new View.OnClickListener() {
+        next1_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), PartnershipPartnerSecondDetailsActivity.class);
+                Intent intent = new Intent(getApplicationContext(), PrivateLimitedDirectorSecondDetailsActivity.class);
                 startActivity(intent);
-                next_button2.setBackgroundColor(Color.parseColor("#10ddbc"));
-
+                next1_button.setBackgroundColor(Color.parseColor("#10ddbc"));
             }
         });
     }
