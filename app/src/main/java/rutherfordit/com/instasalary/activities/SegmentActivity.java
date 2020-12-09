@@ -21,9 +21,15 @@ public class SegmentActivity extends AppCompatActivity {
     RelativeLayout SegmentsubmitButton;
     RadioGroup rg;
     AppCompatRadioButton soleProprietorship;
-     AppCompatRadioButton privateLimited;
-     AppCompatRadioButton partnershipForm;
-     ImageView purplebackarrow;
+    AppCompatRadioButton privateLimited;
+    AppCompatRadioButton partnershipForm;
+    ImageView purplebackarrow;
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+       // SegmentsubmitButton.setBackgroundColor(getResources().getColor(R.color.colorash));
+    }
 
     @SuppressLint("RestrictedApi")
     @Override
@@ -54,7 +60,7 @@ public class SegmentActivity extends AppCompatActivity {
                     new int[]{
 
                             R.color.neopurple
-                            ,Color.rgb(16, 221, 188),
+                            ,Color.rgb(255, 255, 255),
                     }
             );
 
@@ -62,25 +68,27 @@ public class SegmentActivity extends AppCompatActivity {
             privateLimited.setSupportButtonTintList(colorStateList);
             partnershipForm.setSupportButtonTintList(colorStateList);
 
-
-
             rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
                 @SuppressLint("ResourceAsColor")
                 @Override
                 public void onCheckedChanged(RadioGroup group, int checkedId) {
-                    if (soleProprietorship.isChecked()) {
+                    if (soleProprietorship.isChecked())
+                    {
+                        SegmentsubmitButton.setBackgroundColor(getResources().getColor(R.color.neopurple));
+
                         soleProprietorship.setTextColor(Color.WHITE);
                         soleProprietorship.setBackground(getApplicationContext().getResources().getDrawable(R.drawable.radiobackgroundcolor));
-
 
                         privateLimited.setTextColor(Color.BLACK);
                         privateLimited.setBackground(getApplicationContext().getResources().getDrawable(R.drawable.radiobackground));
 
                         partnershipForm.setTextColor(Color.BLACK);
                         partnershipForm.setBackground(getApplicationContext().getResources().getDrawable(R.drawable.radiobackground));
-
                     }
-                    if (privateLimited.isChecked()){
+                    else if (privateLimited.isChecked())
+                    {
+                        SegmentsubmitButton.setBackgroundColor(getResources().getColor(R.color.neopurple));
+
                         privateLimited.setTextColor(Color.WHITE);
                         privateLimited.setBackground(getApplicationContext().getResources().getDrawable(R.drawable.radiobackgroundcolor));
 
@@ -89,11 +97,12 @@ public class SegmentActivity extends AppCompatActivity {
 
                         soleProprietorship.setTextColor(Color.BLACK);
                         soleProprietorship.setBackground(getApplicationContext().getResources().getDrawable(R.drawable.radiobackground));
-
-
                     }
 
-                    if (partnershipForm.isChecked()){
+                    else if (partnershipForm.isChecked())
+                    {
+                        SegmentsubmitButton.setBackgroundColor(getResources().getColor(R.color.neopurple));
+
                         partnershipForm.setTextColor(Color.WHITE);
                         partnershipForm.setBackground(getApplicationContext().getResources().getDrawable(R.drawable.radiobackgroundcolor));
 
@@ -102,37 +111,29 @@ public class SegmentActivity extends AppCompatActivity {
 
                         soleProprietorship.setTextColor(Color.BLACK);
                         soleProprietorship.setBackground(getApplicationContext().getResources().getDrawable(R.drawable.radiobackground));
-
                     }
                 }
             });
         }
 
         SegmentsubmitButton.setOnClickListener(new View.OnClickListener() {
-            @SuppressLint("ResourceAsColor")
             @Override
             public void onClick(View v) {
-                if (soleProprietorship.isChecked()){
 
+                if (soleProprietorship.isChecked())
+                {
                     Intent intent = new Intent(getApplicationContext(), SoleProprietorshipDetailsActivity.class);
                     startActivity(intent);
-                    SegmentsubmitButton.setBackgroundColor(Color.parseColor("#10ddbc"));
-
-
-
-                }else if (privateLimited.isChecked()){
-
+                }
+                else if (privateLimited.isChecked())
+                {
                     Intent intent = new Intent(getApplicationContext(), PrivateLimitedCompanyDetailsActivity.class);
                     startActivity(intent);
-                    SegmentsubmitButton.setBackgroundColor(Color.parseColor("#10ddbc"));
-
-
-                }else if (partnershipForm.isChecked()){
-
+                }
+                else if (partnershipForm.isChecked())
+                {
                     Intent intent = new Intent(getApplicationContext(), PartnershipCompanyDetailsActivity.class);
                     startActivity(intent);
-                    SegmentsubmitButton.setBackgroundColor(Color.parseColor("#10ddbc"));
-
                 }
             }
         });

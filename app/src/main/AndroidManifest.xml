@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="rutherfordit.com.instasalary" >
+    package="rutherfordit.com.instasalary">
 
     <uses-permission android:name="android.permission.VIBRATE" />
 
@@ -10,17 +10,19 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme" >
-        <activity android:name=".activities.PartnershipBankDetailsActivity" >
-        </activity>
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".ui.login.PrivateLimitedDocumentUploadActivity"
+            android:label="@string/title_activity_private_limited_document_upload"></activity>
+        <activity android:name=".activities.SPDocumentUploadActivity"></activity>
+        <activity android:name=".activities.PartnershipBankDetailsActivity" />
         <activity android:name=".activities.PartnershipPartnerSecondDetailsActivity" />
         <activity android:name=".activities.PartnershipPartnerFirstDetailsActivity" />
         <activity android:name=".activities.PartnershipCompanyDetailsActivity" />
         <activity android:name=".activities.PrivateLimitedBankDetailsActivity" />
         <activity android:name=".activities.PrivateLimitedDirectorSecondDetailsActivity" />
         <activity android:name=".activities.PrivateLimitedDirectorFirstDetailsActivity" />
-        <activity android:name=".activities.PrivateLimitedCompanyDetailsActivity" >
-        </activity>
+        <activity android:name=".activities.PrivateLimitedCompanyDetailsActivity" />
         <activity android:name=".activities.SoleProprietorshipBankDetailsActivity" />
         <activity android:name=".activities.SoleProprietorshipCompanyDetailsActivity" />
         <activity android:name=".activities.SoleProprietorshipDetailsActivity" />
@@ -29,11 +31,11 @@
         <activity android:name=".activities.PersonalDetailsActivity" />
         <activity android:name=".activities.SegmentActivity" />
         <activity android:name=".activities.EnterOTPActivity" />
-        <activity android:name=".activities.LoginActivity" >
-        </activity>
+        <activity android:name=".activities.LoginActivity"></activity>
         <activity android:name=".activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
