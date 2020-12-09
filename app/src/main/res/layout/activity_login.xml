@@ -43,30 +43,6 @@
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
-            <!--<com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="48dp"
-                android:layout_marginTop="60dp"
-                android:textColorHint="@color/neoappcolor"
-                app:placeholderTextColor="@color/neoappcolor"
-                app:suffixTextColor="@color/neoappcolor"
-                android:layout_marginRight="48dp"
-                android:hint="Phone Number">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:digits="1234567890"
-                    android:id="@+id/enterphoneno_login"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ellipsize="end"
-                    android:textColor="@color/neoappcolor"
-                    android:inputType="phone"
-                    android:maxLength="14"
-                    android:singleLine="true" />
-
-            </com.google.android.material.textfield.TextInputLayout>-->
-
             <TextView
                 android:layout_marginTop="30dp"
                 android:textSize="12dp"
