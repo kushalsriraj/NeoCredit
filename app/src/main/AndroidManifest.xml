@@ -12,11 +12,10 @@
         android:roundIcon="@drawable/neocreditlogo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.sp.SpCreditRequirementsActivity"></activity>
-        <activity android:name=".activities.partnership.PartnershipDocUploadActivity">
-
-        </activity>
-        <activity android:name=".activities.privatelimited.PrivateLimitedDocUploadActivity"></activity>
+        <activity android:name=".activities.privatelimited.PlCreditRequirementsActivity"></activity>
+        <activity android:name=".activities.sp.SpCreditRequirementsActivity" />
+        <activity android:name=".activities.partnership.PartnershipDocUploadActivity"></activity>
+        <activity android:name=".activities.privatelimited.PrivateLimitedDocUploadActivity" />
         <activity android:name=".activities.sp.SPDocumentUploadActivity" />
         <activity android:name=".activities.partnership.PartnershipBankDetailsActivity" />
         <activity android:name=".activities.partnership.PartnershipPartnerSecondDetailsActivity" />
@@ -30,9 +29,7 @@
         <activity android:name=".activities.sp.SoleProprietorshipCompanyDetailsActivity" />
         <activity android:name=".activities.sp.SoleProprietorshipDetailsActivity" />
         <activity android:name=".activities.HomeActivity" />
-        <activity android:name=".activities.BankDetailsActivity" >
-
-        </activity>
+        <activity android:name=".activities.BankDetailsActivity"></activity>
         <activity android:name=".activities.PersonalDetailsActivity" />
         <activity android:name=".activities.SegmentActivity" />
         <activity android:name=".activities.EnterOTPActivity" />
@@ -40,6 +37,7 @@
         <activity android:name=".activities.SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
