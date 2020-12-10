@@ -17,7 +17,12 @@
 
         </activity>
         <activity android:name=".activities.privatelimited.PrivateLimitedDocUploadActivity"></activity>
-        <activity android:name=".activities.sp.SPDocumentUploadActivity" />
+        <activity android:name=".activities.sp.SPDocumentUploadActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".activities.partnership.PartnershipBankDetailsActivity" />
         <activity android:name=".activities.partnership.PartnershipPartnerSecondDetailsActivity" />
         <activity android:name=".activities.partnership.PartnershipPartnerFirstDetailsActivity" />
@@ -38,10 +43,7 @@
         <activity android:name=".activities.EnterOTPActivity" />
         <activity android:name=".activities.LoginActivity" />
         <activity android:name=".activities.SplashScreenActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+
         </activity>
     </application>
 

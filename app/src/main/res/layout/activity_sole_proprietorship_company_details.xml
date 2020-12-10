@@ -11,6 +11,7 @@
         android:layout_height="match_parent">
 
         <LinearLayout
+            android:layout_marginBottom="50dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="40dp"
@@ -53,13 +54,13 @@
                 android:hint="Company Name">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/entercompanyname"
+                    android:id="@+id/sp_company_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz 0123456789 "
                     android:ellipsize="end"
                     android:fontFamily="@font/lato_regular"
-                    android:inputType="text"
+                    android:inputType="textCapWords"
                     android:singleLine="true"
                     android:textSize="14dp" />
 
@@ -76,10 +77,12 @@
                     android:hint="Type of Service">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/typeOfService"
+                        android:focusable="false"
+                        android:id="@+id/sp_typeOfService"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:ellipsize="end"
+                        android:inputType="textCapWords"
                         android:focusableInTouchMode="false"
                         android:fontFamily="@font/lato_regular"
                         android:singleLine="true"
@@ -88,7 +91,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <Spinner
-                    android:id="@+id/typeOfServiceSpinner"
+                    android:id="@+id/Spinner_typeOfService"
                     style="@style/CustomSpinnerTheme"
                     android:layout_width="30dp"
                     android:layout_height="wrap_content"
@@ -110,10 +113,12 @@
                     android:hint="How old is the Company ? ">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/howOldIsTheCompany"
+                        android:focusable="false"
+                        android:id="@+id/sp_howOldIsTheCompany"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:ellipsize="end"
+                        android:inputType="textCapWords"
                         android:focusableInTouchMode="false"
                         android:fontFamily="@font/lato_regular"
                         android:singleLine="true"
@@ -122,7 +127,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <Spinner
-                    android:id="@+id/howOldIsTheCompanySpinner"
+                    android:id="@+id/Spinner_howOldIsTheCompany"
                     style="@style/CustomSpinnerTheme"
                     android:layout_width="30dp"
                     android:layout_height="wrap_content"
@@ -144,10 +149,12 @@
                     android:hint="Annual Turnover">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/annualTurnover"
+                        android:focusable="false"
+                        android:id="@+id/sp_annualTurnover"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:ellipsize="end"
+                        android:inputType="textCapWords"
                         android:focusableInTouchMode="false"
                         android:fontFamily="@font/lato_regular"
                         android:singleLine="true"
@@ -156,7 +163,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <Spinner
-                    android:id="@+id/annualTurnoverSpinner"
+                    android:id="@+id/Spinner_annualTurnover"
                     style="@style/CustomSpinnerTheme"
                     android:layout_width="30dp"
                     android:layout_height="wrap_content"
@@ -236,12 +243,12 @@
                 android:hint="Company Address">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/entercompanystreet"
+                    android:id="@+id/sp_company_address"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
                     android:fontFamily="@font/lato_regular"
-                    android:inputType="text"
+                    android:inputType="textCapWords"
                     android:singleLine="true"
                     android:textSize="14dp" />
 
@@ -276,10 +283,12 @@
                     android:hint="Business Address Proof">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/addressProof"
+                        android:focusable="false"
+                        android:id="@+id/sp_addressProof"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:ellipsize="end"
+                        android:inputType="textCapWords"
                         android:focusableInTouchMode="false"
                         android:fontFamily="@font/lato_regular"
                         android:singleLine="true"
@@ -288,6 +297,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <Spinner
+                    android:id="@+id/Spinner_businessAddressProof"
                     style="@style/CustomSpinnerTheme"
                     android:layout_width="30dp"
                     android:layout_height="wrap_content"
@@ -309,7 +319,7 @@
                     android:hint="Business Landline">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/businessLandline"
+                        android:id="@+id/sp_businessLandline"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:digits="123-4567890"

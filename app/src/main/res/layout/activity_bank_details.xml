@@ -58,7 +58,7 @@
                     android:layout_width="60dp"
                     android:layout_height="50dp"
                     android:layout_alignParentRight="true"
-                    android:src="@drawable/neonew" />
+                    android:src="@drawable/neonewlogo" />
 
             </RelativeLayout>
 
@@ -79,7 +79,7 @@
                     android:visibility="visible"
                     android:layout_width="130dp"
                     android:layout_height="110dp"
-                    android:src="@drawable/neonew" />
+                    android:src="@drawable/neonewlogo" />
 
             </com.facebook.shimmer.ShimmerFrameLayout>
 

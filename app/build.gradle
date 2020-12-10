@@ -36,43 +36,35 @@ dependencies {
     implementation 'androidx.annotation:annotation:1.1.0'
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.2.0'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
-    testImplementation 'junit:junit:4.+'
+    testImplementation 'junit:junit:4.13.1'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
-
-    //Material Design
-    implementation 'com.google.android.material:material:1.2.0'
-
-    //Volley
+    implementation 'com.google.android.material:material:1.2.1'
     implementation 'com.android.volley:volley:1.1.1'
-
-    //Crystal Preloaders
     implementation 'com.crystal:crystalpreloaders:1.0.0'
-
-    // Circular Image
     implementation 'de.hdodenhof:circleimageview:3.1.0'
 
     // OTP Pin View
     implementation 'com.chaos.view:pinview:1.4.3'
-
-    //GIF
     implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.19'
 
-    implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'com.google.android.material:material:1.2.1'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
-    testImplementation 'junit:junit:4.+'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
-
-    implementation 'com.google.android.material:material:1.2.1'
-
     implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.19'
-
     implementation 'com.ramotion.foldingcell:folding-cell:1.2.3'
-
     implementation 'at.wirecube:additive_animations:1.8.0'
-
     implementation 'com.facebook.shimmer:shimmer:0.5.0'
 
+    def camerax_version = "1.0.0-beta05"
+    implementation "androidx.camera:camera-camera2:${camerax_version}"
+    implementation "androidx.camera:camera-lifecycle:${camerax_version}"
+    implementation "androidx.camera:camera-view:1.0.0-alpha15"
+    implementation "androidx.camera:camera-extensions:1.0.0-alpha15"
+    implementation 'androidx.multidex:multidex:2.0.0'
+    implementation 'com.vincent.filepicker:MultiTypeFilePicker:1.0.5'
+    implementation 'com.github.ybq:Android-SpinKit:1.4.0'
+    implementation 'com.github.GrenderG:Toasty:1.5.0'
+    implementation 'com.greentoad.turtlebody.docpicker:doc-picker:1.0.2'
+    /*for rxjava support*/
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.5'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
 }

@@ -53,13 +53,13 @@
             android:hint="Enter Invoice Amount to be financed">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/entercompanyname"
+                android:id="@+id/enterCreditAmount"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz 0123456789 "
                 android:ellipsize="end"
                 android:fontFamily="@font/lato_regular"
-                android:inputType="text"
+                android:inputType="number"
                 android:singleLine="true"
                 android:textSize="14dp" />
 

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_centerInParent="true"
+    android:background="@color/background"
+    android:orientation="vertical"
+    android:paddingTop="50dp"
+    android:paddingBottom="50dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/upload_pdf_sp"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="Upload PDF"
+                android:textColor="@color/neopurple"
+                android:textSize="18dp" />
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="5dp"
+                android:padding="5dp"
+                android:src="@drawable/pdficon" />
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/view1_sp"
+            android:layout_width="wrap_content"
+            android:layout_height="0.5dp"
+            android:layout_margin="20dp"
+            android:background="@color/neopurple" />
+
+        <LinearLayout
+            android:id="@+id/upload_from_camera_sp"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="Upload From Camera"
+                android:textColor="@color/neopurple"
+                android:textSize="18dp" />
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="5dp"
+                android:padding="5dp"
+                android:src="@drawable/camicon" />
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/view2_sp"
+            android:layout_width="wrap_content"
+            android:layout_height="0.5dp"
+            android:layout_margin="20dp"
+            android:background="@color/neopurple" />
+
+        <LinearLayout
+            android:id="@+id/upload_from_gallery_sp"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="Upload From Gallery"
+                android:textColor="@color/neopurple"
+                android:textSize="18dp" />
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="5dp"
+                android:padding="5dp"
+                android:src="@drawable/galleryicon" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

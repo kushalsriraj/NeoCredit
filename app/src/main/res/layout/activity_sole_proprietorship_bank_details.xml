@@ -124,12 +124,12 @@
                 android:hint="Bank Name">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/enterbankname"
+                    android:id="@+id/sp_bankname"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
                     android:fontFamily="@font/lato_regular"
-                    android:inputType="text"
+                    android:inputType="textCapWords"
                     android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz "
                     android:singleLine="true"
                     android:textSize="14dp" />
@@ -143,12 +143,12 @@
                 android:hint="Bank Branch">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/enterbankbranch"
+                    android:id="@+id/sp_bankbranch"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
                     android:fontFamily="@font/lato_regular"
-                    android:inputType="text"
+                    android:inputType="textCapWords"
                     android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz "
                     android:singleLine="true"
                     android:textSize="14dp" />
@@ -162,13 +162,13 @@
                 android:hint="Enter Account Number">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/enteraccno"
+                    android:id="@+id/sp_accno"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
                     android:fontFamily="@font/lato_regular"
                     android:inputType="number"
-                    android:maxLength="15"
+                    android:maxLength="16"
                     android:singleLine="true"
                     android:textSize="14dp" />
 
@@ -181,12 +181,13 @@
                 android:hint="IFSC">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/enterbankifsc"
+                    android:id="@+id/sp_bankifsc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
+                    android:maxLength="11"
                     android:fontFamily="@font/lato_regular"
-                    android:inputType="text"
+                    android:inputType="textCapCharacters"
                     android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
                     android:singleLine="true"
                     android:textSize="14dp" />
@@ -205,7 +206,7 @@
                 android:textSize="10dp" />
 
             <RelativeLayout
-                android:id="@+id/bankdetailssubmit"
+                android:id="@+id/sp_submitBankDetails"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="50dp"
