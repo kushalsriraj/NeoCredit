@@ -6,34 +6,47 @@
     android:layout_height="match_parent"
     tools:context=".activities.privatelimited.PrivateLimitedDocUploadActivity">
 
-    <RelativeLayout
-        android:layout_margin="5dp"
-        android:id="@+id/Submit_driver_proofs"
+    <androidx.cardview.widget.CardView
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="40dp"
         android:layout_alignParentBottom="true"
-        android:background="#36000000">
+        app:cardCornerRadius="5dp"
+        android:elevation="3dp"
+        android:layout_marginBottom="10dp"
+        >
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="30dp"
-            android:gravity="center"
-            android:text="Submit"
-            android:textColor="#fff"
-            android:textSize="16dp"
-            android:textStyle="bold" />
+        <RelativeLayout
+            android:id="@+id/Submit_pl_docs"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true"
+            android:background="#36000000">
 
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="match_parent"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="15dp"
-            android:padding="10dp"
-            android:src="@drawable/next" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="30dp"
+                android:gravity="center"
+                android:text="Next"
+                android:textColor="#fff"
+                android:textSize="16dp"
+                android:textStyle="bold" />
 
-    </RelativeLayout>
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="15dp"
+                android:padding="10dp"
+                android:src="@drawable/next" />
+
+        </RelativeLayout>
+
+
+    </androidx.cardview.widget.CardView>
 
     <RelativeLayout
         android:layout_margin="10dp"

@@ -3,8 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.partnership.PartnershipPartnerSecondDetailsActivity"
-    >
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".activities.partnership.PartnershipPartnerSecondDetailsActivity">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -16,6 +16,7 @@
             android:layout_marginLeft="40dp"
             android:layout_marginTop="30dp"
             android:layout_marginRight="40dp"
+            android:layout_marginBottom="60dp"
             android:orientation="vertical">
 
             <RelativeLayout
@@ -41,7 +42,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="35dp"
-                android:text="Partner 2 Information"
+                android:text="Promoter 2 Details"
                 android:textColor="#000"
                 android:textSize="18dp"
                 android:textStyle="bold" />
@@ -176,94 +177,94 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="25dp">
+<!--            <RelativeLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="25dp">-->
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="State"
-                    android:textColorHint="@color/neopurple">
+<!--                <com.google.android.material.textfield.TextInputLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:hint="State"-->
+<!--                    android:textColorHint="@color/neopurple">-->
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/enterstate"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:ellipsize="end"
-                        android:focusableInTouchMode="false"
-                        android:fontFamily="@font/lato_regular"
-                        android:singleLine="true"
-                        android:textSize="14dp" />
+<!--                    <com.google.android.material.textfield.TextInputEditText-->
+<!--                        android:id="@+id/enterstate"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:ellipsize="end"-->
+<!--                        android:focusableInTouchMode="false"-->
+<!--                        android:fontFamily="@font/lato_regular"-->
+<!--                        android:singleLine="true"-->
+<!--                        android:textSize="14dp" />-->
 
-                </com.google.android.material.textfield.TextInputLayout>
+<!--                </com.google.android.material.textfield.TextInputLayout>-->
 
-                <Spinner
-                    android:id="@+id/statespinner"
-                    style="@style/CustomSpinnerTheme"
-                    android:layout_width="30dp"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginRight="10dp"
-                    android:entries="@array/state_array" />
+<!--                <Spinner-->
+<!--                    android:id="@+id/statespinner"-->
+<!--                    style="@style/CustomSpinnerTheme"-->
+<!--                    android:layout_width="30dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_alignParentRight="true"-->
+<!--                    android:layout_marginTop="15dp"-->
+<!--                    android:layout_marginRight="10dp"-->
+<!--                    android:entries="@array/state_array" />-->
 
-            </RelativeLayout>
+<!--            </RelativeLayout>-->
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="25dp">
+<!--            <RelativeLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="25dp">-->
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="City"
-                    android:textColorHint="@color/neopurple">
+<!--                <com.google.android.material.textfield.TextInputLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:hint="City"-->
+<!--                    android:textColorHint="@color/neopurple">-->
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/entercity"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:ellipsize="end"
-                        android:focusableInTouchMode="false"
-                        android:fontFamily="@font/lato_regular"
-                        android:singleLine="true"
-                        android:textSize="14dp" />
+<!--                    <com.google.android.material.textfield.TextInputEditText-->
+<!--                        android:id="@+id/entercity"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:ellipsize="end"-->
+<!--                        android:focusableInTouchMode="false"-->
+<!--                        android:fontFamily="@font/lato_regular"-->
+<!--                        android:singleLine="true"-->
+<!--                        android:textSize="14dp" />-->
 
-                </com.google.android.material.textfield.TextInputLayout>
+<!--                </com.google.android.material.textfield.TextInputLayout>-->
 
-                <Spinner
-                    android:id="@+id/cityspinner"
-                    style="@style/CustomSpinnerTheme"
-                    android:layout_width="30dp"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginRight="10dp"
-                    android:entries="@array/city_array" />
+<!--                <Spinner-->
+<!--                    android:id="@+id/cityspinner"-->
+<!--                    style="@style/CustomSpinnerTheme"-->
+<!--                    android:layout_width="30dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_alignParentRight="true"-->
+<!--                    android:layout_marginTop="15dp"-->
+<!--                    android:layout_marginRight="10dp"-->
+<!--                    android:entries="@array/city_array" />-->
 
-            </RelativeLayout>
+<!--            </RelativeLayout>-->
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
-                android:hint="Pincode">
+<!--            <com.google.android.material.textfield.TextInputLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="25dp"-->
+<!--                android:hint="Pincode">-->
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/enterpincode"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ellipsize="end"
-                    android:fontFamily="@font/lato_regular"
-                    android:inputType="number"
-                    android:maxLength="6"
-                    android:singleLine="true"
-                    android:textSize="14dp" />
+<!--                <com.google.android.material.textfield.TextInputEditText-->
+<!--                    android:id="@+id/enterpincode"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:ellipsize="end"-->
+<!--                    android:fontFamily="@font/lato_regular"-->
+<!--                    android:inputType="number"-->
+<!--                    android:maxLength="6"-->
+<!--                    android:singleLine="true"-->
+<!--                    android:textSize="14dp" />-->
 
-            </com.google.android.material.textfield.TextInputLayout>
+<!--            </com.google.android.material.textfield.TextInputLayout>-->
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -305,34 +306,66 @@
                 android:layout_marginTop="20dp"
                 android:id="@+id/cities_Spinner"/>
 
-            <RelativeLayout
-                android:id="@+id/next_button3"
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="50dp"
-                android:layout_marginBottom="50dp"
-                android:background="#36000000">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:hint="Mobile Number">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="30dp"
-                    android:gravity="center"
-                    android:text="Next"
-                    android:textColor="#fff"
-                    android:textSize="16dp"
-                    android:textStyle="bold" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/phoneNumber"
+                    android:inputType="number"
+                    android:maxLength="10"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/lato_regular"
+                    android:singleLine="true"
+                    android:textSize="14dp" />
 
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="match_parent"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="15dp"
-                    android:padding="10dp"
-                    android:src="@drawable/next" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-            </RelativeLayout>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="5dp"
+                android:elevation="3dp"
+                android:background="@color/black"
+                android:layout_marginLeft="1dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginRight="1dp"
+                android:layout_marginBottom="60dp"
+                >
+
+                <RelativeLayout
+                    android:id="@+id/next_button3"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="#36000000">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="30dp"
+                        android:gravity="center"
+                        android:text="Next"
+                        android:textColor="#fff"
+                        android:textSize="16dp"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="15dp"
+                        android:padding="10dp"
+                        android:src="@drawable/next" />
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
 
         </LinearLayout>
 
