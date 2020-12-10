@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.privatelimited.PlCreditRequirementsActivity">
+    tools:context=".activities.partnership.ParCreditRequirementsActivity">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -134,7 +134,7 @@
                 >
 
                 <RelativeLayout
-                    android:id="@+id/submitPLCreditReq"
+                    android:id="@+id/submitParCreditReq"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="#36000000">

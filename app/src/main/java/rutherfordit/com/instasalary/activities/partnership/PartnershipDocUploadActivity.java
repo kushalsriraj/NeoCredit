@@ -12,30 +12,30 @@ import rutherfordit.com.instasalary.R;
 
 public class PartnershipDocUploadActivity extends AppCompatActivity {
 
-    RelativeLayout Submit_sp_docs;
-    ImageView back_spdoc;
+    RelativeLayout Submit_par_docs;
+    ImageView back_pardoc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_partnership_doc_upload);
 
-        Submit_sp_docs = findViewById(R.id.Submit_sp_docs);
-        back_spdoc = findViewById(R.id.back_spdoc);
+        Submit_par_docs = findViewById(R.id.Submit_par_docs);
+        back_pardoc = findViewById(R.id.back_pardoc);
 
-        back_spdoc.setOnClickListener(new View.OnClickListener() {
+        back_pardoc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onBackPressed();
             }
         });
 
-        Submit_sp_docs.setOnClickListener(new View.OnClickListener() {
+        Submit_par_docs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
             {
-                /*Intent i = new Intent(getApplicationContext(),SoleProprietorshipBankDetailsActivity.class);
-                startActivity(i);*/
+                Intent i = new Intent(getApplicationContext(),ParCreditRequirementsActivity.class);
+                startActivity(i);
             }
         });
     }

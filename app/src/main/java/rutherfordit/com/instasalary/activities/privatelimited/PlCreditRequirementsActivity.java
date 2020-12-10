@@ -13,7 +13,7 @@ import rutherfordit.com.instasalary.activities.sp.SoleProprietorshipBankDetailsA
 
 public class PlCreditRequirementsActivity extends AppCompatActivity {
 
-    RelativeLayout submitSpCreditReq;
+    RelativeLayout submitPLCreditReq;
     ImageView back_credit_req;
 
     @Override
@@ -21,7 +21,7 @@ public class PlCreditRequirementsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pl_credit_requirements);
 
-        submitSpCreditReq = findViewById(R.id.submitSpCreditReq);
+        submitPLCreditReq = findViewById(R.id.submitPLCreditReq);
         back_credit_req = findViewById(R.id.back_credit_req);
 
         back_credit_req.setOnClickListener(new View.OnClickListener() {
@@ -32,7 +32,7 @@ public class PlCreditRequirementsActivity extends AppCompatActivity {
         });
 
 
-        submitSpCreditReq.setOnClickListener(new View.OnClickListener() {
+        submitPLCreditReq.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), PrivateLimitedBankDetailsActivity.class);
