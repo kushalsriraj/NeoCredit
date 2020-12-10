@@ -34,7 +34,7 @@ public class PartnershipPartnerSecondDetailsActivity extends AppCompatActivity {
         next_button3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), PartnershipBankDetailsActivity.class);
+                Intent intent = new Intent(getApplicationContext(), PartnershipDocUploadActivity.class);
                 startActivity(intent);
                 next_button3.setBackgroundColor(Color.parseColor("#10ddbc"));
             }

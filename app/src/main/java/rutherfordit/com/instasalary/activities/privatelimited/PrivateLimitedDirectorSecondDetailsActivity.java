@@ -34,7 +34,7 @@ public class PrivateLimitedDirectorSecondDetailsActivity extends AppCompatActivi
         next2_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), PrivateLimitedBankDetailsActivity.class);
+                Intent intent = new Intent(getApplicationContext(), PrivateLimitedDocUploadActivity.class);
                 startActivity(intent);
                 next2_button.setBackgroundColor(Color.parseColor("#10ddbc"));
             }
