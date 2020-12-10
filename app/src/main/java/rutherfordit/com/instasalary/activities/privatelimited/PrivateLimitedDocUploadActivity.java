@@ -12,16 +12,16 @@ import rutherfordit.com.instasalary.activities.sp.SpCreditRequirementsActivity;
 
 public class PrivateLimitedDocUploadActivity extends AppCompatActivity {
 
-    RelativeLayout Submit_sp_docs;
+    RelativeLayout Submit_pl_docs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_private_limited_doc_upload);
 
-        Submit_sp_docs = findViewById(R.id.Submit_sp_docs);
+        Submit_pl_docs = findViewById(R.id.Submit_pl_docs);
 
-        Submit_sp_docs.setOnClickListener(new View.OnClickListener() {
+        Submit_pl_docs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(), PlCreditRequirementsActivity.class);
