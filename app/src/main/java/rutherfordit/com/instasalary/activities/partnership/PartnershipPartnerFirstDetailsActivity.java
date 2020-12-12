@@ -36,7 +36,7 @@ public class PartnershipPartnerFirstDetailsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), PartnershipPartnerSecondDetailsActivity.class);
                 startActivity(intent);
-                next_button2.setBackgroundColor(Color.parseColor("#10ddbc"));
+                next_button2.setBackground(getDrawable(R.drawable.gradient_neocredit));
 
             }
         });

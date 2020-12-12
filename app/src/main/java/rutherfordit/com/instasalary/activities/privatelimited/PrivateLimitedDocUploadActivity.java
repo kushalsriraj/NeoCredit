@@ -26,6 +26,8 @@ public class PrivateLimitedDocUploadActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(), PlCreditRequirementsActivity.class);
                 startActivity(i);
+                Submit_pl_docs.setBackground(getDrawable(R.drawable.gradient_neocredit));
+
             }
         });
 
