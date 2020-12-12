@@ -81,7 +81,9 @@ public class SoleProprietorshipBankDetailsActivity extends AppCompatActivity {
                 if(!sp_bankname.getText().toString().equals("") && !sp_bankbranch.getText().toString().equals("")
                         && sp_accno.getText().toString().length() > 10 && sp_bankifsc.getText().toString().length() == 11 )
                 {
-                    sp_submitBankDetails.setBackgroundColor(getResources().getColor(R.color.neopurple));
+                    //sp_submitBankDetails.setBackgroundColor(getResources().getColor(R.color.neopurple));
+                    sp_submitBankDetails.setBackground(getDrawable(R.drawable.gradient_neocredit));
+
                     click = true;
                 }
                 else
@@ -105,7 +107,7 @@ public class SoleProprietorshipBankDetailsActivity extends AppCompatActivity {
                 if(!sp_bankname.getText().toString().equals("") && !sp_bankbranch.getText().toString().equals("")
                         && sp_accno.getText().toString().length() > 10 && sp_bankifsc.getText().toString().length() == 11 )
                 {
-                    sp_submitBankDetails.setBackgroundColor(getResources().getColor(R.color.neopurple));
+                    sp_submitBankDetails.setBackground(getDrawable(R.drawable.gradient_neocredit));
                     click = true;
                 }
                 else
@@ -129,7 +131,7 @@ public class SoleProprietorshipBankDetailsActivity extends AppCompatActivity {
                 if(!sp_bankname.getText().toString().equals("") && !sp_bankbranch.getText().toString().equals("")
                         && sp_accno.getText().toString().length() > 10 && sp_bankifsc.getText().toString().length() == 11 )
                 {
-                    sp_submitBankDetails.setBackgroundColor(getResources().getColor(R.color.neopurple));
+                    sp_submitBankDetails.setBackground(getDrawable(R.drawable.gradient_neocredit));
                     click = true;
                 }
                 else
@@ -153,7 +155,7 @@ public class SoleProprietorshipBankDetailsActivity extends AppCompatActivity {
                 if(!sp_bankname.getText().toString().equals("") && !sp_bankbranch.getText().toString().equals("")
                         && sp_accno.getText().toString().length() > 10 && sp_bankifsc.getText().toString().length() == 11 )
                 {
-                    sp_submitBankDetails.setBackgroundColor(getResources().getColor(R.color.neopurple));
+                    sp_submitBankDetails.setBackground(getDrawable(R.drawable.gradient_neocredit));
                     click = true;
                 }
                 else

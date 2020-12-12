@@ -81,7 +81,9 @@ public class SoleProprietorshipDetailsActivity extends AppCompatActivity impleme
                         !sp_address.getText().toString().equals("") && sp_pan.getText().toString().length() == 10 &&
                          sp_adhar.getText().toString().length() == 12 && !sp_addressproof.getText().toString().equals("-- Select Address Proof --") )
                 {
-                    submitSpInfo.setBackgroundColor(getResources().getColor(R.color.neopurple));
+                    //submitSpInfo.setBackgroundColor(getResources().getColor(R.color.neopurple));
+                    submitSpInfo.setBackground(getDrawable(R.drawable.gradient_neocredit));
+
                     click = true;
                 }
                 else
@@ -109,7 +111,7 @@ public class SoleProprietorshipDetailsActivity extends AppCompatActivity impleme
                         !sp_address.getText().toString().equals("") && sp_pan.getText().toString().length() == 10 &&
                         sp_adhar.getText().toString().length() == 12 && !sp_addressproof.getText().toString().equals("-- Select Address Proof --") )
                 {
-                    submitSpInfo.setBackgroundColor(getResources().getColor(R.color.neopurple));
+                    submitSpInfo.setBackground(getDrawable(R.drawable.gradient_neocredit));
                     click = true;
                 }
                 else
@@ -137,7 +139,7 @@ public class SoleProprietorshipDetailsActivity extends AppCompatActivity impleme
                         !sp_address.getText().toString().equals("") && sp_pan.getText().toString().length() == 10 &&
                         sp_adhar.getText().toString().length() == 12 && !sp_addressproof.getText().toString().equals("-- Select Address Proof --") )
                 {
-                    submitSpInfo.setBackgroundColor(getResources().getColor(R.color.neopurple));
+                    submitSpInfo.setBackground(getDrawable(R.drawable.gradient_neocredit));
                     click = true;
                 }
                 else
@@ -165,7 +167,7 @@ public class SoleProprietorshipDetailsActivity extends AppCompatActivity impleme
                         !sp_address.getText().toString().equals("") && sp_pan.getText().toString().length() == 10 &&
                         sp_adhar.getText().toString().length() == 12 && !sp_addressproof.getText().toString().equals("-- Select Address Proof --") )
                 {
-                    submitSpInfo.setBackgroundColor(getResources().getColor(R.color.neopurple));
+                    submitSpInfo.setBackground(getDrawable(R.drawable.gradient_neocredit));
                     click = true;
                 }
                 else
@@ -200,7 +202,7 @@ public class SoleProprietorshipDetailsActivity extends AppCompatActivity impleme
                                 !sp_address.getText().toString().equals("") && sp_pan.getText().toString().length() == 10 &&
                                 sp_adhar.getText().toString().length() == 12 && !sp_addressproof.getText().toString().equals("-- Select Address Proof --") )
                         {
-                            submitSpInfo.setBackgroundColor(getResources().getColor(R.color.neopurple));
+                            submitSpInfo.setBackground(getDrawable(R.drawable.gradient_neocredit));
                             click = true;
                         }
                         else
@@ -217,7 +219,7 @@ public class SoleProprietorshipDetailsActivity extends AppCompatActivity impleme
                                 !sp_address.getText().toString().equals("") && sp_pan.getText().toString().length() == 10 &&
                                 sp_adhar.getText().toString().length() == 12 && !sp_addressproof.getText().toString().equals("-- Select Address Proof --") )
                         {
-                            submitSpInfo.setBackgroundColor(getResources().getColor(R.color.neopurple));
+                            submitSpInfo.setBackground(getDrawable(R.drawable.gradient_neocredit));
                             click = true;
                         }
                         else
@@ -272,7 +274,7 @@ public class SoleProprietorshipDetailsActivity extends AppCompatActivity impleme
                 !sp_address.getText().toString().equals("") && sp_pan.getText().toString().length() == 10 &&
                 sp_adhar.getText().toString().length() == 12 && !sp_addressproof.getText().toString().equals("-- Select Address Proof --"))
         {
-            submitSpInfo.setBackgroundColor(getResources().getColor(R.color.neopurple));
+            submitSpInfo.setBackground(getDrawable(R.drawable.gradient_neocredit));
             click = true;
         }
         else

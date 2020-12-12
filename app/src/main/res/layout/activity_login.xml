@@ -63,7 +63,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Phone Number"
-                android:textColor="@color/neoappcolor"/>
+                android:textColor="@color/neopurple"/>
 
             <LinearLayout
                 android:layout_marginTop="5dp"

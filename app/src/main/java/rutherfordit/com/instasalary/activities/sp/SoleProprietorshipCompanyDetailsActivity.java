@@ -73,7 +73,9 @@ public class SoleProprietorshipCompanyDetailsActivity extends AppCompatActivity 
                         !sp_annualTurnover.getText().toString().equals("-- Select Annual Turnover --") &&
                         !sp_addressProof.getText().toString().equals("-- Select Address Proof --") )
                 {
-                    submitCompanyInfo.setBackgroundColor(getResources().getColor(R.color.neopurple));
+                    //submitCompanyInfo.setBackgroundColor(getResources().getColor(R.color.neopurple));
+                    submitCompanyInfo.setBackground(getDrawable(R.drawable.gradient_neocredit));
+
                     click = true;
                 }
                 else
@@ -100,7 +102,7 @@ public class SoleProprietorshipCompanyDetailsActivity extends AppCompatActivity 
                         !sp_annualTurnover.getText().toString().equals("-- Select Annual Turnover --") &&
                         !sp_addressProof.getText().toString().equals("-- Select Address Proof --") )
                 {
-                    submitCompanyInfo.setBackgroundColor(getResources().getColor(R.color.neopurple));
+                    submitCompanyInfo.setBackground(getDrawable(R.drawable.gradient_neocredit));
                     click = true;
                 }
                 else
@@ -133,7 +135,7 @@ public class SoleProprietorshipCompanyDetailsActivity extends AppCompatActivity 
                         !sp_annualTurnover.getText().toString().equals("-- Select Annual Turnover --") &&
                         !sp_addressProof.getText().toString().equals("-- Select Address Proof --") )
                 {
-                    submitCompanyInfo.setBackgroundColor(getResources().getColor(R.color.neopurple));
+                    submitCompanyInfo.setBackground(getDrawable(R.drawable.gradient_neocredit));
                     click = true;
                 }
                 else
@@ -159,7 +161,7 @@ public class SoleProprietorshipCompanyDetailsActivity extends AppCompatActivity 
                         !sp_annualTurnover.getText().toString().equals("-- Select Annual Turnover --") &&
                         !sp_addressProof.getText().toString().equals("-- Select Address Proof --") )
                 {
-                    submitCompanyInfo.setBackgroundColor(getResources().getColor(R.color.neopurple));
+                    submitCompanyInfo.setBackground(getDrawable(R.drawable.gradient_neocredit));
                     click = true;
                 }
                 else
@@ -185,7 +187,7 @@ public class SoleProprietorshipCompanyDetailsActivity extends AppCompatActivity 
                         !sp_annualTurnover.getText().toString().equals("-- Select Annual Turnover --") &&
                         !sp_addressProof.getText().toString().equals("-- Select Address Proof --") )
                 {
-                    submitCompanyInfo.setBackgroundColor(getResources().getColor(R.color.neopurple));
+                    submitCompanyInfo.setBackground(getDrawable(R.drawable.gradient_neocredit));
                     click = true;
                 }
                 else
@@ -211,7 +213,7 @@ public class SoleProprietorshipCompanyDetailsActivity extends AppCompatActivity 
                         !sp_annualTurnover.getText().toString().equals("-- Select Annual Turnover --") &&
                         !sp_addressProof.getText().toString().equals("-- Select Address Proof --") )
                 {
-                    submitCompanyInfo.setBackgroundColor(getResources().getColor(R.color.neopurple));
+                    submitCompanyInfo.setBackground(getDrawable(R.drawable.gradient_neocredit));
                     click = true;
                 }
                 else
