@@ -26,7 +26,7 @@ public class ParCreditRequirementsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), PartnershipBankDetailsActivity.class);
                 startActivity(intent);
-                submitParCreditReq.setBackgroundColor(Color.parseColor("#10ddbc"));
+                submitParCreditReq.setBackground(getDrawable(R.drawable.gradient_neocredit));
             }
         });
     }

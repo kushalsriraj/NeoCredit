@@ -37,7 +37,8 @@ public class PrivateLimitedCompanyDetailsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), PrivateLimitedDirectorFirstDetailsActivity.class);
                 startActivity(intent);
-                next_button.setBackgroundColor(Color.parseColor("#10ddbc"));
+                next_button.setBackground(getDrawable(R.drawable.gradient_neocredit));
+
             }
         });
     }

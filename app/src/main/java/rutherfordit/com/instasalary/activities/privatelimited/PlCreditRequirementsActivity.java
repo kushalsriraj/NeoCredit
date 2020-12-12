@@ -37,6 +37,7 @@ public class PlCreditRequirementsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), PrivateLimitedBankDetailsActivity.class);
                 startActivity(intent);
+                submitPLCreditReq.setBackground(getDrawable(R.drawable.gradient_neocredit));
 
             }
         });

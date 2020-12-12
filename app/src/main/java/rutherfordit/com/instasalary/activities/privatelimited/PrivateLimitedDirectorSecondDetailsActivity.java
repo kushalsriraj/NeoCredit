@@ -36,7 +36,7 @@ public class PrivateLimitedDirectorSecondDetailsActivity extends AppCompatActivi
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), PrivateLimitedDocUploadActivity.class);
                 startActivity(intent);
-                next2_button.setBackgroundColor(Color.parseColor("#10ddbc"));
+                next2_button.setBackground(getDrawable(R.drawable.gradient_neocredit));
             }
         });
     }

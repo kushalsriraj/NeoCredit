@@ -62,7 +62,7 @@ public class SegmentActivity extends AppCompatActivity {
                     },
                     new int[]{
 
-                            R.color.neopurple
+                            Color.rgb(23, 203, 133)
                             ,Color.rgb(255, 255, 255),
                     }
             );
@@ -77,7 +77,9 @@ public class SegmentActivity extends AppCompatActivity {
                 public void onCheckedChanged(RadioGroup group, int checkedId) {
                     if (soleProprietorship.isChecked())
                     {
-                        SegmentsubmitButton.setBackgroundColor(getResources().getColor(R.color.neopurple));
+                        //SegmentsubmitButton.setBackgroundColor(getResources().getColor(R.color.neopurple));
+                        SegmentsubmitButton.setBackground(getDrawable(R.drawable.gradient_neocredit));
+
 
                         soleProprietorship.setTextColor(Color.WHITE);
                         soleProprietorship.setBackground(getApplicationContext().getResources().getDrawable(R.drawable.radiobackgroundcolor));
@@ -90,7 +92,7 @@ public class SegmentActivity extends AppCompatActivity {
                     }
                     else if (privateLimited.isChecked())
                     {
-                        SegmentsubmitButton.setBackgroundColor(getResources().getColor(R.color.neopurple));
+                        SegmentsubmitButton.setBackground(getDrawable(R.drawable.gradient_neocredit));
 
                         privateLimited.setTextColor(Color.WHITE);
                         privateLimited.setBackground(getApplicationContext().getResources().getDrawable(R.drawable.radiobackgroundcolor));
@@ -104,7 +106,7 @@ public class SegmentActivity extends AppCompatActivity {
 
                     else if (partnershipForm.isChecked())
                     {
-                        SegmentsubmitButton.setBackgroundColor(getResources().getColor(R.color.neopurple));
+                        SegmentsubmitButton.setBackground(getDrawable(R.drawable.gradient_neocredit));
 
                         partnershipForm.setTextColor(Color.WHITE);
                         partnershipForm.setBackground(getApplicationContext().getResources().getDrawable(R.drawable.radiobackgroundcolor));

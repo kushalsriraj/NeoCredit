@@ -36,6 +36,8 @@ public class PartnershipDocUploadActivity extends AppCompatActivity {
             {
                 Intent i = new Intent(getApplicationContext(),ParCreditRequirementsActivity.class);
                 startActivity(i);
+                Submit_par_docs.setBackground(getDrawable(R.drawable.gradient_neocredit));
+
             }
         });
     }

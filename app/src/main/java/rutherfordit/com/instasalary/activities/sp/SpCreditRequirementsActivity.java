@@ -42,7 +42,9 @@ public class SpCreditRequirementsActivity extends AppCompatActivity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (!enterCreditAmount.getText().toString().equals(""))
                 {
-                    submitSpCreditReq.setBackgroundColor(getResources().getColor(R.color.neopurple));
+                    //submitSpCreditReq.setBackgroundColor(getResources().getColor(R.color.neopurple));
+                    submitSpCreditReq.setBackground(getDrawable(R.drawable.gradient_neocredit));
+
                     click = true;
                 }
                 else
