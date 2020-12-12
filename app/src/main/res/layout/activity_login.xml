@@ -15,14 +15,28 @@
         android:orientation="vertical"
         >
 
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:background="@color/white"
+            android:layout_marginTop="80dp"
+            android:clipChildren="false"
+            app:shimmer_duration="1500"
+            android:layout_gravity="center_horizontal"
+            app:shimmer_auto_start="true"
+            app:shimmer_shape="linear"
+            android:id="@+id/shimmer_view_container"
+            app:shimmer_intensity="500"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
         <ImageView
             android:layout_width="120dp"
             android:layout_height="120dp"
             android:src="@drawable/neocreditlogo"
             android:layout_gravity="center"
-            android:layout_marginTop="80dp"
             android:transitionName="logo_image"
             />
+
+        </com.facebook.shimmer.ShimmerFrameLayout>
 
         <LinearLayout
             android:layout_marginLeft="50dp"

@@ -34,11 +34,25 @@
                 android:layout_centerVertical="true"
                 android:src="@drawable/purplebackarrow" />
 
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:layout_alignParentRight="true"
+                android:background="@color/white"
+                android:clipChildren="false"
+                app:shimmer_duration="1500"
+                android:layout_gravity="center_horizontal"
+                app:shimmer_auto_start="true"
+                app:shimmer_shape="linear"
+                android:id="@+id/shimmer_view_container"
+                app:shimmer_intensity="500"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
             <ImageView
                 android:layout_width="60dp"
                 android:layout_height="40dp"
-                android:layout_alignParentRight="true"
                 android:src="@drawable/neocreditlogo" />
+
+            </com.facebook.shimmer.ShimmerFrameLayout>
 
         </RelativeLayout>
 
@@ -116,7 +130,7 @@
                 android:id="@+id/submitadharotp"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:background="@color/neopurple"
+                android:background="@drawable/gradient_neocredit"
                 >
 
                 <TextView
