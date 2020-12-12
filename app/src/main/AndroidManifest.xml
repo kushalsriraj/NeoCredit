@@ -32,9 +32,13 @@
         <activity android:name=".activities.sp.SoleProprietorshipCompanyDetailsActivity" />
         <activity android:name=".activities.sp.SoleProprietorshipDetailsActivity" />
         <activity android:name=".activities.HomeActivity" />
-        <activity android:name=".activities.BankDetailsActivity" />
+        <activity android:name=".activities.BankDetailsActivity" >
+
+        </activity>
         <activity android:name=".activities.PersonalDetailsActivity" />
-        <activity android:name=".activities.SegmentActivity" />
+        <activity android:name=".activities.SegmentActivity" >
+
+    </activity>
         <activity android:name=".activities.EnterOTPActivity" />
         <activity android:name=".activities.LoginActivity" />
         <activity android:name=".activities.SplashScreenActivity">

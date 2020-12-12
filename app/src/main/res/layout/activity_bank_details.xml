@@ -7,28 +7,6 @@
     android:id="@+id/root"
     tools:context=".activities.BankDetailsActivity">
 
-    <androidx.cardview.widget.CardView
-        android:visibility="gone"
-        android:id="@+id/loader_bankdetails"
-        app:cardCornerRadius="10dp"
-        app:cardElevation="10dp"
-        android:layout_centerInParent="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-        <com.crystal.crystalpreloaders.widgets.CrystalPreloader
-            android:layout_margin="15dp"
-            android:layout_centerInParent="true"
-
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:crs_pl_style="skype_balls"
-            app:crs_pl_size="very_small"
-            app:crs_pl_fg_color="@color/neopurple"
-            app:crs_pl_bg_color="#fff"/>
-
-    </androidx.cardview.widget.CardView>
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -72,7 +50,8 @@
                 android:id="@+id/shimmer_view_container"
                 app:shimmer_intensity="500"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="50dp">
 
                 <ImageView
                     android:scaleType="fitXY"
@@ -82,6 +61,30 @@
                     android:src="@drawable/neonewlogo" />
 
             </com.facebook.shimmer.ShimmerFrameLayout>
+
+            <EditText
+                android:layout_margin="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/entersomething"
+                android:textColor="@color/black" />
+
+            <RelativeLayout
+                android:background="@color/colorash"
+                android:layout_margin="10dp"
+                android:id="@+id/my_bg"
+                android:layout_width="match_parent"
+                android:layout_height="40dp">
+
+                <TextView
+                    android:textColor="@color/black"
+                    android:layout_marginLeft="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Submit"
+                    android:gravity="center" />
+
+            </RelativeLayout>
 
         </LinearLayout>
 

@@ -44,12 +44,13 @@ public class LoginActivity extends AppCompatActivity {
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
             }
 
+            @SuppressLint("UseCompatLoadingForDrawables")
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
                 if (enterphoneno_login.getText().toString().length() == 10)
                 {
-                    loginbottombutton.setBackgroundColor(getResources().getColor(R.color.neopurple));
+                    loginbottombutton.setBackground(getDrawable(R.drawable.gradient_neocredit));
                     click=true;
                 }
                 else
