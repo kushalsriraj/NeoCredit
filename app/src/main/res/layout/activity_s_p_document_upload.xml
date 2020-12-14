@@ -30,7 +30,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginLeft="30dp"
                 android:gravity="center"
-                android:text="Submit"
+                android:text="Next"
                 android:textColor="#fff"
                 android:textSize="16dp"
                 android:textStyle="bold" />
@@ -45,7 +45,6 @@
                 android:src="@drawable/next" />
 
         </RelativeLayout>
-
 
     </androidx.cardview.widget.CardView>
 
@@ -68,14 +67,24 @@
             android:layout_alignParentRight="true"
             android:src="@drawable/neocreditlogo" />
 
+        <TextView
+            android:fontFamily="@font/lato_bold"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Upload Documents"
+            android:gravity="center"
+            android:textSize="16dp"
+            android:textColor="@color/black"
+            android:layout_marginLeft="50dp"/>
+
     </RelativeLayout>
 
     <ScrollView
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
         android:layout_marginTop="60dp"
-        android:layout_marginRight="10dp"
         android:layout_marginBottom="60dp">
 
         <LinearLayout
@@ -83,1092 +92,751 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:fontFamily="@font/lato_bold"
-                android:text="Upload Pan"
-                android:textColor="#000"
-                android:textSize="16dp" />
-
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:weightSum="2"
                 android:orientation="horizontal">
 
-                <LinearLayout
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="10dp"
-                    android:orientation="vertical">
+                <androidx.cardview.widget.CardView
+                    android:layout_weight="1"
+                    android:layout_margin="1dp"
+                    app:cardCornerRadius="5dp"
+                    android:elevation="2dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="20dp"
-                        app:cardCornerRadius="10dp"
-                        app:cardElevation="10dp">
-
-                        <RelativeLayout
-                            android:layout_width="70dp"
-                            android:layout_height="70dp"
-                            android:background="@color/background">
-
-                            <com.crystal.crystalpreloaders.widgets.CrystalPreloader
-                                android:id="@+id/loader_sp_pan"
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
-                                android:layout_centerInParent="true"
-                                android:visibility="gone"
-                                app:crs_pl_bg_color="#fff"
-                                app:crs_pl_fg_color="@color/neopurple"
-                                app:crs_pl_size="very_small"
-                                app:crs_pl_style="circular" />
-
-                            <ImageView
-                                android:id="@+id/image_sp_pan"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:padding="15dp"
-                                android:src="@drawable/uploadicon" />
-
-                        </RelativeLayout>
-
-                    </androidx.cardview.widget.CardView>
-
-                    <TextView
-                        android:id="@+id/text_sp_pan"
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:gravity="center"
-                        android:text="Adhar.pdf"
-                        android:textColor="#000"
-                        android:textSize="10dp" />
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
 
-                </LinearLayout>
+                        <TextView
+                            android:layout_marginTop="5dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="PAN"
+                            android:gravity="center"
+                            android:textSize="12dp"
+                            android:textColor="@color/black"/>
 
-                <LinearLayout
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="10dp"
-                    android:orientation="vertical"
-                    android:visibility="gone">
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="20dp"
+                            app:cardCornerRadius="10dp"
+                            app:cardElevation="10dp">
 
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="20dp"
-                        app:cardCornerRadius="10dp"
-                        app:cardElevation="10dp">
+                            <RelativeLayout
+                                android:layout_width="70dp"
+                                android:layout_height="70dp"
+                                android:background="@color/background">
 
-                        <RelativeLayout
-                            android:layout_width="70dp"
-                            android:layout_height="70dp"
-                            android:background="@color/background">
+                                <com.crystal.crystalpreloaders.widgets.CrystalPreloader
+                                    android:id="@+id/loader_sp_pan"
+                                    android:layout_width="50dp"
+                                    android:layout_height="50dp"
+                                    android:layout_centerInParent="true"
+                                    android:visibility="gone"
+                                    app:crs_pl_bg_color="#fff"
+                                    app:crs_pl_fg_color="@color/neopurple"
+                                    app:crs_pl_size="very_small"
+                                    app:crs_pl_style="circular" />
 
-                            <com.crystal.crystalpreloaders.widgets.CrystalPreloader
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
-                                android:layout_centerInParent="true"
-                                android:visibility="gone"
-                                app:crs_pl_bg_color="#fff"
-                                app:crs_pl_fg_color="@color/neopurple"
-                                app:crs_pl_size="very_small"
-                                app:crs_pl_style="circular" />
+                                <ImageView
+                                    android:id="@+id/image_sp_pan"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:padding="15dp"
+                                    android:src="@drawable/uploadicon" />
 
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:padding="15dp"
-                                android:src="@drawable/add" />
+                            </RelativeLayout>
 
-                        </RelativeLayout>
+                        </androidx.cardview.widget.CardView>
 
-                    </androidx.cardview.widget.CardView>
+                        <TextView
+                            android:id="@+id/text_sp_pan"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:gravity="center"
+                            android:text="Adhar.pdf"
+                            android:textColor="#000"
+                            android:textSize="10dp" />
 
-                    <TextView
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_weight="1"
+                    android:layout_margin="1dp"
+                    app:cardCornerRadius="5dp"
+                    android:elevation="2dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:gravity="center"
-                        android:text="Adhar.pdf"
-                        android:textColor="#000"
-                        android:textSize="10dp" />
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
 
-                </LinearLayout>
+                        <TextView
+                            android:layout_marginTop="5dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Adhar"
+                            android:gravity="center"
+                            android:textSize="12dp"
+                            android:textColor="@color/black"/>
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="20dp"
+                            app:cardCornerRadius="10dp"
+                            app:cardElevation="10dp">
+
+                            <RelativeLayout
+                                android:layout_width="70dp"
+                                android:layout_height="70dp"
+                                android:background="@color/background">
+
+                                <com.crystal.crystalpreloaders.widgets.CrystalPreloader
+                                    android:id="@+id/loader_sp_adhar"
+                                    android:layout_width="50dp"
+                                    android:layout_height="50dp"
+                                    android:layout_centerInParent="true"
+                                    android:visibility="gone"
+                                    app:crs_pl_bg_color="#fff"
+                                    app:crs_pl_fg_color="@color/neopurple"
+                                    app:crs_pl_size="very_small"
+                                    app:crs_pl_style="circular" />
+
+                                <ImageView
+                                    android:id="@+id/image_sp_adhar"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:padding="15dp"
+                                    android:src="@drawable/uploadicon" />
+
+                            </RelativeLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+                        <TextView
+                            android:id="@+id/text_sp_adhar"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:gravity="center"
+                            android:text="Adhar.pdf"
+                            android:textColor="#000"
+                            android:textSize="10dp" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
 
             </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:fontFamily="@font/lato_bold"
-                android:text="Upload Adhar"
-                android:textColor="#000"
-                android:textSize="16dp" />
-
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
+                android:layout_height="150dp"
+                android:weightSum="2"
                 android:orientation="horizontal">
 
-                <LinearLayout
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="10dp"
-                    android:orientation="vertical">
+                <androidx.cardview.widget.CardView
+                    android:layout_weight="1"
+                    android:layout_margin="1dp"
+                    app:cardCornerRadius="5dp"
+                    android:elevation="2dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="20dp"
-                        app:cardCornerRadius="10dp"
-                        app:cardElevation="10dp">
-
-                        <RelativeLayout
-                            android:layout_width="70dp"
-                            android:layout_height="70dp"
-                            android:background="@color/background">
-
-                            <com.crystal.crystalpreloaders.widgets.CrystalPreloader
-                                android:id="@+id/loader_sp_adhar"
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
-                                android:layout_centerInParent="true"
-                                android:visibility="gone"
-                                app:crs_pl_bg_color="#fff"
-                                app:crs_pl_fg_color="@color/neopurple"
-                                app:crs_pl_size="very_small"
-                                app:crs_pl_style="circular" />
-
-                            <ImageView
-                                android:id="@+id/image_sp_adhar"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:padding="15dp"
-                                android:src="@drawable/uploadicon" />
-
-                        </RelativeLayout>
-
-                    </androidx.cardview.widget.CardView>
-
-                    <TextView
-                        android:id="@+id/text_sp_adhar"
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:gravity="center"
-                        android:text="Adhar.pdf"
-                        android:textColor="#000"
-                        android:textSize="10dp" />
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
 
-                </LinearLayout>
+                        <TextView
+                            android:layout_marginTop="5dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Registration Proof"
+                            android:gravity="center"
+                            android:textSize="12dp"
+                            android:textColor="@color/black"/>
 
-                <LinearLayout
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="10dp"
-                    android:orientation="vertical"
-                    android:visibility="gone">
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="20dp"
+                            app:cardCornerRadius="10dp"
+                            app:cardElevation="10dp">
 
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="20dp"
-                        app:cardCornerRadius="10dp"
-                        app:cardElevation="10dp">
+                            <RelativeLayout
+                                android:layout_width="70dp"
+                                android:layout_height="70dp"
+                                android:background="@color/background">
 
-                        <RelativeLayout
-                            android:layout_width="70dp"
-                            android:layout_height="70dp"
-                            android:background="@color/background">
+                                <com.crystal.crystalpreloaders.widgets.CrystalPreloader
+                                    android:id="@+id/loader_sp_registrationProof"
+                                    android:layout_width="50dp"
+                                    android:layout_height="50dp"
+                                    android:layout_centerInParent="true"
+                                    android:visibility="gone"
+                                    app:crs_pl_bg_color="#fff"
+                                    app:crs_pl_fg_color="@color/neopurple"
+                                    app:crs_pl_size="very_small"
+                                    app:crs_pl_style="circular" />
 
-                            <com.crystal.crystalpreloaders.widgets.CrystalPreloader
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
-                                android:layout_centerInParent="true"
-                                android:visibility="gone"
-                                app:crs_pl_bg_color="#fff"
-                                app:crs_pl_fg_color="@color/neopurple"
-                                app:crs_pl_size="very_small"
-                                app:crs_pl_style="circular" />
+                                <ImageView
+                                    android:id="@+id/image_sp_registrationProof"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:padding="15dp"
+                                    android:src="@drawable/uploadicon" />
 
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:padding="15dp"
-                                android:src="@drawable/add" />
+                            </RelativeLayout>
 
-                        </RelativeLayout>
+                        </androidx.cardview.widget.CardView>
 
-                    </androidx.cardview.widget.CardView>
+                        <TextView
+                            android:id="@+id/text_sp_registrationProof"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:gravity="center"
+                            android:text="Adhar.pdf"
+                            android:textColor="#000"
+                            android:textSize="10dp" />
 
-                    <TextView
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_weight="1"
+                    android:layout_margin="1dp"
+                    app:cardCornerRadius="5dp"
+                    android:elevation="2dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:gravity="center"
-                        android:text="Adhar.pdf"
-                        android:textColor="#000"
-                        android:textSize="10dp" />
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
 
-                </LinearLayout>
+                        <TextView
+                            android:layout_marginTop="5dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Bank Statements"
+                            android:gravity="center"
+                            android:textSize="12dp"
+                            android:textColor="@color/black"/>
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="20dp"
+                            app:cardCornerRadius="10dp"
+                            app:cardElevation="10dp">
+
+                            <RelativeLayout
+                                android:layout_width="70dp"
+                                android:layout_height="70dp"
+                                android:background="@color/background">
+
+                                <com.crystal.crystalpreloaders.widgets.CrystalPreloader
+                                    android:id="@+id/loader_sp_bankStatement"
+                                    android:layout_width="50dp"
+                                    android:layout_height="50dp"
+                                    android:layout_centerInParent="true"
+                                    android:visibility="gone"
+                                    app:crs_pl_bg_color="#fff"
+                                    app:crs_pl_fg_color="@color/neopurple"
+                                    app:crs_pl_size="very_small"
+                                    app:crs_pl_style="circular" />
+
+                                <ImageView
+                                    android:id="@+id/image_sp_bankStatement"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:padding="15dp"
+                                    android:src="@drawable/uploadicon" />
+
+                            </RelativeLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+                        <TextView
+                            android:id="@+id/text_sp_bankStatement"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:gravity="center"
+                            android:text="Adhar.pdf"
+                            android:textColor="#000"
+                            android:textSize="10dp" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
 
             </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:fontFamily="@font/lato_bold"
-                android:text="Business Registration Proof"
-                android:textColor="#000"
-                android:textSize="16dp" />
-
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
+                android:layout_height="150dp"
+                android:weightSum="2"
                 android:orientation="horizontal">
 
-                <LinearLayout
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="10dp"
-                    android:orientation="vertical">
+                <androidx.cardview.widget.CardView
+                    android:layout_weight="1"
+                    android:layout_margin="1dp"
+                    app:cardCornerRadius="5dp"
+                    android:elevation="2dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="20dp"
-                        app:cardCornerRadius="10dp"
-                        app:cardElevation="10dp">
-
-                        <RelativeLayout
-                            android:layout_width="70dp"
-                            android:layout_height="70dp"
-                            android:background="@color/background">
-
-                            <com.crystal.crystalpreloaders.widgets.CrystalPreloader
-                                android:id="@+id/loader_sp_registrationProof"
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
-                                android:layout_centerInParent="true"
-                                android:visibility="gone"
-                                app:crs_pl_bg_color="#fff"
-                                app:crs_pl_fg_color="@color/neopurple"
-                                app:crs_pl_size="very_small"
-                                app:crs_pl_style="circular" />
-
-                            <ImageView
-                                android:id="@+id/image_sp_registrationProof"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:padding="15dp"
-                                android:src="@drawable/uploadicon" />
-
-                        </RelativeLayout>
-
-                    </androidx.cardview.widget.CardView>
-
-                    <TextView
-                        android:id="@+id/text_sp_registrationProof"
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:gravity="center"
-                        android:text="Adhar.pdf"
-                        android:textColor="#000"
-                        android:textSize="10dp" />
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
 
-                </LinearLayout>
+                        <TextView
+                            android:layout_marginTop="5dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="GSTR"
+                            android:gravity="center"
+                            android:textSize="12dp"
+                            android:textColor="@color/black"/>
 
-                <LinearLayout
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="10dp"
-                    android:orientation="vertical"
-                    android:visibility="gone">
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="20dp"
+                            app:cardCornerRadius="10dp"
+                            app:cardElevation="10dp">
 
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="20dp"
-                        app:cardCornerRadius="10dp"
-                        app:cardElevation="10dp">
+                            <RelativeLayout
+                                android:layout_width="70dp"
+                                android:layout_height="70dp"
+                                android:background="@color/background">
 
-                        <RelativeLayout
-                            android:layout_width="70dp"
-                            android:layout_height="70dp"
-                            android:background="@color/background">
+                                <com.crystal.crystalpreloaders.widgets.CrystalPreloader
+                                    android:id="@+id/loader_sp_gstr"
+                                    android:layout_width="50dp"
+                                    android:layout_height="50dp"
+                                    android:layout_centerInParent="true"
+                                    android:visibility="gone"
+                                    app:crs_pl_bg_color="#fff"
+                                    app:crs_pl_fg_color="@color/neopurple"
+                                    app:crs_pl_size="very_small"
+                                    app:crs_pl_style="circular" />
 
-                            <com.crystal.crystalpreloaders.widgets.CrystalPreloader
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
-                                android:layout_centerInParent="true"
-                                android:visibility="gone"
-                                app:crs_pl_bg_color="#fff"
-                                app:crs_pl_fg_color="@color/neopurple"
-                                app:crs_pl_size="very_small"
-                                app:crs_pl_style="circular" />
+                                <ImageView
+                                    android:id="@+id/image_sp_gstr"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:padding="15dp"
+                                    android:src="@drawable/uploadicon" />
 
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:padding="15dp"
-                                android:src="@drawable/add" />
+                            </RelativeLayout>
 
-                        </RelativeLayout>
+                        </androidx.cardview.widget.CardView>
 
-                    </androidx.cardview.widget.CardView>
+                        <TextView
+                            android:id="@+id/text_sp_gstr"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:gravity="center"
+                            android:text="Adhar.pdf"
+                            android:textColor="#000"
+                            android:textSize="10dp" />
 
-                    <TextView
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_weight="1"
+                    android:layout_margin="1dp"
+                    app:cardCornerRadius="5dp"
+                    android:elevation="2dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:gravity="center"
-                        android:text="Adhar.pdf"
-                        android:textColor="#000"
-                        android:textSize="10dp" />
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
 
-                </LinearLayout>
+                        <TextView
+                            android:layout_marginTop="5dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="SLA"
+                            android:gravity="center"
+                            android:textSize="12dp"
+                            android:textColor="@color/black"/>
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="20dp"
+                            app:cardCornerRadius="10dp"
+                            app:cardElevation="10dp">
+
+                            <RelativeLayout
+                                android:layout_width="70dp"
+                                android:layout_height="70dp"
+                                android:background="@color/background">
+
+                                <com.crystal.crystalpreloaders.widgets.CrystalPreloader
+                                    android:id="@+id/loader_sp_sla"
+                                    android:layout_width="50dp"
+                                    android:layout_height="50dp"
+                                    android:layout_centerInParent="true"
+                                    android:visibility="gone"
+                                    app:crs_pl_bg_color="#fff"
+                                    app:crs_pl_fg_color="@color/neopurple"
+                                    app:crs_pl_size="very_small"
+                                    app:crs_pl_style="circular" />
+
+                                <ImageView
+                                    android:id="@+id/image_sp_sla"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:padding="15dp"
+                                    android:src="@drawable/uploadicon" />
+
+                            </RelativeLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+                        <TextView
+                            android:id="@+id/text_sp_sla"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:gravity="center"
+                            android:text="Adhar.pdf"
+                            android:textColor="#000"
+                            android:textSize="10dp" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
 
             </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:fontFamily="@font/lato_bold"
-                android:text="One Year Bank Statement"
-                android:textColor="#000"
-                android:textSize="16dp" />
-
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
+                android:layout_height="150dp"
+                android:weightSum="2"
                 android:orientation="horizontal">
 
-                <LinearLayout
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="10dp"
-                    android:orientation="vertical">
+                <androidx.cardview.widget.CardView
+                    android:layout_weight="1"
+                    android:layout_margin="1dp"
+                    app:cardCornerRadius="5dp"
+                    android:elevation="2dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="20dp"
-                        app:cardCornerRadius="10dp"
-                        app:cardElevation="10dp">
-
-                        <RelativeLayout
-                            android:layout_width="70dp"
-                            android:layout_height="70dp"
-                            android:background="@color/background">
-
-                            <com.crystal.crystalpreloaders.widgets.CrystalPreloader
-                                android:id="@+id/loader_sp_bankStatement"
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
-                                android:layout_centerInParent="true"
-                                android:visibility="gone"
-                                app:crs_pl_bg_color="#fff"
-                                app:crs_pl_fg_color="@color/neopurple"
-                                app:crs_pl_size="very_small"
-                                app:crs_pl_style="circular" />
-
-                            <ImageView
-                                android:id="@+id/image_sp_bankStatement"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:padding="15dp"
-                                android:src="@drawable/uploadicon" />
-
-                        </RelativeLayout>
-
-                    </androidx.cardview.widget.CardView>
-
-                    <TextView
-                        android:id="@+id/text_sp_bankStatement"
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:gravity="center"
-                        android:text="Adhar.pdf"
-                        android:textColor="#000"
-                        android:textSize="10dp" />
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
 
-                </LinearLayout>
+                        <TextView
+                            android:layout_marginTop="5dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Invoice"
+                            android:gravity="center"
+                            android:textSize="12dp"
+                            android:textColor="@color/black"/>
 
-                <LinearLayout
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="10dp"
-                    android:orientation="vertical"
-                    android:visibility="gone">
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="20dp"
+                            app:cardCornerRadius="10dp"
+                            app:cardElevation="10dp">
 
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="20dp"
-                        app:cardCornerRadius="10dp"
-                        app:cardElevation="10dp">
+                            <RelativeLayout
+                                android:layout_width="70dp"
+                                android:layout_height="70dp"
+                                android:background="@color/background">
 
-                        <RelativeLayout
-                            android:layout_width="70dp"
-                            android:layout_height="70dp"
-                            android:background="@color/background">
+                                <com.crystal.crystalpreloaders.widgets.CrystalPreloader
+                                    android:id="@+id/loader_sp_invoice"
+                                    android:layout_width="50dp"
+                                    android:layout_height="50dp"
+                                    android:layout_centerInParent="true"
+                                    android:visibility="gone"
+                                    app:crs_pl_bg_color="#fff"
+                                    app:crs_pl_fg_color="@color/neopurple"
+                                    app:crs_pl_size="very_small"
+                                    app:crs_pl_style="circular" />
 
-                            <com.crystal.crystalpreloaders.widgets.CrystalPreloader
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
-                                android:layout_centerInParent="true"
-                                android:visibility="gone"
-                                app:crs_pl_bg_color="#fff"
-                                app:crs_pl_fg_color="@color/neopurple"
-                                app:crs_pl_size="very_small"
-                                app:crs_pl_style="circular" />
+                                <ImageView
+                                    android:id="@+id/image_sp_invoice"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:padding="15dp"
+                                    android:src="@drawable/uploadicon" />
 
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:padding="15dp"
-                                android:src="@drawable/add" />
+                            </RelativeLayout>
 
-                        </RelativeLayout>
+                        </androidx.cardview.widget.CardView>
 
-                    </androidx.cardview.widget.CardView>
+                        <TextView
+                            android:id="@+id/text_sp_invoice"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:gravity="center"
+                            android:text="Adhar.pdf"
+                            android:textColor="#000"
+                            android:textSize="10dp" />
 
-                    <TextView
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_weight="1"
+                    android:layout_margin="1dp"
+                    app:cardCornerRadius="5dp"
+                    android:elevation="2dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:gravity="center"
-                        android:text="Adhar.pdf"
-                        android:textColor="#000"
-                        android:textSize="10dp" />
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
 
-                </LinearLayout>
+                        <TextView
+                            android:layout_marginTop="5dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Rental Aggrement"
+                            android:gravity="center"
+                            android:textSize="12dp"
+                            android:textColor="@color/black"/>
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="20dp"
+                            app:cardCornerRadius="10dp"
+                            app:cardElevation="10dp">
+
+                            <RelativeLayout
+                                android:layout_width="70dp"
+                                android:layout_height="70dp"
+                                android:background="@color/background">
+
+                                <com.crystal.crystalpreloaders.widgets.CrystalPreloader
+                                    android:id="@+id/loader_sp_rentAggrement"
+                                    android:layout_width="50dp"
+                                    android:layout_height="50dp"
+                                    android:layout_centerInParent="true"
+                                    android:visibility="gone"
+                                    app:crs_pl_bg_color="#fff"
+                                    app:crs_pl_fg_color="@color/neopurple"
+                                    app:crs_pl_size="very_small"
+                                    app:crs_pl_style="circular" />
+
+                                <ImageView
+                                    android:id="@+id/image_sp_rentAggrement"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:padding="15dp"
+                                    android:src="@drawable/uploadicon" />
+
+                            </RelativeLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+                        <TextView
+                            android:id="@+id/text_sp_rentAggrement"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:gravity="center"
+                            android:text="Adhar.pdf"
+                            android:textColor="#000"
+                            android:textSize="10dp" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
 
             </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:fontFamily="@font/lato_bold"
-                android:text="GSTR"
-                android:textColor="#000"
-                android:textSize="16dp" />
-
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
+                android:layout_height="150dp"
+                android:weightSum="2"
                 android:orientation="horizontal">
 
-                <LinearLayout
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="10dp"
-                    android:orientation="vertical">
+                <androidx.cardview.widget.CardView
+                    android:layout_weight="1"
+                    android:layout_margin="1dp"
+                    app:cardCornerRadius="5dp"
+                    android:elevation="2dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="20dp"
-                        app:cardCornerRadius="10dp"
-                        app:cardElevation="10dp">
-
-                        <RelativeLayout
-                            android:layout_width="70dp"
-                            android:layout_height="70dp"
-                            android:background="@color/background">
-
-                            <com.crystal.crystalpreloaders.widgets.CrystalPreloader
-                                android:id="@+id/loader_sp_gstr"
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
-                                android:layout_centerInParent="true"
-                                android:visibility="gone"
-                                app:crs_pl_bg_color="#fff"
-                                app:crs_pl_fg_color="@color/neopurple"
-                                app:crs_pl_size="very_small"
-                                app:crs_pl_style="circular" />
-
-                            <ImageView
-                                android:id="@+id/image_sp_gstr"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:padding="15dp"
-                                android:src="@drawable/uploadicon" />
-
-                        </RelativeLayout>
-
-                    </androidx.cardview.widget.CardView>
-
-                    <TextView
-                        android:id="@+id/text_sp_gstr"
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:gravity="center"
-                        android:text="Adhar.pdf"
-                        android:textColor="#000"
-                        android:textSize="10dp" />
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
 
-                </LinearLayout>
+                        <TextView
+                            android:layout_marginTop="5dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="IT Returns"
+                            android:gravity="center"
+                            android:textSize="12dp"
+                            android:textColor="@color/black"/>
 
-                <LinearLayout
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="10dp"
-                    android:orientation="vertical"
-                    android:visibility="gone">
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="20dp"
+                            app:cardCornerRadius="10dp"
+                            app:cardElevation="10dp">
 
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="20dp"
-                        app:cardCornerRadius="10dp"
-                        app:cardElevation="10dp">
+                            <RelativeLayout
+                                android:layout_width="70dp"
+                                android:layout_height="70dp"
+                                android:background="@color/background">
 
-                        <RelativeLayout
-                            android:layout_width="70dp"
-                            android:layout_height="70dp"
-                            android:background="@color/background">
+                                <com.crystal.crystalpreloaders.widgets.CrystalPreloader
+                                    android:id="@+id/loader_sp_itr"
+                                    android:layout_width="50dp"
+                                    android:layout_height="50dp"
+                                    android:layout_centerInParent="true"
+                                    android:visibility="gone"
+                                    app:crs_pl_bg_color="#fff"
+                                    app:crs_pl_fg_color="@color/neopurple"
+                                    app:crs_pl_size="very_small"
+                                    app:crs_pl_style="circular" />
 
-                            <com.crystal.crystalpreloaders.widgets.CrystalPreloader
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
-                                android:layout_centerInParent="true"
-                                android:visibility="gone"
-                                app:crs_pl_bg_color="#fff"
-                                app:crs_pl_fg_color="@color/neopurple"
-                                app:crs_pl_size="very_small"
-                                app:crs_pl_style="circular" />
+                                <ImageView
+                                    android:id="@+id/image_sp_itr"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:padding="15dp"
+                                    android:src="@drawable/uploadicon" />
 
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:padding="15dp"
-                                android:src="@drawable/uploadicon" />
+                            </RelativeLayout>
 
-                        </RelativeLayout>
+                        </androidx.cardview.widget.CardView>
 
-                    </androidx.cardview.widget.CardView>
+                        <TextView
+                            android:id="@+id/text_sp_itr"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:gravity="center"
+                            android:text="Adhar.pdf"
+                            android:textColor="#000"
+                            android:textSize="10dp" />
 
-                    <TextView
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:visibility="invisible"
+                    android:layout_weight="1"
+                    android:layout_margin="1dp"
+                    app:cardCornerRadius="10dp"
+                    android:elevation="2dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:gravity="center"
-                        android:text="Adhar.pdf"
-                        android:textColor="#000"
-                        android:textSize="10dp" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:fontFamily="@font/lato_bold"
-                android:text="Upload Val SLA"
-                android:textColor="#000"
-                android:textSize="16dp" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="10dp"
-                    android:orientation="vertical">
-
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="20dp"
-                        app:cardCornerRadius="10dp"
-                        app:cardElevation="10dp">
-
-                        <RelativeLayout
-                            android:layout_width="70dp"
-                            android:layout_height="70dp"
-                            android:background="@color/background">
-
-                            <com.crystal.crystalpreloaders.widgets.CrystalPreloader
-                                android:id="@+id/loader_sp_sla"
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
-                                android:layout_centerInParent="true"
-                                android:visibility="gone"
-                                app:crs_pl_bg_color="#fff"
-                                app:crs_pl_fg_color="@color/neopurple"
-                                app:crs_pl_size="very_small"
-                                app:crs_pl_style="circular" />
-
-                            <ImageView
-                                android:id="@+id/image_sp_sla"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:padding="15dp"
-                                android:src="@drawable/uploadicon" />
-
-                        </RelativeLayout>
-
-                    </androidx.cardview.widget.CardView>
-
-                    <TextView
-                        android:id="@+id/text_sp_sla"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:gravity="center"
-                        android:text="Adhar.pdf"
-                        android:textColor="#000"
-                        android:textSize="10dp" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="10dp"
-                    android:orientation="vertical"
-                    android:visibility="gone">
-
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="20dp"
-                        app:cardCornerRadius="10dp"
-                        app:cardElevation="10dp">
-
-                        <RelativeLayout
-                            android:layout_width="70dp"
-                            android:layout_height="70dp"
-                            android:background="@color/background">
-
-                            <com.crystal.crystalpreloaders.widgets.CrystalPreloader
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
-                                android:layout_centerInParent="true"
-                                android:visibility="gone"
-                                app:crs_pl_bg_color="#fff"
-                                app:crs_pl_fg_color="@color/neopurple"
-                                app:crs_pl_size="very_small"
-                                app:crs_pl_style="circular" />
-
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:padding="15dp"
-                                android:src="@drawable/uploadicon" />
-
-                        </RelativeLayout>
-
-                    </androidx.cardview.widget.CardView>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:gravity="center"
-                        android:text="Adhar.pdf"
-                        android:textColor="#000"
-                        android:textSize="10dp" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:fontFamily="@font/lato_bold"
-                android:text="Upload Last 6 Invoices"
-                android:textColor="#000"
-                android:textSize="16dp" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="10dp"
-                    android:orientation="vertical">
-
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="20dp"
-                        app:cardCornerRadius="10dp"
-                        app:cardElevation="10dp">
-
-                        <RelativeLayout
-                            android:layout_width="70dp"
-                            android:layout_height="70dp"
-                            android:background="@color/background">
-
-                            <com.crystal.crystalpreloaders.widgets.CrystalPreloader
-                                android:id="@+id/loader_sp_invoice"
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
-                                android:layout_centerInParent="true"
-                                android:visibility="gone"
-                                app:crs_pl_bg_color="#fff"
-                                app:crs_pl_fg_color="@color/neopurple"
-                                app:crs_pl_size="very_small"
-                                app:crs_pl_style="circular" />
-
-                            <ImageView
-                                android:id="@+id/image_sp_invoice"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:padding="15dp"
-                                android:src="@drawable/uploadicon" />
-
-                        </RelativeLayout>
-
-                    </androidx.cardview.widget.CardView>
-
-                    <TextView
-                        android:id="@+id/text_sp_invoice"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:gravity="center"
-                        android:text="Adhar.pdf"
-                        android:textColor="#000"
-                        android:textSize="10dp" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="10dp"
-                    android:orientation="vertical"
-                    android:visibility="gone">
-
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="20dp"
-                        app:cardCornerRadius="10dp"
-                        app:cardElevation="10dp">
-
-                        <RelativeLayout
-                            android:layout_width="70dp"
-                            android:layout_height="70dp"
-                            android:background="@color/background">
-
-                            <com.crystal.crystalpreloaders.widgets.CrystalPreloader
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
-                                android:layout_centerInParent="true"
-                                android:visibility="gone"
-                                app:crs_pl_bg_color="#fff"
-                                app:crs_pl_fg_color="@color/neopurple"
-                                app:crs_pl_size="very_small"
-                                app:crs_pl_style="circular" />
-
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:padding="15dp"
-                                android:src="@drawable/uploadicon" />
-
-                        </RelativeLayout>
-
-                    </androidx.cardview.widget.CardView>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:gravity="center"
-                        android:text="Adhar.pdf"
-                        android:textColor="#000"
-                        android:textSize="10dp" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:fontFamily="@font/lato_bold"
-                android:text="Upload Rental Aggrement"
-                android:textColor="#000"
-                android:textSize="16dp" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="10dp"
-                    android:orientation="vertical">
-
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="20dp"
-                        app:cardCornerRadius="10dp"
-                        app:cardElevation="10dp">
-
-                        <RelativeLayout
-                            android:layout_width="70dp"
-                            android:layout_height="70dp"
-                            android:background="@color/background">
-
-                            <com.crystal.crystalpreloaders.widgets.CrystalPreloader
-                                android:id="@+id/loader_sp_rentAggrement"
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
-                                android:layout_centerInParent="true"
-                                android:visibility="gone"
-                                app:crs_pl_bg_color="#fff"
-                                app:crs_pl_fg_color="@color/neopurple"
-                                app:crs_pl_size="very_small"
-                                app:crs_pl_style="circular" />
-
-                            <ImageView
-                                android:id="@+id/image_sp_rentAggrement"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:padding="15dp"
-                                android:src="@drawable/uploadicon" />
-
-                        </RelativeLayout>
-
-                    </androidx.cardview.widget.CardView>
-
-                    <TextView
-                        android:id="@+id/text_sp_rentAggrement"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:gravity="center"
-                        android:text="Adhar.pdf"
-                        android:textColor="#000"
-                        android:textSize="10dp" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="10dp"
-                    android:orientation="vertical"
-                    android:visibility="gone">
-
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="20dp"
-                        app:cardCornerRadius="10dp"
-                        app:cardElevation="10dp">
-
-                        <RelativeLayout
-                            android:layout_width="70dp"
-                            android:layout_height="70dp"
-                            android:background="@color/background">
-
-                            <com.crystal.crystalpreloaders.widgets.CrystalPreloader
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
-                                android:layout_centerInParent="true"
-                                android:visibility="gone"
-                                app:crs_pl_bg_color="#fff"
-                                app:crs_pl_fg_color="@color/neopurple"
-                                app:crs_pl_size="very_small"
-                                app:crs_pl_style="circular" />
-
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:padding="15dp"
-                                android:src="@drawable/uploadicon" />
-
-                        </RelativeLayout>
-
-                    </androidx.cardview.widget.CardView>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:gravity="center"
-                        android:text="Adhar.pdf"
-                        android:textColor="#000"
-                        android:textSize="10dp" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:fontFamily="@font/lato_bold"
-                android:text="Last 3 years ITR"
-                android:textColor="#000"
-                android:textSize="16dp" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="10dp"
-                    android:orientation="vertical">
-
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="20dp"
-                        app:cardCornerRadius="10dp"
-                        app:cardElevation="10dp">
-
-                        <RelativeLayout
-                            android:layout_width="70dp"
-                            android:layout_height="70dp"
-                            android:background="@color/background">
-
-                            <com.crystal.crystalpreloaders.widgets.CrystalPreloader
-                                android:id="@+id/loader_sp_itr"
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
-                                android:layout_centerInParent="true"
-                                android:visibility="gone"
-                                app:crs_pl_bg_color="#fff"
-                                app:crs_pl_fg_color="@color/neopurple"
-                                app:crs_pl_size="very_small"
-                                app:crs_pl_style="circular" />
-
-                            <ImageView
-                                android:id="@+id/image_sp_itr"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:padding="15dp"
-                                android:src="@drawable/uploadicon" />
-
-                        </RelativeLayout>
-
-                    </androidx.cardview.widget.CardView>
-
-                    <TextView
-                        android:id="@+id/text_sp_itr"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:gravity="center"
-                        android:text="Adhar.pdf"
-                        android:textColor="#000"
-                        android:textSize="10dp" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="10dp"
-                    android:orientation="vertical"
-                    android:visibility="gone">
-
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="20dp"
-                        app:cardCornerRadius="10dp"
-                        app:cardElevation="10dp">
-
-                        <RelativeLayout
-                            android:layout_width="70dp"
-                            android:layout_height="70dp"
-                            android:background="@color/background">
-
-                            <com.crystal.crystalpreloaders.widgets.CrystalPreloader
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
-                                android:layout_centerInParent="true"
-                                android:visibility="gone"
-                                app:crs_pl_bg_color="#fff"
-                                app:crs_pl_fg_color="@color/neopurple"
-                                app:crs_pl_size="very_small"
-                                app:crs_pl_style="circular" />
-
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:padding="15dp"
-                                android:src="@drawable/uploadicon" />
-
-                        </RelativeLayout>
-
-                    </androidx.cardview.widget.CardView>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:gravity="center"
-                        android:text="Adhar.pdf"
-                        android:textColor="#000"
-                        android:textSize="10dp" />
-
-                </LinearLayout>
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Upload MOI"
+                            android:gravity="center"
+                            android:textSize="12dp"
+                            android:textColor="@color/black"/>
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="20dp"
+                            app:cardCornerRadius="10dp"
+                            app:cardElevation="10dp">
+
+                            <RelativeLayout
+                                android:layout_width="70dp"
+                                android:layout_height="70dp"
+                                android:background="@color/background">
+
+                                <com.crystal.crystalpreloaders.widgets.CrystalPreloader
+                                    android:layout_width="50dp"
+                                    android:layout_height="50dp"
+                                    android:layout_centerInParent="true"
+                                    android:visibility="gone"
+                                    app:crs_pl_bg_color="#fff"
+                                    app:crs_pl_fg_color="@color/neopurple"
+                                    app:crs_pl_size="very_small"
+                                    app:crs_pl_style="circular" />
+
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:padding="15dp"
+                                    android:src="@drawable/uploadicon" />
+
+                            </RelativeLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:gravity="center"
+                            android:text="Adhar.pdf"
+                            android:textColor="#000"
+                            android:textSize="10dp" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
 
             </LinearLayout>
 

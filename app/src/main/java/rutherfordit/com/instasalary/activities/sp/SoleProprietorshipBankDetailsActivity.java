@@ -1,6 +1,7 @@
 package rutherfordit.com.instasalary.activities.sp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,7 +21,7 @@ public class SoleProprietorshipBankDetailsActivity extends AppCompatActivity {
 
     ImageView purplebackarrow;
     TextInputEditText sp_bankname,sp_bankbranch,sp_accno,sp_bankifsc;
-    RelativeLayout sp_submitBankDetails;
+    CardView sp_submitBankDetails;
     boolean click = false;
 
     @Override
@@ -172,7 +173,9 @@ public class SoleProprietorshipBankDetailsActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onBackPressed() {
+    public void onBackPressed()
+
+    {
         super.onBackPressed();
     }
 }
