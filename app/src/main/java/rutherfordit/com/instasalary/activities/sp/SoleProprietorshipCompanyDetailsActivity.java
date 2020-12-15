@@ -117,6 +117,8 @@ public class SoleProprietorshipCompanyDetailsActivity extends AppCompatActivity 
         });
 
     }
+    
+    //Done till here
 
     private void SpinnersSelected()
     {
