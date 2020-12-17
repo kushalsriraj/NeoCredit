@@ -54,7 +54,7 @@
                 android:hint="Company Name">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/entercompanyname"
+                    android:id="@+id/pl_company_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz 0123456789 "
@@ -73,7 +73,7 @@
                 android:hint="PAN Card Number ">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/pancardnumber"
+                    android:id="@+id/pl_pancardnumber"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz"
@@ -95,7 +95,7 @@
                     android:hint="Type of Service">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/typeOfService"
+                        android:id="@+id/pl_typeOfService"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:ellipsize="end"
@@ -107,7 +107,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <Spinner
-                    android:id="@+id/typeOfServiceSpinner"
+                    android:id="@+id/pl_Spinner_typeOfService"
                     style="@style/CustomSpinnerTheme"
                     android:layout_width="30dp"
                     android:layout_height="wrap_content"
@@ -125,7 +125,7 @@
                 android:hint="Business Registration Number">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/entercompanyemail"
+                    android:id="@+id/pl_businessRegNumber"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz"
@@ -147,7 +147,7 @@
                     android:hint="Address Proof">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/howOldIsTheCompany"
+                        android:id="@+id/pl_addressProof"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:ellipsize="end"
@@ -159,7 +159,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <Spinner
-                    android:id="@+id/howOldIsTheCompanySpinner"
+                    android:id="@+id/pl_Spinner_businessAddressProof"
                     style="@style/CustomSpinnerTheme"
                     android:layout_width="30dp"
                     android:layout_height="wrap_content"
@@ -178,13 +178,13 @@
                 android:hint="Landline Number">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/businessLandlineNumber"
+                    android:id="@+id/pl_businessLandline"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
                     android:fontFamily="@font/lato_regular"
                     android:inputType="number"
-                    android:maxLength="6"
+                    android:maxLength="10"
                     android:singleLine="true"
                     android:textSize="14dp" />
 
@@ -197,13 +197,13 @@
                 android:hint="Phone Number">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/businessPhoneNumber"
+                    android:id="@+id/pl_businessPhoneNumber"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
                     android:fontFamily="@font/lato_regular"
                     android:inputType="number"
-                    android:maxLength="6"
+                    android:maxLength="10"
                     android:singleLine="true"
                     android:textSize="14dp" />
 
@@ -221,7 +221,7 @@
                 app:cardCornerRadius="5dp">
 
                 <RelativeLayout
-                    android:id="@+id/next_button"
+                    android:id="@+id/pl_next_button"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:background="#36000000">
