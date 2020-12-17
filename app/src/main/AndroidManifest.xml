@@ -23,13 +23,13 @@
         <activity android:name=".activities.partnership.PartnershipPartnerSecondDetailsActivity" />
         <activity android:name=".activities.partnership.PartnershipPartnerFirstDetailsActivity" />
         <activity android:name=".activities.partnership.PartnershipCompanyDetailsActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".activities.privatelimited.PrivateLimitedBankDetailsActivity" />
         <activity android:name=".activities.privatelimited.PrivateLimitedDirectorSecondDetailsActivity" >
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
         </activity>
         <activity android:name=".activities.privatelimited.PrivateLimitedDirectorFirstDetailsActivity" >
         </activity>
