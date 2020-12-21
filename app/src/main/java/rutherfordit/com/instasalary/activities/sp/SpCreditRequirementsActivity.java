@@ -79,7 +79,7 @@ public class SpCreditRequirementsActivity extends AppCompatActivity {
                 }
                 else
                 {
-                    Toasty.warning(getApplicationContext(), "Please Check All The Fields.", Toast.LENGTH_SHORT).show();
+                    Toasty.warning(getApplicationContext(), "Check the fieldsss.", Toast.LENGTH_SHORT).show();
                 }
             }
         });
