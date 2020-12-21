@@ -21,27 +21,25 @@
                 android:layout_height="96dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="50dp"
-                android:src="@drawable/person"
-                />
+                android:src="@drawable/person" />
 
             <TextView
+                android:id="@+id/name_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:gravity="center"
                 android:text="John Doe"
                 android:textColor="#000"
-                android:textSize="16dp"
-                android:fontFamily="@font/lato_bold"
-                />
+                android:textSize="16dp" />
 
             <TextView
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="Hyderabad"
-                android:textSize="10dp"
-                android:fontFamily="@font/lato_regular"/>
+                android:textSize="10dp" />
 
         </LinearLayout>
 
@@ -57,8 +55,7 @@
                 android:layout_height="16dp"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="36dp"
-                android:src="@drawable/user"
-                />
+                android:src="@drawable/user" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -67,9 +64,7 @@
                 android:gravity="center"
                 android:text="My Profile"
                 android:textColor="#000000"
-                android:textSize="14dp"
-                android:fontFamily="@font/lato_regular"
-                />
+                android:textSize="14dp" />
 
         </LinearLayout>
 
@@ -94,9 +89,7 @@
                 android:gravity="center"
                 android:text="Settings"
                 android:textColor="#000000"
-                android:textSize="14dp"
-                android:fontFamily="@font/lato_regular"
-                />
+                android:textSize="14dp" />
 
         </LinearLayout>
 
@@ -121,9 +114,7 @@
                 android:gravity="center"
                 android:text="Refer Friends"
                 android:textColor="#000000"
-                android:textSize="14dp"
-                android:fontFamily="@font/lato_regular"
-                />
+                android:textSize="14dp" />
 
         </LinearLayout>
 
@@ -148,9 +139,7 @@
                 android:gravity="center"
                 android:text="Support"
                 android:textColor="#000000"
-                android:textSize="14dp"
-                android:fontFamily="@font/lato_regular"
-                />
+                android:textSize="14dp" />
 
         </LinearLayout>
 
@@ -175,9 +164,7 @@
                 android:gravity="center"
                 android:text="Disclaimer"
                 android:textColor="#000000"
-                android:textSize="14dp"
-                android:fontFamily="@font/lato_regular"
-                />
+                android:textSize="14dp" />
 
         </LinearLayout>
 
@@ -202,9 +189,7 @@
                 android:gravity="center"
                 android:text="Terms And Conditions"
                 android:textColor="#000000"
-                android:textSize="14dp"
-                android:fontFamily="@font/lato_regular"
-                />
+                android:textSize="14dp" />
 
         </LinearLayout>
 
@@ -229,9 +214,7 @@
                 android:gravity="center"
                 android:text="About Us"
                 android:textColor="#000000"
-                android:textSize="14dp"
-                android:fontFamily="@font/lato_regular"
-                />
+                android:textSize="14dp" />
 
         </LinearLayout>
 
@@ -256,9 +239,7 @@
                 android:gravity="center"
                 android:text="Logout"
                 android:textColor="#000000"
-                android:textSize="14dp"
-                android:fontFamily="@font/lato_regular"
-                />
+                android:textSize="14dp" />
 
         </LinearLayout>
 

@@ -16,6 +16,7 @@ import com.google.android.material.textfield.TextInputEditText;
 
 import es.dmoral.toasty.Toasty;
 import rutherfordit.com.instasalary.R;
+import rutherfordit.com.instasalary.activities.HomeActivity;
 
 public class SoleProprietorshipBankDetailsActivity extends AppCompatActivity {
 
@@ -59,6 +60,8 @@ public class SoleProprietorshipBankDetailsActivity extends AppCompatActivity {
                 if (click)
                 {
                     Toasty.success(getApplicationContext(), "Saved Successfully..", Toast.LENGTH_SHORT).show();
+                    Intent i = new Intent(getApplicationContext(), HomeActivity.class);
+                    startActivity(i);
                 }
                 else
                 {

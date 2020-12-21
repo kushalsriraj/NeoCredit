@@ -3,6 +3,7 @@ package rutherfordit.com.instasalary.activities.sp;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.graphics.Color;
@@ -44,6 +45,7 @@ public class SoleProprietorshipDetailsActivity extends AppCompatActivity impleme
 
     private void init()
     {
+
         sp_fullname = findViewById(R.id.sp_fullname);
         sp_dob = findViewById(R.id.sp_dob);
         sp_address = findViewById(R.id.sp_address);
@@ -260,6 +262,7 @@ public class SoleProprietorshipDetailsActivity extends AppCompatActivity impleme
           super.onBackPressed();
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
         Calendar c = Calendar.getInstance();
@@ -268,7 +271,27 @@ public class SoleProprietorshipDetailsActivity extends AppCompatActivity impleme
         c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
       //  String currentDateString = DateFormat.getDateInstance(DateFormat.FULL).format(c.getTime());
 
-        sp_dob.setText( year + "-" + (month+1) + "-" + dayOfMonth );
+        String newMonth, newDay;
+
+        if(month < 9){
+
+            newMonth = "0" + (month+1);
+        }
+        else
+        {
+            newMonth = String.valueOf(month+1);
+        }
+
+        if(dayOfMonth < 10){
+
+            newDay  = "0" + dayOfMonth ;
+        }
+        else
+        {
+            newDay = String.valueOf(dayOfMonth);
+        }
+
+        sp_dob.setText( year + "-" + (newMonth) + "-" + newDay );
 
         if (!sp_fullname.getText().toString().equals("") && !sp_dob.getText().toString().equals("") &&
                 !sp_address.getText().toString().equals("") && sp_pan.getText().toString().length() == 10 &&
@@ -276,6 +299,7 @@ public class SoleProprietorshipDetailsActivity extends AppCompatActivity impleme
         {
             submitSpInfo.setBackground(getDrawable(R.drawable.gradient_neocredit));
             click = true;
+            
         }
         else
         {
