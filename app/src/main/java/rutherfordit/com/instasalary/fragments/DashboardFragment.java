@@ -35,6 +35,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -56,12 +57,7 @@ public class DashboardFragment extends Fragment {
     DashBoardAdapter dashBoardAdapter;
     CardView loader_dashboard;
     private String UserAccessToken;
-
-    /*@Override
-    public void onResume() {
-        super.onResume();
-        init();
-    }*/
+    ArrayList loanName = new ArrayList<>(Arrays.asList("Education Loan","Personal Loan"));
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -75,25 +71,17 @@ public class DashboardFragment extends Fragment {
     private void init() {
 
         loader_dashboard = v.findViewById(R.id.loader_dashboard);
-        loader_dashboard.setVisibility(View.VISIBLE);
+        loader_dashboard.setVisibility(View.GONE);
 
-        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("mySharedPreference", Context.MODE_PRIVATE);
-        UserAccessToken = "Bearer " + sharedPreferences.getString("AccessToken", "");
-
-        Log.e("mytoken", "init: " + UserAccessToken);
-
-        apply_new_Loan = v.findViewById(R.id.apply_new_Loan);
         recdashboard = v.findViewById(R.id.recdashboard);
         emptydash = v.findViewById(R.id.emptydash);
+        emptydash.setVisibility(View.GONE);
+        recdashboard.setVisibility(View.VISIBLE);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false);
         recdashboard.setLayoutManager(linearLayoutManager);
 
-        apply_new_Loan.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showdialog();
-            }
-        });
+        DashBoardAdapter dashBoardAdapter = new DashBoardAdapter(getActivity().getApplicationContext(), loanName);
+        recdashboard.setAdapter(dashBoardAdapter);
 
     }
 
@@ -131,8 +119,5 @@ public class DashboardFragment extends Fragment {
                 }
             }
         });
-
-
     }
-
 }

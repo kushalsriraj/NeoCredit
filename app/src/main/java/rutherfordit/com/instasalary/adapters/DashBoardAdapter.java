@@ -10,19 +10,20 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.ncorti.slidetoact.SlideToActView;
+
+import java.util.ArrayList;
+
 import rutherfordit.com.instasalary.R;
 
 public class DashBoardAdapter extends RecyclerView.Adapter<DashBoardAdapter.MyViewHolder> {
 
     Context context;
-    SharedPreferences sharedPreferences;
-    String UserAccessToken;
+    ArrayList loanName;
 
-    public DashBoardAdapter(Context context) {
+    public DashBoardAdapter(Context context, ArrayList loanName) {
 
         this.context = context;
-        sharedPreferences = context.getSharedPreferences("mySharedPreference", Context.MODE_PRIVATE);
-        UserAccessToken = "Bearer " + sharedPreferences.getString("AccessToken", "");
+        this.loanName = loanName;
     }
 
     @NonNull
@@ -36,25 +37,14 @@ public class DashBoardAdapter extends RecyclerView.Adapter<DashBoardAdapter.MyVi
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-            }
-        });
+        Log.e("recdata", "onBindViewHolder: " + loanName.get(position));
 
-        holder.swipe_to_disburse.setOnSlideCompleteListener(new SlideToActView.OnSlideCompleteListener() {
-            @Override
-            public void onSlideComplete(SlideToActView slideToActView) {
-
-
-            }
-        });
-
+        holder.dash_heading.setText((CharSequence) loanName.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return loanName.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {

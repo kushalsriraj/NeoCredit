@@ -11,6 +11,7 @@
         android:label="@string/app_name"
         android:roundIcon="@drawable/neocreditlogo"
         android:supportsRtl="true"
+        android:usesCleartextTraffic="true"
         android:theme="@style/AppTheme">
         <activity android:name=".activities.partnership.ParCreditRequirementsActivity" />
         <activity android:name=".activities.privatelimited.PlCreditRequirementsActivity" />
@@ -29,7 +30,9 @@
         <activity android:name=".activities.sp.SoleProprietorshipBankDetailsActivity" />
         <activity android:name=".activities.sp.SoleProprietorshipCompanyDetailsActivity" />
         <activity android:name=".activities.sp.SoleProprietorshipDetailsActivity" />
-        <activity android:name=".activities.HomeActivity" />
+        <activity android:name=".activities.HomeActivity" >
+
+        </activity>
         <activity android:name=".activities.BankDetailsActivity" />
         <activity android:name=".activities.PersonalDetailsActivity" />
         <activity android:name=".activities.SegmentActivity" />
