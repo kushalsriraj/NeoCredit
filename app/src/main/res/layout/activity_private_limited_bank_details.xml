@@ -76,7 +76,7 @@
                 android:hint="Loan Amount Required">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/enterloanamount"
+                    android:id="@+id/pl_bank_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
@@ -143,7 +143,7 @@
                 android:hint="Bank Branch">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/enterbankbranch"
+                    android:id="@+id/pl_bankbranch"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
@@ -162,7 +162,7 @@
                 android:hint="Enter Account Number">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/enteraccno"
+                    android:id="@+id/pl_accno"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
@@ -181,7 +181,7 @@
                 android:hint="IFSC">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/enterbankifsc"
+                    android:id="@+id/pl_bankifsc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
