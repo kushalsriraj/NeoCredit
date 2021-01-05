@@ -15,7 +15,7 @@ import com.google.android.material.textfield.TextInputEditText;
 
 import es.dmoral.toasty.Toasty;
 import rutherfordit.com.instasalary.R;
-import rutherfordit.com.instasalary.activities.sp.SoleProprietorshipBankDetailsActivity;
+import rutherfordit.com.instasalary.activities.BankDetailsActivity;
 
 public class PlCreditRequirementsActivity extends AppCompatActivity {
 
@@ -75,7 +75,7 @@ public class PlCreditRequirementsActivity extends AppCompatActivity {
 
                 if (click)
                 {
-                    Intent intent = new Intent(getApplicationContext(), PrivateLimitedBankDetailsActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), BankDetailsActivity.class);
                     startActivity(intent);
                 }
                 else

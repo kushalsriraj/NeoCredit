@@ -28,8 +28,8 @@ public class SplashScreenActivity extends AppCompatActivity {
 
         logo = findViewById(R.id.logo);
 
-        RotateAnimation rotate = new RotateAnimation(0, 360, Animation.RESTART, 0.5f, Animation.RESTART, 0.5f);
-        rotate.setDuration(3000);
+        RotateAnimation rotate = new RotateAnimation(0, 180, Animation.RESTART, 0.5f, Animation.RESTART, 0.5f);
+        rotate.setDuration(1000);
         rotate.setInterpolator(new LinearInterpolator());
         logo.startAnimation(rotate);
 
@@ -48,7 +48,7 @@ public class SplashScreenActivity extends AppCompatActivity {
                 startActivity(intent, options.toBundle());
 
             }
-        }, 3000);
+        }, 2000);
 
     }
 }

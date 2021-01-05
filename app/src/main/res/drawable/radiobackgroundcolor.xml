@@ -6,6 +6,10 @@
     <stroke
         android:width="1dp"
         android:color="@color/colorash" />
-    <solid android:color="@color/neopurple" />
+    <gradient
+        android:startColor="@color/neopurple"
+        android:endColor="@color/neogreen"
+        android:angle="180"/>
+
 
 </shape>

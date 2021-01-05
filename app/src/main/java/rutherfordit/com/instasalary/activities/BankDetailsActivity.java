@@ -1,11 +1,14 @@
 package rutherfordit.com.instasalary.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.Display;
 import android.view.View;
 import android.view.animation.Animation;
@@ -15,65 +18,239 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+import com.google.android.material.textfield.TextInputEditText;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import at.wirecube.additiveanimations.additive_animator.AdditiveAnimator;
+import es.dmoral.toasty.Toasty;
 import rutherfordit.com.instasalary.R;
 
 public class BankDetailsActivity extends AppCompatActivity {
 
-    ImageView moveimage;
-    RelativeLayout root;
-    RelativeLayout my_bg;
-    EditText entersomething;
+    ImageView purplebackarrow;
+    TextInputEditText sp_bankname,sp_bankbranch,sp_accno,sp_bankifsc;
+    CardView sp_submitBankDetails;
+    boolean click = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bank_details);
 
-        root = findViewById(R.id.root);
-        moveimage = findViewById(R.id.moveimage);
+        init();
+        onclicks();
+        textChangeListeners();
+    }
 
-        my_bg = findViewById(R.id.my_bg);
-        entersomething = findViewById(R.id.entersomething);
+    private void init()
+    {
+        purplebackarrow = findViewById(R.id.purplebackarrow);
+        sp_bankname = findViewById(R.id.sp_bankname);
+        sp_bankbranch = findViewById(R.id.sp_bankbranch);
+        sp_accno = findViewById(R.id.sp_accno);
+        sp_bankifsc = findViewById(R.id.sp_bankifsc);
+        sp_submitBankDetails = findViewById(R.id.sp_submitBankDetails);
+    }
 
-        Display display = getWindowManager().getDefaultDisplay();
-        float width = display.getWidth();
-        TranslateAnimation animation = new TranslateAnimation(width-2000, 0 , 0, 0); // new TranslateAnimation(xFrom,xTo, yFrom,yTo)
-        animation.setDuration(1000); // animation duration
-        animation.setRepeatCount(0); // animation repeat count
-        animation.setRepeatMode(1); // repeat animation ( left to right, right to left )
-        animation.setFillAfter(true);
 
-        moveimage.startAnimation(animation);
+    private void onclicks() {
 
-     //   moveimage.animate().x(1000).y(10).setDuration(1000);
-
-        entersomething.addTextChangedListener(new TextWatcher() {
+        purplebackarrow.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @SuppressLint("UseCompatLoadingForDrawables")
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-                if (!entersomething.getText().toString().equals(""))
-                {
-                    my_bg.setBackground(getDrawable(R.drawable.gradient_neocredit));
-                }
-                else
-                {
-                    my_bg.setBackgroundColor(getResources().getColor(R.color.colorash));
-                }
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
+            public void onClick(View v) {
+                onBackPressed();
             }
         });
 
+        sp_submitBankDetails.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (click)
+                {
+                    request();
+
+                    Toasty.success(getApplicationContext(), "Saved Successfully..", Toast.LENGTH_SHORT).show();
+                    Intent i = new Intent(getApplicationContext(), HomeActivity.class);
+                    startActivity(i);
+                }
+                else
+                {
+                    Toasty.warning(getApplicationContext(), "Please Fill The Fields..", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+    }
+
+    private void request() {
+
+        JSONObject jsonObject = new JSONObject();
+
+        String acc_no = sp_accno.getText().toString();
+        String ifsc_code = sp_bankifsc.getText().toString();
+
+        try {
+            jsonObject.put("beneficiary_account_no", acc_no);
+            jsonObject.put("beneficiary_ifsc",ifsc_code);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        Log.e("TAG", "request" + jsonObject);
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, "https://ext.digio.in:444/client/verify/bank_account", jsonObject, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+
+                Log.e("TAG", "response" + response );
+
+
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+                Log.e("TAG", "error" + error.getLocalizedMessage());
+
+            }
+        }){
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("Authorization", "Basic QUlZODc1QjFZQjhFVTQxWTFaWlE3MUdSMUhQSjVEWDc6V05SVEQ4VVVTSkQ5UDgzS1RRWEkxU1g3NU1NQzNWVzY=");
+                params.put("Content-Type", "application/json");
+                return params;
+            }
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+        requestQueue.add(jsonObjectRequest);
+
+    }
+
+    private void textChangeListeners()
+    {
+
+        sp_bankname.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                if(!sp_bankname.getText().toString().equals("") && !sp_bankbranch.getText().toString().equals("")
+                        && sp_accno.getText().toString().length() > 10 && sp_bankifsc.getText().toString().length() == 11 )
+                {
+                    //sp_submitBankDetails.setBackgroundColor(getResources().getColor(R.color.neopurple));
+                    sp_submitBankDetails.setBackground(getDrawable(R.drawable.gradient_neocredit));
+
+                    click = true;
+                }
+                else
+                {
+                    sp_submitBankDetails.setBackgroundColor(getResources().getColor(R.color.colorash));
+                    click = false;
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) { }
+        });
+
+        sp_bankbranch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                if(!sp_bankname.getText().toString().equals("") && !sp_bankbranch.getText().toString().equals("")
+                        && sp_accno.getText().toString().length() > 10 && sp_bankifsc.getText().toString().length() == 11 )
+                {
+                    sp_submitBankDetails.setBackground(getDrawable(R.drawable.gradient_neocredit));
+                    click = true;
+                }
+                else
+                {
+                    sp_submitBankDetails.setBackgroundColor(getResources().getColor(R.color.colorash));
+                    click = false;
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) { }
+        });
+
+        sp_accno.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                if(!sp_bankname.getText().toString().equals("") && !sp_bankbranch.getText().toString().equals("")
+                        && sp_accno.getText().toString().length() > 10 && sp_bankifsc.getText().toString().length() == 11 )
+                {
+                    sp_submitBankDetails.setBackground(getDrawable(R.drawable.gradient_neocredit));
+                    click = true;
+                }
+                else
+                {
+                    sp_submitBankDetails.setBackgroundColor(getResources().getColor(R.color.colorash));
+                    click = false;
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) { }
+        });
+
+        sp_bankifsc.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                if(!sp_bankname.getText().toString().equals("") && !sp_bankbranch.getText().toString().equals("")
+                        && sp_accno.getText().toString().length() > 10 && sp_bankifsc.getText().toString().length() == 11 )
+                {
+                    sp_submitBankDetails.setBackground(getDrawable(R.drawable.gradient_neocredit));
+                    click = true;
+                }
+                else
+                {
+                    sp_submitBankDetails.setBackgroundColor(getResources().getColor(R.color.colorash));
+                    click = false;
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) { }
+        });
+
+    }
+
+    @Override
+    public void onBackPressed()
+
+    {
+        super.onBackPressed();
     }
 }

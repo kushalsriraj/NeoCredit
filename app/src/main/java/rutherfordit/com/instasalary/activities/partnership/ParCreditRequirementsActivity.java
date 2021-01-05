@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.RelativeLayout;
 
 import rutherfordit.com.instasalary.R;
+import rutherfordit.com.instasalary.activities.BankDetailsActivity;
 
 public class ParCreditRequirementsActivity extends AppCompatActivity {
 
@@ -24,7 +25,7 @@ public class ParCreditRequirementsActivity extends AppCompatActivity {
         submitParCreditReq.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), PartnershipBankDetailsActivity.class);
+                Intent intent = new Intent(getApplicationContext(), BankDetailsActivity.class);
                 startActivity(intent);
                 submitParCreditReq.setBackground(getDrawable(R.drawable.gradient_neocredit));
             }
