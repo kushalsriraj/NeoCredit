@@ -38,6 +38,7 @@ import rutherfordit.com.instasalary.R;
 import rutherfordit.com.instasalary.activities.sp.SoleProprietorshipDetailsActivity;
 import rutherfordit.com.instasalary.extras.MySingleton;
 import rutherfordit.com.instasalary.extras.SharedPrefsManager;
+import rutherfordit.com.instasalary.extras.Urls;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -118,7 +119,7 @@ public class LoginActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, "http://console.grantlending.in/api/sendotp", numberJsonObject, new Response.Listener<JSONObject>() {
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, Urls.SEND_OTP, numberJsonObject, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 Log.e("response", "response: " + response );

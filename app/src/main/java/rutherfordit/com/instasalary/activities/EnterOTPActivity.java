@@ -32,6 +32,7 @@ import java.util.Map;
 import rutherfordit.com.instasalary.R;
 import rutherfordit.com.instasalary.extras.MySingleton;
 import rutherfordit.com.instasalary.extras.SharedPrefsManager;
+import rutherfordit.com.instasalary.extras.Urls;
 
 public class EnterOTPActivity extends AppCompatActivity {
 
@@ -120,7 +121,7 @@ public class EnterOTPActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, "http://console.grantlending.in/api/signup", jsonObject1, new Response.Listener<JSONObject>() {
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, Urls.SIGN_UP, jsonObject1, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
 
@@ -170,7 +171,7 @@ public class EnterOTPActivity extends AppCompatActivity {
         try {
             jsonObject1.put("grant_type", "password");
             jsonObject1.put("client_id", "2");
-            jsonObject1.put("client_secret", "thDwYOU3OsXc8AdthjdvSqredu4h9KlcCGt0h3hS");
+            jsonObject1.put("client_secret", Urls.CLIENT_SECRET_KEY);
             jsonObject1.put("username", sharedPrefsManager.getPhoneNumber());
             jsonObject1.put("password", sharedPrefsManager.getOtp());
             jsonObject1.put("scope", "*");
@@ -179,7 +180,7 @@ public class EnterOTPActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, "http://console.grantlending.in/oauth/token", jsonObject1, new Response.Listener<JSONObject>() {
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, Urls.GENERATE_TOKEN, jsonObject1, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 Log.e("response", "response: " + response);
