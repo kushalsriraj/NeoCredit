@@ -155,8 +155,8 @@ public class EnterOTPActivity extends AppCompatActivity {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
                 HashMap<String, String> headers = new HashMap<String, String>();
-                headers.put("Authorization", "application/json");
                 headers.put("Accept", "application/json");
+                headers.put("Content-Type", "application/json");
                 return headers;
             }
         };
