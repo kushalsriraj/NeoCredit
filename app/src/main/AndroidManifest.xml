@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     package="rutherfordit.com.instasalary">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -13,8 +12,7 @@
         android:roundIcon="@drawable/neocreditlogo"
         android:supportsRtl="true"
         android:usesCleartextTraffic="true"
-        android:theme="@style/AppTheme"
-        tools:targetApi="m">
+        android:theme="@style/AppTheme">
         <activity android:name=".activities.partnership.ParCreditRequirementsActivity" />
         <activity android:name=".activities.privatelimited.PlCreditRequirementsActivity" >
 
@@ -38,19 +36,18 @@
 
         </activity>
         <activity android:name=".activities.BankDetailsActivity" >
-
         </activity>
-
         <activity android:name=".activities.PersonalDetailsActivity" />
         <activity android:name=".activities.SegmentActivity" >
         </activity>
         <activity android:name=".activities.EnterOTPActivity" />
-        <activity android:name=".activities.LoginActivity" />
+        <activity android:name=".activities.LoginActivity" >
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
         <activity android:name=".activities.SplashScreenActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 

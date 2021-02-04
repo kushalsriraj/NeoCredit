@@ -13,6 +13,8 @@ public class SharedPrefsManager {
     String KEY_IS_LOGGED_IN ="is_logged_in";
     String ACCESS_TOKEN ="access_token";
     String PHONE_NUMBER ="phone_number";
+    String IS_USER_EXISTS = "isuserExits";
+    String OTP_NUMBER = "otp";
 
     public SharedPrefsManager(Context context)
     {
@@ -54,6 +56,26 @@ public class SharedPrefsManager {
     public String getAccessToken()
     {
         return sharedPreferences.getString(ACCESS_TOKEN,"");
+    }
+
+    public void setIsUserExists(String IsUserExists)
+    {
+        sharedPreferences.edit().putString(IS_USER_EXISTS,IsUserExists).apply();
+    }
+
+    public String getIsUserExists()
+    {
+        return sharedPreferences.getString(IS_USER_EXISTS,"");
+    }
+
+    public void setOtp(String OTP)
+    {
+        sharedPreferences.edit().putString(OTP_NUMBER, OTP).apply();
+    }
+
+    public String getOtp()
+    {
+        return sharedPreferences.getString(OTP_NUMBER,"");
     }
 
 }
