@@ -10,6 +10,44 @@
     >
 
     <LinearLayout
+        android:id="@+id/errorlayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:text="Hello User.. Please grant the location permission to proceed forward.."
+            android:textColor="@color/neopurple"
+            android:textSize="15dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:text="Facing trouble granting permissions? \n\n Please Uninstall and reinstall the app \n Or \n Clear Data in Settings \n Or \n Please click the below link to grant permission."
+            android:textColor="#000"
+            android:textSize="12dp" />
+
+        <TextView
+            android:id="@+id/opensettings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:onClick="openpermission"
+            android:text="Open Settings"
+            android:textColor="#2196F3"
+            android:textSize="15dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_centerInParent="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

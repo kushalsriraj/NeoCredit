@@ -36,11 +36,14 @@ import java.util.Map;
 import es.dmoral.toasty.Toasty;
 import rutherfordit.com.instasalary.R;
 import rutherfordit.com.instasalary.activities.sp.SoleProprietorshipDetailsActivity;
+import rutherfordit.com.instasalary.extras.Constants;
 import rutherfordit.com.instasalary.extras.MySingleton;
+import rutherfordit.com.instasalary.extras.ResponseHandler;
 import rutherfordit.com.instasalary.extras.SharedPrefsManager;
 import rutherfordit.com.instasalary.extras.Urls;
+import rutherfordit.com.instasalary.extras.VolleyRequest;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity implements ResponseHandler {
 
     RelativeLayout loginbottombutton;
     EditText enterphoneno_login;
@@ -48,6 +51,7 @@ public class LoginActivity extends AppCompatActivity {
     String otp, isUserExits;
     CardView loader_login;
     SharedPrefsManager sharedPrefsManager;
+    VolleyRequest volleyRequest;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +64,7 @@ public class LoginActivity extends AppCompatActivity {
             getWindow().setStatusBarColor(getResources().getColor(R.color.neopurple));
         }
 
+        volleyRequest = new VolleyRequest();
         sharedPrefsManager = new SharedPrefsManager(getApplicationContext());
         loginbottombutton = findViewById(R.id.loginbottombutton);
         enterphoneno_login = findViewById(R.id.enterphoneno_login);
@@ -111,6 +116,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void sendOtp() {
+
         JSONObject numberJsonObject = new JSONObject();
 
         try {
@@ -119,51 +125,7 @@ public class LoginActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, Urls.SEND_OTP, numberJsonObject, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-                Log.e("response", "response: " + response );
-
-                try {
-                    isUserExits = response.getString("isuserExits");
-                    otp = response.getString("otp");
-
-                    sharedPrefsManager.setPhoneNumber(enterphoneno_login.getText().toString());
-                    if (isUserExits.equalsIgnoreCase("true")){
-                        sharedPrefsManager.setIsUserExists("true");
-                        sharedPrefsManager.setOtp(otp);
-                    }
-
-                    else {
-                        sharedPrefsManager.setIsUserExists("false");
-                        sharedPrefsManager.setOtp(otp);
-                    }
-
-                    Toast.makeText(getApplicationContext(), otp, Toast.LENGTH_LONG).show();
-                    loader_login.setVisibility(View.GONE);
-                    Intent intent = new Intent(getApplicationContext(), EnterOTPActivity.class);
-                    startActivity(intent);
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Log.e("error", "onErrorResponse: " + error.getLocalizedMessage() );
-            }
-        }){
-            @Override
-            public Map<String, String> getHeaders() throws AuthFailureError {
-                HashMap<String, String> headers = new HashMap<String, String>();
-                headers.put("Authorization", "application/json");
-                headers.put("Accept", "application/json");
-                return headers;
-            }
-        };
-
-        MySingleton.getInstance(LoginActivity.this).addToRequestQueue(jsonObjectRequest);
+        volleyRequest.JsonObjRequest(LoginActivity.this,numberJsonObject,Urls.SEND_OTP, Constants.sendotp);
 
     }
 
@@ -177,5 +139,42 @@ public class LoginActivity extends AppCompatActivity {
     public void finish() {
         super.finish();
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+    }
+
+    @Override
+    public void responseHandler(Object obj, int i) {
+
+        if (i == Constants.sendotp)
+        {
+
+            JSONObject response = (JSONObject) obj;
+
+            try {
+                isUserExits = response.getString("isuserExits");
+                otp = response.getString("otp");
+
+                sharedPrefsManager.setPhoneNumber(enterphoneno_login.getText().toString());
+
+                if (isUserExits.equalsIgnoreCase("true")){
+                    sharedPrefsManager.setIsUserExists("true");
+                    sharedPrefsManager.setOtp(otp);
+                }
+
+                else {
+                    sharedPrefsManager.setIsUserExists("false");
+                    sharedPrefsManager.setOtp(otp);
+                }
+
+                Toast.makeText(getApplicationContext(), otp, Toast.LENGTH_LONG).show();
+                loader_login.setVisibility(View.GONE);
+                Intent intent = new Intent(getApplicationContext(), EnterOTPActivity.class);
+                startActivity(intent);
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+        }
+
     }
 }

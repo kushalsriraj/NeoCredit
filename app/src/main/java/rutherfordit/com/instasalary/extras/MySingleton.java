@@ -9,36 +9,38 @@ import com.android.volley.toolbox.Volley;
 
 public class MySingleton {
 
-    private static MySingleton mInstance;
-    private static Context mContext;
-    private RequestQueue mRequestQueue;
+    private final Context context;
+    private RequestQueue requestQueue;
+    private static MySingleton minstance;
 
-    private MySingleton(Context context) {
-        mContext = context;
-        mRequestQueue = getRequestQueue();
+    public MySingleton(Context context)
+    {
+        this.context = context;
+        requestQueue=getRequestQueue();
     }
 
-    public static synchronized MySingleton getInstance(Context context) {
-        if (mInstance == null) {
-            mInstance = new MySingleton(context);
+    public RequestQueue getRequestQueue()
+    {
+        if(requestQueue==null)
+        {
+            requestQueue = Volley.newRequestQueue(context.getApplicationContext());
         }
-        return mInstance;
+        return requestQueue;
     }
 
-    public RequestQueue getRequestQueue() {
-        if (mRequestQueue == null) {
-            mRequestQueue = Volley.newRequestQueue(mContext.getApplicationContext());
+    public static synchronized MySingleton getinstance(Context context)
+    {
+        if (minstance==null)
+        {
+            minstance= new MySingleton(context);
         }
-
-        return mRequestQueue;
+        return minstance;
     }
 
-    public <T> void addToRequestQueue(Request<T> request) {
+    public<T> void addrequest(Request<T> request, String tag)
+    {
+        request.setTag(tag);
         getRequestQueue().add(request);
-        request.setRetryPolicy(new DefaultRetryPolicy(
-                DefaultRetryPolicy.DEFAULT_TIMEOUT_MS * 2,
-                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
-                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
     }
 
 }

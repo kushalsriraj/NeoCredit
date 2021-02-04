@@ -26,6 +26,12 @@ public class SplashScreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        init();
+
+    }
+
+    private void init() {
+
         logo = findViewById(R.id.logo);
 
         RotateAnimation rotate = new RotateAnimation(0, 180, Animation.RESTART, 0.5f, Animation.RESTART, 0.5f);
@@ -50,5 +56,8 @@ public class SplashScreenActivity extends AppCompatActivity {
             }
         }, 2000);
 
+    }
+
+    public void openpermission(View view) {
     }
 }

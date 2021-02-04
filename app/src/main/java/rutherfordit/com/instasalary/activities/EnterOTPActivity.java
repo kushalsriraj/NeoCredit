@@ -30,16 +30,19 @@ import java.util.HashMap;
 import java.util.Map;
 
 import rutherfordit.com.instasalary.R;
+import rutherfordit.com.instasalary.extras.Constants;
 import rutherfordit.com.instasalary.extras.MySingleton;
+import rutherfordit.com.instasalary.extras.ResponseHandler;
 import rutherfordit.com.instasalary.extras.SharedPrefsManager;
 import rutherfordit.com.instasalary.extras.Urls;
+import rutherfordit.com.instasalary.extras.VolleyRequest;
 
-public class EnterOTPActivity extends AppCompatActivity {
+public class EnterOTPActivity extends AppCompatActivity implements ResponseHandler {
 
     RelativeLayout submitadharotp;
     ImageView purplebackarrow;
     SharedPrefsManager sharedPrefsManager;
-    //CardView loader_login;
+    VolleyRequest volleyRequest;
 
     @SuppressLint("ResourceAsColor")
     @Override
@@ -47,19 +50,16 @@ public class EnterOTPActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_enter_o_t_p);
 
+        volleyRequest = new VolleyRequest();
         sharedPrefsManager = new SharedPrefsManager(getApplicationContext());
         submitadharotp = findViewById(R.id.submitadharotp);
         purplebackarrow = findViewById(R.id.purplebackarrow);
 
         final PinView pinView = findViewById(R.id.pinView);
-        //  pinView.setTextColor(ResourcesCompat.getColor(getResources(), R.color.black, getTheme()));
-        //  pinView.setTextColor(ResourcesCompat.getColorStateList(getResources(), R.color.black, getTheme()));
-        //  pinView.setLineColor(ResourcesCompat.getColor(getResources(), R.color.black, getTheme()));
         pinView.setLineColor(ResourcesCompat.getColorStateList(getResources(), R.color.neopurple, getTheme()));
         pinView.setItemCount(4);
-        pinView.setAnimationEnable(true);// start animation when adding text
+        pinView.setAnimationEnable(true);
         pinView.setCursorVisible(true);
-        //   pinView.setCursorColor(ResourcesCompat.getColor(getResources(), R.color.black, getTheme()));
         pinView.setCursorWidth(getResources().getDimensionPixelSize(R.dimen.pv_pin_view_cursor_width));
         pinView.setCursorColor(Color.BLACK);
 
@@ -111,7 +111,8 @@ public class EnterOTPActivity extends AppCompatActivity {
         });
     }
 
-    private void signUp() {
+    private void signUp()
+    {
         JSONObject jsonObject1 = new JSONObject();
 
         try {
@@ -121,51 +122,12 @@ public class EnterOTPActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, Urls.SIGN_UP, jsonObject1, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-
-                try {
-
-                    JSONObject dataJsonObject = response.getJSONObject("data");
-
-                    JSONObject tokenJsonObject = dataJsonObject.getJSONObject("token");
-
-                    String access_token_signUp = tokenJsonObject.getString("access_token");
-
-                    Log.e("access_token_signUp", "access_token_signUp: " + access_token_signUp );
-
-                    sharedPrefsManager.setAccessToken(access_token_signUp);
-                    Log.e("access_token_signUp", "access_token_signUp: " + sharedPrefsManager.getAccessToken());
-
-                    Intent intent = new Intent(getApplicationContext(), SegmentActivity.class);
-                    startActivity(intent);
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Log.e("onErrorResponse", "onErrorResponse: " + error.getLocalizedMessage());
-            }
-        }) {
-            @Override
-            public Map<String, String> getHeaders() throws AuthFailureError {
-                HashMap<String, String> headers = new HashMap<String, String>();
-                headers.put("Authorization", "application/json");
-                headers.put("Accept", "application/json");
-                return headers;
-            }
-        };
-
-        MySingleton.getInstance(EnterOTPActivity.this).addToRequestQueue(jsonObjectRequest);
+        volleyRequest.JsonObjRequest(EnterOTPActivity.this,jsonObject1,Urls.SIGN_UP, Constants.signup);
 
     }
 
     private void generateToken() {
+
         JSONObject jsonObject1 = new JSONObject();
 
         try {
@@ -180,47 +142,52 @@ public class EnterOTPActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, Urls.GENERATE_TOKEN, jsonObject1, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-                Log.e("response", "response: " + response);
-
-                try {
-                    String access_token = response.getString("access_token");
-
-                    Log.e("access_token", "access_token: " + access_token);
-
-                    //loader_login.setVisibility(View.GONE);
-                    sharedPrefsManager.setAccessToken(access_token);
-                    Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
-                    startActivity(intent);
-                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Log.e("onErrorResponse", "onErrorResponse: " + error.getLocalizedMessage());
-            }
-        }) {
-            @Override
-            public Map<String, String> getHeaders() throws AuthFailureError {
-                HashMap<String, String> headers = new HashMap<String, String>();
-                headers.put("Authorization", "application/json");
-                headers.put("Accept", "application/json");
-                return headers;
-            }
-        };
-
-        MySingleton.getInstance(EnterOTPActivity.this).addToRequestQueue(jsonObjectRequest);
+        volleyRequest.JsonObjRequest(EnterOTPActivity.this,jsonObject1,Urls.GENERATE_TOKEN,Constants.token);
     }
 
     @Override
     public void finish() {
         super.finish();
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+    }
+
+    @Override
+    public void responseHandler(Object obj, int i) {
+
+        JSONObject response = (JSONObject) obj;
+
+        if  (i== Constants.signup)
+        {
+            try
+            {
+                JSONObject dataJsonObject = response.getJSONObject("data");
+                JSONObject tokenJsonObject = dataJsonObject.getJSONObject("token");
+                String access_token_signUp = tokenJsonObject.getString("access_token");
+                sharedPrefsManager.setAccessToken(access_token_signUp);
+
+                Intent intent = new Intent(getApplicationContext(), SegmentActivity.class);
+                startActivity(intent);
+            }
+            catch (JSONException e)
+            {
+                e.printStackTrace();
+            }
+        }
+        else if ( i == Constants.token)
+        {
+            try
+            {
+                String access_token = response.getString("access_token");
+                sharedPrefsManager.setAccessToken(access_token);
+                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+            }
+            catch (JSONException e)
+            {
+                e.printStackTrace();
+            }
+        }
+
     }
 }
