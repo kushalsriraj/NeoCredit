@@ -231,6 +231,15 @@ public class PrivateLimitedCompanyDetailsActivity extends AppCompatActivity impl
                     JSONObject jsonObjectBody = new JSONObject();
 
                     try {
+
+//                        jsonObjectBody.put("name", pl_company_name.getText().toString());
+//                        jsonObjectBody.put("pan_card", pl_pancardnumber.getText().toString());
+//                        jsonObjectBody.put("type_of_services", pl_typeOfService.getText().toString());
+//                        jsonObjectBody.put("business_reg_num", pl_addressProof.getText().toString());
+//                        jsonObjectBody.put("business_addr_proof", pl_addressProof.getText().toString());
+//                        jsonObjectBody.put("landline_number", pl_businessLandline.getText().toString());
+//                        jsonObjectBody.put("mobile_number", pl_businessPhoneNumber.getText().toString());
+
                         jsonObjectBody.put("name","564592362312");
                         jsonObjectBody.put("pan_card","PPPPH1234F");
                         jsonObjectBody.put("type_of_services","123456789098");
