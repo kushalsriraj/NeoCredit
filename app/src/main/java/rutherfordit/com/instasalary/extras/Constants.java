@@ -7,5 +7,7 @@ public class Constants {
     public static int token = 3;
     public static int segment = 4;
     public static int bankdetails = 5;
+    public static int company_details = 6;
+
 
 }

@@ -10,5 +10,6 @@ public class Urls {
     public static String SEGMENT_URL = "http://console.grantlending.in/api/user/segment";
     public static String SAVE_BANK_DETAILS = "http://console.grantlending.in/api/user/bank";
     public static String CLIENT_SECRET_KEY = "thDwYOU3OsXc8AdthjdvSqredu4h9KlcCGt0h3hS";
+    public static String COMPANY_DETAILS = "http://console.grantlending.in/api/companydetails";
 
 }

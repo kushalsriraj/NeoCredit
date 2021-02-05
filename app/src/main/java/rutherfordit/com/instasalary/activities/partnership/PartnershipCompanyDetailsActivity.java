@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
@@ -15,16 +16,27 @@ import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 
-import rutherfordit.com.instasalary.R;
-import rutherfordit.com.instasalary.activities.privatelimited.PrivateLimitedDirectorFirstDetailsActivity;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class PartnershipCompanyDetailsActivity extends AppCompatActivity {
+import rutherfordit.com.instasalary.R;
+import rutherfordit.com.instasalary.activities.EnterOTPActivity;
+import rutherfordit.com.instasalary.activities.privatelimited.PrivateLimitedDirectorFirstDetailsActivity;
+import rutherfordit.com.instasalary.extras.Constants;
+import rutherfordit.com.instasalary.extras.ResponseHandler;
+import rutherfordit.com.instasalary.extras.SharedPrefsManager;
+import rutherfordit.com.instasalary.extras.Urls;
+import rutherfordit.com.instasalary.extras.VolleyRequest;
+
+public class PartnershipCompanyDetailsActivity extends AppCompatActivity implements ResponseHandler {
 
     RelativeLayout par_next_button;
     ImageView purplebackarrow;
     TextInputEditText par_company_name, par_pancardnumber, par_typeOfService, par_addressProof, par_businessRegNumber, par_businessLandline, par_businessPhoneNumber;
     Spinner par_Spinner_businessAddressProof, par_Spinner_typeOfService;
     boolean click = false;
+    SharedPrefsManager sharedPrefsManager;
+    VolleyRequest volleyRequest;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -55,6 +67,10 @@ public class PartnershipCompanyDetailsActivity extends AppCompatActivity {
         par_Spinner_typeOfService = findViewById(R.id.par_Spinner_typeOfService);
 
         purplebackarrow = findViewById(R.id.purplebackarrow);
+
+        sharedPrefsManager = new SharedPrefsManager(getApplicationContext());
+        volleyRequest = new VolleyRequest();
+
     }
 
     private void textWatchers() {
@@ -213,6 +229,32 @@ public class PartnershipCompanyDetailsActivity extends AppCompatActivity {
 
                 if (click)
                 {
+                    JSONObject jsonObjectBody = new JSONObject();
+
+                    try {
+//                        jsonObjectBody.put("name", par_company_name.getText().toString());
+//                        jsonObjectBody.put("pan_card", par_pancardnumber.getText().toString());
+//                        jsonObjectBody.put("type_of_services", par_typeOfService.getText().toString());
+//                        jsonObjectBody.put("business_reg_num", par_businessRegNumber.getText().toString());
+//                        jsonObjectBody.put("business_addr_proof", par_addressProof.getText().toString());
+//                        jsonObjectBody.put("landline_number", par_businessLandline.getText().toString());
+//                        jsonObjectBody.put("mobile_number", par_businessPhoneNumber.getText().toString());
+
+                        jsonObjectBody.put("name","564592362312");
+                        jsonObjectBody.put("pan_card","PPPPH1234F");
+                        jsonObjectBody.put("type_of_services","123456789098");
+                        jsonObjectBody.put("business_reg_num","1999-12-23");
+                        jsonObjectBody.put("business_addr_proof","PPPPH1234F");
+                        jsonObjectBody.put("landline_number","PPPPH1234F");
+                        jsonObjectBody.put("pincode","123456667");
+                        jsonObjectBody.put("mobile_number","1224567888");
+
+                        volleyRequest.JsonObjRequestAuthorization(PartnershipCompanyDetailsActivity.this,jsonObjectBody, Urls.COMPANY_DETAILS, Constants.company_details,sharedPrefsManager.getAccessToken());
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
                     Intent intent = new Intent(getApplicationContext(), PrivateLimitedDirectorFirstDetailsActivity.class);
                     startActivity(intent);
                 }
@@ -225,4 +267,14 @@ public class PartnershipCompanyDetailsActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void responseHandler(Object obj, int i) {
+
+        if(i == Constants.company_details){
+
+            JSONObject response = (JSONObject)obj;
+
+            Log.e("response", "responseHandler: " + response );
+        }
+    }
 }
