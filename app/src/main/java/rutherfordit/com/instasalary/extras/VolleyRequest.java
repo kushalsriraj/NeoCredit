@@ -88,6 +88,8 @@ public class VolleyRequest {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
                 Map<String, String> params = new HashMap<String, String>();
+                params.put("Content-type" , "application/json");
+                params.put("Accept" , "application/json");
                 params.put("Authorization" , accesstoken);
                 return params;
             }

@@ -2,6 +2,8 @@ package rutherfordit.com.instasalary.extras;
 
 public class Urls {
 
+    public static final String IMAGE_CONSTANT = "https://instasalaryfitdev.s3.ap-south-1.amazonaws.com";
+
     public static String SEND_OTP = "http://console.grantlending.in/api/sendotp";
     public static String GENERATE_TOKEN = "http://console.grantlending.in/oauth/token";
     public static String SIGN_UP = "http://console.grantlending.in/api/signup";

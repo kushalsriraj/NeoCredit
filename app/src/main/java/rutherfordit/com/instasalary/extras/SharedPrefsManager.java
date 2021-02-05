@@ -15,6 +15,7 @@ public class SharedPrefsManager {
     String PHONE_NUMBER ="phone_number";
     String IS_USER_EXISTS = "isuserExits";
     String OTP_NUMBER = "otp";
+    String SEGMENT = "segment";
 
     public SharedPrefsManager(Context context)
     {
@@ -76,6 +77,16 @@ public class SharedPrefsManager {
     public String getOtp()
     {
         return sharedPreferences.getString(OTP_NUMBER,"");
+    }
+
+    public void setSegment(String segment)
+    {
+        sharedPreferences.edit().putString(SEGMENT, segment).apply();
+    }
+
+    public String getSegment()
+    {
+        return sharedPreferences.getString(SEGMENT,"");
     }
 
 }

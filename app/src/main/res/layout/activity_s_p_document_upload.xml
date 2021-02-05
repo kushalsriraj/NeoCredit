@@ -116,7 +116,7 @@
                             android:layout_marginTop="5dp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="PAN"
+                            android:text="Business PAN"
                             android:gravity="center"
                             android:textSize="12dp"
                             android:textColor="@color/black"/>
@@ -187,7 +187,7 @@
                             android:layout_marginTop="5dp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Adhar"
+                            android:text="Adhaar"
                             android:gravity="center"
                             android:textSize="12dp"
                             android:textColor="@color/black"/>
@@ -266,7 +266,7 @@
                             android:layout_marginTop="5dp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Registration Proof"
+                            android:text="Business Registration Proof"
                             android:gravity="center"
                             android:textSize="12dp"
                             android:textColor="@color/black"/>
@@ -337,7 +337,7 @@
                             android:layout_marginTop="5dp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Bank Statements"
+                            android:text="Bank Statement 1 Year"
                             android:gravity="center"
                             android:textSize="12dp"
                             android:textColor="@color/black"/>
@@ -487,7 +487,7 @@
                             android:layout_marginTop="5dp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="SLA"
+                            android:text="Valid SLA"
                             android:gravity="center"
                             android:textSize="12dp"
                             android:textColor="@color/black"/>
@@ -566,7 +566,7 @@
                             android:layout_marginTop="5dp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Invoice"
+                            android:text="Last 6 Invoices"
                             android:gravity="center"
                             android:textSize="12dp"
                             android:textColor="@color/black"/>
@@ -716,7 +716,7 @@
                             android:layout_marginTop="5dp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="IT Returns"
+                            android:text="3 years IT Returns"
                             android:gravity="center"
                             android:textSize="12dp"
                             android:textColor="@color/black"/>

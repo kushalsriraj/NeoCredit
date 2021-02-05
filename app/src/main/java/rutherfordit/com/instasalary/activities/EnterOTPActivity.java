@@ -43,6 +43,7 @@ public class EnterOTPActivity extends AppCompatActivity implements ResponseHandl
     ImageView purplebackarrow;
     SharedPrefsManager sharedPrefsManager;
     VolleyRequest volleyRequest;
+    CardView loader_otp;
 
     @SuppressLint("ResourceAsColor")
     @Override
@@ -54,7 +55,8 @@ public class EnterOTPActivity extends AppCompatActivity implements ResponseHandl
         sharedPrefsManager = new SharedPrefsManager(getApplicationContext());
         submitadharotp = findViewById(R.id.submitadharotp);
         purplebackarrow = findViewById(R.id.purplebackarrow);
-
+        loader_otp = findViewById(R.id.loader_otp);
+        loader_otp.setVisibility(View.GONE);
         final PinView pinView = findViewById(R.id.pinView);
         pinView.setLineColor(ResourcesCompat.getColorStateList(getResources(), R.color.neopurple, getTheme()));
         pinView.setItemCount(4);
@@ -71,30 +73,30 @@ public class EnterOTPActivity extends AppCompatActivity implements ResponseHandl
 
                 if (pinView.getText().toString().length()!=4)
                 {
-
-                    ObjectAnimator
-                            .ofFloat(pinView, "translationX", 0, 25, -25, 25, -25,15, -15, 6, -6, 0)
+                    ObjectAnimator.ofFloat(pinView, "translationX", 0, 25, -25, 25, -25,15, -15, 6, -6, 0)
                             .setDuration(1000)
                             .start();
-
                 }
-                else {
+                else
+                {
                     if(pinView.getText().toString().equals(sharedPrefsManager.getOtp()))
                     {
                         
                         if (sharedPrefsManager.getIsUserExists().equalsIgnoreCase("true"))
                         {
+                            loader_otp.setVisibility(View.VISIBLE);
                             generateToken();
                         }
-                        else {
-
+                        else
+                        {
+                            loader_otp.setVisibility(View.VISIBLE);
                             signUp();
                         }
                     }
-                    else {
+                    else
+                    {
                         Toast.makeText(getApplicationContext(), "OTP Doesn't match", Toast.LENGTH_LONG).show();
-                        ObjectAnimator
-                                .ofFloat(pinView, "translationX", 0, 25, -25, 25, -25,15, -15, 6, -6, 0)
+                        ObjectAnimator.ofFloat(pinView, "translationX", 0, 25, -25, 25, -25,15, -15, 6, -6, 0)
                                 .setDuration(1000)
                                 .start();
                     }
@@ -163,8 +165,8 @@ public class EnterOTPActivity extends AppCompatActivity implements ResponseHandl
                 JSONObject dataJsonObject = response.getJSONObject("data");
                 JSONObject tokenJsonObject = dataJsonObject.getJSONObject("token");
                 String access_token_signUp = tokenJsonObject.getString("access_token");
-                sharedPrefsManager.setAccessToken(access_token_signUp);
-
+                sharedPrefsManager.setAccessToken("Bearer " +access_token_signUp);
+                loader_otp.setVisibility(View.GONE);
                 Intent intent = new Intent(getApplicationContext(), SegmentActivity.class);
                 startActivity(intent);
             }
@@ -178,7 +180,8 @@ public class EnterOTPActivity extends AppCompatActivity implements ResponseHandl
             try
             {
                 String access_token = response.getString("access_token");
-                sharedPrefsManager.setAccessToken(access_token);
+                sharedPrefsManager.setAccessToken("Bearer " + access_token);
+                loader_otp.setVisibility(View.GONE);
                 Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                 startActivity(intent);
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);

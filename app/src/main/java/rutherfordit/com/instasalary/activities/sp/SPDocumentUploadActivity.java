@@ -168,7 +168,7 @@ public class SPDocumentUploadActivity extends AppCompatActivity {
         upload_pdf.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent4 = new Intent(getApplicationContext(), NormalFilePickActivity.class);
+                Intent intent4 = new Intent(SPDocumentUploadActivity.this, NormalFilePickActivity.class);
                 intent4.putExtra(Constant.MAX_NUMBER, 1);
                 intent4.putExtra(NormalFilePickActivity.SUFFIX, new String[]{"xlsx", "xls", "doc", "docx", "ppt", "pptx", "pdf"});
                 startActivityForResult(intent4, Constant.REQUEST_CODE_PICK_FILE);

@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -31,10 +32,14 @@ import rutherfordit.com.instasalary.R;
 import rutherfordit.com.instasalary.activities.partnership.PartnershipCompanyDetailsActivity;
 import rutherfordit.com.instasalary.activities.privatelimited.PrivateLimitedCompanyDetailsActivity;
 import rutherfordit.com.instasalary.activities.sp.SoleProprietorshipDetailsActivity;
+import rutherfordit.com.instasalary.extras.Constants;
 import rutherfordit.com.instasalary.extras.MySingleton;
+import rutherfordit.com.instasalary.extras.ResponseHandler;
+import rutherfordit.com.instasalary.extras.SharedPrefsManager;
 import rutherfordit.com.instasalary.extras.Urls;
+import rutherfordit.com.instasalary.extras.VolleyRequest;
 
-public class SegmentActivity extends AppCompatActivity {
+public class SegmentActivity extends AppCompatActivity implements ResponseHandler {
 
     RelativeLayout SegmentsubmitButton;
     RadioGroup rg;
@@ -43,6 +48,8 @@ public class SegmentActivity extends AppCompatActivity {
     AppCompatRadioButton partnershipForm;
     ImageView purplebackarrow;
     String segment;
+    VolleyRequest volleyRequest;
+    SharedPrefsManager sharedPrefsManager;
 
     @Override
     protected void onRestart() {
@@ -56,6 +63,8 @@ public class SegmentActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_segment);
 
+        sharedPrefsManager = new SharedPrefsManager(SegmentActivity.this);
+        volleyRequest = new VolleyRequest();
         rg = findViewById(R.id.radio_group_transfer);
         soleProprietorship = findViewById(R.id.soleProprietorship);
         privateLimited = findViewById(R.id.privateLimited);
@@ -91,9 +100,10 @@ public class SegmentActivity extends AppCompatActivity {
                 @SuppressLint("ResourceAsColor")
                 @Override
                 public void onCheckedChanged(RadioGroup group, int checkedId) {
+
                     if (soleProprietorship.isChecked())
                     {
-                        segment = "1";
+                        sharedPrefsManager.setSegment("1");
                         //SegmentsubmitButton.setBackgroundColor(getResources().getColor(R.color.neopurple));
                         SegmentsubmitButton.setBackground(getDrawable(R.drawable.gradient_neocredit));
 
@@ -109,7 +119,7 @@ public class SegmentActivity extends AppCompatActivity {
                     }
                     else if (privateLimited.isChecked())
                     {
-                        segment = "2";
+                        sharedPrefsManager.setSegment("2");
 
                         SegmentsubmitButton.setBackground(getDrawable(R.drawable.gradient_neocredit));
 
@@ -125,7 +135,7 @@ public class SegmentActivity extends AppCompatActivity {
 
                     else if (partnershipForm.isChecked())
                     {
-                        segment = "3";
+                        sharedPrefsManager.setSegment("3");
 
                         SegmentsubmitButton.setBackground(getDrawable(R.drawable.gradient_neocredit));
 
@@ -147,7 +157,48 @@ public class SegmentActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 segmentApi();
+            }
+        });
 
+    }
+
+    private void segmentApi() {
+
+        JSONObject segmentJsonObject = new JSONObject();
+
+        try {
+            segmentJsonObject.put("segment", sharedPrefsManager.getSegment());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        volleyRequest.JsonObjRequestAuthorization(SegmentActivity.this,segmentJsonObject,Urls.SEGMENT_URL,Constants.segment,sharedPrefsManager.getAccessToken());
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+    }
+
+    @Override
+    public void responseHandler(Object obj, int i) {
+
+        if (i == Constants.segment)
+        {
+
+            JSONObject response = (JSONObject) obj;
+
+            Log.e("resp", "responseHandler: " + response );
+
+            if (response.has("message"))
+            {
                 if (soleProprietorship.isChecked())
                 {
                     Intent intent = new Intent(getApplicationContext(), SoleProprietorshipDetailsActivity.class);
@@ -164,52 +215,6 @@ public class SegmentActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
             }
-        });
-
-    }
-
-    private void segmentApi() {
-
-        JSONObject segmentJsonObject = new JSONObject();
-
-        try {
-            segmentJsonObject.put("segment", segment);
-        } catch (JSONException e) {
-            e.printStackTrace();
         }
-
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, Urls.SEGMENT_URL, segmentJsonObject, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-                Log.e("jsonObjectRequest", "jsonObjectRequest: " + response);
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Log.e("error", "error: " + error.getLocalizedMessage() );
-            }
-        }){
-            @Override
-            public Map<String, String> getHeaders() throws AuthFailureError {
-                HashMap<String, String> headers = new HashMap<String, String>();
-                headers.put("Accept", "application/json");
-                headers.put("Content-Type", "application/json");
-                headers.put("Authorization", "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIyIiwianRpIjoiZTFjMWM3MDZhZTk1MTM5YWY5NmRiM2JjYTFmMjIyNmI2MTA2ZTc1ZjZmMmU3NjUzYzVjMDY2YWZkMWFmOTBjMWFmMzhmYzljYzVkMGM1YmQiLCJpYXQiOjE2MTIyNjU0NDEsIm5iZiI6MTYxMjI2NTQ0MSwiZXhwIjoxNjQzODAxNDQwLCJzdWIiOiIyIiwic2NvcGVzIjpbIioiXX0.l1jpm70O8DeuL1_yyeMpdhfdrjAYGPTuqAaoeVyn5y4lxOBBTfuRocY-IKjGiQJ-NvvgZf6HA4QGqC4IW56Kef7Z-LLf9v9GAnLTJAGitnDdG1fWoZf6lox7ty0yQML3Qkm4LlQ-5P0_xTwYfmOnnB7gB-pfK8YybGmt8bhWMJex-2ZH-sTzqawnNm5j9yURQBM-cI5HSBoub-rg5CBVqytF2EVPR_ssh9MSzSdvIh1C6QAn8OvLEghOMod_DhEJMBKBAWNsyH6llmShu1rEsbxicvmosXORovYE1ABfEXsgO_YNZTgI7jj3AAmddj3wYD9VCYAT2XooMRs95dJfUAeQl08ceLAf9PVG94k0ebWOAScG0dr9LujDhSs1MQn3rUCipyQF2193YxnIwKR445yFIPufrUQF1D8qkSNF_aKY4ituF_HAHP4JA7vFLk75z_Ae3Kx_D9qn4f0-AZqN_tfXZY3x2-Oa6ZGFBkYVs6QLQWbiAswAvjTOIRpnijVJ3ULVOaZM2WJ-NQywDu6npmT8w14ki88S3Ygu6_8wG-I8AlkDisZLzWSerWnsljXCIHXdN9YW8xvbw5_KnZACw-XV0aPeFXN8a3QNsBnVEAn2yqqkR_IAVVxdpkr1jAQV1SABP0rnRb6vbEz7rrt8brafiM5260VfjpdweIh6os4");
-                return headers;
-            }
-        };
-
-        MySingleton.getInstance(SegmentActivity.this).addToRequestQueue(jsonObjectRequest);
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-    }
-
-    @Override
-    public void finish() {
-        super.finish();
-        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 }
