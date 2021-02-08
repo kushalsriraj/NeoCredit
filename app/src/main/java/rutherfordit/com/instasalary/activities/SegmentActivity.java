@@ -194,7 +194,7 @@ public class SegmentActivity extends AppCompatActivity implements ResponseHandle
                 {
                     loader_login.setVisibility(View.GONE);
 
-                    Intent intent = new Intent(getApplicationContext(), SoleProprietorshipDetailsActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), AdharAuthenticationActivity.class);
                     startActivity(intent);
                 }
                 else if (privateLimited.isChecked())

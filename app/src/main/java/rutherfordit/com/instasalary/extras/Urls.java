@@ -2,6 +2,7 @@ package rutherfordit.com.instasalary.extras;
 
 public class Urls {
 
+    public static final String DIGIO_AUTHENTICATOR = "Basic QUlZODc1QjFZQjhFVTQxWTFaWlE3MUdSMUhQSjVEWDc6V05SVEQ4VVVTSkQ5UDgzS1RRWEkxU1g3NU1NQzNWVzY=";
     public static final String IMAGE_CONSTANT = "https://instasalaryfitdev.s3.ap-south-1.amazonaws.com";
 
     public static String SEND_OTP = "http://console.grantlending.in/api/sendotp";
@@ -15,4 +16,5 @@ public class Urls {
     public static String PENNY_DROP_BANK_DETAILS = "https://ext.digio.in:444/client/verify/bank_account";
 
     public static String IMAGE_UPLOAD = "http://console.grantlending.in/api/user/imageupload";
+    public static String REQUEST_TEMPLATE = "https://ext.digio.in:444/client/kyc/v2/request/with_template";
 }

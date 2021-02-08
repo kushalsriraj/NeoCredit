@@ -5,7 +5,8 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="android.permission.CAMERA" />
@@ -19,53 +20,77 @@
     <uses-permission android:name="android.permission.ACCESS_MEDIA_LOCATION" />
 
     <application
-        android:allowBackup="true"
-        android:appComponentFactory="android.support.v4.app.CoreComponentFactory"
-        android:fullBackupContent="true"
-        android:hardwareAccelerated="true"
-        android:icon="@drawable/neocreditlogo"
-        android:label="@string/app_name"
-        android:requestLegacyExternalStorage="true"
-        android:roundIcon="@drawable/neocreditlogo"
-        android:supportsRtl="true"
-        android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning"
-        tools:node="replace"
         tools:overrideLibrary="androidx.camera.extensions"
-        tools:targetApi="m">
-        <activity android:name=".activities.AdharAuthenticationActivity"></activity>
+        tools:targetApi="q"
+        android:requestLegacyExternalStorage="true"
+        android:fullBackupContent="true"
+        android:hardwareAccelerated="true"
+        android:allowBackup="true"
+        android:supportsRtl="true"
+
+        android:roundIcon="@drawable/neocreditlogo"
+        android:theme="@style/AppTheme"
+        android:icon="@drawable/neocreditlogo"
+        android:label="@string/app_name">
+        <activity
+            android:name=".activities.AdharAuthenticationActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name="in.digio.sdk.kyc.DigioMainActivity"
-            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"></activity>
-        <activity android:name=".activities.DocsUploadActivity" />
-        <activity android:name=".activities.partnership.ParCreditRequirementsActivity" />
-        <activity android:name=".activities.privatelimited.PlCreditRequirementsActivity" />
-        <activity android:name=".activities.sp.SpCreditRequirementsActivity" />
-        <activity android:name=".activities.partnership.PartnershipDocUploadActivity" />
-        <activity android:name=".activities.privatelimited.PrivateLimitedDocUploadActivity" />
-        <activity android:name=".activities.sp.SPDocumentUploadActivity"></activity>
-        <activity android:name=".activities.partnership.PartnershipPartnerSecondDetailsActivity" />
-        <activity android:name=".activities.partnership.PartnershipPartnerFirstDetailsActivity" />
-        <activity android:name=".activities.partnership.PartnershipCompanyDetailsActivity" />
-        <activity android:name=".activities.privatelimited.PrivateLimitedDirectorSecondDetailsActivity" />
-        <activity android:name=".activities.privatelimited.PrivateLimitedDirectorFirstDetailsActivity" />
-        <activity android:name=".activities.privatelimited.PrivateLimitedCompanyDetailsActivity" />
-        <activity android:name=".activities.sp.SoleProprietorshipCompanyDetailsActivity" />
-        <activity android:name=".activities.sp.SoleProprietorshipDetailsActivity" />
-        <activity android:name=".activities.HomeActivity" />
-        <activity android:name=".activities.BankDetailsActivity" />
-        <activity android:name=".activities.PersonalDetailsActivity" />
-        <activity android:name=".activities.SegmentActivity" />
-        <activity android:name=".activities.EnterOTPActivity" />
-        <activity android:name=".activities.LoginActivity">
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize" />
+        <activity android:name=".activities.DocsUploadActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activities.partnership.ParCreditRequirementsActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activities.privatelimited.PlCreditRequirementsActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activities.sp.SpCreditRequirementsActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activities.partnership.PartnershipDocUploadActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activities.privatelimited.PrivateLimitedDocUploadActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activities.sp.SPDocumentUploadActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.SplashScreenActivity" />
+        <activity android:name=".activities.partnership.PartnershipPartnerSecondDetailsActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activities.partnership.PartnershipPartnerFirstDetailsActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activities.partnership.PartnershipCompanyDetailsActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activities.privatelimited.PrivateLimitedDirectorSecondDetailsActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activities.privatelimited.PrivateLimitedDirectorFirstDetailsActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activities.privatelimited.PrivateLimitedCompanyDetailsActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activities.sp.SoleProprietorshipCompanyDetailsActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activities.sp.SoleProprietorshipDetailsActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activities.HomeActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activities.BankDetailsActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activities.PersonalDetailsActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activities.SegmentActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activities.EnterOTPActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activities.LoginActivity"
+            android:screenOrientation="portrait">
+
+        </activity>
+        <activity android:name=".activities.SplashScreenActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

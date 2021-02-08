@@ -1,14 +1,19 @@
 package rutherfordit.com.instasalary.activities.sp;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.loader.content.CursorLoader;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.ContentUris;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.Color;
@@ -18,6 +23,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -56,7 +62,9 @@ import rutherfordit.com.instasalary.extras.Urls;
 
 public class SPDocumentUploadActivity extends AppCompatActivity {
 
+    private final String[] REQUIRED_PERMISSIONS = new String[]{"android.permission.CAMERA", "android.permission.WRITE_EXTERNAL_STORAGE"};
     SharedPrefsManager sharedPrefsManager;
+    private int REQUEST_CODE_PERMISSIONS = 1000;
     String status,filename;
     RelativeLayout Submit_sp_docs;
     ImageView image_sp_pan,image_sp_adhar,image_sp_registrationProof,image_sp_bankStatement,image_sp_gstr,image_sp_sla
@@ -71,38 +79,59 @@ public class SPDocumentUploadActivity extends AppCompatActivity {
     String mSelectedDocFile, Pdf_name;
     private final int Request_Camera = 1;
     private final int Request_Gallery = 2;
-    Uri imguri,uri;
+    Uri imguri;
+    String pan_uploaded, adhar_uploaded, itr_uploaded, gstr_uploaded,rental_uploaded, invoices_uploaded,sla_uploaded, bankstatement_uploaded, registration_proof_uploaded;
+
+    public static void openPermissionSettings(Activity activity) {
+        Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, Uri.parse("package:" + activity.getPackageName()));
+        intent.addCategory(Intent.CATEGORY_DEFAULT);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        activity.startActivity(intent);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+
+        if (requestCode == REQUEST_CODE_PERMISSIONS) {
+            if (allPermissionsGranted()) {
+                init();
+            } else {
+                Toasty.warning(this, "Permissions not granted by the user.", Toast.LENGTH_SHORT).show();
+                openPermissionSettings(SPDocumentUploadActivity.this);
+            }
+        }
+    }
+
+    private boolean allPermissionsGranted() {
+
+        for (String permission : REQUIRED_PERMISSIONS) {
+            if (ContextCompat.checkSelfPermission(this, permission) != PackageManager.PERMISSION_GRANTED) {
+                return false;
+            }
+        }
+        return true;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_s_p_document_upload);
 
+        if (allPermissionsGranted()) {
+            init();
+        } else {
+            ActivityCompat.requestPermissions(this, REQUIRED_PERMISSIONS, REQUEST_CODE_PERMISSIONS);
+        }
+
+    }
+
+    private void init() {
+
         sharedPrefsManager = new SharedPrefsManager(SPDocumentUploadActivity.this);
         view = getLayoutInflater().inflate(R.layout.bottomsheetdialog_sp, null);
         bottomSheetDialog = new BottomSheetDialog(SPDocumentUploadActivity.this);
         bottomSheetDialog.setContentView(view);
         bottomSheetDialog.setCancelable(true);
-
-        PermissionListener permissionlistener = new PermissionListener() {
-            @Override
-            public void onPermissionGranted() {
-                Toast.makeText(SPDocumentUploadActivity.this, "Permission Granted", Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onPermissionDenied(List<String> deniedPermissions) {
-                Toast.makeText(SPDocumentUploadActivity.this, "Permission Denied\n" + deniedPermissions.toString(), Toast.LENGTH_SHORT).show();
-            }
-
-
-        };
-
-        TedPermission.with(this)
-                .setPermissionListener(permissionlistener)
-                .setDeniedMessage("If you reject permission,you can not use this service\n\nPlease turn on permissions at [Setting] > [Permission]")
-                .setPermissions(Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.CAMERA)
-                .check();
 
         upload_pdf = view.findViewById(R.id.upload_pdf_sp);
         upload_from_camera = view.findViewById(R.id.upload_from_camera_sp);
@@ -213,6 +242,58 @@ public class SPDocumentUploadActivity extends AppCompatActivity {
             }
         });
 
+        image_sp_sla.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                status = "sla";
+                upload_pdf.setVisibility(View.VISIBLE);
+                view1.setVisibility(View.GONE);
+                upload_from_camera.setVisibility(View.GONE);
+                view2.setVisibility(View.GONE);
+                upload_from_gallery.setVisibility(View.GONE);
+                bottomSheetDialog.show();
+            }
+        });
+
+        image_sp_invoice.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                status = "invoice";
+                upload_pdf.setVisibility(View.VISIBLE);
+                view1.setVisibility(View.GONE);
+                upload_from_camera.setVisibility(View.GONE);
+                view2.setVisibility(View.GONE);
+                upload_from_gallery.setVisibility(View.GONE);
+                bottomSheetDialog.show();
+            }
+        });
+
+        image_sp_rentAggrement.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                status = "rentaggrement";
+                upload_pdf.setVisibility(View.VISIBLE);
+                view1.setVisibility(View.GONE);
+                upload_from_camera.setVisibility(View.GONE);
+                view2.setVisibility(View.GONE);
+                upload_from_gallery.setVisibility(View.GONE);
+                bottomSheetDialog.show();
+            }
+        });
+
+        image_sp_itr.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                status = "itr";
+                upload_pdf.setVisibility(View.VISIBLE);
+                view1.setVisibility(View.GONE);
+                upload_from_camera.setVisibility(View.GONE);
+                view2.setVisibility(View.GONE);
+                upload_from_gallery.setVisibility(View.GONE);
+                bottomSheetDialog.show();
+            }
+        });
+
         upload_pdf.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -222,47 +303,6 @@ public class SPDocumentUploadActivity extends AppCompatActivity {
                 intent4.putExtra(NormalFilePickActivity.SUFFIX, new String[]{"xlsx", "xls", "doc", "docx", "ppt", "pptx", "pdf"});
                 startActivityForResult(intent4, Constant.REQUEST_CODE_PICK_FILE);
                 bottomSheetDialog.cancel();
-
-               /*
-                bottomSheetDialog.cancel();*/
-                /*if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q){
-                    Intent intent = new Intent();
-                    intent.setAction(Intent.ACTION_GET_CONTENT);
-                    intent.setType("application/pdf");
-                    startActivityForResult(intent, 1212);
-                }
-                else
-                {
-
-                    *//*ArrayList<String> docs = new ArrayList<>();
-                    docs.add(DocPicker.DocTypes.PDF);
-
-                    DocPickerConfig pickerConfig = new DocPickerConfig()
-                            .setAllowMultiSelection(false)
-                            .setShowConfirmationDialog(true)
-                            .setExtArgs(docs);
-
-                    DocPicker.with(SPDocumentUploadActivity.this)
-                            .setConfig(pickerConfig)
-                            .onResult()
-                            .subscribe(new Observer<ArrayList<Uri>>() {
-                                @Override
-                                public void onSubscribe(Disposable d) { }
-
-                                @Override
-                                public void onNext(ArrayList<Uri> uris)
-                                {
-                                    Log.e("uris", "onNext: " + uris );
-                                }
-
-                                @Override
-                                public void onError(Throwable e) { }
-
-                                @Override
-                                public void onComplete() { }
-                            });*//*
-
-                }*/
             }
         });
 
@@ -292,8 +332,6 @@ public class SPDocumentUploadActivity extends AppCompatActivity {
 
     }
 
-
-    @SuppressLint("UseCompatLoadingForDrawables")
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -311,26 +349,11 @@ public class SPDocumentUploadActivity extends AppCompatActivity {
                 mSelectedDocFile = Url.getPath();
                 Pdf_name = Url.getName();
 
-                uploadpdf(status,uri);
+                uploadpdf();
 
 
             } else if (resultCode == RESULT_CANCELED) {
                 Toasty.info(getApplicationContext(), "Cancelled..", Toast.LENGTH_SHORT).show();
-            }
-        }
-
-        else if (requestCode == 1212)
-        {
-            if (resultCode == RESULT_OK) {
-                uri = data.getData();
-              //  uploadFile(uri);
-                String uriString = uri.toString();
-                File myFile = new File(uriString);
-                mSelectedDocFile = myFile.getAbsolutePath();
-                Pdf_name = myFile.getName();
-              //  String fullPath = Commons.getPath(uri, SPDocumentUploadActivity.this);
-              //  Log.e("fullPath", "onActivityResult: " + fullPath );
-                uploadpdf(uriString,uri);
             }
         }
 
@@ -382,25 +405,6 @@ public class SPDocumentUploadActivity extends AppCompatActivity {
 
     }
 
-    /*public static File bitmapToFile(Bitmap bitmap, String fileNameToSave) {
-        File file = null;
-        try {
-            file = new File(Environment.getExternalStorageDirectory() + File.separator + fileNameToSave);
-            file.createNewFile();
-            ByteArrayOutputStream bos = new ByteArrayOutputStream();
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 100 , bos);
-            byte[] bitmapdata = bos.toByteArray();
-            FileOutputStream fos = new FileOutputStream(file);
-            fos.write(bitmapdata);
-            fos.flush();
-            fos.close();
-            return file;
-        }catch (Exception e){
-            e.printStackTrace();
-            return file;
-        }
-    }*/
-
     private String getRealPathFromURI(Uri captured_image) {
         String[] proj = {MediaStore.Images.Media.DATA};
         CursorLoader loader = new CursorLoader(this, captured_image, proj, null, null, null);
@@ -417,11 +421,34 @@ public class SPDocumentUploadActivity extends AppCompatActivity {
 
         String code = "";
 
-        if  (status.equals("pan")){
-            code = "8";
-        }
-        else if  (status.equals("adhar")){
-            code = "1";
+        switch (status) {
+            case "pan":
+                code = "8";
+                break;
+            case "adhar":
+                code = "1";
+                break;
+            case "registration":
+                code = "10";
+                break;
+            case "bankstatement":
+                code = "11";
+                break;
+            case "gstr":
+                code = "12";
+                break;
+            case "sla":
+                code = "13";
+                break;
+            case "invoice":
+                code = "14";
+                break;
+            case "rentaggrement":
+                code = "15";
+                break;
+            case "itr":
+                code = "16";
+                break;
         }
 
         MultipartBody.Builder builder = new MultipartBody.Builder().setType(MultipartBody.FORM);
@@ -468,15 +495,40 @@ public class SPDocumentUploadActivity extends AppCompatActivity {
 
     }
 
-    private void uploadpdf(String status, Uri uri) {
+    private void uploadpdf() {
 
         String code = "";
 
-        if (status.equals("pan")) {
-            code = "8";
-        } else if (status.equals("adhar")) {
-            code = "1";
+        switch (status) {
+            case "pan":
+                code = "8";
+                break;
+            case "adhar":
+                code = "1";
+                break;
+            case "registration":
+                code = "10";
+                break;
+            case "bankstatement":
+                code = "11";
+                break;
+            case "gstr":
+                code = "12";
+                break;
+            case "sla":
+                code = "13";
+                break;
+            case "invoice":
+                code = "14";
+                break;
+            case "rentaggrement":
+                code = "15";
+                break;
+            case "itr":
+                code = "16";
+                break;
         }
+
 
         MultipartBody.Builder builder = new MultipartBody.Builder().setType(MultipartBody.FORM);
 
@@ -517,7 +569,85 @@ public class SPDocumentUploadActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call call, okhttp3.Response response) throws IOException {
 
-                Log.e("httpresponse", "onResponse: " + response.body().string() );
+                assert response.body() != null;
+                String body = response.body().string();
+                Log.e("httpresponse", "onResponse: " + body);
+
+                if (status.equals("pan"))
+                {
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+
+
+
+                        }
+                    });
+                } else if (status.equals("adhar"))
+                {
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+
+                        }
+                    });
+                } else if (status.equals("registration"))
+                {
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+
+                        }
+                    });
+                } else if (status.equals("bankstatement"))
+                {
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+
+                        }
+                    });
+                } else if (status.equals("gstr"))
+                {
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+
+                        }
+                    });
+                } else if (status.equals("sla"))
+                {
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+
+                        }
+                    });
+                } else if (status.equals("invoice"))
+                {
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+
+                        }
+                    });
+                } else if (status.equals("rentaggrement"))
+                {
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+
+                        }
+                    });
+                } else if (status.equals("itr"))
+                {
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+
+                        }
+                    });
+                }
 
             }
         });
