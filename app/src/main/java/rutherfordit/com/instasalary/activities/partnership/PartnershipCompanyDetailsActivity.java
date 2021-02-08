@@ -24,7 +24,7 @@ import rutherfordit.com.instasalary.activities.EnterOTPActivity;
 import rutherfordit.com.instasalary.activities.privatelimited.PrivateLimitedCompanyDetailsActivity;
 import rutherfordit.com.instasalary.activities.privatelimited.PrivateLimitedDirectorFirstDetailsActivity;
 import rutherfordit.com.instasalary.extras.Constants;
-import rutherfordit.com.instasalary.extras.ResponseHandler;
+import rutherfordit.com.instasalary.myinterfaces.ResponseHandler;
 import rutherfordit.com.instasalary.extras.SharedPrefsManager;
 import rutherfordit.com.instasalary.extras.Urls;
 import rutherfordit.com.instasalary.extras.VolleyRequest;

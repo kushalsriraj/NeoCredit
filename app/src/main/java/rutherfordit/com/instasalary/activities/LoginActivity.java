@@ -22,7 +22,7 @@ import org.json.JSONObject;
 
 import rutherfordit.com.instasalary.R;
 import rutherfordit.com.instasalary.extras.Constants;
-import rutherfordit.com.instasalary.extras.ResponseHandler;
+import rutherfordit.com.instasalary.myinterfaces.ResponseHandler;
 import rutherfordit.com.instasalary.extras.SharedPrefsManager;
 import rutherfordit.com.instasalary.extras.Urls;
 import rutherfordit.com.instasalary.extras.VolleyRequest;

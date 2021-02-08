@@ -31,7 +31,7 @@ import rutherfordit.com.instasalary.activities.privatelimited.PrivateLimitedDire
 import rutherfordit.com.instasalary.activities.privatelimited.PrivateLimitedDirectorSecondDetailsActivity;
 import rutherfordit.com.instasalary.activities.sp.DatePickerFragment;
 import rutherfordit.com.instasalary.extras.Constants;
-import rutherfordit.com.instasalary.extras.ResponseHandler;
+import rutherfordit.com.instasalary.myinterfaces.ResponseHandler;
 import rutherfordit.com.instasalary.extras.SharedPrefsManager;
 import rutherfordit.com.instasalary.extras.Urls;
 import rutherfordit.com.instasalary.extras.VolleyRequest;
