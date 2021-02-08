@@ -113,7 +113,6 @@ public class PrivateLimitedDirectorFirstDetailsActivity extends AppCompatActivit
                 } else {
                     next1_button.setBackgroundColor(getResources().getColor(R.color.colorash));
                     click = false;
-                    invalidText.setVisibility(View.GONE);
                 }
             }
 
@@ -148,7 +147,6 @@ public class PrivateLimitedDirectorFirstDetailsActivity extends AppCompatActivit
                 } else {
                     next1_button.setBackgroundColor(getResources().getColor(R.color.colorash));
                     click = false;
-                    invalidText.setVisibility(View.GONE);
                 }
             }
 
@@ -411,7 +409,6 @@ public class PrivateLimitedDirectorFirstDetailsActivity extends AppCompatActivit
                 Intent intent = new Intent(getApplicationContext(), PrivateLimitedDirectorSecondDetailsActivity.class);
                 startActivity(intent);
             }
-
         }
     }
 }

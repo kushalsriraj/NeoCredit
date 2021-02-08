@@ -190,27 +190,30 @@ public class SegmentActivity extends AppCompatActivity implements ResponseHandle
 
             if (response.has("message"))
             {
-                if (soleProprietorship.isChecked())
-                {
-                    loader_login.setVisibility(View.GONE);
 
-                    Intent intent = new Intent(getApplicationContext(), AdharAuthenticationActivity.class);
-                    startActivity(intent);
-                }
-                else if (privateLimited.isChecked())
-                {
-                    loader_login.setVisibility(View.GONE);
+                loader_login.setVisibility(View.GONE);
 
-                    Intent intent = new Intent(getApplicationContext(), PrivateLimitedCompanyDetailsActivity.class);
-                    startActivity(intent);
-                }
-                else if (partnershipForm.isChecked())
-                {
-                    loader_login.setVisibility(View.GONE);
-                    
-                    Intent intent = new Intent(getApplicationContext(), PartnershipCompanyDetailsActivity.class);
-                    startActivity(intent);
-                }
+                Intent intent = new Intent(getApplicationContext(), CompanyDetails.class);
+                startActivity(intent);
+//                if (soleProprietorship.isChecked())
+//                {
+//
+//
+//                }
+//                else if (privateLimited.isChecked())
+//                {
+//                    loader_login.setVisibility(View.GONE);
+//
+//                    Intent intent = new Intent(getApplicationContext(), PrivateLimitedCompanyDetailsActivity.class);
+//                    startActivity(intent);
+//                }
+//                else if (partnershipForm.isChecked())
+//                {
+//                    loader_login.setVisibility(View.GONE);
+//
+//                    Intent intent = new Intent(getApplicationContext(), PartnershipCompanyDetailsActivity.class);
+//                    startActivity(intent);
+//                }
             }
         }
     }

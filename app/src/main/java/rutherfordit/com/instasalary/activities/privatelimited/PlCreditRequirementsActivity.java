@@ -16,6 +16,7 @@ import com.google.android.material.textfield.TextInputEditText;
 import es.dmoral.toasty.Toasty;
 import rutherfordit.com.instasalary.R;
 import rutherfordit.com.instasalary.activities.BankDetailsActivity;
+import rutherfordit.com.instasalary.extras.SharedPrefsManager;
 
 public class PlCreditRequirementsActivity extends AppCompatActivity {
 
@@ -23,6 +24,7 @@ public class PlCreditRequirementsActivity extends AppCompatActivity {
     ImageView back_credit_req;
     TextInputEditText pl_enter_amount;
     boolean click = false;
+    SharedPrefsManager sharedPrefsManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +34,7 @@ public class PlCreditRequirementsActivity extends AppCompatActivity {
         pl_enter_amount = findViewById(R.id.pl_enter_amount);
         submitPLCreditReq = findViewById(R.id.submitPLCreditReq);
         back_credit_req = findViewById(R.id.back_credit_req);
+        sharedPrefsManager = new SharedPrefsManager(getApplicationContext());
 
         pl_enter_amount.addTextChangedListener(new TextWatcher() {
             @Override

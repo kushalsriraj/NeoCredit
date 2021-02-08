@@ -14,6 +14,7 @@ public class Urls {
     public static String COMPANY_DETAILS = "http://console.grantlending.in/api/companydetails";
     public static String DIRECTOR_DETAILS = "http://console.grantlending.in/api/directorpart";
     public static String PENNY_DROP_BANK_DETAILS = "https://ext.digio.in:444/client/verify/bank_account";
+    public static String LOAN_DETAILS = "http://console.grantlending.in/api/loancreate";
 
     public static String IMAGE_UPLOAD = "http://console.grantlending.in/api/user/imageupload";
     public static String REQUEST_TEMPLATE = "https://ext.digio.in:444/client/kyc/v2/request/with_template";

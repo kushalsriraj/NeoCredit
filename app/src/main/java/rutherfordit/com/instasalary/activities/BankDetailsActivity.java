@@ -308,13 +308,40 @@ public class BankDetailsActivity extends AppCompatActivity implements ResponseHa
         if(i == Constants.bank_details) {
 
             JSONObject response = (JSONObject) obj;
-            Log.e("response", "responseHandlerCompany: " + response);
+            Log.e("response", "responseHandlerBankDetails: " + response);
             if  (response!=null)
             {
+
+                loanDetails();
+
+            }
+        }
+        else if (i == Constants.loan_details){
+            JSONObject response = (JSONObject) obj;
+            Log.e("response", "responseHandlerLoan: " + response);
+            if  (response!=null)
+            {
+
+                loanDetails();
+
                 Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                 startActivity(intent);
             }
-
         }
+    }
+
+    private void loanDetails() {
+
+        JSONObject jsonObjectBody = new JSONObject();
+
+        try {
+            jsonObjectBody.put("amount", "30000");
+            jsonObjectBody.put("days", "30");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        volleyRequest.JsonObjRequestAuthorization(BankDetailsActivity.this,jsonObjectBody, Urls.LOAN_DETAILS, Constants.loan_details,sharedPrefsManager.getAccessToken());
+
     }
 }

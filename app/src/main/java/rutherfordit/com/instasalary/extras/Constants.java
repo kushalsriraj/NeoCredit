@@ -11,4 +11,5 @@ public class Constants {
     public static int director_details = 7;
 
     public static int company_details1 = 8;
+    public static int loan_details = 9;
 }

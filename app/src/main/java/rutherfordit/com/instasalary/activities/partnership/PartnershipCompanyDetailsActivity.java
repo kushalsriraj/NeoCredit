@@ -87,7 +87,7 @@ public class PartnershipCompanyDetailsActivity extends AppCompatActivity impleme
                         !par_typeOfService.getText().toString().equals("-- Select Type of Service --") &&
                         !par_pancardnumber.getText().toString().equals("[A-Z]{5}[0-9]{4}[A-Z]{1}") &&
                         !par_businessRegNumber.getText().toString().equals("") &&
-                        !par_businessLandline.getText().toString().equals("-- Select Annual Turnover --") &&
+                        !par_businessLandline.getText().toString().equals("") &&
                         !par_addressProof.getText().toString().equals("-- Select Address Proof --") &&
                         !par_businessPhoneNumber.getText().toString().equals("")) {
                     //submitCompanyInfo.setBackgroundColor(getResources().getColor(R.color.neopurple));

@@ -16,6 +16,7 @@ public class SharedPrefsManager {
     String IS_USER_EXISTS = "isuserExits";
     String OTP_NUMBER = "otp";
     String SEGMENT = "segment";
+    String REQUIRED_AMOUNT = "required_amount";
 
     public SharedPrefsManager(Context context)
     {
@@ -87,6 +88,16 @@ public class SharedPrefsManager {
     public String getSegment()
     {
         return sharedPreferences.getString(SEGMENT,"");
+    }
+
+    public void setREQUIRED_AMOUNT(String required_amount)
+    {
+        sharedPreferences.edit().putString(REQUIRED_AMOUNT, required_amount).apply();
+    }
+
+    public String getREQUIRED_AMOUNT()
+    {
+        return sharedPreferences.getString(REQUIRED_AMOUNT,"");
     }
 
 }
