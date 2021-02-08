@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorAccent">#D81B60</color>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="digioTest">#17c39b</color>
+    <color name="digioTest2">#B4E9D8</color>
+    <color name="digio_black">#000000</color>
+    <color name="digio_btn_disabled">#400060AB</color>
+    <color name="digio_btn_enabled">#0060AB</color>
+    <color name="digio_light_grey">#DCDCDC</color>
+    <color name="digio_red">#FF0000</color>
+    <color name="digio_silver">#C0C0C0</color>
+    <color name="digio_text_color">#808080</color>
+    <dimen name="margin_large">64dp</dimen>
+    <dimen name="margin_medium">48dp</dimen>
+    <dimen name="margin_small">32dp</dimen>
+    <dimen name="margin_xlarge">92dp</dimen>
+    <dimen name="margin_xsmall">16dp</dimen>
+    <dimen name="rect_button_height">24dp</dimen>
+    <dimen name="rect_button_margin">12dp</dimen>
+    <dimen name="rect_button_width">80dp</dimen>
+    <dimen name="round_button_large">92dp</dimen>
+    <dimen name="round_button_medium">64dp</dimen>
+    <dimen name="round_button_small">32dp</dimen>
+    <dimen name="shutter_button_margin">80dp</dimen>
+    <dimen name="spacing_large">16dp</dimen>
+    <dimen name="spacing_medium">8dp</dimen>
+    <dimen name="spacing_small">4dp</dimen>
+    <dimen name="stroke_large">12dp</dimen>
+    <dimen name="stroke_medium">8dp</dimen>
+    <dimen name="stroke_small">4dp</dimen>
+    <string name="app_name">KYC</string>
+    <string name="default_web_client_id" translatable="false">35200440022-lp02fbfh8oioki12mk7o0snuu6l2pd9j.apps.googleusercontent.com</string>
+    <string name="digio_agree_and_proceed">AGREE &amp; PROCEED</string>
+    <string name="digio_consent_1">- I understand that I am about to download my KYC data from UIDAI by Offline KYC mode as recommended by UIDAI and DIGIO screen is only for convenience to input fields at currently loaded  webpage: https://resident.uidai.gov.in/offline-kyc for downloading Offline Aadhaar zip file.</string>
+    <string name="digio_consent_2">- I understand my Aadhaar number is used only on UIDAI website and not stored, persisted anywhere nor sent to any server.</string>
+    <string name="digio_consent_3">By proceeding further, I authorize Digio (Digiotech Solutions Pvt Ltd) to collect my Offline Aadhaar zip in masked and share code protected form and share it with requester of this transaction.</string>
+    <string name="firebase_database_url" translatable="false">https://utopian-trilogy-123507.firebaseio.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">35200440022</string>
+    <string name="google_api_key" translatable="false">AIzaSyDa9rKZVhnMiGANrp8lBgZxgL7YGi0zUCw</string>
+    <string name="google_app_id" translatable="false">1:35200440022:android:1033365b8a0d0d6b675b77</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyDa9rKZVhnMiGANrp8lBgZxgL7YGi0zUCw</string>
+    <string name="google_storage_bucket" translatable="false">utopian-trilogy-123507.appspot.com</string>
+    <string name="network_error">Please check your internet connectivity</string>
+    <string name="project_id" translatable="false">utopian-trilogy-123507</string>
+    <style name="DialogButtonStyle" parent="@style/Widget.AppCompat.Button.ButtonBar.AlertDialog">
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+    </style>
+    <style name="DigioAlertDialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorPrimaryDark</item>
+        <item name="buttonBarButtonStyle">@style/DialogButtonStyle</item>
+    </style>
+    <style name="DigioBaseBottomSheetDialog" parent="@style/Theme.Design.Light.BottomSheetDialog">
+        <item name="android:windowIsFloating">false</item>
+        <item name="bottomSheetStyle">@style/DigioBottomSheet</item>
+    </style>
+    <style name="DigioBottomSheet" parent="@style/Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@drawable/digio_bg_rounded_rect</item>
+    </style>
+    <style name="DigioBottomSheetDialogTheme" parent="DigioBaseBottomSheetDialog"/>
+    <style name="DigioEditTextTheme" parent="Widget.Design.TextInputLayout">
+        <item name="colorControlNormal">@color/digio_light_grey</item>
+        <item name="colorControlActivated">@color/digio_silver</item>
+    </style>
+    <style name="DigioKycSDKTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="alertDialogTheme">@style/DigioAlertDialogTheme</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowFullscreen">false</item>
+    </style>
+</resources>

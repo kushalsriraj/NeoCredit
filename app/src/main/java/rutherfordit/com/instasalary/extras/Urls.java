@@ -11,4 +11,5 @@ public class Urls {
     public static String SAVE_BANK_DETAILS = "http://console.grantlending.in/api/user/bank";
     public static String CLIENT_SECRET_KEY = "thDwYOU3OsXc8AdthjdvSqredu4h9KlcCGt0h3hS";
 
+    public static String IMAGE_UPLOAD = "http://console.grantlending.in/api/user/imageupload";
 }

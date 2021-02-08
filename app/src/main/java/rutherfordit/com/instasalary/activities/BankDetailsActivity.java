@@ -35,7 +35,6 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-import at.wirecube.additiveanimations.additive_animator.AdditiveAnimator;
 import es.dmoral.toasty.Toasty;
 import rutherfordit.com.instasalary.R;
 

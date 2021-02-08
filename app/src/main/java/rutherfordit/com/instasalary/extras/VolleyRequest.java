@@ -16,6 +16,8 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
+import rutherfordit.com.instasalary.myinterfaces.ResponseHandler;
+
 public class VolleyRequest {
 
     public ResponseHandler handler;

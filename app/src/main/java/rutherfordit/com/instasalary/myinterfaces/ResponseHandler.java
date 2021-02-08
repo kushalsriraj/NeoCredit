@@ -1,4 +1,4 @@
-package rutherfordit.com.instasalary.extras;
+package rutherfordit.com.instasalary.myinterfaces;
 
 public interface ResponseHandler {
 
