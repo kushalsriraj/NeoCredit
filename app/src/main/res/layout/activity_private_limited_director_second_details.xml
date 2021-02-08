@@ -117,8 +117,18 @@
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
                     android:maxLength="10"
-                    android:inputType="textEmailAddress"
+                    android:inputType="textCapCharacters"
                     android:singleLine="true"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Please Enter Valid PAN "
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:textColor="@color/colorAccent"
+                    android:visibility="gone"
+                    />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -139,27 +149,6 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-
-
-<!--            <com.google.android.material.textfield.TextInputLayout-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginTop="30dp"-->
-<!--                android:hint="Door No">-->
-
-<!--                <com.google.android.material.textfield.TextInputEditText-->
-<!--                    android:id="@+id/enterdoorno"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:ellipsize="end"-->
-<!--                    android:fontFamily="@font/lato_regular"-->
-<!--                    android:inputType="text"-->
-<!--                    android:maxLength="12"-->
-<!--                    android:singleLine="true"-->
-<!--                    android:textSize="14dp" />-->
-
-<!--            </com.google.android.material.textfield.TextInputLayout>-->
-
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -177,95 +166,6 @@
                     android:textSize="14dp" />
 
             </com.google.android.material.textfield.TextInputLayout>
-
-<!--            <RelativeLayout-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginTop="25dp">-->
-
-<!--                <com.google.android.material.textfield.TextInputLayout-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:hint="State"-->
-<!--                    android:textColorHint="@color/neopurple">-->
-
-<!--                    <com.google.android.material.textfield.TextInputEditText-->
-<!--                        android:id="@+id/enterstate"-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:ellipsize="end"-->
-<!--                        android:focusableInTouchMode="false"-->
-<!--                        android:fontFamily="@font/lato_regular"-->
-<!--                        android:singleLine="true"-->
-<!--                        android:textSize="14dp" />-->
-
-<!--                </com.google.android.material.textfield.TextInputLayout>-->
-
-<!--                <Spinner-->
-<!--                    android:id="@+id/statespinner"-->
-<!--                    style="@style/CustomSpinnerTheme"-->
-<!--                    android:layout_width="30dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_alignParentRight="true"-->
-<!--                    android:layout_marginTop="15dp"-->
-<!--                    android:layout_marginRight="10dp"-->
-<!--                    android:entries="@array/state_array" />-->
-
-<!--            </RelativeLayout>-->
-
-<!--            <RelativeLayout-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginTop="25dp">-->
-
-<!--                <com.google.android.material.textfield.TextInputLayout-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:hint="City"-->
-<!--                    android:textColorHint="@color/neopurple">-->
-
-<!--                    <com.google.android.material.textfield.TextInputEditText-->
-<!--                        android:id="@+id/entercity"-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:ellipsize="end"-->
-<!--                        android:focusableInTouchMode="false"-->
-<!--                        android:fontFamily="@font/lato_regular"-->
-<!--                        android:singleLine="true"-->
-<!--                        android:textSize="14dp" />-->
-
-<!--                </com.google.android.material.textfield.TextInputLayout>-->
-
-<!--                <Spinner-->
-<!--                    android:id="@+id/cityspinner"-->
-<!--                    style="@style/CustomSpinnerTheme"-->
-<!--                    android:layout_width="30dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_alignParentRight="true"-->
-<!--                    android:layout_marginTop="15dp"-->
-<!--                    android:layout_marginRight="10dp"-->
-<!--                    android:entries="@array/city_array" />-->
-
-<!--            </RelativeLayout>-->
-
-<!--            <com.google.android.material.textfield.TextInputLayout-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginTop="25dp"-->
-<!--                android:hint="Pincode">-->
-
-<!--                <com.google.android.material.textfield.TextInputEditText-->
-<!--                    android:id="@+id/enterpincode"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:ellipsize="end"-->
-<!--                    android:fontFamily="@font/lato_regular"-->
-<!--                    android:inputType="number"-->
-<!--                    android:maxLength="6"-->
-<!--                    android:singleLine="true"-->
-<!--                    android:textSize="14dp" />-->
-
-<!--            </com.google.android.material.textfield.TextInputLayout>-->
 
             <RelativeLayout
                 android:layout_width="match_parent"

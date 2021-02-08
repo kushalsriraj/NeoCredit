@@ -38,13 +38,22 @@ import java.util.Map;
 import at.wirecube.additiveanimations.additive_animator.AdditiveAnimator;
 import es.dmoral.toasty.Toasty;
 import rutherfordit.com.instasalary.R;
+import rutherfordit.com.instasalary.activities.privatelimited.PrivateLimitedCompanyDetailsActivity;
+import rutherfordit.com.instasalary.activities.privatelimited.PrivateLimitedDirectorFirstDetailsActivity;
+import rutherfordit.com.instasalary.extras.Constants;
+import rutherfordit.com.instasalary.extras.ResponseHandler;
+import rutherfordit.com.instasalary.extras.SharedPrefsManager;
+import rutherfordit.com.instasalary.extras.Urls;
+import rutherfordit.com.instasalary.extras.VolleyRequest;
 
-public class BankDetailsActivity extends AppCompatActivity {
+public class BankDetailsActivity extends AppCompatActivity implements ResponseHandler {
 
     ImageView purplebackarrow;
     TextInputEditText sp_bankname,sp_bankbranch,sp_accno,sp_bankifsc;
     CardView sp_submitBankDetails;
     boolean click = false;
+    VolleyRequest volleyRequest;
+    SharedPrefsManager sharedPrefsManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +73,10 @@ public class BankDetailsActivity extends AppCompatActivity {
         sp_accno = findViewById(R.id.sp_accno);
         sp_bankifsc = findViewById(R.id.sp_bankifsc);
         sp_submitBankDetails = findViewById(R.id.sp_submitBankDetails);
+
+        volleyRequest = new VolleyRequest();
+        sharedPrefsManager = new SharedPrefsManager(getApplicationContext());
+
     }
 
 
@@ -83,9 +96,6 @@ public class BankDetailsActivity extends AppCompatActivity {
                 {
                     request();
 
-                    Toasty.success(getApplicationContext(), "Saved Successfully..", Toast.LENGTH_SHORT).show();
-                    Intent i = new Intent(getApplicationContext(), HomeActivity.class);
-                    startActivity(i);
                 }
                 else
                 {
@@ -94,6 +104,39 @@ public class BankDetailsActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void bankApi() {
+        JSONObject jsonObjectBody = new JSONObject();
+
+        try {
+
+            jsonObjectBody.put("bank_name", sp_bankname.getText().toString());
+            Log.e("data", "bankApi: " +sp_bankname.getText().toString() );
+
+            jsonObjectBody.put("bank_branch", sp_bankbranch.getText().toString());
+            Log.e("data", "bankApi: " +sp_bankbranch.getText().toString() );
+
+            jsonObjectBody.put("ac_number", sp_accno.getText().toString());
+            Log.e("data", "bankApi: " +sp_accno.getText().toString() );
+
+            jsonObjectBody.put("bank_ifcs", sp_bankifsc.getText().toString());
+            Log.e("data", "bankApi: " +sp_bankifsc.getText().toString() );
+
+
+//            jsonObjectBody.put("bank_name", "HDFC");
+//            jsonObjectBody.put("bank_branch", "Madhapur");
+//            jsonObjectBody.put("ac_number", "67789009009");
+//            jsonObjectBody.put("bank_ifcs", "SBIN0090909");
+
+            volleyRequest.JsonObjRequestAuthorization(BankDetailsActivity.this,jsonObjectBody, Urls.SAVE_BANK_DETAILS, Constants.bank_details,sharedPrefsManager.getAccessToken());
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
+        Toasty.success(getApplicationContext(), "Saved Successfully..", Toast.LENGTH_SHORT).show();
     }
 
     private void request() {
@@ -113,14 +156,20 @@ public class BankDetailsActivity extends AppCompatActivity {
 
         Log.e("TAG", "request" + jsonObject);
 
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, "https://ext.digio.in:444/client/verify/bank_account", jsonObject, new Response.Listener<JSONObject>() {
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, Urls.PENNY_DROP_BANK_DETAILS, jsonObject, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
 
-                Log.e("TAG", "response" + response );
+                Log.e("responseBankAuth", "responseBankAuth" + response );
+                try {
+                    String verified = response.getString("verified");
 
-
-
+                    if(verified == "true"){
+                        bankApi();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
             }
         }, new Response.ErrorListener() {
             @Override
@@ -252,5 +301,21 @@ public class BankDetailsActivity extends AppCompatActivity {
 
     {
         super.onBackPressed();
+    }
+
+    @Override
+    public void responseHandler(Object obj, int i) {
+
+        if(i == Constants.bank_details) {
+
+            JSONObject response = (JSONObject) obj;
+            Log.e("response", "responseHandlerCompany: " + response);
+            if  (response!=null)
+            {
+                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                startActivity(intent);
+            }
+
+        }
     }
 }

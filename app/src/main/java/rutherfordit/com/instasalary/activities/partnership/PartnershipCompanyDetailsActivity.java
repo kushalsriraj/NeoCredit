@@ -21,6 +21,7 @@ import org.json.JSONObject;
 
 import rutherfordit.com.instasalary.R;
 import rutherfordit.com.instasalary.activities.EnterOTPActivity;
+import rutherfordit.com.instasalary.activities.privatelimited.PrivateLimitedCompanyDetailsActivity;
 import rutherfordit.com.instasalary.activities.privatelimited.PrivateLimitedDirectorFirstDetailsActivity;
 import rutherfordit.com.instasalary.extras.Constants;
 import rutherfordit.com.instasalary.extras.ResponseHandler;
@@ -28,11 +29,11 @@ import rutherfordit.com.instasalary.extras.SharedPrefsManager;
 import rutherfordit.com.instasalary.extras.Urls;
 import rutherfordit.com.instasalary.extras.VolleyRequest;
 
-public class PartnershipCompanyDetailsActivity extends AppCompatActivity implements ResponseHandler {
+public class PartnershipCompanyDetailsActivity extends AppCompatActivity implements ResponseHandler{
 
     RelativeLayout par_next_button;
     ImageView purplebackarrow;
-    TextInputEditText par_company_name, par_pancardnumber, par_typeOfService, par_addressProof, par_businessRegNumber, par_businessLandline, par_businessPhoneNumber;
+    TextInputEditText par_company_name, par_pancardnumber, par_typeOfService, par_addressProof, par_businessRegNumber, par_businessLandline, par_businessPhoneNumber, par_pincode;
     Spinner par_Spinner_businessAddressProof, par_Spinner_typeOfService;
     boolean click = false;
     SharedPrefsManager sharedPrefsManager;
@@ -232,30 +233,23 @@ public class PartnershipCompanyDetailsActivity extends AppCompatActivity impleme
                     JSONObject jsonObjectBody = new JSONObject();
 
                     try {
-//                        jsonObjectBody.put("name", par_company_name.getText().toString());
-//                        jsonObjectBody.put("pan_card", par_pancardnumber.getText().toString());
-//                        jsonObjectBody.put("type_of_services", par_typeOfService.getText().toString());
-//                        jsonObjectBody.put("business_reg_num", par_businessRegNumber.getText().toString());
-//                        jsonObjectBody.put("business_addr_proof", par_addressProof.getText().toString());
-//                        jsonObjectBody.put("landline_number", par_businessLandline.getText().toString());
-//                        jsonObjectBody.put("mobile_number", par_businessPhoneNumber.getText().toString());
 
-                        jsonObjectBody.put("name","564592362312");
-                        jsonObjectBody.put("pan_card","PPPPH1234F");
-                        jsonObjectBody.put("type_of_services","123456789098");
-                        jsonObjectBody.put("business_reg_num","1999-12-23");
-                        jsonObjectBody.put("business_addr_proof","PPPPH1234F");
-                        jsonObjectBody.put("landline_number","PPPPH1234F");
-                        jsonObjectBody.put("pincode","123456667");
-                        jsonObjectBody.put("mobile_number","1224567888");
+                        jsonObjectBody.put("name", par_company_name.getText().toString());
+                        jsonObjectBody.put("pan_card",  par_pancardnumber.getText().toString());
+                        jsonObjectBody.put("type_of_services",  par_typeOfService.getText().toString());
+                        jsonObjectBody.put("business_reg_num",  par_businessRegNumber.getText().toString());
+                        jsonObjectBody.put("business_addr_proof", par_addressProof.getText().toString());
+                        jsonObjectBody.put("landline_number",  par_businessLandline.getText().toString());
+                        jsonObjectBody.put("mobile_number",  par_businessPhoneNumber.getText().toString());
 
-                        volleyRequest.JsonObjRequestAuthorization(PartnershipCompanyDetailsActivity.this,jsonObjectBody, Urls.COMPANY_DETAILS, Constants.company_details,sharedPrefsManager.getAccessToken());
+                        volleyRequest.JsonObjRequestAuthorization(PartnershipCompanyDetailsActivity.this,jsonObjectBody, Urls.COMPANY_DETAILS, Constants.company_details1,sharedPrefsManager.getAccessToken());
 
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
 
-                    Intent intent = new Intent(getApplicationContext(), PrivateLimitedDirectorFirstDetailsActivity.class);
+
+                    Intent intent = new Intent(getApplicationContext(), PartnershipPartnerFirstDetailsActivity.class);
                     startActivity(intent);
                 }
                 else
@@ -270,11 +264,12 @@ public class PartnershipCompanyDetailsActivity extends AppCompatActivity impleme
     @Override
     public void responseHandler(Object obj, int i) {
 
-        if(i == Constants.company_details){
+        if(i == Constants.company_details1) {
 
-            JSONObject response = (JSONObject)obj;
+            JSONObject response = (JSONObject) obj;
 
-            Log.e("response", "responseHandler: " + response );
+            Log.e("response", "responseHandlerCompany: " + response);
+
         }
     }
 }

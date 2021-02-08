@@ -69,7 +69,7 @@ public class PrivateLimitedCompanyDetailsActivity extends AppCompatActivity impl
         purplebackarrow = findViewById(R.id.purplebackarrow);
 
         volleyRequest = new VolleyRequest();
-        sharedPrefsManager = new SharedPrefsManager(getApplicationContext());
+        sharedPrefsManager = new SharedPrefsManager(PrivateLimitedCompanyDetailsActivity.this);
     }
 
     private void textWatchers() {
@@ -232,22 +232,16 @@ public class PrivateLimitedCompanyDetailsActivity extends AppCompatActivity impl
 
                     try {
 
-//                        jsonObjectBody.put("name", pl_company_name.getText().toString());
-//                        jsonObjectBody.put("pan_card", pl_pancardnumber.getText().toString());
-//                        jsonObjectBody.put("type_of_services", pl_typeOfService.getText().toString());
-//                        jsonObjectBody.put("business_reg_num", pl_addressProof.getText().toString());
-//                        jsonObjectBody.put("business_addr_proof", pl_addressProof.getText().toString());
-//                        jsonObjectBody.put("landline_number", pl_businessLandline.getText().toString());
-//                        jsonObjectBody.put("mobile_number", pl_businessPhoneNumber.getText().toString());
+                        jsonObjectBody.put("name", pl_company_name.getText().toString());
+                        jsonObjectBody.put("pan_card", pl_pancardnumber.getText().toString());
+                        jsonObjectBody.put("type_of_services", pl_typeOfService.getText().toString());
+                        jsonObjectBody.put("business_reg_num", pl_businessRegNumber.getText().toString());
+                        jsonObjectBody.put("business_addr_proof", pl_addressProof.getText().toString());
+                        jsonObjectBody.put("landline_number", pl_businessLandline.getText().toString());
+                        jsonObjectBody.put("mobile_number", pl_businessPhoneNumber.getText().toString());
 
-                        jsonObjectBody.put("name","564592362312");
-                        jsonObjectBody.put("pan_card","PPPPH1234F");
-                        jsonObjectBody.put("type_of_services","123456789098");
-                        jsonObjectBody.put("business_reg_num","1999-12-23");
-                        jsonObjectBody.put("business_addr_proof","PPPPH1234F");
-                        jsonObjectBody.put("landline_number","PPPPH1234F");
-                        jsonObjectBody.put("pincode","123456667");
-                        jsonObjectBody.put("mobile_number","1224567888");
+                        Log.e("ckicj", "onClick: " + jsonObjectBody );
+
 
                         volleyRequest.JsonObjRequestAuthorization(PrivateLimitedCompanyDetailsActivity.this,jsonObjectBody, Urls.COMPANY_DETAILS, Constants.company_details,sharedPrefsManager.getAccessToken());
 
@@ -256,8 +250,7 @@ public class PrivateLimitedCompanyDetailsActivity extends AppCompatActivity impl
                     }
 
 
-                    Intent intent = new Intent(getApplicationContext(), PrivateLimitedDirectorFirstDetailsActivity.class);
-                    startActivity(intent);
+
                 }
                 else
                 {
@@ -274,8 +267,12 @@ public class PrivateLimitedCompanyDetailsActivity extends AppCompatActivity impl
         if(i == Constants.company_details) {
 
             JSONObject response = (JSONObject) obj;
-
-            Log.e("response", "responseHandler: " + response);
+            Log.e("response", "responseHandlerCompany: " + response);
+            if  (response!=null)
+            {
+                Intent intent = new Intent(getApplicationContext(), PrivateLimitedDirectorFirstDetailsActivity.class);
+                startActivity(intent);
+            }
 
         }
     }

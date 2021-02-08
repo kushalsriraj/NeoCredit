@@ -218,7 +218,7 @@ public class SegmentActivity extends AppCompatActivity implements ResponseHandle
                 else if (partnershipForm.isChecked())
                 {
                     loader_login.setVisibility(View.GONE);
-
+                    
                     Intent intent = new Intent(getApplicationContext(), PartnershipCompanyDetailsActivity.class);
                     startActivity(intent);
                 }

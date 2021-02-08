@@ -11,27 +11,17 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
-import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.chaos.view.PinView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import rutherfordit.com.instasalary.R;
 import rutherfordit.com.instasalary.extras.Constants;
-import rutherfordit.com.instasalary.extras.MySingleton;
 import rutherfordit.com.instasalary.extras.ResponseHandler;
 import rutherfordit.com.instasalary.extras.SharedPrefsManager;
 import rutherfordit.com.instasalary.extras.Urls;
@@ -124,7 +114,7 @@ public class EnterOTPActivity extends AppCompatActivity implements ResponseHandl
             e.printStackTrace();
         }
 
-        volleyRequest.JsonObjRequest(EnterOTPActivity.this,jsonObject1,Urls.SIGN_UP, Constants.signup);
+        volleyRequest.JsonObjRequest(EnterOTPActivity.this,jsonObject1,Urls.SIGN_UP, Constants.sign_up);
 
     }
 
@@ -158,7 +148,7 @@ public class EnterOTPActivity extends AppCompatActivity implements ResponseHandl
 
         JSONObject response = (JSONObject) obj;
 
-        if  (i== Constants.signup)
+        if  (i== Constants.sign_up)
         {
             try
             {

@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.DatePicker;
@@ -18,19 +19,32 @@ import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.Calendar;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import rutherfordit.com.instasalary.R;
+import rutherfordit.com.instasalary.activities.privatelimited.PrivateLimitedDirectorFirstDetailsActivity;
 import rutherfordit.com.instasalary.activities.privatelimited.PrivateLimitedDirectorSecondDetailsActivity;
 import rutherfordit.com.instasalary.activities.sp.DatePickerFragment;
+import rutherfordit.com.instasalary.extras.Constants;
+import rutherfordit.com.instasalary.extras.ResponseHandler;
+import rutherfordit.com.instasalary.extras.SharedPrefsManager;
+import rutherfordit.com.instasalary.extras.Urls;
+import rutherfordit.com.instasalary.extras.VolleyRequest;
 
-public class PartnershipPartnerFirstDetailsActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener{
+public class PartnershipPartnerFirstDetailsActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener, ResponseHandler {
 
-    RelativeLayout par_next_button;
+    RelativeLayout par1_next_button;
     ImageView purplebackarrow;
     TextInputEditText par_dir1_fullName, par_dob, par_dir1_address, par_dir1_pan, par_dir1_adhar, par_dir1_addressproof, par_DIN_Number, par_dir1_mobile;
     Spinner par_dir1_addressProofSpinner;
     boolean click = false;
+    VolleyRequest volleyRequest;
+    SharedPrefsManager sharedPrefsManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,11 +65,13 @@ public class PartnershipPartnerFirstDetailsActivity extends AppCompatActivity im
         par_dir1_adhar = findViewById(R.id.par_dir1_adhar);
         par_dir1_addressproof = findViewById(R.id.par_dir1_addressproof);
         par_dir1_addressProofSpinner = findViewById(R.id.par_dir1_addressProofSpinner);
-        par_next_button = findViewById(R.id.par_next_button);
+        par1_next_button = findViewById(R.id.par1_next_button);
         purplebackarrow = findViewById(R.id.purplebackarrow);
         par_DIN_Number = findViewById(R.id.par_DIN_Number);
         par_dir1_mobile = findViewById(R.id.par_dir1_mobile);
 
+        volleyRequest = new VolleyRequest();
+        sharedPrefsManager = new SharedPrefsManager(getApplicationContext());
 
         onClicks();
 
@@ -89,11 +105,11 @@ public class PartnershipPartnerFirstDetailsActivity extends AppCompatActivity im
                         !par_dir1_addressproof.getText().toString().equals("-- Select Address Proof --"))
 
                 {
-                    par_next_button.setBackground(getDrawable(R.drawable.gradient_neocredit));
+                    par1_next_button.setBackground(getDrawable(R.drawable.gradient_neocredit));
 
                     click = true;
                 } else {
-                    par_next_button.setBackgroundColor(getResources().getColor(R.color.colorash));
+                    par1_next_button.setBackgroundColor(getResources().getColor(R.color.colorash));
                     click = false;
                 }
             }
@@ -120,10 +136,10 @@ public class PartnershipPartnerFirstDetailsActivity extends AppCompatActivity im
                         !par_DIN_Number.getText().toString().equals("") &&
                         par_dir1_mobile.getText().toString().length() == 10 &&
                         !par_dir1_addressproof.getText().toString().equals("-- Select Address Proof --")) {
-                    par_next_button.setBackground(getDrawable(R.drawable.gradient_neocredit));
+                    par1_next_button.setBackground(getDrawable(R.drawable.gradient_neocredit));
                     click = true;
                 } else {
-                    par_next_button.setBackgroundColor(getResources().getColor(R.color.colorash));
+                    par1_next_button.setBackgroundColor(getResources().getColor(R.color.colorash));
                     click = false;
                 }
             }
@@ -150,10 +166,10 @@ public class PartnershipPartnerFirstDetailsActivity extends AppCompatActivity im
                         !par_DIN_Number.getText().toString().equals("") &&
                         par_dir1_mobile.getText().toString().length() == 10 &&
                         !par_dir1_addressproof.getText().toString().equals("-- Select Address Proof --")) {
-                    par_next_button.setBackground(getDrawable(R.drawable.gradient_neocredit));
+                    par1_next_button.setBackground(getDrawable(R.drawable.gradient_neocredit));
                     click = true;
                 } else {
-                    par_next_button.setBackgroundColor(getResources().getColor(R.color.colorash));
+                    par1_next_button.setBackgroundColor(getResources().getColor(R.color.colorash));
                     click = false;
                 }
             }
@@ -180,10 +196,10 @@ public class PartnershipPartnerFirstDetailsActivity extends AppCompatActivity im
                         !par_DIN_Number.getText().toString().equals("") &&
                         par_dir1_mobile.getText().toString().length() == 10 &&
                         !par_dir1_addressproof.getText().toString().equals("-- Select Address Proof --")) {
-                    par_next_button.setBackground(getDrawable(R.drawable.gradient_neocredit));
+                    par1_next_button.setBackground(getDrawable(R.drawable.gradient_neocredit));
                     click = true;
                 } else {
-                    par_next_button.setBackgroundColor(getResources().getColor(R.color.colorash));
+                    par1_next_button.setBackgroundColor(getResources().getColor(R.color.colorash));
                     click = false;
                 }
             }
@@ -217,10 +233,10 @@ public class PartnershipPartnerFirstDetailsActivity extends AppCompatActivity im
                                 !par_DIN_Number.getText().toString().equals("") &&
                                 par_dir1_mobile.getText().toString().length() == 10 &&
                                 !par_dir1_addressproof.getText().toString().equals("-- Select Address Proof --")) {
-                            par_next_button.setBackground(getDrawable(R.drawable.gradient_neocredit));
+                            par1_next_button.setBackground(getDrawable(R.drawable.gradient_neocredit));
                             click = true;
                         } else {
-                            par_next_button.setBackgroundColor(getResources().getColor(R.color.colorash));
+                            par1_next_button.setBackgroundColor(getResources().getColor(R.color.colorash));
                             click = false;
                         }
 
@@ -236,10 +252,10 @@ public class PartnershipPartnerFirstDetailsActivity extends AppCompatActivity im
                                 !par_DIN_Number.getText().toString().equals("") &&
                                 par_dir1_mobile.getText().toString().length() == 10 &&
                                 !par_dir1_addressproof.getText().toString().equals("-- Select Address Proof --")) {
-                            par_next_button.setBackground(getDrawable(R.drawable.gradient_neocredit));
+                            par1_next_button.setBackground(getDrawable(R.drawable.gradient_neocredit));
                             click = true;
                         } else {
-                            par_next_button.setBackgroundColor(getResources().getColor(R.color.colorash));
+                            par1_next_button.setBackgroundColor(getResources().getColor(R.color.colorash));
                             click = false;
                         }
 
@@ -253,19 +269,75 @@ public class PartnershipPartnerFirstDetailsActivity extends AppCompatActivity im
             }
         });
 
-        par_next_button.setOnClickListener(new View.OnClickListener() {
+        par1_next_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (click) {
-                    Intent intent = new Intent(getApplicationContext(), PrivateLimitedDirectorSecondDetailsActivity.class);
-                    startActivity(intent);
+
+                    JSONObject jsonObjectBody = new JSONObject();
+
+                    try {
+                        jsonObjectBody.put("name", par_dir1_fullName.getText().toString());
+                        Log.e("onClick", "onClick: " +  par_dir1_fullName.getText().toString());
+
+                        jsonObjectBody.put("pan_card", par_dir1_pan.getText().toString());
+                        Log.e("onClick", "onClick: " +  par_dir1_pan.getText().toString());
+                        Pattern pattern = Pattern.compile("[A-Z]{5}[0-9]{4}[A-Z]{1}");
+                        Matcher matcher = pattern.matcher(par_dir1_pan.getText().toString());
+                        // Check if pattern matches
+                        if (matcher.matches()) {
+                            Log.i("Matching","Yes");
+                        }
+                        else {
+                            Log.i("Not-Matching","No");
+                        }
+
+                        jsonObjectBody.put("aadhar", par_dir1_adhar.getText().toString());
+                        Log.e("onClick", "onClick: " +  par_dir1_adhar.getText().toString());
+
+                        jsonObjectBody.put("dob", par_dob.getText().toString());
+                        Log.e("onClick", "onClick: " +  par_dob.getText().toString());
+
+                        jsonObjectBody.put("din", par_DIN_Number.getText().toString());
+                        Log.e("onClick", "onClick: " +  par_DIN_Number.getText().toString());
+
+                        jsonObjectBody.put("current_address", par_dir1_address.getText().toString());
+                        Log.e("onClick", "onClick: " +  par_dir1_address.getText().toString());
+
+                        jsonObjectBody.put("current_address_proof", par_dir1_addressproof.getText().toString());
+                        Log.e("onClick", "onClick: " +  par_dir1_addressproof.getText().toString());
+
+                        jsonObjectBody.put("mobile_number", par_dir1_mobile.getText().toString());
+                        Log.e("onClick", "onClick: " +  par_dir1_mobile.getText().toString());
+
+                        jsonObjectBody.put("director", "2");
+
+                        jsonObjectBody.put("user_type", sharedPrefsManager.getSegment());
+                        Log.e("onClick", "onClick: " +  sharedPrefsManager.getSegment());
+
+//                        jsonObjectBody.put("name", "nikhil");
+//                        jsonObjectBody.put("pan_card", "PPPPH1234F");
+//                        jsonObjectBody.put("aadhar", "123456789098");
+//                        jsonObjectBody.put("dob", "1999-12-23");
+//                        jsonObjectBody.put("din", "PPPPH1234F");
+//                        jsonObjectBody.put("current_address", "PPPPH1234F");
+//                        jsonObjectBody.put("current_address_proof", "PPPPH1234F");
+//                        jsonObjectBody.put("mobile_number", "9090909090");
+//                        jsonObjectBody.put("director", "2");
+//                        jsonObjectBody.put("user_type", "2");
+
+                        volleyRequest.JsonObjRequestAuthorization(PartnershipPartnerFirstDetailsActivity.this,jsonObjectBody, Urls.DIRECTOR_DETAILS, Constants.director_details,sharedPrefsManager.getAccessToken());
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
                 } else {
                     Toast.makeText(getApplicationContext(), "Please Check All The Fields.", Toast.LENGTH_SHORT).show();
                 }
             }
         });
     }
-    //here
 
     @Override
     public void onBackPressed() {
@@ -290,11 +362,28 @@ public class PartnershipPartnerFirstDetailsActivity extends AppCompatActivity im
                 !par_DIN_Number.getText().toString().equals("") &&
                 par_dir1_mobile.getText().toString().length() == 10 &&
                 !par_dir1_addressproof.getText().toString().equals("-- Select Address Proof --")) {
-            par_next_button.setBackground(getDrawable(R.drawable.gradient_neocredit));
+            par1_next_button.setBackground(getDrawable(R.drawable.gradient_neocredit));
             click = true;
         } else {
-            par_next_button.setBackgroundColor(getResources().getColor(R.color.colorash));
+            par1_next_button.setBackgroundColor(getResources().getColor(R.color.colorash));
             click = false;
+        }
+    }
+
+    @Override
+    public void responseHandler(Object obj, int i) {
+
+        if (i == Constants.director_details)
+        {
+
+            JSONObject response = (JSONObject) obj;
+            Log.e("response", "responseHandlerDirector: " + response);
+            if  (response!=null)
+            {
+                Intent intent = new Intent(getApplicationContext(), PartnershipPartnerSecondDetailsActivity.class);
+                startActivity(intent);
+            }
+
         }
     }
 }
