@@ -115,6 +115,4 @@ public class VolleyRequest {
         });
         MySingleton.getinstance(activity).addrequest(jsonObjectRequest, url);
     }
-
-
 }

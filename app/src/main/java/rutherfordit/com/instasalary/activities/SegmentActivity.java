@@ -2,6 +2,7 @@ package rutherfordit.com.instasalary.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatRadioButton;
+import androidx.cardview.widget.CardView;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -39,7 +40,7 @@ public class SegmentActivity extends AppCompatActivity implements ResponseHandle
     String segment;
     VolleyRequest volleyRequest;
     SharedPrefsManager sharedPrefsManager;
-
+    CardView loader_login;
     @Override
     protected void onRestart() {
         super.onRestart();
@@ -60,6 +61,7 @@ public class SegmentActivity extends AppCompatActivity implements ResponseHandle
         partnershipForm = findViewById(R.id.partnershipForm);
         SegmentsubmitButton = findViewById(R.id.SegmentsubmitButton);
         purplebackarrow = findViewById(R.id.purplebackarrow);
+        loader_login = findViewById(R.id.loader_login);
 
         purplebackarrow.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -144,7 +146,7 @@ public class SegmentActivity extends AppCompatActivity implements ResponseHandle
         SegmentsubmitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                loader_login.setVisibility(View.VISIBLE);
                 segmentApi();
             }
         });
@@ -190,16 +192,22 @@ public class SegmentActivity extends AppCompatActivity implements ResponseHandle
             {
                 if (soleProprietorship.isChecked())
                 {
+                    loader_login.setVisibility(View.GONE);
+
                     Intent intent = new Intent(getApplicationContext(), SoleProprietorshipDetailsActivity.class);
                     startActivity(intent);
                 }
                 else if (privateLimited.isChecked())
                 {
+                    loader_login.setVisibility(View.GONE);
+
                     Intent intent = new Intent(getApplicationContext(), PrivateLimitedCompanyDetailsActivity.class);
                     startActivity(intent);
                 }
                 else if (partnershipForm.isChecked())
                 {
+                    loader_login.setVisibility(View.GONE);
+                    
                     Intent intent = new Intent(getApplicationContext(), PartnershipCompanyDetailsActivity.class);
                     startActivity(intent);
                 }

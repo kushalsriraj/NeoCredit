@@ -10,6 +10,9 @@ public class Urls {
     public static String SEGMENT_URL = "http://console.grantlending.in/api/user/segment";
     public static String SAVE_BANK_DETAILS = "http://console.grantlending.in/api/user/bank";
     public static String CLIENT_SECRET_KEY = "thDwYOU3OsXc8AdthjdvSqredu4h9KlcCGt0h3hS";
+    public static String COMPANY_DETAILS = "http://console.grantlending.in/api/companydetails";
+    public static String DIRECTOR_DETAILS = "http://console.grantlending.in/api/directorpart";
+    public static String PENNY_DROP_BANK_DETAILS = "https://ext.digio.in:444/client/verify/bank_account";
 
     public static String IMAGE_UPLOAD = "http://console.grantlending.in/api/user/imageupload";
 }

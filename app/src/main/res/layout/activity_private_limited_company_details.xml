@@ -76,6 +76,7 @@
                     android:id="@+id/pl_pancardnumber"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textAllCaps="true"
                     android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz"
                     android:ellipsize="end"
                     android:maxLength="10"

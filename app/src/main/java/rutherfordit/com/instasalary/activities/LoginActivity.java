@@ -22,7 +22,7 @@ import org.json.JSONObject;
 
 import rutherfordit.com.instasalary.R;
 import rutherfordit.com.instasalary.extras.Constants;
-import rutherfordit.com.instasalary.myinterfaces.ResponseHandler;
+import rutherfordit.com.instasalary.extras.ResponseHandler;
 import rutherfordit.com.instasalary.extras.SharedPrefsManager;
 import rutherfordit.com.instasalary.extras.Urls;
 import rutherfordit.com.instasalary.extras.VolleyRequest;
@@ -109,7 +109,7 @@ public class LoginActivity extends AppCompatActivity implements ResponseHandler 
             e.printStackTrace();
         }
 
-        volleyRequest.JsonObjRequest(LoginActivity.this,numberJsonObject,Urls.SEND_OTP, Constants.sendotp);
+        volleyRequest.JsonObjRequest(LoginActivity.this,numberJsonObject,Urls.SEND_OTP, Constants.send_otp);
 
     }
 
@@ -128,7 +128,7 @@ public class LoginActivity extends AppCompatActivity implements ResponseHandler 
     @Override
     public void responseHandler(Object obj, int i) {
 
-        if (i == Constants.sendotp)
+        if (i == Constants.send_otp)
         {
 
             JSONObject response = (JSONObject) obj;

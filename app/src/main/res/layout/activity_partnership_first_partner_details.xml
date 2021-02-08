@@ -117,7 +117,7 @@
                     android:layout_height="wrap_content"
                     android:maxLength="10"
                     android:ellipsize="end"
-                    android:inputType="textEmailAddress"
+                    android:inputType="textCapCharacters"
                     android:singleLine="true"/>
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -231,7 +231,7 @@
                 >
 
                 <RelativeLayout
-                    android:id="@+id/par_next_button"
+                    android:id="@+id/par1_next_button"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:background="#36000000">

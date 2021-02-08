@@ -117,8 +117,19 @@
                     android:layout_height="wrap_content"
                     android:maxLength="10"
                     android:ellipsize="end"
-                    android:inputType="textEmailAddress"
+                    android:textAllCaps="true"
+                    android:inputType="textCapCharacters"
                     android:singleLine="true"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Please Enter Valid PAN "
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:textColor="@color/colorAccent"
+                    android:visibility="gone"
+                    android:id="@+id/invalidText"
+                    />
 
             </com.google.android.material.textfield.TextInputLayout>
 
