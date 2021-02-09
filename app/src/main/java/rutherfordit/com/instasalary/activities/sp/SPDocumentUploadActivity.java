@@ -80,7 +80,19 @@ public class SPDocumentUploadActivity extends AppCompatActivity {
     private final int Request_Camera = 1;
     private final int Request_Gallery = 2;
     Uri imguri;
-    String pan_uploaded, adhar_uploaded, itr_uploaded, gstr_uploaded,rental_uploaded, invoices_uploaded,sla_uploaded, bankstatement_uploaded, registration_proof_uploaded;
+    boolean pan_uploaded, adhar_uploaded, itr_uploaded, gstr_uploaded,rental_uploaded, invoices_uploaded,sla_uploaded, bankstatement_uploaded, registration_proof_uploaded = false;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_s_p_document_upload);
+
+        if (allPermissionsGranted()) {
+            init();
+        } else {
+            ActivityCompat.requestPermissions(this, REQUIRED_PERMISSIONS, REQUEST_CODE_PERMISSIONS);
+        }
+    }
 
     public static void openPermissionSettings(Activity activity) {
         Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, Uri.parse("package:" + activity.getPackageName()));
@@ -110,19 +122,6 @@ public class SPDocumentUploadActivity extends AppCompatActivity {
             }
         }
         return true;
-    }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_s_p_document_upload);
-
-        if (allPermissionsGranted()) {
-            init();
-        } else {
-            ActivityCompat.requestPermissions(this, REQUIRED_PERMISSIONS, REQUEST_CODE_PERMISSIONS);
-        }
-
     }
 
     private void init() {
@@ -291,6 +290,7 @@ public class SPDocumentUploadActivity extends AppCompatActivity {
                 view2.setVisibility(View.GONE);
                 upload_from_gallery.setVisibility(View.GONE);
                 bottomSheetDialog.show();
+
             }
         });
 
@@ -423,30 +423,39 @@ public class SPDocumentUploadActivity extends AppCompatActivity {
 
         switch (status) {
             case "pan":
+                loader_sp_pan.setVisibility(View.VISIBLE);
                 code = "8";
                 break;
             case "adhar":
+                loader_sp_adhar.setVisibility(View.VISIBLE);
                 code = "1";
                 break;
             case "registration":
+                loader_sp_registrationProof.setVisibility(View.VISIBLE);
                 code = "10";
                 break;
             case "bankstatement":
+                loader_sp_bankStatement.setVisibility(View.VISIBLE);
                 code = "11";
                 break;
             case "gstr":
+                loader_sp_gstr.setVisibility(View.VISIBLE);
                 code = "12";
                 break;
             case "sla":
+                loader_sp_sla.setVisibility(View.VISIBLE);
                 code = "13";
                 break;
             case "invoice":
+                loader_sp_invoice.setVisibility(View.VISIBLE);
                 code = "14";
                 break;
             case "rentaggrement":
+                loader_sp_rentAggrement.setVisibility(View.VISIBLE);
                 code = "15";
                 break;
             case "itr":
+                loader_sp_itr.setVisibility(View.VISIBLE);
                 code = "16";
                 break;
         }
@@ -490,6 +499,228 @@ public class SPDocumentUploadActivity extends AppCompatActivity {
 
                 Log.e("response", "onResponse: " + response.body().string() );
 
+                switch (status) {
+                    case "pan":
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                pan_uploaded = true;
+                                image_sp_pan.setPadding(20, 20, 20, 20);
+                                image_sp_pan.setScaleType(ImageView.ScaleType.FIT_XY);
+                                image_sp_pan.setImageURI(imguri);
+                                text_sp_pan.setText(filename + ".png");
+                                loader_sp_pan.setVisibility(View.GONE);
+                                Toasty.info(getApplicationContext(), "Pan Uploaded", Toast.LENGTH_SHORT).show();
+
+                                if (pan_uploaded && adhar_uploaded && registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
+                                 && sla_uploaded && invoices_uploaded && rental_uploaded && itr_uploaded )
+                                {
+                                    Submit_sp_docs.setBackground(getDrawable(R.drawable.gradient_neocredit));
+                                }
+                                else
+                                {
+                                    Submit_sp_docs.setBackgroundColor(getResources().getColor(R.color.colorash));
+                                }
+
+                            }
+                        });
+                        break;
+                    case "adhar":
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                adhar_uploaded = true;
+                                image_sp_adhar.setPadding(20, 20, 20, 20);
+                                image_sp_adhar.setScaleType(ImageView.ScaleType.FIT_XY);
+                                image_sp_adhar.setImageURI(imguri);
+                                text_sp_adhar.setText(filename + ".png");
+                                loader_sp_adhar.setVisibility(View.GONE);
+                                Toasty.info(getApplicationContext(), "Adhar Uploaded", Toast.LENGTH_SHORT).show();
+
+                                if (pan_uploaded && adhar_uploaded && registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
+                                        && sla_uploaded && invoices_uploaded && rental_uploaded && itr_uploaded )
+                                {
+                                    Submit_sp_docs.setBackground(getDrawable(R.drawable.gradient_neocredit));
+                                }
+                                else
+                                {
+                                    Submit_sp_docs.setBackgroundColor(getResources().getColor(R.color.colorash));
+                                }
+
+                            }
+                        });
+                        break;
+                    case "registration":
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                registration_proof_uploaded = true;
+                                image_sp_registrationProof.setPadding(20, 20, 20, 20);
+                                image_sp_registrationProof.setScaleType(ImageView.ScaleType.FIT_XY);
+                                image_sp_registrationProof.setImageURI(imguri);
+                                text_sp_registrationProof.setText(filename + ".png");
+                                loader_sp_registrationProof.setVisibility(View.GONE);
+                                Toasty.info(getApplicationContext(), "Registration Proof Uploaded", Toast.LENGTH_SHORT).show();
+
+                                if (pan_uploaded && adhar_uploaded && registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
+                                        && sla_uploaded && invoices_uploaded && rental_uploaded && itr_uploaded )
+                                {
+                                    Submit_sp_docs.setBackground(getDrawable(R.drawable.gradient_neocredit));
+                                }
+                                else
+                                {
+                                    Submit_sp_docs.setBackgroundColor(getResources().getColor(R.color.colorash));
+                                }
+                            }
+                        });
+                        break;
+                    case "bankstatement":
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                bankstatement_uploaded = true;
+                                image_sp_bankStatement.setPadding(20, 20, 20, 20);
+                                image_sp_bankStatement.setScaleType(ImageView.ScaleType.FIT_XY);
+                                image_sp_bankStatement.setImageURI(imguri);
+                                text_sp_bankStatement.setText(filename + ".png");
+                                loader_sp_bankStatement.setVisibility(View.GONE);
+                                Toasty.info(getApplicationContext(), "Bank Statement Uploaded", Toast.LENGTH_SHORT).show();
+
+                                if (pan_uploaded && adhar_uploaded && registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
+                                        && sla_uploaded && invoices_uploaded && rental_uploaded && itr_uploaded )
+                                {
+                                    Submit_sp_docs.setBackground(getDrawable(R.drawable.gradient_neocredit));
+                                }
+                                else
+                                {
+                                    Submit_sp_docs.setBackgroundColor(getResources().getColor(R.color.colorash));
+                                }
+                            }
+                        });
+                        break;
+                    case "gstr":
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                gstr_uploaded = true;
+                                image_sp_gstr.setPadding(20, 20, 20, 20);
+                                image_sp_gstr.setScaleType(ImageView.ScaleType.FIT_XY);
+                                image_sp_gstr.setImageURI(imguri);
+                                text_sp_gstr.setText(filename + ".png");
+                                loader_sp_gstr.setVisibility(View.GONE);
+                                Toasty.info(getApplicationContext(), "Gstr Uploaded", Toast.LENGTH_SHORT).show();
+
+                                if (pan_uploaded && adhar_uploaded && registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
+                                        && sla_uploaded && invoices_uploaded && rental_uploaded && itr_uploaded )
+                                {
+                                    Submit_sp_docs.setBackground(getDrawable(R.drawable.gradient_neocredit));
+                                }
+                                else
+                                {
+                                    Submit_sp_docs.setBackgroundColor(getResources().getColor(R.color.colorash));
+                                }
+                            }
+                        });
+                        break;
+                    case "sla":
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                sla_uploaded = true;
+                                image_sp_sla.setPadding(20, 20, 20, 20);
+                                image_sp_sla.setScaleType(ImageView.ScaleType.FIT_XY);
+                                image_sp_sla.setImageURI(imguri);
+                                text_sp_sla.setText(filename + ".png");
+                                loader_sp_sla.setVisibility(View.GONE);
+                                Toasty.info(getApplicationContext(), "Sla Uploaded", Toast.LENGTH_SHORT).show();
+
+                                if (pan_uploaded && adhar_uploaded && registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
+                                        && sla_uploaded && invoices_uploaded && rental_uploaded && itr_uploaded )
+                                {
+                                    Submit_sp_docs.setBackground(getDrawable(R.drawable.gradient_neocredit));
+                                }
+                                else
+                                {
+                                    Submit_sp_docs.setBackgroundColor(getResources().getColor(R.color.colorash));
+                                }
+                            }
+                        });
+                        break;
+                    case "invoice":
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                invoices_uploaded = true;
+                                image_sp_invoice.setPadding(20, 20, 20, 20);
+                                image_sp_invoice.setScaleType(ImageView.ScaleType.FIT_XY);
+                                image_sp_invoice.setImageURI(imguri);
+                                text_sp_invoice.setText(filename + ".png");
+                                loader_sp_invoice.setVisibility(View.GONE);
+                                Toasty.info(getApplicationContext(), "Invoice Uploaded", Toast.LENGTH_SHORT).show();
+
+                                if (pan_uploaded && adhar_uploaded && registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
+                                        && sla_uploaded && invoices_uploaded && rental_uploaded && itr_uploaded )
+                                {
+                                    Submit_sp_docs.setBackground(getDrawable(R.drawable.gradient_neocredit));
+                                }
+                                else
+                                {
+                                    Submit_sp_docs.setBackgroundColor(getResources().getColor(R.color.colorash));
+                                }
+                            }
+                        });
+                        break;
+                    case "rentaggrement":
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                rental_uploaded = true;
+                                image_sp_rentAggrement.setPadding(20, 20, 20, 20);
+                                image_sp_rentAggrement.setScaleType(ImageView.ScaleType.FIT_XY);
+                                image_sp_rentAggrement.setImageURI(imguri);
+                                text_sp_rentAggrement.setText(filename + ".png");
+                                loader_sp_rentAggrement.setVisibility(View.GONE);
+                                Toasty.info(getApplicationContext(), "Rent Agreement Uploaded", Toast.LENGTH_SHORT).show();
+
+                                if (pan_uploaded && adhar_uploaded && registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
+                                        && sla_uploaded && invoices_uploaded && rental_uploaded && itr_uploaded )
+                                {
+                                    Submit_sp_docs.setBackground(getDrawable(R.drawable.gradient_neocredit));
+                                }
+                                else
+                                {
+                                    Submit_sp_docs.setBackgroundColor(getResources().getColor(R.color.colorash));
+                                }
+                            }
+                        });
+                        break;
+                    case "itr":
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                itr_uploaded = true;
+                                image_sp_itr.setPadding(20, 20, 20, 20);
+                                image_sp_itr.setScaleType(ImageView.ScaleType.FIT_XY);
+                                image_sp_itr.setImageURI(imguri);
+                                text_sp_itr.setText(filename + ".png");
+                                loader_sp_itr.setVisibility(View.GONE);
+                                Toasty.info(getApplicationContext(), "Itr Uploaded", Toast.LENGTH_SHORT).show();
+
+                                if (pan_uploaded && adhar_uploaded && registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
+                                        && sla_uploaded && invoices_uploaded && rental_uploaded && itr_uploaded )
+                                {
+                                    Submit_sp_docs.setBackground(getDrawable(R.drawable.gradient_neocredit));
+                                }
+                                else
+                                {
+                                    Submit_sp_docs.setBackgroundColor(getResources().getColor(R.color.colorash));
+                                }
+                            }
+                        });
+                        break;
+                }
+
+
             }
         });
 
@@ -501,30 +732,39 @@ public class SPDocumentUploadActivity extends AppCompatActivity {
 
         switch (status) {
             case "pan":
+                loader_sp_pan.setVisibility(View.VISIBLE);
                 code = "8";
                 break;
             case "adhar":
+                loader_sp_adhar.setVisibility(View.VISIBLE);
                 code = "1";
                 break;
             case "registration":
+                loader_sp_registrationProof.setVisibility(View.VISIBLE);
                 code = "10";
                 break;
             case "bankstatement":
+                loader_sp_bankStatement.setVisibility(View.VISIBLE);
                 code = "11";
                 break;
             case "gstr":
+                loader_sp_gstr.setVisibility(View.VISIBLE);
                 code = "12";
                 break;
             case "sla":
+                loader_sp_sla.setVisibility(View.VISIBLE);
                 code = "13";
                 break;
             case "invoice":
+                loader_sp_invoice.setVisibility(View.VISIBLE);
                 code = "14";
                 break;
             case "rentaggrement":
+                loader_sp_rentAggrement.setVisibility(View.VISIBLE);
                 code = "15";
                 break;
             case "itr":
+                loader_sp_itr.setVisibility(View.VISIBLE);
                 code = "16";
                 break;
         }
@@ -573,80 +813,196 @@ public class SPDocumentUploadActivity extends AppCompatActivity {
                 String body = response.body().string();
                 Log.e("httpresponse", "onResponse: " + body);
 
-                if (status.equals("pan"))
-                {
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
+                switch (status) {
+                    case "pan":
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                pan_uploaded = true;
+                                text_sp_pan.setText(Pdf_name);
+                                image_sp_pan.setImageDrawable(getResources().getDrawable(R.drawable.pdfseticon));
+                                loader_sp_pan.setVisibility(View.GONE);
 
+                                if (pan_uploaded && adhar_uploaded && registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
+                                        && sla_uploaded && invoices_uploaded && rental_uploaded && itr_uploaded )
+                                {
+                                    Submit_sp_docs.setBackground(getDrawable(R.drawable.gradient_neocredit));
+                                }
+                                else
+                                {
+                                    Submit_sp_docs.setBackgroundColor(getResources().getColor(R.color.colorash));
+                                }
+                            }
+                        });
+                        break;
+                    case "adhar":
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                adhar_uploaded = true;
+                                text_sp_adhar.setText(Pdf_name);
+                                image_sp_adhar.setImageDrawable(getResources().getDrawable(R.drawable.pdfseticon));
+                                loader_sp_adhar.setVisibility(View.GONE);
 
+                                if (pan_uploaded && adhar_uploaded && registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
+                                        && sla_uploaded && invoices_uploaded && rental_uploaded && itr_uploaded )
+                                {
+                                    Submit_sp_docs.setBackground(getDrawable(R.drawable.gradient_neocredit));
+                                }
+                                else
+                                {
+                                    Submit_sp_docs.setBackgroundColor(getResources().getColor(R.color.colorash));
+                                }
+                            }
+                        });
+                        break;
+                    case "registration":
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                registration_proof_uploaded = true;
+                                text_sp_registrationProof.setText(Pdf_name);
+                                image_sp_registrationProof.setImageDrawable(getResources().getDrawable(R.drawable.pdfseticon));
+                                loader_sp_registrationProof.setVisibility(View.GONE);
 
-                        }
-                    });
-                } else if (status.equals("adhar"))
-                {
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
+                                if (pan_uploaded && adhar_uploaded && registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
+                                        && sla_uploaded && invoices_uploaded && rental_uploaded && itr_uploaded )
+                                {
+                                    Submit_sp_docs.setBackground(getDrawable(R.drawable.gradient_neocredit));
+                                }
+                                else
+                                {
+                                    Submit_sp_docs.setBackgroundColor(getResources().getColor(R.color.colorash));
+                                }
+                            }
+                        });
+                        break;
+                    case "bankstatement":
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                bankstatement_uploaded = true;
+                                text_sp_bankStatement.setText(Pdf_name);
+                                image_sp_bankStatement.setImageDrawable(getResources().getDrawable(R.drawable.pdfseticon));
+                                loader_sp_bankStatement.setVisibility(View.GONE);
 
-                        }
-                    });
-                } else if (status.equals("registration"))
-                {
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
+                                if (pan_uploaded && adhar_uploaded && registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
+                                        && sla_uploaded && invoices_uploaded && rental_uploaded && itr_uploaded )
+                                {
+                                    Submit_sp_docs.setBackground(getDrawable(R.drawable.gradient_neocredit));
+                                }
+                                else
+                                {
+                                    Submit_sp_docs.setBackgroundColor(getResources().getColor(R.color.colorash));
+                                }
+                            }
+                        });
+                        break;
+                    case "gstr":
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                gstr_uploaded = true;
+                                text_sp_gstr.setText(Pdf_name);
+                                image_sp_gstr.setImageDrawable(getResources().getDrawable(R.drawable.pdfseticon));
+                                loader_sp_gstr.setVisibility(View.GONE);
 
-                        }
-                    });
-                } else if (status.equals("bankstatement"))
-                {
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
+                                if (pan_uploaded && adhar_uploaded && registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
+                                        && sla_uploaded && invoices_uploaded && rental_uploaded && itr_uploaded )
+                                {
+                                    Submit_sp_docs.setBackground(getDrawable(R.drawable.gradient_neocredit));
+                                }
+                                else
+                                {
+                                    Submit_sp_docs.setBackgroundColor(getResources().getColor(R.color.colorash));
+                                }
+                            }
+                        });
+                        break;
+                    case "sla":
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                sla_uploaded = true;
+                                text_sp_sla.setText(Pdf_name);
+                                image_sp_sla.setImageDrawable(getResources().getDrawable(R.drawable.pdfseticon));
+                                loader_sp_sla.setVisibility(View.GONE);
 
-                        }
-                    });
-                } else if (status.equals("gstr"))
-                {
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
+                                if (pan_uploaded && adhar_uploaded && registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
+                                        && sla_uploaded && invoices_uploaded && rental_uploaded && itr_uploaded )
+                                {
+                                    Submit_sp_docs.setBackground(getDrawable(R.drawable.gradient_neocredit));
+                                }
+                                else
+                                {
+                                    Submit_sp_docs.setBackgroundColor(getResources().getColor(R.color.colorash));
+                                }
+                            }
+                        });
+                        break;
+                    case "invoice":
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                invoices_uploaded = true;
+                                text_sp_invoice.setText(Pdf_name);
+                                image_sp_invoice.setImageDrawable(getResources().getDrawable(R.drawable.pdfseticon));
+                                loader_sp_invoice.setVisibility(View.GONE);
 
-                        }
-                    });
-                } else if (status.equals("sla"))
-                {
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
+                                if (pan_uploaded && adhar_uploaded && registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
+                                        && sla_uploaded && invoices_uploaded && rental_uploaded && itr_uploaded )
+                                {
+                                    Submit_sp_docs.setBackground(getDrawable(R.drawable.gradient_neocredit));
+                                }
+                                else
+                                {
+                                    Submit_sp_docs.setBackgroundColor(getResources().getColor(R.color.colorash));
+                                }
+                            }
+                        });
+                        break;
+                    case "rentaggrement":
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                rental_uploaded = true;
+                                text_sp_rentAggrement.setText(Pdf_name);
+                                image_sp_rentAggrement.setImageDrawable(getResources().getDrawable(R.drawable.pdfseticon));
+                                loader_sp_rentAggrement.setVisibility(View.GONE);
 
-                        }
-                    });
-                } else if (status.equals("invoice"))
-                {
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
+                                if (pan_uploaded && adhar_uploaded && registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
+                                        && sla_uploaded && invoices_uploaded && rental_uploaded && itr_uploaded )
+                                {
+                                    Submit_sp_docs.setBackground(getDrawable(R.drawable.gradient_neocredit));
+                                }
+                                else
+                                {
+                                    Submit_sp_docs.setBackgroundColor(getResources().getColor(R.color.colorash));
+                                }
+                            }
+                        });
+                        break;
+                    case "itr":
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                itr_uploaded = true;
+                                text_sp_itr.setText(Pdf_name);
+                                image_sp_itr.setImageDrawable(getResources().getDrawable(R.drawable.pdfseticon));
+                                loader_sp_itr.setVisibility(View.GONE);
 
-                        }
-                    });
-                } else if (status.equals("rentaggrement"))
-                {
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-
-                        }
-                    });
-                } else if (status.equals("itr"))
-                {
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-
-                        }
-                    });
+                                if (pan_uploaded && adhar_uploaded && registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
+                                        && sla_uploaded && invoices_uploaded && rental_uploaded && itr_uploaded )
+                                {
+                                    Submit_sp_docs.setBackground(getDrawable(R.drawable.gradient_neocredit));
+                                }
+                                else
+                                {
+                                    Submit_sp_docs.setBackgroundColor(getResources().getColor(R.color.colorash));
+                                }
+                            }
+                        });
+                        break;
                 }
 
             }

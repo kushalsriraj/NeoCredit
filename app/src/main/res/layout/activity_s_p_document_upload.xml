@@ -48,43 +48,75 @@
 
     </androidx.cardview.widget.CardView>
 
-    <RelativeLayout
-        android:layout_margin="10dp"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-        <ImageView
-            android:padding="12dp"
-            android:id="@+id/back_spdoc"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@drawable/purplebackarrow" />
-
-        <ImageView
+        <RelativeLayout
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:layout_marginBottom="5dp"
-            android:layout_width="70dp"
-            android:layout_height="50dp"
-            android:layout_alignParentRight="true"
-            android:src="@drawable/neocreditlogo" />
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
 
-        <TextView
-            android:fontFamily="@font/lato_bold"
+            <ImageView
+                android:padding="12dp"
+                android:id="@+id/back_spdoc"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/purplebackarrow" />
+
+            <ImageView
+                android:layout_marginBottom="5dp"
+                android:layout_width="70dp"
+                android:layout_height="50dp"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/neocreditlogo" />
+
+            <TextView
+                android:fontFamily="@font/lato_bold"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Upload Documents"
+                android:gravity="center"
+                android:textSize="16dp"
+                android:textColor="@color/black"
+                android:layout_marginLeft="50dp"/>
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_gravity="center"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="Upload Documents"
-            android:gravity="center"
-            android:textSize="16dp"
-            android:textColor="@color/black"
-            android:layout_marginLeft="50dp"/>
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-    </RelativeLayout>
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:src="@drawable/infoicon"/>
+
+            <TextView
+                android:layout_marginLeft="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="All the below fields are mandatory. Please upload all the documents."
+                android:textStyle="italic"
+                android:textColor="@color/black"
+                android:textSize="10dp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
 
     <ScrollView
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="85dp"
         android:layout_marginBottom="60dp">
 
         <LinearLayout
@@ -149,8 +181,8 @@
                                     android:id="@+id/image_sp_pan"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:padding="15dp"
-                                    android:src="@drawable/uploadicon" />
+                                    android:padding="20dp"
+                                    android:src="@drawable/blackcloud" />
 
                             </RelativeLayout>
 
@@ -220,8 +252,8 @@
                                     android:id="@+id/image_sp_adhar"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:padding="15dp"
-                                    android:src="@drawable/uploadicon" />
+                                    android:padding="20dp"
+                                    android:src="@drawable/blackcloud" />
 
                             </RelativeLayout>
 
@@ -299,8 +331,8 @@
                                     android:id="@+id/image_sp_registrationProof"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:padding="15dp"
-                                    android:src="@drawable/uploadicon" />
+                                    android:padding="20dp"
+                                    android:src="@drawable/blackcloud" />
 
                             </RelativeLayout>
 
@@ -370,8 +402,8 @@
                                     android:id="@+id/image_sp_bankStatement"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:padding="15dp"
-                                    android:src="@drawable/uploadicon" />
+                                    android:padding="20dp"
+                                    android:src="@drawable/blackcloud" />
 
                             </RelativeLayout>
 
@@ -449,8 +481,8 @@
                                     android:id="@+id/image_sp_gstr"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:padding="15dp"
-                                    android:src="@drawable/uploadicon" />
+                                    android:padding="20dp"
+                                    android:src="@drawable/blackcloud" />
 
                             </RelativeLayout>
 
@@ -520,8 +552,8 @@
                                     android:id="@+id/image_sp_sla"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:padding="15dp"
-                                    android:src="@drawable/uploadicon" />
+                                    android:padding="20dp"
+                                    android:src="@drawable/blackcloud" />
 
                             </RelativeLayout>
 
@@ -599,8 +631,8 @@
                                     android:id="@+id/image_sp_invoice"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:padding="15dp"
-                                    android:src="@drawable/uploadicon" />
+                                    android:padding="20dp"
+                                    android:src="@drawable/blackcloud" />
 
                             </RelativeLayout>
 
@@ -670,8 +702,8 @@
                                     android:id="@+id/image_sp_rentAggrement"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:padding="15dp"
-                                    android:src="@drawable/uploadicon" />
+                                    android:padding="20dp"
+                                    android:src="@drawable/blackcloud" />
 
                             </RelativeLayout>
 
@@ -749,8 +781,8 @@
                                     android:id="@+id/image_sp_itr"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:padding="15dp"
-                                    android:src="@drawable/uploadicon" />
+                                    android:padding="20dp"
+                                    android:src="@drawable/blackcloud" />
 
                             </RelativeLayout>
 

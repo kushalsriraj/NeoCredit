@@ -1,8 +1,11 @@
 package rutherfordit.com.instasalary.activities;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -16,11 +19,22 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.common.api.Status;
+import com.google.android.libraries.places.api.Places;
+import com.google.android.libraries.places.api.model.Place;
+import com.google.android.libraries.places.api.net.PlacesClient;
+import com.google.android.libraries.places.widget.Autocomplete;
+import com.google.android.libraries.places.widget.AutocompleteActivity;
+import com.google.android.libraries.places.widget.model.AutocompleteActivityMode;
 import com.google.android.material.textfield.TextInputEditText;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -38,6 +52,11 @@ import rutherfordit.com.instasalary.myinterfaces.ResponseHandler;
 
 public class CompanyDetails extends AppCompatActivity implements ResponseHandler {
 
+    List<Address> addresses;
+    Geocoder geocoder;
+    private static final String TAG = "company";
+    String apikey = "AIzaSyAd8dm_HBq2pzHhVvzzD9dqBwR3K88jCEk";
+    PlacesClient placesClient;
     TextView invalidPan, invalidEmail;
     SharedPrefsManager sharedPrefsManager;
     VolleyRequest volleyRequest;
@@ -46,6 +65,81 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
     TextInputEditText businessLandline, company_name, typeOfService, howOldIsTheCompany, annualTurnover, company_address, addressProof, company_email, pancardnumber;
     Spinner Spinner_typeOfService, Spinner_howOldIsTheCompany, Spinner_annualTurnover, Spinner_businessAddressProof;
     boolean click = false;
+    private static int AUTOCOMPLETE_REQUEST_CODE = 1;
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == AUTOCOMPLETE_REQUEST_CODE) {
+            if (resultCode == RESULT_OK)
+            {
+                Place place = null;
+                if (data != null)
+                {
+                    place = Autocomplete.getPlaceFromIntent(data);
+                }
+                Log.i(TAG, "Place: " + place.getName() + ", " + place.getId() + place.getLatLng() + place.getAddress());
+                /*Select_Place.setVisibility(View.GONE);
+                tip_search.setVisibility(View.GONE);
+                re_search.setVisibility(View.VISIBLE);*/
+                // Select_Place.setText("Name : " + place.getName() + "\n" + "LatLng" + place.getLatLng() +"\n" + "Address" + place.getAddress()+ "Phone" + place.getPhoneNumber());
+
+                /*entercompanyname.setText(place.getName());
+                entercompanystreet.setText(place.getAddress());*/
+
+                String latlng = String.valueOf(place.getLatLng());
+
+                latlng = latlng.replace("(", "");
+                latlng = latlng.replace(")", "");
+                latlng = latlng.replace("lat/lng: ", "");
+
+                String[] namesList = latlng.split(",");
+
+                String lat = namesList[0];
+                String longi = namesList[1];
+
+                Log.e(TAG, "lat " + lat + " long " + longi);
+
+
+                double la=Double.parseDouble(lat.toString());
+                double lo=Double.parseDouble(longi.toString());
+
+                geocoder = new Geocoder(this, Locale.getDefault());
+                try {
+                    addresses = geocoder.getFromLocation(la, lo, 1);
+
+                    String postalCode = addresses.get(0).getPostalCode();
+                    String city = addresses.get(0).getLocality();
+                    String state = addresses.get(0).getAdminArea();
+
+                    /*entercompanypincode.setText(postalCode);
+                    entercompanystate.setText(state);
+                    entercompanycity.setText(city);*/
+
+                    Log.e(TAG, "onActivityResult: " + postalCode + " " + city+ " " + state );
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+               // company_Data_Layout.setVisibility(View.VISIBLE);
+
+
+            }
+            else if (resultCode == AutocompleteActivity.RESULT_ERROR) {
+
+                Status status = Autocomplete.getStatusFromIntent(data);
+
+                if (status.getStatusMessage() != null)
+                {
+                    Log.e(TAG, status.getStatusMessage());
+                }
+            } else if (resultCode == RESULT_CANCELED)
+            {
+                Log.e(TAG, "cancelled");
+            }
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +153,8 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
     private void init()
     {
 
+        Places.initialize(getApplicationContext(), apikey);
+        placesClient = Places.createClient(this);
         invalidPan = findViewById(R.id.invalidPan);
         invalidEmail = findViewById(R.id.invalidEmail);
         invalidPan.setVisibility(View.GONE);
@@ -78,6 +174,15 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
 
         submitCompanyInfo = findViewById(R.id.submitCompanyInfo);
         purplebackarrow = findViewById(R.id.purplebackarrow);
+
+        company_name.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                List<Place.Field> fields = Arrays.asList(Place.Field.ID, Place.Field.NAME,Place.Field.LAT_LNG,Place.Field.PHONE_NUMBER,Place.Field.ADDRESS);
+                Intent intent = new Autocomplete.IntentBuilder(AutocompleteActivityMode.OVERLAY, fields).build(getApplicationContext());
+                startActivityForResult(intent, AUTOCOMPLETE_REQUEST_CODE);
+            }
+        });
 
         onClicks();
         SpinnersSelected();
