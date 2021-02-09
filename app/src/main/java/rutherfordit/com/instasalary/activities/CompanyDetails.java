@@ -175,14 +175,14 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
         submitCompanyInfo = findViewById(R.id.submitCompanyInfo);
         purplebackarrow = findViewById(R.id.purplebackarrow);
 
-        company_name.setOnClickListener(new View.OnClickListener() {
+        /*company_name.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 List<Place.Field> fields = Arrays.asList(Place.Field.ID, Place.Field.NAME,Place.Field.LAT_LNG,Place.Field.PHONE_NUMBER,Place.Field.ADDRESS);
                 Intent intent = new Autocomplete.IntentBuilder(AutocompleteActivityMode.OVERLAY, fields).build(getApplicationContext());
                 startActivityForResult(intent, AUTOCOMPLETE_REQUEST_CODE);
             }
-        });
+        });*/
 
         onClicks();
         SpinnersSelected();
