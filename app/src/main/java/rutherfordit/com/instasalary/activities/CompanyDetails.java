@@ -5,8 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
-import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.AdapterView;
@@ -18,25 +18,33 @@ import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import rutherfordit.com.instasalary.R;
 import rutherfordit.com.instasalary.activities.partnership.PartnershipDocUploadActivity;
+import rutherfordit.com.instasalary.activities.privatelimited.PrivateLimitedCompanyDetailsActivity;
+import rutherfordit.com.instasalary.activities.privatelimited.PrivateLimitedDirectorFirstDetailsActivity;
 import rutherfordit.com.instasalary.activities.privatelimited.PrivateLimitedDocUploadActivity;
 import rutherfordit.com.instasalary.activities.sp.SPDocumentUploadActivity;
+import rutherfordit.com.instasalary.extras.Constants;
 import rutherfordit.com.instasalary.extras.SharedPrefsManager;
+import rutherfordit.com.instasalary.extras.Urls;
 import rutherfordit.com.instasalary.extras.VolleyRequest;
+import rutherfordit.com.instasalary.myinterfaces.ResponseHandler;
 
-public class CompanyDetails extends AppCompatActivity {
+public class CompanyDetails extends AppCompatActivity implements ResponseHandler {
 
     TextView invalidPan, invalidEmail;
     SharedPrefsManager sharedPrefsManager;
     VolleyRequest volleyRequest;
     RelativeLayout submitCompanyInfo;
     ImageView purplebackarrow;
-    TextInputEditText sp_businessLandline,sp_company_name,sp_typeOfService,sp_howOldIsTheCompany,sp_annualTurnover,sp_company_address,sp_addressProof, company_email, par_pancardnumber;
-    Spinner Spinner_typeOfService,Spinner_howOldIsTheCompany,Spinner_annualTurnover,Spinner_businessAddressProof;
+    TextInputEditText businessLandline, company_name, typeOfService, howOldIsTheCompany, annualTurnover, company_address, addressProof, company_email, pancardnumber;
+    Spinner Spinner_typeOfService, Spinner_howOldIsTheCompany, Spinner_annualTurnover, Spinner_businessAddressProof;
     boolean click = false;
 
     @Override
@@ -54,15 +62,15 @@ public class CompanyDetails extends AppCompatActivity {
         invalidPan = findViewById(R.id.invalidPan);
         invalidEmail = findViewById(R.id.invalidEmail);
         invalidPan.setVisibility(View.GONE);
-        sp_businessLandline = findViewById(R.id.sp_businessLandline);
+        businessLandline = findViewById(R.id.sp_businessLandline);
         company_email = findViewById(R.id.company_email);
-        par_pancardnumber = findViewById(R.id.par_pancardnumber);
-        sp_company_name = findViewById(R.id.sp_company_name);
-        sp_typeOfService = findViewById(R.id.sp_typeOfService);
-        sp_howOldIsTheCompany = findViewById(R.id.sp_howOldIsTheCompany);
-        sp_annualTurnover = findViewById(R.id.sp_annualTurnover);
-        sp_company_address = findViewById(R.id.sp_company_address);
-        sp_addressProof = findViewById(R.id.sp_addressProof);
+        pancardnumber = findViewById(R.id.par_pancardnumber);
+        company_name = findViewById(R.id.sp_company_name);
+        typeOfService = findViewById(R.id.sp_typeOfService);
+        howOldIsTheCompany = findViewById(R.id.sp_howOldIsTheCompany);
+        annualTurnover = findViewById(R.id.sp_annualTurnover);
+        company_address = findViewById(R.id.sp_company_address);
+        addressProof = findViewById(R.id.sp_addressProof);
         Spinner_typeOfService = findViewById(R.id.Spinner_typeOfService);
         Spinner_howOldIsTheCompany = findViewById(R.id.Spinner_howOldIsTheCompany);
         Spinner_annualTurnover = findViewById(R.id.Spinner_annualTurnover);
@@ -79,21 +87,21 @@ public class CompanyDetails extends AppCompatActivity {
     private void textWatchers()
     {
 
-        sp_company_name.addTextChangedListener(new TextWatcher() {
+        company_name.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-                if (!sp_company_name.getText().toString().equals("")
+                if (!company_name.getText().toString().equals("")
                         &&!company_email.getText().toString().equals("")
-                        && !par_pancardnumber.getText().toString().equals("")
-                        &&!sp_company_address.getText().toString().equals("")
-                        &&!sp_typeOfService.getText().toString().equals("-- Select Type of Service --")
-                        &&!sp_howOldIsTheCompany.getText().toString().equals("-- Select Tenuraty the Company --")
-                        && !sp_annualTurnover.getText().toString().equals("-- Select Annual Turnover --")&&
-                        !sp_addressProof.getText().toString().equals("-- Select Address Proof --"))
+                        && !pancardnumber.getText().toString().equals("")
+                        &&!company_address.getText().toString().equals("")
+                        &&!typeOfService.getText().toString().equals("-- Select Type of Service --")
+                        &&!howOldIsTheCompany.getText().toString().equals("-- Select Tenuraty the Company --")
+                        && !annualTurnover.getText().toString().equals("-- Select Annual Turnover --")&&
+                        !addressProof.getText().toString().equals("-- Select Address Proof --"))
                 {
                     submitCompanyInfo.setBackground(getDrawable(R.drawable.gradient_neocredit));
                     click=true;
@@ -122,14 +130,14 @@ public class CompanyDetails extends AppCompatActivity {
                 {
                     invalidEmail.setVisibility(View.GONE);
 
-                    if (!sp_company_name.getText().toString().equals("")
-                            && !par_pancardnumber.getText().toString().equals("")
-                            && !par_pancardnumber.getText().toString().equals("")
-                            &&!sp_company_address.getText().toString().equals("")
-                            &&!sp_typeOfService.getText().toString().equals("-- Select Type of Service --")
-                            &&!sp_howOldIsTheCompany.getText().toString().equals("-- Select Tenuraty the Company --")
-                            && !sp_annualTurnover.getText().toString().equals("-- Select Annual Turnover --")&&
-                            !sp_addressProof.getText().toString().equals("-- Select Address Proof --"))
+                    if (!company_name.getText().toString().equals("")
+                            && !company_email.getText().toString().equals("")
+                            && !pancardnumber.getText().toString().equals("")
+                            &&!company_address.getText().toString().equals("")
+                            &&!typeOfService.getText().toString().equals("-- Select Type of Service --")
+                            &&!howOldIsTheCompany.getText().toString().equals("-- Select Tenuraty the Company --")
+                            && !annualTurnover.getText().toString().equals("-- Select Annual Turnover --")&&
+                            !addressProof.getText().toString().equals("-- Select Address Proof --"))
                     {
                         submitCompanyInfo.setBackground(getDrawable(R.drawable.gradient_neocredit));
                         click=true;
@@ -151,7 +159,7 @@ public class CompanyDetails extends AppCompatActivity {
             public void afterTextChanged(Editable s) { }
         });
 
-        par_pancardnumber.addTextChangedListener(new TextWatcher() {
+        pancardnumber.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
 
@@ -159,19 +167,19 @@ public class CompanyDetails extends AppCompatActivity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
                 Pattern pattern = Pattern.compile("[A-Z]{5}[0-9]{4}[A-Z]{1}");
-                Matcher matcher = pattern.matcher(par_pancardnumber.getText().toString());
+                Matcher matcher = pattern.matcher(pancardnumber.getText().toString());
 
                 if (matcher.matches())
                 {
                     invalidPan.setVisibility(View.GONE);
 
-                    if (!sp_company_name.getText().toString().equals("")
-                            && !par_pancardnumber.getText().toString().equals("")
-                            &&!sp_company_address.getText().toString().equals("")
-                            &&!sp_typeOfService.getText().toString().equals("-- Select Type of Service --")
-                            &&!sp_howOldIsTheCompany.getText().toString().equals("-- Select Tenuraty the Company --")
-                            && !sp_annualTurnover.getText().toString().equals("-- Select Annual Turnover --")&&
-                            !sp_addressProof.getText().toString().equals("-- Select Address Proof --"))
+                    if (!company_name.getText().toString().equals("")
+                            && !pancardnumber.getText().toString().equals("")
+                            &&!company_address.getText().toString().equals("")
+                            &&!typeOfService.getText().toString().equals("-- Select Type of Service --")
+                            &&!howOldIsTheCompany.getText().toString().equals("-- Select Tenuraty the Company --")
+                            && !annualTurnover.getText().toString().equals("-- Select Annual Turnover --")&&
+                            !addressProof.getText().toString().equals("-- Select Address Proof --"))
                     {
                         submitCompanyInfo.setBackground(getDrawable(R.drawable.gradient_neocredit));
                         click=true;
@@ -192,21 +200,21 @@ public class CompanyDetails extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) { }
         });
-        sp_company_address.addTextChangedListener(new TextWatcher() {
+        company_address.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-                if (!sp_company_name.getText().toString().equals("")
+                if (!company_name.getText().toString().equals("")
                         &&!company_email.getText().toString().equals("")
-                        && !par_pancardnumber.getText().toString().equals("")
-                        &&!sp_company_address.getText().toString().equals("")
-                        &&!sp_typeOfService.getText().toString().equals("-- Select Type of Service --")
-                        &&!sp_howOldIsTheCompany.getText().toString().equals("-- Select Tenuraty the Company --")
-                        && !sp_annualTurnover.getText().toString().equals("-- Select Annual Turnover --")&&
-                        !sp_addressProof.getText().toString().equals("-- Select Address Proof --"))
+                        && !pancardnumber.getText().toString().equals("")
+                        &&!company_address.getText().toString().equals("")
+                        &&!typeOfService.getText().toString().equals("-- Select Type of Service --")
+                        &&!howOldIsTheCompany.getText().toString().equals("-- Select Tenuraty the Company --")
+                        && !annualTurnover.getText().toString().equals("-- Select Annual Turnover --")&&
+                        !addressProof.getText().toString().equals("-- Select Address Proof --"))
                 {
                     submitCompanyInfo.setBackground(getDrawable(R.drawable.gradient_neocredit));
                     click=true;
@@ -222,20 +230,20 @@ public class CompanyDetails extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) { }
         });
-        sp_businessLandline.addTextChangedListener(new TextWatcher() {
+        businessLandline.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (!sp_company_name.getText().toString().equals("")
+                if (!company_name.getText().toString().equals("")
                         &&!company_email.getText().toString().equals("")
-                        && !par_pancardnumber.getText().toString().equals("")
-                        &&!sp_company_address.getText().toString().equals("")
-                        &&!sp_typeOfService.getText().toString().equals("-- Select Type of Service --")
-                        &&!sp_howOldIsTheCompany.getText().toString().equals("-- Select Tenuraty the Company --")
-                        && !sp_annualTurnover.getText().toString().equals("-- Select Annual Turnover --")&&
-                        !sp_addressProof.getText().toString().equals("-- Select Address Proof --"))
+                        && !pancardnumber.getText().toString().equals("")
+                        &&!company_address.getText().toString().equals("")
+                        &&!typeOfService.getText().toString().equals("-- Select Type of Service --")
+                        &&!howOldIsTheCompany.getText().toString().equals("-- Select Tenuraty the Company --")
+                        && !annualTurnover.getText().toString().equals("-- Select Annual Turnover --")&&
+                        !addressProof.getText().toString().equals("-- Select Address Proof --"))
                 {
                     submitCompanyInfo.setBackground(getDrawable(R.drawable.gradient_neocredit));
                     click=true;
@@ -262,16 +270,16 @@ public class CompanyDetails extends AppCompatActivity {
         {
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
 
-                sp_typeOfService.setText(parent.getItemAtPosition(pos).toString());
+                typeOfService.setText(parent.getItemAtPosition(pos).toString());
 
-                if (!sp_company_name.getText().toString().equals("")
+                if (!company_name.getText().toString().equals("")
                         &&!company_email.getText().toString().equals("")
-                        && !par_pancardnumber.getText().toString().equals("")
-                        &&!sp_company_address.getText().toString().equals("")
-                        &&!sp_typeOfService.getText().toString().equals("-- Select Type of Service --")
-                        &&!sp_howOldIsTheCompany.getText().toString().equals("-- Select Tenuraty the Company --")
-                        && !sp_annualTurnover.getText().toString().equals("-- Select Annual Turnover --")&&
-                        !sp_addressProof.getText().toString().equals("-- Select Address Proof --"))
+                        && !pancardnumber.getText().toString().equals("")
+                        &&!company_address.getText().toString().equals("")
+                        &&!typeOfService.getText().toString().equals("-- Select Type of Service --")
+                        &&!howOldIsTheCompany.getText().toString().equals("-- Select Tenuraty the Company --")
+                        && !annualTurnover.getText().toString().equals("-- Select Annual Turnover --")&&
+                        !addressProof.getText().toString().equals("-- Select Address Proof --"))
                 {
                     submitCompanyInfo.setBackground(getDrawable(R.drawable.gradient_neocredit));
                     click=true;
@@ -289,16 +297,16 @@ public class CompanyDetails extends AppCompatActivity {
         {
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
 
-                sp_howOldIsTheCompany.setText(parent.getItemAtPosition(pos).toString());
+                howOldIsTheCompany.setText(parent.getItemAtPosition(pos).toString());
 
-                if (!sp_company_name.getText().toString().equals("")
+                if (!company_name.getText().toString().equals("")
                         &&!company_email.getText().toString().equals("")
-                        && !par_pancardnumber.getText().toString().equals("")
-                        &&!sp_company_address.getText().toString().equals("")
-                        &&!sp_typeOfService.getText().toString().equals("-- Select Type of Service --")
-                        &&!sp_howOldIsTheCompany.getText().toString().equals("-- Select Tenuraty the Company --")
-                        && !sp_annualTurnover.getText().toString().equals("-- Select Annual Turnover --")&&
-                        !sp_addressProof.getText().toString().equals("-- Select Address Proof --"))
+                        && !pancardnumber.getText().toString().equals("")
+                        &&!company_address.getText().toString().equals("")
+                        &&!typeOfService.getText().toString().equals("-- Select Type of Service --")
+                        &&!howOldIsTheCompany.getText().toString().equals("-- Select Tenuraty the Company --")
+                        && !annualTurnover.getText().toString().equals("-- Select Annual Turnover --")&&
+                        !addressProof.getText().toString().equals("-- Select Address Proof --"))
                 {
                     submitCompanyInfo.setBackground(getDrawable(R.drawable.gradient_neocredit));
                     click=true;
@@ -317,16 +325,16 @@ public class CompanyDetails extends AppCompatActivity {
         {
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
 
-                sp_annualTurnover.setText(parent.getItemAtPosition(pos).toString());
+                annualTurnover.setText(parent.getItemAtPosition(pos).toString());
 
-                if (!sp_company_name.getText().toString().equals("")
+                if (!company_name.getText().toString().equals("")
                         &&!company_email.getText().toString().equals("")
-                        && !par_pancardnumber.getText().toString().equals("")
-                        &&!sp_company_address.getText().toString().equals("")
-                        &&!sp_typeOfService.getText().toString().equals("-- Select Type of Service --")
-                        &&!sp_howOldIsTheCompany.getText().toString().equals("-- Select Tenuraty the Company --")
-                        && !sp_annualTurnover.getText().toString().equals("-- Select Annual Turnover --")&&
-                        !sp_addressProof.getText().toString().equals("-- Select Address Proof --"))
+                        && !pancardnumber.getText().toString().equals("")
+                        &&!company_address.getText().toString().equals("")
+                        &&!typeOfService.getText().toString().equals("-- Select Type of Service --")
+                        &&!howOldIsTheCompany.getText().toString().equals("-- Select Tenuraty the Company --")
+                        && !annualTurnover.getText().toString().equals("-- Select Annual Turnover --")&&
+                        !addressProof.getText().toString().equals("-- Select Address Proof --"))
                 {
                     submitCompanyInfo.setBackground(getDrawable(R.drawable.gradient_neocredit));
                     click=true;
@@ -345,16 +353,16 @@ public class CompanyDetails extends AppCompatActivity {
         {
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
 
-                sp_addressProof.setText(parent.getItemAtPosition(pos).toString());
+                addressProof.setText(parent.getItemAtPosition(pos).toString());
 
-                if (!sp_company_name.getText().toString().equals("")
+                if (!company_name.getText().toString().equals("")
                         &&!company_email.getText().toString().equals("")
-                        && !par_pancardnumber.getText().toString().equals("")
-                        &&!sp_company_address.getText().toString().equals("")
-                        &&!sp_typeOfService.getText().toString().equals("-- Select Type of Service --")
-                        &&!sp_howOldIsTheCompany.getText().toString().equals("-- Select Tenuraty the Company --")
-                        && !sp_annualTurnover.getText().toString().equals("-- Select Annual Turnover --")&&
-                        !sp_addressProof.getText().toString().equals("-- Select Address Proof --"))
+                        && !pancardnumber.getText().toString().equals("")
+                        &&!company_address.getText().toString().equals("")
+                        &&!typeOfService.getText().toString().equals("-- Select Type of Service --")
+                        &&!howOldIsTheCompany.getText().toString().equals("-- Select Tenuraty the Company --")
+                        && !annualTurnover.getText().toString().equals("-- Select Annual Turnover --")&&
+                        !addressProof.getText().toString().equals("-- Select Address Proof --"))
                 {
                     submitCompanyInfo.setBackground(getDrawable(R.drawable.gradient_neocredit));
                     click=true;
@@ -374,25 +382,25 @@ public class CompanyDetails extends AppCompatActivity {
     private void onClicks()
     {
 
-        sp_typeOfService.setOnClickListener(new View.OnClickListener() {
+        typeOfService.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Spinner_typeOfService.performClick();
             }
         });
-        sp_howOldIsTheCompany.setOnClickListener(new View.OnClickListener() {
+        howOldIsTheCompany.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Spinner_howOldIsTheCompany.performClick();
             }
         });
-        sp_annualTurnover.setOnClickListener(new View.OnClickListener() {
+        annualTurnover.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Spinner_annualTurnover.performClick();
             }
         });
-        sp_addressProof.setOnClickListener(new View.OnClickListener() {
+        addressProof.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Spinner_businessAddressProof.performClick();
@@ -412,23 +420,24 @@ public class CompanyDetails extends AppCompatActivity {
 
                 if (click)
                 {
+                    comapanyAPI();
 
-                    if(sharedPrefsManager.getSegment() == "1"){
-
-                        Intent intent = new Intent(getApplicationContext(), SPDocumentUploadActivity.class);
-                        startActivity(intent);
-                    }
-                    else if(sharedPrefsManager.getSegment() == "2"){
-
-                        Intent intent = new Intent(getApplicationContext(), PrivateLimitedDocUploadActivity.class);
-                        startActivity(intent);
-                    }
-
-                    else if(sharedPrefsManager.getSegment() == "3"){
-
-                        Intent intent = new Intent(getApplicationContext(), PartnershipDocUploadActivity.class);
-                        startActivity(intent);
-                    }
+//                    if(sharedPrefsManager.getSegment() == "1"){
+//
+//                        Intent intent = new Intent(getApplicationContext(), SPDocumentUploadActivity.class);
+//                        startActivity(intent);
+//                    }
+//                    else if(sharedPrefsManager.getSegment() == "2"){
+//
+//                        Intent intent = new Intent(getApplicationContext(), PrivateLimitedDocUploadActivity.class);
+//                        startActivity(intent);
+//                    }
+//
+//                    else if(sharedPrefsManager.getSegment() == "3"){
+//
+//                        Intent intent = new Intent(getApplicationContext(), PartnershipDocUploadActivity.class);
+//                        startActivity(intent);
+//                    }
 
                 }
                 else
@@ -438,5 +447,63 @@ public class CompanyDetails extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void comapanyAPI() {
+        JSONObject jsonObjectBody = new JSONObject();
+
+//        {
+//            "name":"564592362312",
+//                "pan_card":"PPPPH1234F",
+//                "type_of_services":"123456789098",
+//                "business_reg_num":"1999-12-23",
+//                "business_addr_proof":"PPPPH1234F",
+//                "landline_number":"PPPPH1234F",
+//                "mobile_number":"1224567888",
+//                "orgize_age":"1",
+//                "annual_turnover":"1"
+//                 "email":"jadssf@gmail.com",
+//                "company_address":"qwertyqwerty"
+//        }
+
+        try {
+
+            jsonObjectBody.put("name", company_name.getText().toString());
+            jsonObjectBody.put("email", company_email.getText().toString());
+            jsonObjectBody.put("pan_card", pancardnumber.getText().toString());
+            jsonObjectBody.put("type_of_services", typeOfService.getText().toString());
+            jsonObjectBody.put("company_address", company_address.getText().toString());
+            jsonObjectBody.put("business_addr_proof", addressProof.getText().toString());
+            jsonObjectBody.put("landline_number", businessLandline.getText().toString());
+            jsonObjectBody.put("orgize_age", howOldIsTheCompany.getText().toString());
+            jsonObjectBody.put("annual_turnover", annualTurnover.getText().toString());
+
+            Log.e("click", "onClick: " + jsonObjectBody );
+
+
+            volleyRequest.JsonObjRequestAuthorization(CompanyDetails.this,jsonObjectBody, Urls.COMPANY_DETAILS, Constants.company_details,sharedPrefsManager.getAccessToken());
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
+
+    }
+
+    @Override
+    public void responseHandler(Object obj, int i) {
+
+        if(i == Constants.company_details) {
+
+            JSONObject response = (JSONObject) obj;
+            Log.e("response", "responseHandlerCompany: " + response);
+            if  (response!=null)
+            {
+                Intent intent = new Intent(getApplicationContext(), PrivateLimitedDirectorFirstDetailsActivity.class);
+                startActivity(intent);
+            }
+
+        }
     }
 }
