@@ -79,6 +79,7 @@
         <item>-- Select Address Proof --</item>
         <item>Current Bill</item>
         <item>Landline Bill</item>
+        <item>Utility Bill</item>
     </string-array>
 
     <string-array name="city_array">
