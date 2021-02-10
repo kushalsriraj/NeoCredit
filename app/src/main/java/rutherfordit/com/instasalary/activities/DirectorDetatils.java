@@ -184,36 +184,59 @@ public class DirectorDetatils extends AppCompatActivity {
                     }
 
                 }
+                else if (result.equals("3"))
+                {
+                    part1 = true;
+
+                    Log.e("part1", "onActivityResult: " + part1 );
+
+                    if (part1 && part2)
+                    {
+                        Toast.makeText(getApplicationContext(),"Partner 1 & 2 details Uploaded.",Toast.LENGTH_SHORT).show();
+                    }
+                }
+                else if (result.equals("4"))
+                {
+                    part2 = true;
+
+                    Log.e("part2", "onActivityResult: " + part2 );
+
+                    if (part1 && part2)
+                    {
+                        partnerButton.setBackground(getDrawable(R.drawable.gradient_neocredit));
+
+                    }
+                }
             }
-//            else if (resultCode == Activity.RESULT_CANCELED) {
-//                String result = data.getStringExtra("result");
-//
-//                Log.e("result", "onActivityResult:  " + result );
-//
-//                if (result.equals("3"))
-//                {
-//                    part1 = true;
-//
-//                    Log.e("part1", "onActivityResult: " + part1 );
-//
-//                    if (part1 && part2)
-//                    {
-//                        Toast.makeText(getApplicationContext(),"Partner 1 & 2 details Uploaded.",Toast.LENGTH_SHORT).show();
-//                    }
-//                }
-//                else if (result.equals("4"))
-//                {
-//                    part2 = true;
-//
-//                    Log.e("part2", "onActivityResult: " + part2 );
-//
-//                    if (part1 && part2)
-//                    {
-//                        partnerButton.setBackground(getDrawable(R.drawable.gradient_neocredit));
-//
-//                    }
-//                }
-//            }
+            /*else if (resultCode == Activity.RESULT_CANCELED) {
+                String result = data.getStringExtra("result");
+
+                Log.e("result", "onActivityResult:  " + result );
+
+                if (result.equals("3"))
+                {
+                    part1 = true;
+
+                    Log.e("part1", "onActivityResult: " + part1 );
+
+                    if (part1 && part2)
+                    {
+                        Toast.makeText(getApplicationContext(),"Partner 1 & 2 details Uploaded.",Toast.LENGTH_SHORT).show();
+                    }
+                }
+                else if (result.equals("4"))
+                {
+                    part2 = true;
+
+                    Log.e("part2", "onActivityResult: " + part2 );
+
+                    if (part1 && part2)
+                    {
+                        partnerButton.setBackground(getDrawable(R.drawable.gradient_neocredit));
+
+                    }
+                }
+            }*/
         }
 
     }

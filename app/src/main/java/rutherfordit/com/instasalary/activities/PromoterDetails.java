@@ -443,14 +443,16 @@ public class PromoterDetails extends AppCompatActivity implements DatePickerDial
 
             JSONObject response = (JSONObject) obj;
             Log.e("response", "responseHandlerDirector: " + response);
+
             if  (response!=null)
             {
-                if(!getid.equals("")){
-                    Intent returnIntent = new Intent();
-                    returnIntent.putExtra("result",getid);
-                    setResult(Activity.RESULT_OK,returnIntent);
-                    finish();
-                }
+                Intent returnIntent = new Intent();
+                returnIntent.putExtra("result",getid);
+                setResult(Activity.RESULT_OK,returnIntent);
+                finish();
+                /*if(!getid.equals("")){
+
+                }*/
                 /*else if (getid.equals("3") || getid.equals("4")){
                     Intent returnIntent = new Intent();
                     returnIntent.putExtra("result",getid);
