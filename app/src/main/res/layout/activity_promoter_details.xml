@@ -4,19 +4,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".activities.CompanyDetails">
+    tools:context=".activities.PromoterDetails">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <LinearLayout
-            android:layout_marginBottom="50dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="40dp"
             android:layout_marginTop="30dp"
             android:layout_marginRight="40dp"
+            android:layout_marginBottom="60dp"
             android:orientation="vertical">
 
             <RelativeLayout
@@ -39,10 +39,11 @@
             </RelativeLayout>
 
             <TextView
+                android:id="@+id/detailsTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="35dp"
-                android:text="Company Information"
+                android:text="Promoter Details"
                 android:textColor="#000"
                 android:textSize="18dp"
                 android:textStyle="bold" />
@@ -51,18 +52,37 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="40dp"
-                android:hint="Company Name">
+                android:hint="Full Name">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/sp_company_name"
+                    android:id="@+id/dir_fullName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:focusable="true"
-                    android:clickable="true"
                     android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz 0123456789 "
                     android:ellipsize="end"
-                    android:fontFamily="@font/lato_regular"
                     android:inputType="textCapWords"
+                    android:singleLine="true"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:focusable="false"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:hint="Date of Birth (YYYY-MM-DD)">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:clickable="true"
+                    android:focusable="false"
+                    android:id="@+id/dir_dob"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/lato_regular"
+                    android:inputType="phone"
                     android:singleLine="true"
                     android:textSize="14dp" />
 
@@ -75,7 +95,7 @@
                 android:hint="Company Email">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/company_email"
+                    android:id="@+id/dir_email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
@@ -95,26 +115,34 @@
                 android:textColor="@color/red"
                 android:visibility="visible"
                 android:textSize="10dp"
-                android:id="@+id/invalidEmail"
+                android:id="@+id/invalidDirEmail"
                 />
-
-
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/panCardLayput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
                 android:hint="PAN Card Number ">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/par_pancardnumber"
+                    android:id="@+id/dir_pan"
+                    android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz"
-                    android:ellipsize="end"
                     android:maxLength="10"
+                    android:ellipsize="end"
+                    android:textAllCaps="true"
                     android:inputType="textCapCharacters"
-                    android:singleLine="true" />
+                    android:singleLine="true"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Please Enter Valid PAN "
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:textColor="@color/colorAccent"
+                    android:visibility="gone"
+                    android:id="@+id/invalidText"
+                    />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -127,7 +155,7 @@
                 android:textColor="@color/red"
                 android:visibility="visible"
                 android:textSize="10dp"
-                android:id="@+id/invalidPan"
+                android:id="@+id/invalidDirPan"
                 />
 
 
@@ -135,19 +163,77 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
-                android:hint="Business Landline">
+                android:hint="Aadhar Card Number">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/sp_businessLandline"
+                    android:id="@+id/dir_adhar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:digits="123-4567890"
                     android:ellipsize="end"
+                    android:inputType="phone"
                     android:maxLength="12"
-                    android:inputType="number"
                     android:singleLine="true" />
 
             </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:hint="Address">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/dir_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/lato_regular"
+                    android:inputType="text"
+                    android:singleLine="true"
+                    android:textSize="14dp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Address Proof" >
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/dir_addressproof"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:focusableInTouchMode="false"
+                        android:singleLine="true"
+                        />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <Spinner
+                    android:id="@+id/dir_addressProofSpinner"
+                    style="@style/CustomSpinnerTheme"
+                    android:layout_width="30dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginRight="10dp"
+                    android:entries="@array/director_address_proof_array" />
+
+            </RelativeLayout>
+
+            <Spinner
+                android:visibility="gone"
+                android:spinnerMode="dialog"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:id="@+id/cities_Spinner"/>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
@@ -156,180 +242,17 @@
                 android:hint="Mobile Number">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/mobile_number"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:digits="1234567890"
-                    android:ellipsize="end"
-                    android:maxLength="10"
+                    android:id="@+id/dir_mobile"
                     android:inputType="number"
-                    android:singleLine="true" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
-                android:hint="Company Address">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/sp_company_address"
+                    android:maxLength="10"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
                     android:fontFamily="@font/lato_regular"
-                    android:inputType="textCapWords"
                     android:singleLine="true"
                     android:textSize="14dp" />
 
             </com.google.android.material.textfield.TextInputLayout>
-
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="25dp">
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Type of Service">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:focusable="false"
-                        android:id="@+id/sp_typeOfService"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:ellipsize="end"
-                        android:inputType="textCapWords"
-                        android:focusableInTouchMode="false"
-                        android:fontFamily="@font/lato_regular"
-                        android:singleLine="true"
-                        android:textSize="14dp" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <Spinner
-                    android:id="@+id/Spinner_typeOfService"
-                    style="@style/CustomSpinnerTheme"
-                    android:layout_width="30dp"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginRight="10dp"
-                    android:entries="@array/type_of_services_array" />
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="25dp">
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="How old is the Company ? ">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:focusable="false"
-                        android:id="@+id/sp_howOldIsTheCompany"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:ellipsize="end"
-                        android:inputType="textCapWords"
-                        android:focusableInTouchMode="false"
-                        android:fontFamily="@font/lato_regular"
-                        android:singleLine="true"
-                        android:textSize="14dp" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <Spinner
-                    android:id="@+id/Spinner_howOldIsTheCompany"
-                    style="@style/CustomSpinnerTheme"
-                    android:layout_width="30dp"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginRight="10dp"
-                    android:entries="@array/how_old_is_company_array" />
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="25dp">
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Annual Turnover">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:focusable="false"
-                        android:id="@+id/sp_annualTurnover"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:ellipsize="end"
-                        android:inputType="textCapWords"
-                        android:focusableInTouchMode="false"
-                        android:fontFamily="@font/lato_regular"
-                        android:singleLine="true"
-                        android:textSize="14dp" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <Spinner
-                    android:id="@+id/Spinner_annualTurnover"
-                    style="@style/CustomSpinnerTheme"
-                    android:layout_width="30dp"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginRight="10dp"
-                    android:entries="@array/annual_turnover_array" />
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="25dp">
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Business Address Proof">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:focusable="false"
-                        android:id="@+id/sp_addressProof"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:ellipsize="end"
-                        android:inputType="textCapWords"
-                        android:focusableInTouchMode="false"
-                        android:fontFamily="@font/lato_regular"
-                        android:singleLine="true"
-                        android:textSize="14dp" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <Spinner
-                    android:id="@+id/Spinner_businessAddressProof"
-                    style="@style/CustomSpinnerTheme"
-                    android:layout_width="30dp"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginRight="10dp"
-                    android:entries="@array/address_proof" />
-
-            </RelativeLayout>
 
 
             <androidx.cardview.widget.CardView
@@ -341,11 +264,11 @@
                 android:layout_marginLeft="1dp"
                 android:layout_marginTop="40dp"
                 android:layout_marginRight="1dp"
-                android:layout_marginBottom="50dp"
+                android:layout_marginBottom="60dp"
                 >
 
                 <RelativeLayout
-                    android:id="@+id/submitCompanyInfo"
+                    android:id="@+id/dir_next_button"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:background="#36000000">
@@ -368,7 +291,6 @@
                         android:layout_marginRight="15dp"
                         android:padding="10dp"
                         android:src="@drawable/next" />
-
 
                 </RelativeLayout>
 

@@ -17,6 +17,7 @@ public class SharedPrefsManager {
     String OTP_NUMBER = "otp";
     String SEGMENT = "segment";
     String REQUIRED_AMOUNT = "required_amount";
+    String COMPANY_ID = "company_id";
 
     public SharedPrefsManager(Context context)
     {
@@ -98,6 +99,16 @@ public class SharedPrefsManager {
     public String getREQUIRED_AMOUNT()
     {
         return sharedPreferences.getString(REQUIRED_AMOUNT,"");
+    }
+
+    public void setCOMPANY_ID(String company_id)
+    {
+        sharedPreferences.edit().putString(COMPANY_ID, company_id).apply();
+    }
+
+    public String getCOMPANY_ID()
+    {
+        return sharedPreferences.getString(COMPANY_ID,"");
     }
 
 }

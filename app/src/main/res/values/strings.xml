@@ -44,9 +44,9 @@
 
     <string-array name="how_old_is_company_array">
         <item>-- Select Tenuraty the Company --</item>
-        <item>Less than 1 year</item>
-        <item>1 -3 years</item>
-        <item>More than 3 years</item>
+        <item>Less than 1 Year</item>
+        <item>1 -3 Years</item>
+        <item>More than 3 Years</item>
     </string-array>
 
     <string-array name="private_business_address_proof_array">
@@ -60,7 +60,7 @@
         <item>-- Select Address Proof --</item>
         <item>Aadhar</item>
         <item>PAN</item>
-        <item>Gas Bill</item>
+        <item>Utility Bill</item>
     </string-array>
 
     <string-array name="any_utility_bill">
@@ -70,9 +70,9 @@
 
     <string-array name="annual_turnover_array">
         <item>-- Select Annual Turnover --</item>
-        <item>1lakhs - 50 lakhs</item>
-        <item>50lakhs  - 1 crore</item>
-        <item>More than 50 crores</item>
+        <item>1 Lakh - 50 Lakhs</item>
+        <item>50 Lakhs  - 1 Crore</item>
+        <item>More than 50 Crores</item>
     </string-array>
 
     <string-array name="address_proof">

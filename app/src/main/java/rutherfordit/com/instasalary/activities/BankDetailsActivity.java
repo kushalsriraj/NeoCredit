@@ -78,66 +78,6 @@ public class BankDetailsActivity extends AppCompatActivity implements ResponseHa
 
     }
 
-
-    private void onclicks() {
-
-        purplebackarrow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
-
-        sp_submitBankDetails.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (click)
-                {
-                    request();
-
-                }
-                else
-                {
-                    Toasty.warning(getApplicationContext(), "Please Fill The Fields..", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-
-    }
-
-    private void bankApi() {
-        JSONObject jsonObjectBody = new JSONObject();
-
-        try {
-
-            jsonObjectBody.put("bank_name", sp_bankname.getText().toString());
-            Log.e("data", "bankApi: " +sp_bankname.getText().toString() );
-
-            jsonObjectBody.put("bank_branch", sp_bankbranch.getText().toString());
-            Log.e("data", "bankApi: " +sp_bankbranch.getText().toString() );
-
-            jsonObjectBody.put("ac_number", sp_accno.getText().toString());
-            Log.e("data", "bankApi: " +sp_accno.getText().toString() );
-
-            jsonObjectBody.put("bank_ifcs", sp_bankifsc.getText().toString());
-            Log.e("data", "bankApi: " +sp_bankifsc.getText().toString() );
-
-
-//            jsonObjectBody.put("bank_name", "HDFC");
-//            jsonObjectBody.put("bank_branch", "Madhapur");
-//            jsonObjectBody.put("ac_number", "67789009009");
-//            jsonObjectBody.put("bank_ifcs", "SBIN0090909");
-
-            volleyRequest.JsonObjRequestAuthorization(BankDetailsActivity.this,jsonObjectBody, Urls.SAVE_BANK_DETAILS, Constants.bank_details,sharedPrefsManager.getAccessToken());
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-
-        Toasty.success(getApplicationContext(), "Saved Successfully..", Toast.LENGTH_SHORT).show();
-    }
-
     private void request() {
 
         JSONObject jsonObject = new JSONObject();
@@ -190,6 +130,86 @@ public class BankDetailsActivity extends AppCompatActivity implements ResponseHa
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
         requestQueue.add(jsonObjectRequest);
 
+    }
+
+    private void bankApi() {
+        JSONObject jsonObjectBody = new JSONObject();
+
+        try {
+
+            jsonObjectBody.put("company_id", "78");
+            // have to accept from company deatils
+            //jsonObjectBody.put("company_id", sharedPrefsManager.getCOMPANY_ID());
+            jsonObjectBody.put("bank_name", sp_bankname.getText().toString());
+            Log.e("data", "bankApi: " +sp_bankname.getText().toString() );
+
+            jsonObjectBody.put("bank_branch", sp_bankbranch.getText().toString());
+            Log.e("data", "bankApi: " +sp_bankbranch.getText().toString() );
+
+            jsonObjectBody.put("ac_number", sp_accno.getText().toString());
+            Log.e("data", "bankApi: " +sp_accno.getText().toString() );
+
+            jsonObjectBody.put("bank_ifcs", sp_bankifsc.getText().toString());
+            Log.e("data", "bankApi: " +sp_bankifsc.getText().toString() );
+
+            jsonObjectBody.put("company_id", "1");
+
+            volleyRequest.JsonObjRequestAuthorization(BankDetailsActivity.this,jsonObjectBody, Urls.SAVE_BANK_DETAILS, Constants.bank_details,sharedPrefsManager.getAccessToken());
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
+        Toasty.success(getApplicationContext(), "Saved Successfully..", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void responseHandler(Object obj, int i) {
+
+        if(i == Constants.bank_details) {
+
+            JSONObject response = (JSONObject) obj;
+            Log.e("response", "responseHandlerBankDetails: " + response);
+            if  (response!=null)
+            {
+
+                loanDetails();
+
+            }
+        }
+        else if (i == Constants.loan_details){
+            JSONObject response = (JSONObject) obj;
+            Log.e("response", "responseHandlerLoan: " + response);
+            if  (response!=null)
+            {
+
+                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                startActivity(intent);
+            }
+        }
+    }
+
+    private void loanDetails() {
+
+        JSONObject jsonObjectBody = new JSONObject();
+
+        try {
+            jsonObjectBody.put("amount", "30000");
+            jsonObjectBody.put("days", "30");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        volleyRequest.JsonObjRequestAuthorization(BankDetailsActivity.this,jsonObjectBody, Urls.LOAN_DETAILS, Constants.loan_details,sharedPrefsManager.getAccessToken());
+
+    }
+
+    @Override
+    public void onBackPressed()
+
+    {
+        super.onBackPressed();
     }
 
     private void textChangeListeners()
@@ -295,53 +315,29 @@ public class BankDetailsActivity extends AppCompatActivity implements ResponseHa
 
     }
 
-    @Override
-    public void onBackPressed()
+    private void onclicks() {
 
-    {
-        super.onBackPressed();
-    }
-
-    @Override
-    public void responseHandler(Object obj, int i) {
-
-        if(i == Constants.bank_details) {
-
-            JSONObject response = (JSONObject) obj;
-            Log.e("response", "responseHandlerBankDetails: " + response);
-            if  (response!=null)
-            {
-
-                loanDetails();
-
+        purplebackarrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
             }
-        }
-        else if (i == Constants.loan_details){
-            JSONObject response = (JSONObject) obj;
-            Log.e("response", "responseHandlerLoan: " + response);
-            if  (response!=null)
-            {
+        });
 
-                loanDetails();
+        sp_submitBankDetails.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (click)
+                {
+                    request();
 
-                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
-                startActivity(intent);
+                }
+                else
+                {
+                    Toasty.warning(getApplicationContext(), "Please Fill The Fields..", Toast.LENGTH_SHORT).show();
+                }
             }
-        }
-    }
-
-    private void loanDetails() {
-
-        JSONObject jsonObjectBody = new JSONObject();
-
-        try {
-            jsonObjectBody.put("amount", "30000");
-            jsonObjectBody.put("days", "30");
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        volleyRequest.JsonObjRequestAuthorization(BankDetailsActivity.this,jsonObjectBody, Urls.LOAN_DETAILS, Constants.loan_details,sharedPrefsManager.getAccessToken());
+        });
 
     }
 }

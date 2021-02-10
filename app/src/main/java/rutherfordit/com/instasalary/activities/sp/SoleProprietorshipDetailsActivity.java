@@ -11,6 +11,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.DatePicker;
@@ -68,6 +69,7 @@ public class SoleProprietorshipDetailsActivity extends AppCompatActivity impleme
             public void onClick(View v) {
                 DialogFragment datePicker = new DatePickerFragment();
                 datePicker.show(getSupportFragmentManager(), "date picker");
+
             }
         });
 
@@ -245,6 +247,8 @@ public class SoleProprietorshipDetailsActivity extends AppCompatActivity impleme
             public void onClick(View v) {
                 if (click)
                 {
+                    Log.e("sp_dob", "sp_dob: " + sp_dob );
+
                     Intent intent = new Intent(getApplicationContext(), SoleProprietorshipCompanyDetailsActivity.class);
                     startActivity(intent);
                 }

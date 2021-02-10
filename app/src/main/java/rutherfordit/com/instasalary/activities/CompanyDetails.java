@@ -17,7 +17,6 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.gms.common.api.Status;
 import com.google.android.libraries.places.api.Places;
@@ -25,25 +24,19 @@ import com.google.android.libraries.places.api.model.Place;
 import com.google.android.libraries.places.api.net.PlacesClient;
 import com.google.android.libraries.places.widget.Autocomplete;
 import com.google.android.libraries.places.widget.AutocompleteActivity;
-import com.google.android.libraries.places.widget.model.AutocompleteActivityMode;
 import com.google.android.material.textfield.TextInputEditText;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import rutherfordit.com.instasalary.R;
-import rutherfordit.com.instasalary.activities.partnership.PartnershipDocUploadActivity;
-import rutherfordit.com.instasalary.activities.privatelimited.PrivateLimitedCompanyDetailsActivity;
-import rutherfordit.com.instasalary.activities.privatelimited.PrivateLimitedDirectorFirstDetailsActivity;
-import rutherfordit.com.instasalary.activities.privatelimited.PrivateLimitedDocUploadActivity;
-import rutherfordit.com.instasalary.activities.sp.SPDocumentUploadActivity;
 import rutherfordit.com.instasalary.extras.Constants;
 import rutherfordit.com.instasalary.extras.SharedPrefsManager;
 import rutherfordit.com.instasalary.extras.Urls;
@@ -62,10 +55,13 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
     VolleyRequest volleyRequest;
     RelativeLayout submitCompanyInfo;
     ImageView purplebackarrow;
-    TextInputEditText businessLandline, company_name, typeOfService, howOldIsTheCompany, annualTurnover, company_address, addressProof, company_email, pancardnumber;
+    TextInputEditText businessLandline, company_name, typeOfService, howOldIsTheCompany, annualTurnover, company_address, addressProof, company_email, pancardnumber, mobile_number;
     Spinner Spinner_typeOfService, Spinner_howOldIsTheCompany, Spinner_annualTurnover, Spinner_businessAddressProof;
     boolean click = false;
     private static int AUTOCOMPLETE_REQUEST_CODE = 1;
+    private String addressProofNumber;
+    private String annualTurnOverNumber;
+    private String howOldIsTheCompanyNumber;
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -153,6 +149,7 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
     private void init()
     {
 
+        volleyRequest = new VolleyRequest();
         Places.initialize(getApplicationContext(), apikey);
         placesClient = Places.createClient(this);
         invalidPan = findViewById(R.id.invalidPan);
@@ -171,9 +168,12 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
         Spinner_howOldIsTheCompany = findViewById(R.id.Spinner_howOldIsTheCompany);
         Spinner_annualTurnover = findViewById(R.id.Spinner_annualTurnover);
         Spinner_businessAddressProof = findViewById(R.id.Spinner_businessAddressProof);
+        mobile_number = findViewById(R.id.mobile_number);
 
         submitCompanyInfo = findViewById(R.id.submitCompanyInfo);
         purplebackarrow = findViewById(R.id.purplebackarrow);
+
+        sharedPrefsManager = new SharedPrefsManager(getApplicationContext());
 
         /*company_name.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -183,6 +183,8 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
                 startActivityForResult(intent, AUTOCOMPLETE_REQUEST_CODE);
             }
         });*/
+
+
 
         onClicks();
         SpinnersSelected();
@@ -201,6 +203,7 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
 
                 if (!company_name.getText().toString().equals("")
                         &&!company_email.getText().toString().equals("")
+                        && (mobile_number.getText().toString().length() == 10)
                         && !pancardnumber.getText().toString().equals("")
                         &&!company_address.getText().toString().equals("")
                         &&!typeOfService.getText().toString().equals("-- Select Type of Service --")
@@ -237,6 +240,7 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
 
                     if (!company_name.getText().toString().equals("")
                             && !company_email.getText().toString().equals("")
+                            && (mobile_number.getText().toString().length() == 10)
                             && !pancardnumber.getText().toString().equals("")
                             &&!company_address.getText().toString().equals("")
                             &&!typeOfService.getText().toString().equals("-- Select Type of Service --")
@@ -280,6 +284,7 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
 
                     if (!company_name.getText().toString().equals("")
                             && !pancardnumber.getText().toString().equals("")
+                            && (mobile_number.getText().toString().length() == 10)
                             &&!company_address.getText().toString().equals("")
                             &&!typeOfService.getText().toString().equals("-- Select Type of Service --")
                             &&!howOldIsTheCompany.getText().toString().equals("-- Select Tenuraty the Company --")
@@ -314,6 +319,7 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
 
                 if (!company_name.getText().toString().equals("")
                         &&!company_email.getText().toString().equals("")
+                        && (mobile_number.getText().toString().length() == 10)
                         && !pancardnumber.getText().toString().equals("")
                         &&!company_address.getText().toString().equals("")
                         &&!typeOfService.getText().toString().equals("-- Select Type of Service --")
@@ -343,6 +349,7 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (!company_name.getText().toString().equals("")
                         &&!company_email.getText().toString().equals("")
+                        && (mobile_number.getText().toString().length() == 10)
                         && !pancardnumber.getText().toString().equals("")
                         &&!company_address.getText().toString().equals("")
                         &&!typeOfService.getText().toString().equals("-- Select Type of Service --")
@@ -379,6 +386,7 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
 
                 if (!company_name.getText().toString().equals("")
                         &&!company_email.getText().toString().equals("")
+                        && (mobile_number.getText().toString().length() == 10)
                         && !pancardnumber.getText().toString().equals("")
                         &&!company_address.getText().toString().equals("")
                         &&!typeOfService.getText().toString().equals("-- Select Type of Service --")
@@ -404,8 +412,22 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
 
                 howOldIsTheCompany.setText(parent.getItemAtPosition(pos).toString());
 
+                if (howOldIsTheCompany.getText().toString().equals("Less than 1 year"))
+                {
+                    howOldIsTheCompanyNumber = "1";
+                }
+                else if (howOldIsTheCompany.getText().toString().equals("1 -3 years"))
+                {
+                    howOldIsTheCompanyNumber = "2";
+                }
+                else if (howOldIsTheCompany.getText().toString().equals("More than 3 years"))
+                {
+                    howOldIsTheCompanyNumber = "3";
+                }
+
                 if (!company_name.getText().toString().equals("")
                         &&!company_email.getText().toString().equals("")
+                        && (mobile_number.getText().toString().length() == 10)
                         && !pancardnumber.getText().toString().equals("")
                         &&!company_address.getText().toString().equals("")
                         &&!typeOfService.getText().toString().equals("-- Select Type of Service --")
@@ -432,8 +454,22 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
 
                 annualTurnover.setText(parent.getItemAtPosition(pos).toString());
 
+                if (annualTurnover.getText().toString().equals("1lakhs - 50 lakhs"))
+                {
+                    annualTurnOverNumber = "1";
+                }
+                else if (annualTurnover.getText().toString().equals("50lakhs  - 1 crore"))
+                {
+                    annualTurnOverNumber = "2";
+                }
+                else if (annualTurnover.getText().toString().equals("More than 50 crores"))
+                {
+                    annualTurnOverNumber = "3";
+                }
+
                 if (!company_name.getText().toString().equals("")
                         &&!company_email.getText().toString().equals("")
+                        && (mobile_number.getText().toString().length() == 10)
                         && !pancardnumber.getText().toString().equals("")
                         &&!company_address.getText().toString().equals("")
                         &&!typeOfService.getText().toString().equals("-- Select Type of Service --")
@@ -460,8 +496,22 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
 
                 addressProof.setText(parent.getItemAtPosition(pos).toString());
 
+                if (addressProof.getText().toString().equals("Current Bill"))
+                {
+                    addressProofNumber = "1";
+                }
+                else if (addressProof.getText().toString().equals("Landline Bill"))
+                {
+                    addressProofNumber = "2";
+                }
+                else if (addressProof.getText().toString().equals("Utility Bill"))
+                {
+                    addressProofNumber = "3";
+                }
+
                 if (!company_name.getText().toString().equals("")
                         &&!company_email.getText().toString().equals("")
+                        && (mobile_number.getText().toString().length() == 10)
                         && !pancardnumber.getText().toString().equals("")
                         &&!company_address.getText().toString().equals("")
                         &&!typeOfService.getText().toString().equals("-- Select Type of Service --")
@@ -523,76 +573,39 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
             @Override
             public void onClick(View v) {
 
-                if (click)
-                {
-                    comapanyAPI();
+                companyAPI();
 
-//                    if(sharedPrefsManager.getSegment() == "1"){
-//
-//                        Intent intent = new Intent(getApplicationContext(), SPDocumentUploadActivity.class);
-//                        startActivity(intent);
-//                    }
-//                    else if(sharedPrefsManager.getSegment() == "2"){
-//
-//                        Intent intent = new Intent(getApplicationContext(), PrivateLimitedDocUploadActivity.class);
-//                        startActivity(intent);
-//                    }
-//
-//                    else if(sharedPrefsManager.getSegment() == "3"){
-//
-//                        Intent intent = new Intent(getApplicationContext(), PartnershipDocUploadActivity.class);
-//                        startActivity(intent);
-//                    }
-
-                }
-                else
-                {
-                    Toast.makeText(getApplicationContext(),"Please Check All The Fields.",Toast.LENGTH_SHORT).show();
-                }
             }
         });
 
     }
 
-    private void comapanyAPI() {
-        JSONObject jsonObjectBody = new JSONObject();
+    private void companyAPI() {
 
-//        {
-//            "name":"564592362312",
-//                "pan_card":"PPPPH1234F",
-//                "type_of_services":"123456789098",
-//                "business_reg_num":"1999-12-23",
-//                "business_addr_proof":"PPPPH1234F",
-//                "landline_number":"PPPPH1234F",
-//                "mobile_number":"1224567888",
-//                "orgize_age":"1",
-//                "annual_turnover":"1"
-//                 "email":"jadssf@gmail.com",
-//                "company_address":"qwertyqwerty"
-//        }
+        JSONObject jsonObjectBody = new JSONObject();
 
         try {
 
-            jsonObjectBody.put("name", company_name.getText().toString());
-            jsonObjectBody.put("email", company_email.getText().toString());
-            jsonObjectBody.put("pan_card", pancardnumber.getText().toString());
-            jsonObjectBody.put("type_of_services", typeOfService.getText().toString());
-            jsonObjectBody.put("company_address", company_address.getText().toString());
-            jsonObjectBody.put("business_addr_proof", addressProof.getText().toString());
-            jsonObjectBody.put("landline_number", businessLandline.getText().toString());
-            jsonObjectBody.put("orgize_age", howOldIsTheCompany.getText().toString());
-            jsonObjectBody.put("annual_turnover", annualTurnover.getText().toString());
+            jsonObjectBody.put("name",company_name.getText().toString());
+            jsonObjectBody.put("pan_card",pancardnumber.getText().toString());
+            jsonObjectBody.put("type_of_services",typeOfService.getText().toString());
+            jsonObjectBody.put("business_reg_num","1999-12-23");
+            jsonObjectBody.put("business_addr_proof",addressProofNumber);
+            jsonObjectBody.put("landline_number",businessLandline.getText().toString());
+            jsonObjectBody.put("mobile_number",sharedPrefsManager.getPhoneNumber());
+            jsonObjectBody.put("orgize_age",howOldIsTheCompanyNumber);
+            jsonObjectBody.put("email",company_email.getText().toString());
+            jsonObjectBody.put("company_address",company_address.getText().toString());
+            jsonObjectBody.put("annual_turnover",annualTurnOverNumber);
 
-            Log.e("click", "onClick: " + jsonObjectBody );
+            Log.e("comapanyAPI", "comapanyAPI: " + jsonObjectBody );
 
-
-            volleyRequest.JsonObjRequestAuthorization(CompanyDetails.this,jsonObjectBody, Urls.COMPANY_DETAILS, Constants.company_details,sharedPrefsManager.getAccessToken());
 
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
-
+        volleyRequest.JsonObjRequestAuthorization(CompanyDetails.this,jsonObjectBody, Urls.COMPANY_DETAILS, Constants.company_details,sharedPrefsManager.getAccessToken());
 
     }
 
@@ -605,10 +618,43 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
             Log.e("response", "responseHandlerCompany: " + response);
             if  (response!=null)
             {
-                Intent intent = new Intent(getApplicationContext(), PrivateLimitedDirectorFirstDetailsActivity.class);
-                startActivity(intent);
-            }
 
+                try {
+                    JSONObject jsonObjectData = response.getJSONObject("data");
+                    Log.e("jsonObjectData", "responseHandlerjsonObjectData: " + jsonObjectData );
+
+                    JSONObject jsonObjectCompanyDetails = jsonObjectData.getJSONObject("companydetails");
+                    Log.e("jsonCompanyDetails", "jsonObjectCompanyDetails: " + jsonObjectCompanyDetails );
+
+                    JSONArray arrayData = jsonObjectCompanyDetails.getJSONArray("data");
+                    Log.e("arrayData", "arrayData: " + arrayData );
+                    for (int j = 0; j < arrayData.length(); j ++){
+
+                        JSONObject idObj = arrayData.getJSONObject(i);
+                        Log.e("idObj", "idObj: " + idObj );
+
+                        String id = idObj.getString("id");
+                        Log.e("responseHandlerId", "responseHandlerId: " + id );
+
+                    }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                if (sharedPrefsManager.getSegment().equals("1"))
+                {
+                    Intent intent = new Intent(getApplicationContext(), PromoterDetails.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
+                }
+                else
+                {
+                    Intent intent = new Intent(getApplicationContext(), DirectorDetatils.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
+                }
+            }
         }
     }
 }
