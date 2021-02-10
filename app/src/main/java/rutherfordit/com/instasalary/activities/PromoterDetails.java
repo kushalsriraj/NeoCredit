@@ -381,7 +381,7 @@ public class PromoterDetails extends AppCompatActivity implements DatePickerDial
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
+        //super.onBackPressed();
     }
 
     @Override
@@ -445,18 +445,18 @@ public class PromoterDetails extends AppCompatActivity implements DatePickerDial
             Log.e("response", "responseHandlerDirector: " + response);
             if  (response!=null)
             {
-                if(getid.equals("1") || getid.equals("2")){
+                if(!getid.equals("")){
                     Intent returnIntent = new Intent();
                     returnIntent.putExtra("result",getid);
                     setResult(Activity.RESULT_OK,returnIntent);
                     finish();
                 }
-                else if (getid.equals("3") || getid.equals("4")){
+                /*else if (getid.equals("3") || getid.equals("4")){
                     Intent returnIntent = new Intent();
                     returnIntent.putExtra("result",getid);
                     setResult(Activity.RESULT_CANCELED,returnIntent);
                     finish();
-                }
+                }*/
 
             }
         }

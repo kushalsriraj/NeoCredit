@@ -621,14 +621,14 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
 
                 try {
                     JSONObject jsonObjectData = response.getJSONObject("data");
-                    Log.e("jsonObjectData", "responseHandlerjsonObjectData: " + jsonObjectData );
+                  //  Log.e("jsonObjectData", "responseHandlerjsonObjectData: " + jsonObjectData );
 
                     JSONObject jsonObjectCompanyDetails = jsonObjectData.getJSONObject("companydetails");
-                    Log.e("jsonCompanyDetails", "jsonObjectCompanyDetails: " + jsonObjectCompanyDetails );
+                   // Log.e("jsonCompanyDetails", "jsonObjectCompanyDetails: " + jsonObjectCompanyDetails );
 
                     JSONArray arrayData = jsonObjectCompanyDetails.getJSONArray("data");
-                    Log.e("arrayData", "arrayData: " + arrayData );
-                    for (int j = 0; j < arrayData.length(); j ++){
+                 //   Log.e("arrayData", "arrayData: " + arrayData );
+                    /*for (int j = 0; j < arrayData.length(); j ++){
 
                         JSONObject idObj = arrayData.getJSONObject(i);
                         Log.e("idObj", "idObj: " + idObj );
@@ -636,24 +636,28 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
                         String id = idObj.getString("id");
                         Log.e("responseHandlerId", "responseHandlerId: " + id );
 
-                    }
+                    }*/
+
+                    Log.e(TAG, "responseHandler: " + sharedPrefsManager.getSegment() );
+
+
 
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
 
                 if (sharedPrefsManager.getSegment().equals("1"))
-                {
-                    Intent intent = new Intent(getApplicationContext(), PromoterDetails.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    startActivity(intent);
-                }
-                else
-                {
-                    Intent intent = new Intent(getApplicationContext(), DirectorDetatils.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    startActivity(intent);
-                }
+                    {
+                        Intent intent = new Intent(getApplicationContext(), PromoterDetails.class);
+                       // intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(intent);
+                    }
+                    else
+                    {
+                        Intent intent = new Intent(getApplicationContext(), DirectorDetatils.class);
+                       // intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(intent);
+                    }
             }
         }
     }
