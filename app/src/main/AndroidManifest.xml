@@ -44,17 +44,21 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity android:name=".activities.CompanyDetails">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+
         </activity>
         <activity android:name=".activities.DocsUploadActivity" />
         <activity android:name=".activities.partnership.ParCreditRequirementsActivity" />
         <activity android:name=".activities.privatelimited.PlCreditRequirementsActivity" />
         <activity android:name=".activities.sp.SpCreditRequirementsActivity" />
-        <activity android:name=".activities.partnership.PartnershipDocUploadActivity" />
-        <activity android:name=".activities.privatelimited.PrivateLimitedDocUploadActivity" />
+        <activity android:name=".activities.partnership.PartnershipDocUploadActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activities.privatelimited.PrivateLimitedDocUploadActivity" >
+
+        </activity>
         <activity android:name=".activities.sp.SPDocumentUploadActivity"></activity>
         <activity android:name=".activities.partnership.PartnershipPartnerSecondDetailsActivity" />
         <activity android:name=".activities.partnership.PartnershipPartnerFirstDetailsActivity" />
@@ -64,7 +68,9 @@
         <activity android:name=".activities.privatelimited.PrivateLimitedCompanyDetailsActivity" />
         <activity android:name=".activities.sp.SoleProprietorshipCompanyDetailsActivity" />
         <activity android:name=".activities.sp.SoleProprietorshipDetailsActivity" />
-        <activity android:name=".activities.HomeActivity" />
+        <activity android:name=".activities.HomeActivity" >
+
+        </activity>
         <activity android:name=".activities.BankDetailsActivity">
         </activity>
         <activity android:name=".activities.PersonalDetailsActivity" />

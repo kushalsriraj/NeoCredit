@@ -48,43 +48,72 @@
 
     </androidx.cardview.widget.CardView>
 
-    <RelativeLayout
-        android:layout_margin="10dp"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-        <ImageView
-            android:padding="12dp"
-            android:id="@+id/back_pinfo"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@drawable/purplebackarrow" />
+        <RelativeLayout
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
 
-        <ImageView
-            android:layout_marginBottom="5dp"
-            android:layout_width="70dp"
-            android:layout_height="50dp"
-            android:layout_alignParentRight="true"
-            android:src="@drawable/neocreditlogo" />
+            <ImageView
+                android:padding="12dp"
+                android:id="@+id/back_pinfo"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/purplebackarrow" />
 
-        <TextView
-            android:fontFamily="@font/lato_bold"
+            <ImageView
+                android:layout_marginBottom="5dp"
+                android:layout_width="70dp"
+                android:layout_height="50dp"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/neocreditlogo" />
+
+            <TextView
+                android:fontFamily="@font/lato_bold"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Upload Documents"
+                android:gravity="center"
+                android:textSize="16dp"
+                android:textColor="@color/black"
+                android:layout_marginLeft="50dp"/>
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_gravity="center"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="Upload Documents"
-            android:gravity="center"
-            android:textSize="16dp"
-            android:textColor="@color/black"
-            android:layout_marginLeft="50dp"/>
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-    </RelativeLayout>
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:src="@drawable/infoicon"/>
+
+            <TextView
+                android:layout_marginLeft="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="All the below fields are mandatory. Please upload all the documents."
+                android:textStyle="italic"
+                android:textColor="@color/black"
+                android:textSize="10dp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
 
     <ScrollView
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="85dp"
         android:layout_marginBottom="60dp">
 
     <LinearLayout
@@ -135,6 +164,7 @@
                             android:background="@color/background">
 
                             <com.crystal.crystalpreloaders.widgets.CrystalPreloader
+                                android:id="@+id/loader_pvt_bankstatement"
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
                                 android:layout_centerInParent="true"
@@ -145,16 +175,18 @@
                                 app:crs_pl_style="circular" />
 
                             <ImageView
+                                android:id="@+id/image_pvt_bankstatement"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:padding="15dp"
-                                android:src="@drawable/uploadicon" />
+                                android:padding="20dp"
+                                android:src="@drawable/blackcloud" />
 
                         </RelativeLayout>
 
                     </androidx.cardview.widget.CardView>
 
                     <TextView
+                        android:id="@+id/text_pvt_bankstatement"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
@@ -203,6 +235,7 @@
                             android:background="@color/background">
 
                             <com.crystal.crystalpreloaders.widgets.CrystalPreloader
+                                android:id="@+id/loader_pvt_gst"
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
                                 android:layout_centerInParent="true"
@@ -213,16 +246,18 @@
                                 app:crs_pl_style="circular" />
 
                             <ImageView
+                                android:id="@+id/image_pvt_gst"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:padding="15dp"
-                                android:src="@drawable/uploadicon" />
+                                android:padding="20dp"
+                                android:src="@drawable/blackcloud" />
 
                         </RelativeLayout>
 
                     </androidx.cardview.widget.CardView>
 
                     <TextView
+                        android:id="@+id/text_pvt_gst"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
@@ -279,6 +314,7 @@
                             android:background="@color/background">
 
                             <com.crystal.crystalpreloaders.widgets.CrystalPreloader
+                                android:id="@+id/loader_pvt_itreturns"
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
                                 android:layout_centerInParent="true"
@@ -289,16 +325,18 @@
                                 app:crs_pl_style="circular" />
 
                             <ImageView
+                                android:id="@+id/image_pvt_itreturns"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:padding="15dp"
-                                android:src="@drawable/uploadicon" />
+                                android:padding="20dp"
+                                android:src="@drawable/blackcloud" />
 
                         </RelativeLayout>
 
                     </androidx.cardview.widget.CardView>
 
                     <TextView
+                        android:id="@+id/text_pvt_itreturns"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
@@ -328,7 +366,7 @@
                         android:layout_marginTop="5dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Business Proof"
+                        android:text="Business Registration Proof"
                         android:gravity="center"
                         android:textSize="12dp"
                         android:textColor="@color/black"/>
@@ -347,6 +385,7 @@
                             android:background="@color/background">
 
                             <com.crystal.crystalpreloaders.widgets.CrystalPreloader
+                                android:id="@+id/loader_pvt_businessproof"
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
                                 android:layout_centerInParent="true"
@@ -357,16 +396,18 @@
                                 app:crs_pl_style="circular" />
 
                             <ImageView
+                                android:id="@+id/image_pvt_businessproof"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:padding="15dp"
-                                android:src="@drawable/uploadicon" />
+                                android:padding="20dp"
+                                android:src="@drawable/blackcloud" />
 
                         </RelativeLayout>
 
                     </androidx.cardview.widget.CardView>
 
                     <TextView
+                        android:id="@+id/text_pvt_businessproof"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
@@ -404,7 +445,7 @@
                         android:layout_marginTop="5dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="PAN"
+                        android:text="Business Pan"
                         android:gravity="center"
                         android:textSize="12dp"
                         android:textColor="@color/black"/>
@@ -423,6 +464,7 @@
                             android:background="@color/background">
 
                             <com.crystal.crystalpreloaders.widgets.CrystalPreloader
+                                android:id="@+id/loader_pvt_pan"
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
                                 android:layout_centerInParent="true"
@@ -433,16 +475,18 @@
                                 app:crs_pl_style="circular" />
 
                             <ImageView
+                                android:id="@+id/image_pvt_pan"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:padding="15dp"
-                                android:src="@drawable/uploadicon" />
+                                android:padding="20dp"
+                                android:src="@drawable/blackcloud" />
 
                         </RelativeLayout>
 
                     </androidx.cardview.widget.CardView>
 
                     <TextView
+                        android:id="@+id/text_pvt_pan"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
@@ -491,6 +535,7 @@
                             android:background="@color/background">
 
                             <com.crystal.crystalpreloaders.widgets.CrystalPreloader
+                                android:id="@+id/loader_pvt_addressproof"
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
                                 android:layout_centerInParent="true"
@@ -501,16 +546,18 @@
                                 app:crs_pl_style="circular" />
 
                             <ImageView
+                                android:id="@+id/image_pvt_addressproof"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:padding="15dp"
-                                android:src="@drawable/uploadicon" />
+                                android:padding="20dp"
+                                android:src="@drawable/blackcloud" />
 
                         </RelativeLayout>
 
                     </androidx.cardview.widget.CardView>
 
                     <TextView
+                        android:id="@+id/text_pvt_addressproof"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
@@ -548,7 +595,7 @@
                         android:layout_marginTop="5dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Upload AOT"
+                        android:text="Upload AOA"
                         android:gravity="center"
                         android:textSize="12dp"
                         android:textColor="@color/black"/>
@@ -567,6 +614,7 @@
                             android:background="@color/background">
 
                             <com.crystal.crystalpreloaders.widgets.CrystalPreloader
+                                android:id="@+id/loader_pvt_aoa"
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
                                 android:layout_centerInParent="true"
@@ -577,16 +625,18 @@
                                 app:crs_pl_style="circular" />
 
                             <ImageView
+                                android:id="@+id/image_pvt_aoa"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:padding="15dp"
-                                android:src="@drawable/uploadicon" />
+                                android:padding="20dp"
+                                android:src="@drawable/blackcloud" />
 
                         </RelativeLayout>
 
                     </androidx.cardview.widget.CardView>
 
                     <TextView
+                        android:id="@+id/text_pvt_aoa"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
@@ -616,7 +666,7 @@
                         android:layout_marginTop="5dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Upload MOI"
+                        android:text="Upload MOA"
                         android:gravity="center"
                         android:textSize="12dp"
                         android:textColor="@color/black"/>
@@ -635,6 +685,7 @@
                             android:background="@color/background">
 
                             <com.crystal.crystalpreloaders.widgets.CrystalPreloader
+                                android:id="@+id/loader_pvt_moa"
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
                                 android:layout_centerInParent="true"
@@ -645,16 +696,18 @@
                                 app:crs_pl_style="circular" />
 
                             <ImageView
+                                android:id="@+id/image_pvt_moa"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:padding="15dp"
-                                android:src="@drawable/uploadicon" />
+                                android:padding="20dp"
+                                android:src="@drawable/blackcloud" />
 
                         </RelativeLayout>
 
                     </androidx.cardview.widget.CardView>
 
                     <TextView
+                        android:id="@+id/text_pvt_moa"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
@@ -711,6 +764,7 @@
                             android:background="@color/background">
 
                             <com.crystal.crystalpreloaders.widgets.CrystalPreloader
+                                android:id="@+id/loader_pvt_invoice"
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
                                 android:layout_centerInParent="true"
@@ -721,16 +775,18 @@
                                 app:crs_pl_style="circular" />
 
                             <ImageView
+                                android:id="@+id/image_pvt_invoice"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:padding="15dp"
-                                android:src="@drawable/uploadicon" />
+                                android:padding="20dp"
+                                android:src="@drawable/blackcloud" />
 
                         </RelativeLayout>
 
                     </androidx.cardview.widget.CardView>
 
                     <TextView
+                        android:id="@+id/text_pvt_invoice"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"

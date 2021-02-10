@@ -193,7 +193,7 @@ public class SegmentActivity extends AppCompatActivity implements ResponseHandle
 
                 loader_login.setVisibility(View.GONE);
 
-                Intent intent = new Intent(getApplicationContext(), CompanyDetails.class);
+                Intent intent = new Intent(getApplicationContext(), AdharAuthenticationActivity.class);
                 startActivity(intent);
 //                if (soleProprietorship.isChecked())
 //                {
