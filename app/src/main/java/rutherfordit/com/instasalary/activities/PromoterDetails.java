@@ -648,7 +648,7 @@ public class PromoterDetails extends AppCompatActivity implements DatePickerDial
                         jsonObjectBody.put("mobile_number", dir_mobile.getText().toString());
                         jsonObjectBody.put("user_type", sharedPrefsManager.getSegment());
                         jsonObjectBody.put("dirct_part_type", getid);
-                        jsonObjectBody.put("company_id", "1");
+                        jsonObjectBody.put("company_id", sharedPrefsManager.getCOMPANY_ID());
 
                         volleyRequest.JsonObjRequestAuthorization(PromoterDetails.this,jsonObjectBody, Urls.DIRECTOR_DETAILS, Constants.director_details,sharedPrefsManager.getAccessToken());
 

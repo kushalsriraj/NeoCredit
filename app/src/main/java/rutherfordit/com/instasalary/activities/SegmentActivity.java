@@ -191,10 +191,11 @@ public class SegmentActivity extends AppCompatActivity implements ResponseHandle
             if (response.has("message"))
             {
 
-                loader_login.setVisibility(View.GONE);
 
                 Intent intent = new Intent(getApplicationContext(), CompanyDetails.class);
                 startActivity(intent);
+                loader_login.setVisibility(View.GONE);
+
 //                if (soleProprietorship.isChecked())
 //                {
 //
