@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.DirectorDetatils">
+    tools:context=".activities.DirectorDetails">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -79,11 +79,23 @@
                             android:textStyle="bold" />
 
                         <ImageView
+                            android:visibility="visible"
+                            android:id="@+id/pl1_before_details"
                             android:layout_width="40dp"
                             android:layout_height="match_parent"
                             android:layout_marginRight="15dp"
                             android:padding="13dp"
                             android:src="@drawable/plus" />
+
+                        <ImageView
+                            android:visibility="gone"
+                            android:id="@+id/pl1_after_details"
+                            android:layout_width="40dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginRight="15dp"
+                            android:padding="10dp"
+                            android:src="@drawable/check" />
+
 
                     </RelativeLayout>
 
@@ -116,11 +128,23 @@
                             android:textStyle="bold" />
 
                         <ImageView
+                            android:visibility="visible"
+                            android:id="@+id/pl2_before_details"
                             android:layout_width="40dp"
                             android:layout_height="match_parent"
                             android:layout_marginRight="15dp"
                             android:padding="13dp"
                             android:src="@drawable/plus" />
+
+                        <ImageView
+                            android:visibility="gone"
+                            android:id="@+id/pl2_after_details"
+                            android:layout_width="40dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginRight="15dp"
+                            android:padding="10dp"
+                            android:src="@drawable/check" />
+
 
                     </RelativeLayout>
 
@@ -196,17 +220,28 @@
                             android:layout_height="match_parent"
                             android:layout_marginLeft="50dp"
                             android:gravity="center"
-                            android:text="Add Director 1"
+                            android:text="Add Partner 1"
                             android:textColor="#fff"
                             android:textSize="16dp"
                             android:textStyle="bold" />
 
                         <ImageView
+                            android:id="@+id/pp1_before_details"
                             android:layout_width="40dp"
                             android:layout_height="match_parent"
                             android:layout_marginRight="15dp"
                             android:padding="13dp"
                             android:src="@drawable/plus" />
+
+                        <ImageView
+                            android:visibility="gone"
+                            android:id="@+id/pp1_after_details"
+                            android:layout_width="40dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginRight="15dp"
+                            android:padding="10dp"
+                            android:src="@drawable/check" />
+
 
                     </RelativeLayout>
 
@@ -233,17 +268,28 @@
                             android:layout_height="match_parent"
                             android:layout_marginLeft="50dp"
                             android:gravity="center"
-                            android:text="Add Director 2"
+                            android:text="Add Partner 2"
                             android:textColor="#fff"
                             android:textSize="16dp"
                             android:textStyle="bold" />
 
                         <ImageView
+                            android:id="@+id/pp2_before_details"
                             android:layout_width="40dp"
                             android:layout_height="match_parent"
                             android:layout_marginRight="15dp"
                             android:padding="13dp"
                             android:src="@drawable/plus" />
+
+                        <ImageView
+                            android:visibility="gone"
+                            android:id="@+id/pp2_after_details"
+                            android:layout_width="40dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginRight="15dp"
+                            android:padding="10dp"
+                            android:src="@drawable/check" />
+
 
                     </RelativeLayout>
 
