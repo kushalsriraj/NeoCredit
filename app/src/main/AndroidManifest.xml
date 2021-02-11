@@ -36,13 +36,15 @@
     <uses-permission android:name="android.permission.READ_SMS" />
 
     <application
+        android:allowBackup="true"
+        android:fullBackupContent="true"
+        android:hardwareAccelerated="true"
+        android:requestLegacyExternalStorage="true"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning"
         tools:overrideLibrary="androidx.camera.extensions"
         tools:targetApi="q"
-        android:requestLegacyExternalStorage="true"
-        android:fullBackupContent="true"
-        android:hardwareAccelerated="true"
+
         android:icon="@drawable/neocreditlogo"
         android:label="@string/app_name"
         android:roundIcon="@drawable/neocreditlogo"
@@ -75,12 +77,14 @@
         <activity android:name=".activities.EnterOTPActivity" />
         <activity android:name=".activities.LoginActivity" />
         <activity android:name=".activities.SplashScreenActivity">
+
+        </activity>
+        <activity android:name=".activities.PromoterDetails">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.PromoterDetails"></activity>
         <activity android:name=".activities.DirectorDetatils"></activity>
     </application>
 
