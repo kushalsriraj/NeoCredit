@@ -647,27 +647,32 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
 
             JSONObject response = (JSONObject) obj;
             Log.e("response", "responseHandlerCompany: " + response);
-            if  (response!=null)
-            {
+//            if  (response!=null)
+//            {
 
                 try {
                     JSONObject jsonObjectData = response.getJSONObject("data");
-                  //  Log.e("jsonObjectData", "responseHandlerjsonObjectData: " + jsonObjectData );
+                    Log.e("jsonObjectData", "responseHandlerjsonObjectData: " + jsonObjectData );
+
+                    String phone_number = jsonObjectData.getString("phone_number");
+                    Log.e("phone_number", "phone_number: " + phone_number );
 
                     JSONObject jsonObjectCompanyDetails = jsonObjectData.getJSONObject("companydetails");
-                   // Log.e("jsonCompanyDetails", "jsonObjectCompanyDetails: " + jsonObjectCompanyDetails );
+                    Log.e("jsonCompanyDetails", "jsonObjectCompanyDetails: " + jsonObjectCompanyDetails );
 
                     JSONArray arrayData = jsonObjectCompanyDetails.getJSONArray("data");
-                 //   Log.e("arrayData", "arrayData: " + arrayData );
-                    /*for (int j = 0; j < arrayData.length(); j ++){
+                    Log.e("arrayData", "arrayData: " + arrayData.length() );
+                    for (int j = 0; j < arrayData.length(); j ++){
 
-                        JSONObject idObj = arrayData.getJSONObject(i);
+                        JSONObject idObj = arrayData.getJSONObject(j);
                         Log.e("idObj", "idObj: " + idObj );
 
                         String id = idObj.getString("id");
                         Log.e("responseHandlerId", "responseHandlerId: " + id );
 
-                    }*/
+                        sharedPrefsManager.setCOMPANY_ID(id);
+                        Log.e("COMPANY_ID", "COMPANY_ID: " + sharedPrefsManager.getCOMPANY_ID() );
+                    }
 
                     Log.e(TAG, "responseHandler: " + sharedPrefsManager.getSegment() );
 
@@ -689,7 +694,7 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
                        // intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(intent);
                     }
-            }
+            //}
         }
     }
 }
