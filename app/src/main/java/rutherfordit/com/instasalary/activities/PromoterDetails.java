@@ -80,7 +80,9 @@ public class PromoterDetails extends AppCompatActivity implements DatePickerDial
         detailsTextView = findViewById(R.id.detailsTextView);
 
         invalidDirEmail = findViewById(R.id.invalidDirPan);
+        invalidDirEmail.setVisibility(View.GONE);
         invalidDirPan = findViewById(R.id.invalidDirPan);
+        invalidDirPan.setVisibility(View.GONE);
 
         volleyRequest = new VolleyRequest();
         sharedPrefsManager = new SharedPrefsManager(getApplicationContext());
@@ -425,10 +427,11 @@ public class PromoterDetails extends AppCompatActivity implements DatePickerDial
                 &&!dir_address.getText().toString().equals("")
                 && !dir_addressproof.getText().toString().equals("-- Select Address Proof --")
                 && (dir_mobile.getText().toString().length() == 10)) {
+
             dir_next_button.setBackground(getDrawable(R.drawable.gradient_neocredit));
             click = true;
 
-            invalidDirEmail.setVisibility(View.VISIBLE);
+          //  invalidDirEmail.setVisibility(View.VISIBLE);
         } else {
             dir_next_button.setBackgroundColor(getResources().getColor(R.color.colorash));
             click = false;

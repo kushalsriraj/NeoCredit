@@ -155,6 +155,7 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
         invalidPan = findViewById(R.id.invalidPan);
         invalidEmail = findViewById(R.id.invalidEmail);
         invalidPan.setVisibility(View.GONE);
+        invalidEmail.setVisibility(View.GONE);
         businessLandline = findViewById(R.id.sp_businessLandline);
         company_email = findViewById(R.id.company_email);
         pancardnumber = findViewById(R.id.par_pancardnumber);
@@ -232,8 +233,6 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-                ;
-
                 if (Patterns.EMAIL_ADDRESS.matcher(company_email.getText().toString()).matches())
                 {
                     invalidEmail.setVisibility(View.GONE);
@@ -259,7 +258,7 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
                 }
                 else
                 {
-                    invalidPan.setVisibility(View.VISIBLE);
+                    invalidEmail.setVisibility(View.VISIBLE);
                 }
 
             }
@@ -283,6 +282,7 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
                     invalidPan.setVisibility(View.GONE);
 
                     if (!company_name.getText().toString().equals("")
+                            && !company_email.getText().toString().equals("")
                             && !pancardnumber.getText().toString().equals("")
                             && (mobile_number.getText().toString().length() == 10)
                             &&!company_address.getText().toString().equals("")
