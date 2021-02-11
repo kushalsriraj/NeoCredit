@@ -195,6 +195,37 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
     private void textWatchers()
     {
 
+        mobile_number.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                if (!company_name.getText().toString().equals("")
+                        &&!company_email.getText().toString().equals("")
+                        && (mobile_number.getText().toString().length() == 10)
+                        && !pancardnumber.getText().toString().equals("")
+                        &&!company_address.getText().toString().equals("")
+                        &&!typeOfService.getText().toString().equals("-- Select Type of Service --")
+                        &&!howOldIsTheCompany.getText().toString().equals("-- Select Tenuraty the Company --")
+                        && !annualTurnover.getText().toString().equals("-- Select Annual Turnover --")&&
+                        !addressProof.getText().toString().equals("-- Select Address Proof --"))
+                {
+                    submitCompanyInfo.setBackground(getDrawable(R.drawable.gradient_neocredit));
+                    click=true;
+                }
+                else {
+                    submitCompanyInfo.setBackgroundColor(getResources().getColor(R.color.colorash));
+                    click=false;
+                }
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) { }
+        });
+
         company_name.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) { }

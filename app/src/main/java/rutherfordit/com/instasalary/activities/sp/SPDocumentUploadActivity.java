@@ -207,10 +207,10 @@ public class SPDocumentUploadActivity extends AppCompatActivity {
             public void onClick(View v) {
                 status = "registration";
                 upload_pdf.setVisibility(View.VISIBLE);
-                view1.setVisibility(View.GONE);
-                upload_from_camera.setVisibility(View.GONE);
-                view2.setVisibility(View.GONE);
-                upload_from_gallery.setVisibility(View.GONE);
+                view1.setVisibility(View.VISIBLE);
+                upload_from_camera.setVisibility(View.VISIBLE);
+                view2.setVisibility(View.VISIBLE);
+                upload_from_gallery.setVisibility(View.VISIBLE);
                 bottomSheetDialog.show();
             }
         });
@@ -220,10 +220,10 @@ public class SPDocumentUploadActivity extends AppCompatActivity {
             public void onClick(View v) {
                 status = "bankstatement";
                 upload_pdf.setVisibility(View.VISIBLE);
-                view1.setVisibility(View.GONE);
-                upload_from_camera.setVisibility(View.GONE);
-                view2.setVisibility(View.GONE);
-                upload_from_gallery.setVisibility(View.GONE);
+                view1.setVisibility(View.VISIBLE);
+                upload_from_camera.setVisibility(View.VISIBLE);
+                view2.setVisibility(View.VISIBLE);
+                upload_from_gallery.setVisibility(View.VISIBLE);
                 bottomSheetDialog.show();
             }
         });
@@ -233,10 +233,10 @@ public class SPDocumentUploadActivity extends AppCompatActivity {
             public void onClick(View v) {
                 status = "gstr";
                 upload_pdf.setVisibility(View.VISIBLE);
-                view1.setVisibility(View.GONE);
-                upload_from_camera.setVisibility(View.GONE);
-                view2.setVisibility(View.GONE);
-                upload_from_gallery.setVisibility(View.GONE);
+                view1.setVisibility(View.VISIBLE);
+                upload_from_camera.setVisibility(View.VISIBLE);
+                view2.setVisibility(View.VISIBLE);
+                upload_from_gallery.setVisibility(View.VISIBLE);
                 bottomSheetDialog.show();
             }
         });
@@ -246,10 +246,10 @@ public class SPDocumentUploadActivity extends AppCompatActivity {
             public void onClick(View v) {
                 status = "sla";
                 upload_pdf.setVisibility(View.VISIBLE);
-                view1.setVisibility(View.GONE);
-                upload_from_camera.setVisibility(View.GONE);
-                view2.setVisibility(View.GONE);
-                upload_from_gallery.setVisibility(View.GONE);
+                view1.setVisibility(View.VISIBLE);
+                upload_from_camera.setVisibility(View.VISIBLE);
+                view2.setVisibility(View.VISIBLE);
+                upload_from_gallery.setVisibility(View.VISIBLE);
                 bottomSheetDialog.show();
             }
         });
@@ -259,10 +259,10 @@ public class SPDocumentUploadActivity extends AppCompatActivity {
             public void onClick(View v) {
                 status = "invoice";
                 upload_pdf.setVisibility(View.VISIBLE);
-                view1.setVisibility(View.GONE);
-                upload_from_camera.setVisibility(View.GONE);
-                view2.setVisibility(View.GONE);
-                upload_from_gallery.setVisibility(View.GONE);
+                view1.setVisibility(View.VISIBLE);
+                upload_from_camera.setVisibility(View.VISIBLE);
+                view2.setVisibility(View.VISIBLE);
+                upload_from_gallery.setVisibility(View.VISIBLE);
                 bottomSheetDialog.show();
             }
         });
@@ -272,10 +272,10 @@ public class SPDocumentUploadActivity extends AppCompatActivity {
             public void onClick(View v) {
                 status = "rentaggrement";
                 upload_pdf.setVisibility(View.VISIBLE);
-                view1.setVisibility(View.GONE);
-                upload_from_camera.setVisibility(View.GONE);
-                view2.setVisibility(View.GONE);
-                upload_from_gallery.setVisibility(View.GONE);
+                view1.setVisibility(View.VISIBLE);
+                upload_from_camera.setVisibility(View.VISIBLE);
+                view2.setVisibility(View.VISIBLE);
+                upload_from_gallery.setVisibility(View.VISIBLE);
                 bottomSheetDialog.show();
             }
         });
@@ -285,10 +285,10 @@ public class SPDocumentUploadActivity extends AppCompatActivity {
             public void onClick(View v) {
                 status = "itr";
                 upload_pdf.setVisibility(View.VISIBLE);
-                view1.setVisibility(View.GONE);
-                upload_from_camera.setVisibility(View.GONE);
-                view2.setVisibility(View.GONE);
-                upload_from_gallery.setVisibility(View.GONE);
+                view1.setVisibility(View.VISIBLE);
+                upload_from_camera.setVisibility(View.VISIBLE);
+                view2.setVisibility(View.VISIBLE);
+                upload_from_gallery.setVisibility(View.VISIBLE);
                 bottomSheetDialog.show();
 
             }

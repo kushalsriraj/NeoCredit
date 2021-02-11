@@ -3,6 +3,7 @@ package rutherfordit.com.instasalary.activities;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Intent;
@@ -10,6 +11,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.DatePicker;
@@ -31,6 +33,7 @@ import java.util.regex.Pattern;
 import rutherfordit.com.instasalary.R;
 import rutherfordit.com.instasalary.activities.privatelimited.PrivateLimitedDirectorSecondDetailsActivity;
 import rutherfordit.com.instasalary.activities.sp.DatePickerFragment;
+import rutherfordit.com.instasalary.activities.sp.SPDocumentUploadActivity;
 import rutherfordit.com.instasalary.extras.Constants;
 import rutherfordit.com.instasalary.extras.SharedPrefsManager;
 import rutherfordit.com.instasalary.extras.Urls;
@@ -54,10 +57,7 @@ public class PromoterDetails extends AppCompatActivity implements DatePickerDial
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_promoter_details);
 
-
         init();
-
-
     }
 
     private void init() {
@@ -79,7 +79,7 @@ public class PromoterDetails extends AppCompatActivity implements DatePickerDial
         dir_mobile = findViewById(R.id.dir_mobile);
         detailsTextView = findViewById(R.id.detailsTextView);
 
-        invalidDirEmail = findViewById(R.id.invalidDirPan);
+        invalidDirEmail = findViewById(R.id.invalidDirEmail);
         invalidDirEmail.setVisibility(View.GONE);
         invalidDirPan = findViewById(R.id.invalidDirPan);
         invalidDirPan.setVisibility(View.GONE);
@@ -109,6 +109,35 @@ public class PromoterDetails extends AppCompatActivity implements DatePickerDial
             }
         });
 
+        dir_mobile.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                if (!dir_fullName.getText().toString().equals("")
+                        && !dir_dob.getText().toString().equals("")
+                        && !dir_email.getText().toString().equals("")
+                        && !dir_pan.getText().toString().equals("")
+                        && dir_adhar.getText().toString().length() == 12
+                        &&!dir_address.getText().toString().equals("")
+                        && !dir_addressproof.getText().toString().equals("-- Select Address Proof --")
+                        && (dir_mobile.getText().toString().length() == 10))
+                {
+                    dir_next_button.setBackground(getDrawable(R.drawable.gradient_neocredit));
+                    click = true;
+                } else {
+                    dir_next_button.setBackgroundColor(getResources().getColor(R.color.colorash));
+                    click = false;
+                }
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) { }
+        });
+
         dir_fullName.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -125,11 +154,10 @@ public class PromoterDetails extends AppCompatActivity implements DatePickerDial
                         && dir_adhar.getText().toString().length() == 12
                         &&!dir_address.getText().toString().equals("")
                         && !dir_addressproof.getText().toString().equals("-- Select Address Proof --")
-                        && (dir_mobile.getText().toString().length() == 10)) {
+                        && (dir_mobile.getText().toString().length() == 10))
+                {
                     dir_next_button.setBackground(getDrawable(R.drawable.gradient_neocredit));
                     click = true;
-
-                    invalidDirEmail.setVisibility(View.VISIBLE);
                 } else {
                     dir_next_button.setBackgroundColor(getResources().getColor(R.color.colorash));
                     click = false;
@@ -158,12 +186,13 @@ public class PromoterDetails extends AppCompatActivity implements DatePickerDial
                         && dir_adhar.getText().toString().length() == 12
                         &&!dir_address.getText().toString().equals("")
                         && !dir_addressproof.getText().toString().equals("-- Select Address Proof --")
-                        && (dir_mobile.getText().toString().length() == 10)) {
+                        && (dir_mobile.getText().toString().length() == 10))
+                {
                     dir_next_button.setBackground(getDrawable(R.drawable.gradient_neocredit));
                     click = true;
-
-                    invalidDirEmail.setVisibility(View.VISIBLE);
-                } else {
+                }
+                else
+                {
                     dir_next_button.setBackgroundColor(getResources().getColor(R.color.colorash));
                     click = false;
                 }
@@ -173,6 +202,45 @@ public class PromoterDetails extends AppCompatActivity implements DatePickerDial
             public void afterTextChanged(Editable s) {
 
             }
+        });
+
+        dir_email.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                if (Patterns.EMAIL_ADDRESS.matcher(dir_email.getText().toString()).matches())
+                {
+                    invalidDirEmail.setVisibility(View.GONE);
+
+                    if (!dir_fullName.getText().toString().equals("")
+                            && !dir_dob.getText().toString().equals("")
+                            && !dir_email.getText().toString().equals("")
+                            && !dir_pan.getText().toString().equals("")
+                            && dir_adhar.getText().toString().length() == 12
+                            && !dir_address.getText().toString().equals("")
+                            && !dir_addressproof.getText().toString().equals("-- Select Address Proof --")
+                            && (dir_mobile.getText().toString().length() == 10)) {
+                        dir_next_button.setBackground(getDrawable(R.drawable.gradient_neocredit));
+                        click = true;
+
+                    } else {
+                        dir_next_button.setBackgroundColor(getResources().getColor(R.color.colorash));
+                        click = false;
+                    }
+
+                }
+                else
+                {
+                    invalidDirEmail.setVisibility(View.VISIBLE);
+                }
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) { }
         });
 
         dir_pan.addTextChangedListener(new TextWatcher() {
@@ -234,11 +302,11 @@ public class PromoterDetails extends AppCompatActivity implements DatePickerDial
                         && dir_adhar.getText().toString().length() == 12
                         &&!dir_address.getText().toString().equals("")
                         && !dir_addressproof.getText().toString().equals("-- Select Address Proof --")
-                        && (dir_mobile.getText().toString().length() == 10)) {
+                        && (dir_mobile.getText().toString().length() == 10))
+                {
                     dir_next_button.setBackground(getDrawable(R.drawable.gradient_neocredit));
                     click = true;
 
-                    invalidDirEmail.setVisibility(View.VISIBLE);
                 } else {
                     dir_next_button.setBackgroundColor(getResources().getColor(R.color.colorash));
                     click = false;
@@ -279,7 +347,6 @@ public class PromoterDetails extends AppCompatActivity implements DatePickerDial
                             dir_next_button.setBackground(getDrawable(R.drawable.gradient_neocredit));
                             click = true;
 
-                            invalidDirEmail.setVisibility(View.VISIBLE);
                         } else {
                             dir_next_button.setBackgroundColor(getResources().getColor(R.color.colorash));
                             click = false;
@@ -300,7 +367,6 @@ public class PromoterDetails extends AppCompatActivity implements DatePickerDial
                             dir_next_button.setBackground(getDrawable(R.drawable.gradient_neocredit));
                             click = true;
 
-                            invalidDirEmail.setVisibility(View.VISIBLE);
                         } else {
                             dir_next_button.setBackgroundColor(getResources().getColor(R.color.colorash));
                             click = false;
@@ -449,10 +515,21 @@ public class PromoterDetails extends AppCompatActivity implements DatePickerDial
 
             if  (response!=null)
             {
-                Intent returnIntent = new Intent();
-                returnIntent.putExtra("result",getid);
-                setResult(Activity.RESULT_OK,returnIntent);
-                finish();
+
+                if (sharedPrefsManager.getSegment().equals("1"))
+                {
+                    Intent intent = new Intent(getApplicationContext(), SPDocumentUploadActivity.class);
+                    startActivity(intent);
+                }
+                else
+                {
+                    Intent returnIntent = new Intent();
+                    returnIntent.putExtra("result",getid);
+                    setResult(Activity.RESULT_OK,returnIntent);
+                    finish();
+                }
+
+
                 /*if(!getid.equals("")){
 
                 }*/
