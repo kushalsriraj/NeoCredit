@@ -152,7 +152,7 @@ public class BankDetailsActivity extends AppCompatActivity implements ResponseHa
             jsonObjectBody.put("bank_ifcs", sp_bankifsc.getText().toString());
             Log.e("data", "bankApi: " +sp_bankifsc.getText().toString() );
 
-            jsonObjectBody.put("company_id", "1");
+            jsonObjectBody.put("company_id", sharedPrefsManager.getCOMPANY_ID());
 
             volleyRequest.JsonObjRequestAuthorization(BankDetailsActivity.this,jsonObjectBody, Urls.SAVE_BANK_DETAILS, Constants.bank_details,sharedPrefsManager.getAccessToken());
 
@@ -174,35 +174,11 @@ public class BankDetailsActivity extends AppCompatActivity implements ResponseHa
             if  (response!=null)
             {
 
-                loanDetails();
-
-            }
-        }
-        else if (i == Constants.loan_details){
-            JSONObject response = (JSONObject) obj;
-            Log.e("response", "responseHandlerLoan: " + response);
-            if  (response!=null)
-            {
-
-                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                Intent intent = new Intent(getApplicationContext(), UploadInvoice.class);
                 startActivity(intent);
+
             }
         }
-    }
-
-    private void loanDetails() {
-
-        JSONObject jsonObjectBody = new JSONObject();
-
-        try {
-            jsonObjectBody.put("amount", "30000");
-            jsonObjectBody.put("days", "30");
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        volleyRequest.JsonObjRequestAuthorization(BankDetailsActivity.this,jsonObjectBody, Urls.LOAN_DETAILS, Constants.loan_details,sharedPrefsManager.getAccessToken());
-
     }
 
     @Override

@@ -654,9 +654,6 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
                     JSONObject jsonObjectData = response.getJSONObject("data");
                     Log.e("jsonObjectData", "responseHandlerjsonObjectData: " + jsonObjectData );
 
-                    String phone_number = jsonObjectData.getString("phone_number");
-                    Log.e("phone_number", "phone_number: " + phone_number );
-
                     JSONObject jsonObjectCompanyDetails = jsonObjectData.getJSONObject("companydetails");
                     Log.e("jsonCompanyDetails", "jsonObjectCompanyDetails: " + jsonObjectCompanyDetails );
 
@@ -675,8 +672,6 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
                     }
 
                     Log.e(TAG, "responseHandler: " + sharedPrefsManager.getSegment() );
-
-
 
                 } catch (JSONException e) {
                     e.printStackTrace();
