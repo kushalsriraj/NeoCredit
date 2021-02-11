@@ -57,6 +57,7 @@ import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import okhttp3.RequestBody;
 import rutherfordit.com.instasalary.R;
+import rutherfordit.com.instasalary.activities.BankDetailsActivity;
 import rutherfordit.com.instasalary.extras.SharedPrefsManager;
 import rutherfordit.com.instasalary.extras.Urls;
 
@@ -325,7 +326,7 @@ public class SPDocumentUploadActivity extends AppCompatActivity {
         Submit_sp_docs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(),SpCreditRequirementsActivity.class);
+                Intent i = new Intent(getApplicationContext(), BankDetailsActivity.class);
                 startActivity(i);
             }
         });
@@ -512,7 +513,7 @@ public class SPDocumentUploadActivity extends AppCompatActivity {
                                 loader_sp_pan.setVisibility(View.GONE);
                                 Toasty.info(getApplicationContext(), "Pan Uploaded", Toast.LENGTH_SHORT).show();
 
-                                if (pan_uploaded && adhar_uploaded && registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
+                                if ( registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
                                  && sla_uploaded && invoices_uploaded && rental_uploaded && itr_uploaded )
                                 {
                                     Submit_sp_docs.setBackground(getDrawable(R.drawable.gradient_neocredit));
@@ -535,9 +536,9 @@ public class SPDocumentUploadActivity extends AppCompatActivity {
                                 image_sp_adhar.setImageURI(imguri);
                                 text_sp_adhar.setText(filename + ".png");
                                 loader_sp_adhar.setVisibility(View.GONE);
-                                Toasty.info(getApplicationContext(), "Adhar Uploaded", Toast.LENGTH_SHORT).show();
+                                Toasty.success(getApplicationContext(), "Adhar Uploaded", Toast.LENGTH_SHORT).show();
 
-                                if (pan_uploaded && adhar_uploaded && registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
+                                if ( registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
                                         && sla_uploaded && invoices_uploaded && rental_uploaded && itr_uploaded )
                                 {
                                     Submit_sp_docs.setBackground(getDrawable(R.drawable.gradient_neocredit));
@@ -562,7 +563,7 @@ public class SPDocumentUploadActivity extends AppCompatActivity {
                                 loader_sp_registrationProof.setVisibility(View.GONE);
                                 Toasty.info(getApplicationContext(), "Registration Proof Uploaded", Toast.LENGTH_SHORT).show();
 
-                                if (pan_uploaded && adhar_uploaded && registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
+                                if ( registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
                                         && sla_uploaded && invoices_uploaded && rental_uploaded && itr_uploaded )
                                 {
                                     Submit_sp_docs.setBackground(getDrawable(R.drawable.gradient_neocredit));
@@ -586,7 +587,7 @@ public class SPDocumentUploadActivity extends AppCompatActivity {
                                 loader_sp_bankStatement.setVisibility(View.GONE);
                                 Toasty.info(getApplicationContext(), "Bank Statement Uploaded", Toast.LENGTH_SHORT).show();
 
-                                if (pan_uploaded && adhar_uploaded && registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
+                                if ( registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
                                         && sla_uploaded && invoices_uploaded && rental_uploaded && itr_uploaded )
                                 {
                                     Submit_sp_docs.setBackground(getDrawable(R.drawable.gradient_neocredit));
@@ -610,7 +611,7 @@ public class SPDocumentUploadActivity extends AppCompatActivity {
                                 loader_sp_gstr.setVisibility(View.GONE);
                                 Toasty.info(getApplicationContext(), "Gstr Uploaded", Toast.LENGTH_SHORT).show();
 
-                                if (pan_uploaded && adhar_uploaded && registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
+                                if ( registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
                                         && sla_uploaded && invoices_uploaded && rental_uploaded && itr_uploaded )
                                 {
                                     Submit_sp_docs.setBackground(getDrawable(R.drawable.gradient_neocredit));
@@ -634,7 +635,7 @@ public class SPDocumentUploadActivity extends AppCompatActivity {
                                 loader_sp_sla.setVisibility(View.GONE);
                                 Toasty.info(getApplicationContext(), "Sla Uploaded", Toast.LENGTH_SHORT).show();
 
-                                if (pan_uploaded && adhar_uploaded && registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
+                                if ( registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
                                         && sla_uploaded && invoices_uploaded && rental_uploaded && itr_uploaded )
                                 {
                                     Submit_sp_docs.setBackground(getDrawable(R.drawable.gradient_neocredit));
@@ -658,7 +659,7 @@ public class SPDocumentUploadActivity extends AppCompatActivity {
                                 loader_sp_invoice.setVisibility(View.GONE);
                                 Toasty.info(getApplicationContext(), "Invoice Uploaded", Toast.LENGTH_SHORT).show();
 
-                                if (pan_uploaded && adhar_uploaded && registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
+                                if ( registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
                                         && sla_uploaded && invoices_uploaded && rental_uploaded && itr_uploaded )
                                 {
                                     Submit_sp_docs.setBackground(getDrawable(R.drawable.gradient_neocredit));
@@ -682,7 +683,7 @@ public class SPDocumentUploadActivity extends AppCompatActivity {
                                 loader_sp_rentAggrement.setVisibility(View.GONE);
                                 Toasty.info(getApplicationContext(), "Rent Agreement Uploaded", Toast.LENGTH_SHORT).show();
 
-                                if (pan_uploaded && adhar_uploaded && registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
+                                if ( registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
                                         && sla_uploaded && invoices_uploaded && rental_uploaded && itr_uploaded )
                                 {
                                     Submit_sp_docs.setBackground(getDrawable(R.drawable.gradient_neocredit));
@@ -706,7 +707,7 @@ public class SPDocumentUploadActivity extends AppCompatActivity {
                                 loader_sp_itr.setVisibility(View.GONE);
                                 Toasty.info(getApplicationContext(), "Itr Uploaded", Toast.LENGTH_SHORT).show();
 
-                                if (pan_uploaded && adhar_uploaded && registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
+                                if ( registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
                                         && sla_uploaded && invoices_uploaded && rental_uploaded && itr_uploaded )
                                 {
                                     Submit_sp_docs.setBackground(getDrawable(R.drawable.gradient_neocredit));
@@ -823,7 +824,7 @@ public class SPDocumentUploadActivity extends AppCompatActivity {
                                 image_sp_pan.setImageDrawable(getResources().getDrawable(R.drawable.pdfseticon));
                                 loader_sp_pan.setVisibility(View.GONE);
 
-                                if (pan_uploaded && adhar_uploaded && registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
+                                if ( registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
                                         && sla_uploaded && invoices_uploaded && rental_uploaded && itr_uploaded )
                                 {
                                     Submit_sp_docs.setBackground(getDrawable(R.drawable.gradient_neocredit));
@@ -844,7 +845,7 @@ public class SPDocumentUploadActivity extends AppCompatActivity {
                                 image_sp_adhar.setImageDrawable(getResources().getDrawable(R.drawable.pdfseticon));
                                 loader_sp_adhar.setVisibility(View.GONE);
 
-                                if (pan_uploaded && adhar_uploaded && registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
+                                if ( registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
                                         && sla_uploaded && invoices_uploaded && rental_uploaded && itr_uploaded )
                                 {
                                     Submit_sp_docs.setBackground(getDrawable(R.drawable.gradient_neocredit));
@@ -865,7 +866,7 @@ public class SPDocumentUploadActivity extends AppCompatActivity {
                                 image_sp_registrationProof.setImageDrawable(getResources().getDrawable(R.drawable.pdfseticon));
                                 loader_sp_registrationProof.setVisibility(View.GONE);
 
-                                if (pan_uploaded && adhar_uploaded && registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
+                                if ( registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
                                         && sla_uploaded && invoices_uploaded && rental_uploaded && itr_uploaded )
                                 {
                                     Submit_sp_docs.setBackground(getDrawable(R.drawable.gradient_neocredit));
@@ -886,7 +887,7 @@ public class SPDocumentUploadActivity extends AppCompatActivity {
                                 image_sp_bankStatement.setImageDrawable(getResources().getDrawable(R.drawable.pdfseticon));
                                 loader_sp_bankStatement.setVisibility(View.GONE);
 
-                                if (pan_uploaded && adhar_uploaded && registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
+                                if ( registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
                                         && sla_uploaded && invoices_uploaded && rental_uploaded && itr_uploaded )
                                 {
                                     Submit_sp_docs.setBackground(getDrawable(R.drawable.gradient_neocredit));
@@ -907,7 +908,7 @@ public class SPDocumentUploadActivity extends AppCompatActivity {
                                 image_sp_gstr.setImageDrawable(getResources().getDrawable(R.drawable.pdfseticon));
                                 loader_sp_gstr.setVisibility(View.GONE);
 
-                                if (pan_uploaded && adhar_uploaded && registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
+                                if ( registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
                                         && sla_uploaded && invoices_uploaded && rental_uploaded && itr_uploaded )
                                 {
                                     Submit_sp_docs.setBackground(getDrawable(R.drawable.gradient_neocredit));
@@ -928,7 +929,7 @@ public class SPDocumentUploadActivity extends AppCompatActivity {
                                 image_sp_sla.setImageDrawable(getResources().getDrawable(R.drawable.pdfseticon));
                                 loader_sp_sla.setVisibility(View.GONE);
 
-                                if (pan_uploaded && adhar_uploaded && registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
+                                if ( registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
                                         && sla_uploaded && invoices_uploaded && rental_uploaded && itr_uploaded )
                                 {
                                     Submit_sp_docs.setBackground(getDrawable(R.drawable.gradient_neocredit));
@@ -949,7 +950,7 @@ public class SPDocumentUploadActivity extends AppCompatActivity {
                                 image_sp_invoice.setImageDrawable(getResources().getDrawable(R.drawable.pdfseticon));
                                 loader_sp_invoice.setVisibility(View.GONE);
 
-                                if (pan_uploaded && adhar_uploaded && registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
+                                if ( registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
                                         && sla_uploaded && invoices_uploaded && rental_uploaded && itr_uploaded )
                                 {
                                     Submit_sp_docs.setBackground(getDrawable(R.drawable.gradient_neocredit));
@@ -970,7 +971,7 @@ public class SPDocumentUploadActivity extends AppCompatActivity {
                                 image_sp_rentAggrement.setImageDrawable(getResources().getDrawable(R.drawable.pdfseticon));
                                 loader_sp_rentAggrement.setVisibility(View.GONE);
 
-                                if (pan_uploaded && adhar_uploaded && registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
+                                if ( registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
                                         && sla_uploaded && invoices_uploaded && rental_uploaded && itr_uploaded )
                                 {
                                     Submit_sp_docs.setBackground(getDrawable(R.drawable.gradient_neocredit));
@@ -991,7 +992,7 @@ public class SPDocumentUploadActivity extends AppCompatActivity {
                                 image_sp_itr.setImageDrawable(getResources().getDrawable(R.drawable.pdfseticon));
                                 loader_sp_itr.setVisibility(View.GONE);
 
-                                if (pan_uploaded && adhar_uploaded && registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
+                                if ( registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
                                         && sla_uploaded && invoices_uploaded && rental_uploaded && itr_uploaded )
                                 {
                                     Submit_sp_docs.setBackground(getDrawable(R.drawable.gradient_neocredit));
