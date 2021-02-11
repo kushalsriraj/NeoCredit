@@ -72,6 +72,7 @@ public class UploadInvoice extends AppCompatActivity implements ResponseHandler 
                 }
                 else {
                     submitInvoice.setBackgroundColor(getResources().getColor(R.color.colorash));
+
                     click=false;
                 }
 
