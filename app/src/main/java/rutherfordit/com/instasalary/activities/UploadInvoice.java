@@ -25,6 +25,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.util.Pair;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -36,6 +37,11 @@ import com.crystal.crystalpreloaders.widgets.CrystalPreloader;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
+import com.thecode.aestheticdialogs.AestheticDialog;
+import com.thecode.aestheticdialogs.DialogAnimation;
+import com.thecode.aestheticdialogs.DialogStyle;
+import com.thecode.aestheticdialogs.DialogType;
+import com.thecode.aestheticdialogs.OnDialogClickListener;
 import com.vincent.filepicker.Constant;
 import com.vincent.filepicker.activity.NormalFilePickActivity;
 import com.vincent.filepicker.filter.entity.NormalFile;
@@ -335,18 +341,25 @@ public class UploadInvoice extends AppCompatActivity implements ResponseHandler 
             Log.e("response", "responseHandlerLoan: " + response);
             if  (response!=null)
             {
-                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
-                startActivity(intent);
+                /*Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                startActivity(intent);*/
                 loader_invoice.setVisibility(View.GONE);
-               /* new NordanAlertDialog.Builder(this)
-                        .setAnimation(Animation.POP)
-                        .isCancellable(false)
-                        .setTitle("Application Successfull..")
-                        .setMessage("Your application has been submitted to us. Please wait till we get back..")
-
-                        .setPositiveBtnText("Great!")
-                        .onPositiveClicked(this::gotonext)
-                        .build().show();*/
+                new AestheticDialog.Builder(this, DialogStyle.FLAT, DialogType.SUCCESS)
+                        .setTitle("Neo Credit")
+                        .setMessage("Your loan application is successfull.." +
+                                "")
+                        .setCancelable(false)
+                        .setDarkMode(false)
+                        .setGravity(Gravity.CENTER)
+                        .setAnimation(DialogAnimation.SHRINK)
+                        .setOnClickListener(new OnDialogClickListener() {
+                            @Override
+                            public void onClick(AestheticDialog.Builder builder) {
+                                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                                startActivity(intent);
+                            }
+                        })
+                        .show();
             }
         }
     }
@@ -354,17 +367,7 @@ public class UploadInvoice extends AppCompatActivity implements ResponseHandler 
     public void gotonext()
     {
 
-        new Handler().postDelayed(new Runnable() {
 
-            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-            @Override
-            public void run() {
-
-                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
-                startActivity(intent);
-
-            }
-        }, 6000);
 
 
     }
