@@ -107,7 +107,6 @@ public class AdharAuthenticationActivity extends AppCompatActivity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (!adhaar_name.getText().toString().equals("") && adhaar_phone.getText().toString().length() == 10)
                 {
-                    //submitSpInfo.setBackgroundColor(getResources().getColor(R.color.neopurple));
                     authenticate_adhar_button.setBackground(getDrawable(R.drawable.gradient_neocredit));
                     click = true;
                 }
