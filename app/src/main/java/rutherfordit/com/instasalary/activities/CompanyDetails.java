@@ -36,6 +36,7 @@ import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import es.dmoral.toasty.Toasty;
 import rutherfordit.com.instasalary.R;
 import rutherfordit.com.instasalary.extras.Constants;
 import rutherfordit.com.instasalary.extras.SharedPrefsManager;
@@ -604,7 +605,14 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
             @Override
             public void onClick(View v) {
 
-                companyAPI();
+                if (click)
+                {
+                    companyAPI();
+                }
+                else
+                {
+                    Toasty.error(getApplicationContext(),"Please Check the fields.",Toasty.LENGTH_SHORT).show();
+                }
 
             }
         });
@@ -646,32 +654,25 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
         if(i == Constants.company_details) {
 
             JSONObject response = (JSONObject) obj;
-            Log.e("response", "responseHandlerCompany: " + response);
 //            if  (response!=null)
 //            {
 
                 try {
                     JSONObject jsonObjectData = response.getJSONObject("data");
-                    Log.e("jsonObjectData", "responseHandlerjsonObjectData: " + jsonObjectData );
 
                     JSONObject jsonObjectCompanyDetails = jsonObjectData.getJSONObject("companydetails");
-                    Log.e("jsonCompanyDetails", "jsonObjectCompanyDetails: " + jsonObjectCompanyDetails );
 
                     JSONArray arrayData = jsonObjectCompanyDetails.getJSONArray("data");
-                    Log.e("arrayData", "arrayData: " + arrayData.length() );
                     for (int j = 0; j < arrayData.length(); j ++){
 
                         JSONObject idObj = arrayData.getJSONObject(j);
-                        Log.e("idObj", "idObj: " + idObj );
 
                         String id = idObj.getString("id");
-                        Log.e("responseHandlerId", "responseHandlerId: " + id );
 
                         sharedPrefsManager.setCOMPANY_ID(id);
                         Log.e("COMPANY_ID", "COMPANY_ID: " + sharedPrefsManager.getCOMPANY_ID() );
                     }
 
-                    Log.e(TAG, "responseHandler: " + sharedPrefsManager.getSegment() );
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -680,13 +681,11 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
                 if (sharedPrefsManager.getSegment().equals("1"))
                     {
                         Intent intent = new Intent(getApplicationContext(), PromoterDetails.class);
-                       // intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(intent);
                     }
                     else
                     {
                         Intent intent = new Intent(getApplicationContext(), DirectorDetails.class);
-                       // intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(intent);
                     }
             //}
