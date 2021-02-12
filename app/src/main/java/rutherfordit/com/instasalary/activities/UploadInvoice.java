@@ -324,7 +324,9 @@ public class UploadInvoice extends AppCompatActivity implements ResponseHandler 
 
         try {
             jsonObjectBody.put("amount", enterAmount.getText().toString());
-            jsonObjectBody.put("days", "30");
+            jsonObjectBody.put("days", "0");
+            jsonObjectBody.put("company_id", sharedPrefsManager.getCOMPANY_ID());
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -389,6 +391,7 @@ public class UploadInvoice extends AppCompatActivity implements ResponseHandler 
         }
 
         builder.addFormDataPart("proof_type", "17");
+        builder.addFormDataPart("company_id", sharedPrefsManager.getCOMPANY_ID());
 
         RequestBody requestBody = builder.build();
 
@@ -461,6 +464,7 @@ public class UploadInvoice extends AppCompatActivity implements ResponseHandler 
         }
 
         builder.addFormDataPart("proof_type", "17");
+        builder.addFormDataPart("company_id", sharedPrefsManager.getCOMPANY_ID());
 
         RequestBody requestBody = builder.build();
 

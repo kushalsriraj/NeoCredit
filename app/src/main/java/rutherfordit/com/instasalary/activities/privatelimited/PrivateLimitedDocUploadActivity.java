@@ -463,6 +463,7 @@ public class PrivateLimitedDocUploadActivity extends AppCompatActivity {
         }
 
         builder.addFormDataPart("proof_type", code);
+        builder.addFormDataPart("company_id", sharedPrefsManager.getCOMPANY_ID());
 
         RequestBody requestBody = builder.build();
 
@@ -775,6 +776,7 @@ public class PrivateLimitedDocUploadActivity extends AppCompatActivity {
         }
 
         builder.addFormDataPart("proof_type", code);
+        builder.addFormDataPart("company_id", sharedPrefsManager.getCOMPANY_ID());
 
         RequestBody requestBody = builder.build();
 

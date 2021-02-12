@@ -137,21 +137,10 @@ public class BankDetailsActivity extends AppCompatActivity implements ResponseHa
 
         try {
 
-            jsonObjectBody.put("company_id", "78");
-            // have to accept from company deatils
-            //jsonObjectBody.put("company_id", sharedPrefsManager.getCOMPANY_ID());
             jsonObjectBody.put("bank_name", sp_bankname.getText().toString());
-            Log.e("data", "bankApi: " +sp_bankname.getText().toString() );
-
             jsonObjectBody.put("bank_branch", sp_bankbranch.getText().toString());
-            Log.e("data", "bankApi: " +sp_bankbranch.getText().toString() );
-
             jsonObjectBody.put("ac_number", sp_accno.getText().toString());
-            Log.e("data", "bankApi: " +sp_accno.getText().toString() );
-
             jsonObjectBody.put("bank_ifcs", sp_bankifsc.getText().toString());
-            Log.e("data", "bankApi: " +sp_bankifsc.getText().toString() );
-
             jsonObjectBody.put("company_id", sharedPrefsManager.getCOMPANY_ID());
 
             volleyRequest.JsonObjRequestAuthorization(BankDetailsActivity.this,jsonObjectBody, Urls.SAVE_BANK_DETAILS, Constants.bank_details,sharedPrefsManager.getAccessToken());
@@ -159,7 +148,6 @@ public class BankDetailsActivity extends AppCompatActivity implements ResponseHa
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
 
         Toasty.success(getApplicationContext(), "Saved Successfully..", Toast.LENGTH_SHORT).show();
     }

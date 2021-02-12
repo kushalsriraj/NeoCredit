@@ -2,6 +2,7 @@ package rutherfordit.com.instasalary.activities;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.DialogFragment;
 
 import android.annotation.SuppressLint;
@@ -42,7 +43,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Matcher;
@@ -70,7 +74,7 @@ public class PromoterDetails extends AppCompatActivity implements DatePickerDial
     View dialogView;
     AlertDialog dialogBuilder;
     String getid,id;
-
+    CardView loader_promoter;
     RelativeLayout dir_next_button;
     ImageView purplebackarrow;
     TextInputEditText dir_fullName, dir_dob, dir_address, dir_pan, dir_adhar, dir_addressproof, dir_email, dir_mobile;
@@ -95,7 +99,8 @@ public class PromoterDetails extends AppCompatActivity implements DatePickerDial
         getid = getIntent().getStringExtra("id");
 
         Log.e("getid", "init: " + getid );
-
+        loader_promoter = findViewById(R.id.loader_promoter);
+        loader_promoter.setVisibility(View.GONE);
         dir_fullName = findViewById(R.id.dir_fullName);
         dir_dob = findViewById(R.id.dir_dob);
         dir_address = findViewById(R.id.dir_address);
@@ -139,6 +144,7 @@ public class PromoterDetails extends AppCompatActivity implements DatePickerDial
         AdharAuth.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                loader_promoter.setVisibility(View.VISIBLE);
                 dialogBuilder.show();
                 adharno_auth.setText(dir_fullName.getText().toString());
                 adharphone_auth.setText(dir_mobile.getText().toString());
@@ -148,6 +154,7 @@ public class PromoterDetails extends AppCompatActivity implements DatePickerDial
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                loader_promoter.setVisibility(View.GONE);
                 dialogBuilder.dismiss();
             }
         });
@@ -253,6 +260,8 @@ public class PromoterDetails extends AppCompatActivity implements DatePickerDial
 
                         JSONObject detailsObj = actionsObject.getJSONObject("details");
 
+                       // Log.e("adhar", "details: " + detailsObj.getString("type") );
+
                         JSONObject adharObj = detailsObj.getJSONObject("aadhaar");
 
                         String image = adharObj.getString("image");
@@ -261,13 +270,108 @@ public class PromoterDetails extends AppCompatActivity implements DatePickerDial
 
                         // adharImg.setImageBitmap(bm);
 
-                        Log.e("adhar", "onResponse: " + adharObj.getString("id_proof_type") );
+                        Date initDate = null;
+                        try {
+                            initDate = new SimpleDateFormat("dd/MM/yyyy").parse(adharObj.getString("dob"));
+                            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+                            String parsedDate = formatter.format(initDate);
+                            Log.d("date", "onResponse: " + parsedDate );
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        }
 
-                        Log.e("adhar", "onResponse: " + image );
 
-                        dialogBuilder.dismiss();
+                        Log.e("adhar", "onResponse: " + adharObj.getString("name") );
+                        Log.e("adhar", "onResponse: " + adharObj.getString("current_address") );
+                        Log.e("adhar", "onResponse: " + adharObj.getString("dob") );
+                        Log.e("adhar", "onResponse: " + adharObj.getString("gender") );
+                        Log.e("adhar", "onResponse: " + adharObj.getString("permanent_address") );
+                      //  Log.e("adhar", "onResponse: " + detailsObj.getString("type") );
+                        Log.e("adhar", "onResponse: " + adharObj.getString("document_type") );
+                        Log.e("adhar", "onResponse: " + adharObj.getString("id_number") );
+                        Log.e("adhar", "onResponse: " + response.getString("id") );
+                        Log.e("adhar", "onResponse: " + response.getString("customer_identifier"));
 
-                        if (!dir_fullName.getText().toString().equals("")
+                        JSONObject obj = new JSONObject();
+
+                        obj.put("name",adharObj.getString("name"));
+                        obj.put("current_address",adharObj.getString("current_address"));
+                        obj.put("dob",adharObj.getString("dob"));
+                        obj.put("gender",adharObj.getString("gender"));
+                        obj.put("permanent_address",adharObj.getString("permanent_address"));
+                        obj.put("image",image);
+                        obj.put("id_proof_type","ID_AND_ADDRESS_PROOF");
+                        obj.put("doc_type",adharObj.getString("document_type"));
+                        obj.put("id_no",adharObj.getString("id_number"));
+                        obj.put("digio_id",response.getString("id"));
+                        obj.put("customer_identifier",response.getString("customer_identifier"));
+                        obj.put("id_number","");
+                        obj.put("pan_doc_type","");
+                        obj.put("pan_id_proof_type","");
+                        obj.put("pan_gender","");
+                        obj.put("pan_name",adharObj.getString("name"));
+                        obj.put("pan_dob","");
+
+                        Log.e("obj", "onResponse: " + obj );
+
+                        JsonObjectRequest jsonObjectRequest1 = new JsonObjectRequest(Request.Method.POST, Urls.SEND_ADHAR, obj, new Response.Listener<JSONObject>() {
+                            @Override
+                            public void onResponse(JSONObject response) {
+
+                                try {
+                                    if (response.getString("message").equals("Saved Successfully"))
+                                    {
+                                        if (!dir_fullName.getText().toString().equals("")
+                                                && !dir_dob.getText().toString().equals("")
+                                                && !dir_email.getText().toString().equals("")
+                                                && !dir_pan.getText().toString().equals("") && dir_pan.getText().toString().length()==10
+                                                && dir_adhar.getText().toString().length() == 12
+                                                &&!dir_address.getText().toString().equals("")
+                                                && !dir_addressproof.getText().toString().equals("-- Select Address Proof --")
+                                                && (dir_mobile.getText().toString().length() == 10))
+                                        {
+                                            AdharAuth.setVisibility(View.GONE);
+                                            dir_next_button.setVisibility(View.VISIBLE);
+                                            dir_next_button.setBackground(getDrawable(R.drawable.gradient_neocredit));
+                                            click = true;
+                                            loader_promoter.setVisibility(View.GONE);
+                                            dialogBuilder.dismiss();
+                                        }
+                                        else {
+                                            loader_promoter.setVisibility(View.GONE);
+                                            dialogBuilder.dismiss();
+                                            AdharAuth.setVisibility(View.VISIBLE);
+                                            dir_next_button.setBackgroundColor(getResources().getColor(R.color.colorash));
+                                            click = false;
+                                        }
+                                    }
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+
+                            }
+                        }, new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+
+                                Log.e("volleyError", "onErrorResponse: " + error.getLocalizedMessage() );
+
+                            }
+                        }){
+                            @Override
+                            public Map<String, String> getHeaders() throws AuthFailureError {
+                                HashMap<String, String> headers = new HashMap<String, String>();
+                                headers.put("Authorization", sharedPrefsManager.getAccessToken());
+                                headers.put("Content-Type", "application/json");
+                                headers.put("Accept", "application/json");
+                                return headers;
+                            }
+                        };
+
+                        RequestQueue requestQueue = Volley.newRequestQueue(PromoterDetails.this);
+                        requestQueue.add(jsonObjectRequest1);
+
+                        /*if (!dir_fullName.getText().toString().equals("")
                                 && !dir_dob.getText().toString().equals("")
                                 && !dir_email.getText().toString().equals("")
                                 && !dir_pan.getText().toString().equals("")
@@ -280,11 +384,12 @@ public class PromoterDetails extends AppCompatActivity implements DatePickerDial
                             dir_next_button.setVisibility(View.VISIBLE);
                             dir_next_button.setBackground(getDrawable(R.drawable.gradient_neocredit));
                             click = true;
-                        } else {
+                        }
+                        else {
                             AdharAuth.setVisibility(View.VISIBLE);
                             dir_next_button.setBackgroundColor(getResources().getColor(R.color.colorash));
                             click = false;
-                        }
+                        }*/
                     }
 
                 } catch (JSONException e) {
@@ -355,7 +460,7 @@ public class PromoterDetails extends AppCompatActivity implements DatePickerDial
                 if (!dir_fullName.getText().toString().equals("")
                         && !dir_dob.getText().toString().equals("")
                         && !dir_email.getText().toString().equals("")
-                        && !dir_pan.getText().toString().equals("")
+                        && !dir_pan.getText().toString().equals("") && dir_pan.getText().toString().length()==10
                         && dir_adhar.getText().toString().length() == 12
                         &&!dir_address.getText().toString().equals("")
                         && !dir_addressproof.getText().toString().equals("-- Select Address Proof --")
@@ -388,7 +493,7 @@ public class PromoterDetails extends AppCompatActivity implements DatePickerDial
                 if (!dir_fullName.getText().toString().equals("")
                         && !dir_dob.getText().toString().equals("")
                         && !dir_email.getText().toString().equals("")
-                        && !dir_pan.getText().toString().equals("")
+                        && !dir_pan.getText().toString().equals("") && dir_pan.getText().toString().length()==10
                         && dir_adhar.getText().toString().length() == 12
                         &&!dir_address.getText().toString().equals("")
                         && !dir_addressproof.getText().toString().equals("-- Select Address Proof --")
@@ -422,7 +527,7 @@ public class PromoterDetails extends AppCompatActivity implements DatePickerDial
                 if (!dir_fullName.getText().toString().equals("")
                         && !dir_dob.getText().toString().equals("")
                         && !dir_email.getText().toString().equals("")
-                        && !dir_pan.getText().toString().equals("")
+                        && !dir_pan.getText().toString().equals("") && dir_pan.getText().toString().length()==10
                         && dir_adhar.getText().toString().length() == 12
                         &&!dir_address.getText().toString().equals("")
                         && !dir_addressproof.getText().toString().equals("-- Select Address Proof --")
@@ -458,7 +563,7 @@ public class PromoterDetails extends AppCompatActivity implements DatePickerDial
                     if (!dir_fullName.getText().toString().equals("")
                             && !dir_dob.getText().toString().equals("")
                             && !dir_email.getText().toString().equals("")
-                            && !dir_pan.getText().toString().equals("")
+                            && !dir_pan.getText().toString().equals("") && dir_pan.getText().toString().length()==10
                             && dir_adhar.getText().toString().length() == 12
                             && !dir_address.getText().toString().equals("")
                             && !dir_addressproof.getText().toString().equals("-- Select Address Proof --")
@@ -477,6 +582,9 @@ public class PromoterDetails extends AppCompatActivity implements DatePickerDial
                 else
                 {
                     invalidDirEmail.setVisibility(View.VISIBLE);
+                    AdharAuth.setVisibility(View.GONE);
+                    dir_next_button.setBackgroundColor(getResources().getColor(R.color.colorash));
+                    click = false;
                 }
 
             }
@@ -504,7 +612,7 @@ public class PromoterDetails extends AppCompatActivity implements DatePickerDial
                     if (!dir_fullName.getText().toString().equals("")
                             && !dir_dob.getText().toString().equals("")
                             && !dir_email.getText().toString().equals("")
-                            && !dir_pan.getText().toString().equals("")
+                            && !dir_pan.getText().toString().equals("") && dir_pan.getText().toString().length()==10
                             && dir_adhar.getText().toString().length() == 12
                             && !dir_address.getText().toString().equals("")
                             && !dir_addressproof.getText().toString().equals("-- Select Address Proof --")
@@ -521,7 +629,10 @@ public class PromoterDetails extends AppCompatActivity implements DatePickerDial
                 }
                 else
                 {
+                    AdharAuth.setVisibility(View.GONE);
+                    dir_next_button.setBackgroundColor(getResources().getColor(R.color.colorash));
                     invalidDirPan.setVisibility(View.VISIBLE);
+                    click = false;
                 }
             }
             @Override
@@ -542,7 +653,7 @@ public class PromoterDetails extends AppCompatActivity implements DatePickerDial
                 if (!dir_fullName.getText().toString().equals("")
                         && !dir_dob.getText().toString().equals("")
                         && !dir_email.getText().toString().equals("")
-                        && !dir_pan.getText().toString().equals("")
+                        && !dir_pan.getText().toString().equals("") && dir_pan.getText().toString().length()==10
                         && dir_adhar.getText().toString().length() == 12
                         &&!dir_address.getText().toString().equals("")
                         && !dir_addressproof.getText().toString().equals("-- Select Address Proof --")
@@ -584,7 +695,7 @@ public class PromoterDetails extends AppCompatActivity implements DatePickerDial
                         if (!dir_fullName.getText().toString().equals("")
                                 && !dir_dob.getText().toString().equals("")
                                 && !dir_email.getText().toString().equals("")
-                                && !dir_pan.getText().toString().equals("")
+                                && !dir_pan.getText().toString().equals("") && dir_pan.getText().toString().length()==10
                                 && dir_adhar.getText().toString().length() == 12
                                 &&!dir_address.getText().toString().equals("")
                                 && !dir_addressproof.getText().toString().equals("-- Select Address Proof --")
@@ -606,7 +717,7 @@ public class PromoterDetails extends AppCompatActivity implements DatePickerDial
                         if (!dir_fullName.getText().toString().equals("")
                                 && !dir_dob.getText().toString().equals("")
                                 && !dir_email.getText().toString().equals("")
-                                && !dir_pan.getText().toString().equals("")
+                                && !dir_pan.getText().toString().equals("") && dir_pan.getText().toString().length()==10
                                 && dir_adhar.getText().toString().length() == 12
                                 &&!dir_address.getText().toString().equals("")
                                 && !dir_addressproof.getText().toString().equals("-- Select Address Proof --")
@@ -634,6 +745,8 @@ public class PromoterDetails extends AppCompatActivity implements DatePickerDial
             @Override
             public void onClick(View v) {
                 if (click) {
+
+                    loader_promoter.setVisibility(View.VISIBLE);
 
                     JSONObject jsonObjectBody = new JSONObject();
 
@@ -691,8 +804,8 @@ public class PromoterDetails extends AppCompatActivity implements DatePickerDial
             newMonth = String.valueOf(month+1);
         }
 
-        if(dayOfMonth < 10){
-
+        if(dayOfMonth < 10)
+        {
             newDay  = "0" + dayOfMonth ;
         }
         else
@@ -708,7 +821,7 @@ public class PromoterDetails extends AppCompatActivity implements DatePickerDial
         if (!dir_fullName.getText().toString().equals("")
                 && !dir_dob.getText().toString().equals("")
                 && !dir_email.getText().toString().equals("")
-                && !dir_pan.getText().toString().equals("")
+                && !dir_pan.getText().toString().equals("") && dir_pan.getText().toString().length()==10
                 && dir_adhar.getText().toString().length() == 12
                 &&!dir_address.getText().toString().equals("")
                 && !dir_addressproof.getText().toString().equals("-- Select Address Proof --")
@@ -736,11 +849,13 @@ public class PromoterDetails extends AppCompatActivity implements DatePickerDial
             {
                 if (sharedPrefsManager.getSegment().equals("1"))
                 {
+                    loader_promoter.setVisibility(View.GONE);
                     Intent intent = new Intent(getApplicationContext(), SPDocumentUploadActivity.class);
                     startActivity(intent);
                 }
                 else
                 {
+                    loader_promoter.setVisibility(View.GONE);
                     Intent returnIntent = new Intent();
                     returnIntent.putExtra("result",getid);
                     setResult(Activity.RESULT_OK,returnIntent);

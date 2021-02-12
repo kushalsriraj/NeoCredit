@@ -88,7 +88,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="15dp"
             android:orientation="horizontal">
 
             <TextView
@@ -103,7 +103,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="20,000"
-                android:textColor="#D45D85"
+                android:textColor="@color/neopurple"
                 android:textSize="14dp" />
 
         </LinearLayout>
@@ -111,14 +111,14 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="15dp"
             android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Date Of Disburse : "
-                android:textColor="#686767"
+                android:textColor="#333333"
                 android:textSize="13dp" />
 
             <TextView
@@ -126,7 +126,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="24 Feb 2020"
-                android:textColor="#686767"
+                android:textColor="#333333"
                 android:textSize="14dp" />
 
         </LinearLayout>
@@ -134,7 +134,7 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="15dp"
             android:layout_marginBottom="10dp"
             android:orientation="horizontal">
 
@@ -142,7 +142,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Repayment Date : "
-                android:textColor="#686767"
+                android:textColor="#333333"
                 android:textSize="13dp" />
 
             <TextView
@@ -150,7 +150,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="24 Feb 2020"
-                android:textColor="#686767"
+                android:textColor="#333333"
                 android:textSize="14dp" />
 
         </LinearLayout>
@@ -189,7 +189,7 @@
             android:id="@+id/swipe_to_disburse"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="10dp"
             android:layout_marginBottom="5dp"
             android:elevation="6dp"
             app:animation_duration="250"

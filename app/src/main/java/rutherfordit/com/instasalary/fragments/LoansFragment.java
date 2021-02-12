@@ -35,7 +35,7 @@ public class LoansFragment extends Fragment {
     private void init() {
 
         loader_loans = v.findViewById(R.id.loader_loans);
-        loader_loans.setVisibility(View.VISIBLE);
+        loader_loans.setVisibility(View.GONE);
 
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("mySharedPreference", Context.MODE_PRIVATE);
         UserAccessToken = "Bearer " + sharedPreferences.getString("AccessToken", "");

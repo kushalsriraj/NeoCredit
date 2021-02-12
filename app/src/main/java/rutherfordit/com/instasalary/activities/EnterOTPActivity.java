@@ -171,6 +171,7 @@ public class EnterOTPActivity extends AppCompatActivity implements ResponseHandl
             {
                 String access_token = response.getString("access_token");
                 sharedPrefsManager.setAccessToken("Bearer " + access_token);
+                Log.e("access", "responseHandler: " + "Bearer " + access_token);
                 loader_otp.setVisibility(View.GONE);
                 Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                 startActivity(intent);

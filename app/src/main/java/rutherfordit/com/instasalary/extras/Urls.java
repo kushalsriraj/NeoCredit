@@ -18,4 +18,7 @@ public class Urls {
 
     public static String IMAGE_UPLOAD = "http://console.grantlending.in/api/user/imageupload";
     public static String REQUEST_TEMPLATE = "https://ext.digio.in:444/client/kyc/v2/request/with_template";
+    public static String SEND_ADHAR = "http://console.grantlending.in/api/addhar";
+    public static String LOANS_LIST = "http://console.grantlending.in/api/user/loanslist";
+
 }
