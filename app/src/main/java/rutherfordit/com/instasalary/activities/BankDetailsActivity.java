@@ -49,7 +49,7 @@ public class BankDetailsActivity extends AppCompatActivity implements ResponseHa
 
     ImageView purplebackarrow;
     TextInputEditText sp_bankname,sp_bankbranch,sp_accno,sp_bankifsc;
-    CardView sp_submitBankDetails;
+    CardView sp_submitBankDetails, loader_bank_details;
     boolean click = false;
     VolleyRequest volleyRequest;
     SharedPrefsManager sharedPrefsManager;
@@ -75,6 +75,8 @@ public class BankDetailsActivity extends AppCompatActivity implements ResponseHa
 
         volleyRequest = new VolleyRequest();
         sharedPrefsManager = new SharedPrefsManager(getApplicationContext());
+
+        loader_bank_details = findViewById(R.id.loader_bank_details);
 
     }
 
@@ -164,6 +166,7 @@ public class BankDetailsActivity extends AppCompatActivity implements ResponseHa
 
                 Intent intent = new Intent(getApplicationContext(), UploadInvoice.class);
                 startActivity(intent);
+                loader_bank_details.setVisibility(View.GONE);
 
             }
         }
@@ -293,6 +296,7 @@ public class BankDetailsActivity extends AppCompatActivity implements ResponseHa
             public void onClick(View v) {
                 if (click)
                 {
+                    loader_bank_details.setVisibility(View.VISIBLE);
                     request();
 
                 }
