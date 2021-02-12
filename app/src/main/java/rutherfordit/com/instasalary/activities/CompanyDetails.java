@@ -685,7 +685,7 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
                     }
                     else
                     {
-                        Intent intent = new Intent(getApplicationContext(), DirectorDetatils.class);
+                        Intent intent = new Intent(getApplicationContext(), DirectorDetails.class);
                        // intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(intent);
                     }

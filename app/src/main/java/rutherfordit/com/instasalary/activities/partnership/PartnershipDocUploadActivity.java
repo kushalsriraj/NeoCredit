@@ -43,6 +43,7 @@ import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import okhttp3.RequestBody;
 import rutherfordit.com.instasalary.R;
+import rutherfordit.com.instasalary.activities.BankDetailsActivity;
 import rutherfordit.com.instasalary.activities.privatelimited.PrivateLimitedDocUploadActivity;
 import rutherfordit.com.instasalary.activities.sp.SpCreditRequirementsActivity;
 import rutherfordit.com.instasalary.extras.SharedPrefsManager;
@@ -279,7 +280,7 @@ public class PartnershipDocUploadActivity extends AppCompatActivity {
         Submit_partner_docs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), SpCreditRequirementsActivity.class);
+                Intent i = new Intent(getApplicationContext(), BankDetailsActivity.class);
                 startActivity(i);
             }
         });
