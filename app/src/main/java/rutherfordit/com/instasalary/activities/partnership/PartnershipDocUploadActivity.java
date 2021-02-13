@@ -44,8 +44,6 @@ import okhttp3.OkHttpClient;
 import okhttp3.RequestBody;
 import rutherfordit.com.instasalary.R;
 import rutherfordit.com.instasalary.activities.BankDetailsActivity;
-import rutherfordit.com.instasalary.activities.privatelimited.PrivateLimitedDocUploadActivity;
-import rutherfordit.com.instasalary.activities.sp.SpCreditRequirementsActivity;
 import rutherfordit.com.instasalary.extras.SharedPrefsManager;
 import rutherfordit.com.instasalary.extras.Urls;
 

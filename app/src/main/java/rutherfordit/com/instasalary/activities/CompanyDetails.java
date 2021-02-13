@@ -158,7 +158,7 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
         invalidPan.setVisibility(View.GONE);
         invalidEmail.setVisibility(View.GONE);
         businessLandline = findViewById(R.id.sp_businessLandline);
-        company_email = findViewById(R.id.company_email);
+        company_email = findViewById(R.id.profile1_company_email);
         pancardnumber = findViewById(R.id.par_pancardnumber);
         company_name = findViewById(R.id.sp_company_name);
         typeOfService = findViewById(R.id.sp_typeOfService);

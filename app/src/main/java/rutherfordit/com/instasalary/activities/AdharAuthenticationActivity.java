@@ -12,9 +12,6 @@ import android.text.TextWatcher;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
@@ -39,9 +36,6 @@ import in.digio.sdk.kyc.DigioEnvironment;
 import in.digio.sdk.kyc.DigioKycConfig;
 import in.digio.sdk.kyc.DigioSession;
 import rutherfordit.com.instasalary.R;
-import rutherfordit.com.instasalary.activities.partnership.PartnershipPartnerFirstDetailsActivity;
-import rutherfordit.com.instasalary.activities.privatelimited.PrivateLimitedDirectorFirstDetailsActivity;
-import rutherfordit.com.instasalary.activities.sp.SoleProprietorshipDetailsActivity;
 import rutherfordit.com.instasalary.extras.SharedPrefsManager;
 import rutherfordit.com.instasalary.extras.Urls;
 
@@ -250,19 +244,19 @@ public class AdharAuthenticationActivity extends AppCompatActivity {
 
                         Log.e("adhar", "onResponse: " + image );
 
-                        if (sharedPrefsManager.getSegment().equals("1"))
-                        {
-                            Intent intent = new Intent(getApplicationContext(), SoleProprietorshipDetailsActivity.class);
-                            startActivity(intent);
-                        }
-                        else if (sharedPrefsManager.getSegment().equals("2")){
-                            Intent intent = new Intent(getApplicationContext(), PrivateLimitedDirectorFirstDetailsActivity.class);
-                            startActivity(intent);
-                        }
-                        else if(sharedPrefsManager.getSegment().equals("3")){
-                            Intent intent = new Intent(getApplicationContext(), PartnershipPartnerFirstDetailsActivity.class);
-                            startActivity(intent);
-                        }
+//                        if (sharedPrefsManager.getSegment().equals("1"))
+//                        {
+//                            Intent intent = new Intent(getApplicationContext(), SoleProprietorshipDetailsActivity.class);
+//                            startActivity(intent);
+//                        }
+//                        else if (sharedPrefsManager.getSegment().equals("2")){
+//                            Intent intent = new Intent(getApplicationContext(), PrivateLimitedDirectorFirstDetailsActivity.class);
+//                            startActivity(intent);
+//                        }
+//                        else if(sharedPrefsManager.getSegment().equals("3")){
+//                            Intent intent = new Intent(getApplicationContext(), PartnershipPartnerFirstDetailsActivity.class);
+//                            startActivity(intent);
+//                        }
                     }
 
                 } catch (JSONException e) {

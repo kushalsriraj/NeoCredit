@@ -75,7 +75,7 @@
                 android:hint="Company Email">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/company_email"
+                    android:id="@+id/profile1_company_email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
