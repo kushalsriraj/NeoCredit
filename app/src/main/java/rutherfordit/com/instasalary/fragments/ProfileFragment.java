@@ -51,7 +51,7 @@ public class ProfileFragment extends Fragment {
     SharedPreferences sharedPreferences;
     String UserAccessToken;
     TextView profile1_company_name, profile1_company_email, profile1_company_landline, profile1_company_pan, profile1_company_service;
-    TextView bank_name1, bank_branch1, ac_number1, bank_ifcs1;
+    TextView bank_name1, bank_branch1, ac_number1, bank_ifcs1, name_text;
     List<MyProfileDirectorModel> myProfileDirectorModels;
     RecyclerView personalDeailsRec;
 
@@ -93,6 +93,8 @@ public class ProfileFragment extends Fragment {
         ac_number1 = v.findViewById(R.id.ac_number1);
         bank_ifcs1 = v.findViewById(R.id.bank_ifcs1);
         personalDeailsRec = v.findViewById(R.id.personalDeailsRec);
+
+        name_text = v.findViewById(R.id.name_text);
 
         myProfileDirectorModels = new ArrayList<>();
 
