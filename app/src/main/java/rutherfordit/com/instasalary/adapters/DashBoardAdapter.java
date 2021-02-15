@@ -17,6 +17,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.digio.in.esign2sdk.Digio;
+import com.digio.in.esign2sdk.DigioConfig;
+import com.digio.in.esign2sdk.DigioEnvironment;
 import com.ncorti.slidetoact.SlideToActView;
 
 import org.json.JSONException;
@@ -29,23 +32,26 @@ import java.util.Map;
 
 import es.dmoral.toasty.Toasty;
 import rutherfordit.com.instasalary.R;
+import rutherfordit.com.instasalary.activities.HomeActivity;
 import rutherfordit.com.instasalary.extras.MySingleton;
 import rutherfordit.com.instasalary.extras.SharedPrefsManager;
 import rutherfordit.com.instasalary.extras.Urls;
 import rutherfordit.com.instasalary.models.LoanListModel;
+import rutherfordit.com.instasalary.myinterfaces.CreateMandate;
 
 public class DashBoardAdapter extends RecyclerView.Adapter<DashBoardAdapter.MyViewHolder> {
 
     Context context;
     List<LoanListModel> data;
     SharedPrefsManager sharedPrefsManager;
+    CreateMandate createMandate;
 
-    public DashBoardAdapter(Context context, List<LoanListModel> data) {
+    public DashBoardAdapter(Context context, List<LoanListModel> data, CreateMandate createMandate) {
 
         this.context = context;
         this.data = data;
         sharedPrefsManager = new SharedPrefsManager(context);
-
+        this.createMandate = createMandate;
     }
 
     @NonNull
@@ -85,7 +91,8 @@ public class DashBoardAdapter extends RecyclerView.Adapter<DashBoardAdapter.MyVi
             @Override
             public void onSlideComplete(SlideToActView slideToActView) {
 
-                disburseAmount(model.getId());
+                createMandate.create();
+               // disburseAmount(model.getId());
 
             }
         });

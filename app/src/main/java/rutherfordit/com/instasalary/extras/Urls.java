@@ -23,5 +23,7 @@ public class Urls {
     public static String SEND_ADHAR = "http://console.grantlending.in/api/addhar";
     public static String LOANS_LIST = "http://console.grantlending.in/api/user/loanslist";
     public static String LOAN_DISBURSE = "http://console.grantlending.in/api/userdisbured";
+    public static String REQUEST_MANDATE_FORM = "https://ext.digio.in:444/v3/client/mandate/create_form";
+    public static String UPLOAD_PDF_ESIGN = "https://ext.digio.in:444/v2/client/document/uploadpdf";
 
 }

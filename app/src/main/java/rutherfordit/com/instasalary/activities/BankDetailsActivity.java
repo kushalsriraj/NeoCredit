@@ -39,8 +39,6 @@ import java.util.Map;
 import es.dmoral.toasty.Toasty;
 import jp.wasabeef.blurry.Blurry;
 import rutherfordit.com.instasalary.R;
-import rutherfordit.com.instasalary.activities.privatelimited.PrivateLimitedCompanyDetailsActivity;
-import rutherfordit.com.instasalary.activities.privatelimited.PrivateLimitedDirectorFirstDetailsActivity;
 import rutherfordit.com.instasalary.extras.Constants;
 import rutherfordit.com.instasalary.extras.SharedPrefsManager;
 import rutherfordit.com.instasalary.extras.Urls;

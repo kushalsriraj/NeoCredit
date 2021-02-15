@@ -1,3 +1,4 @@
+include ':digio-esign-v2.8.3'
 include ':digio-kyc-1.1.0'
 include ':app'
 rootProject.name = "NeoCredit"

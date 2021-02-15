@@ -44,6 +44,7 @@ import java.util.Map;
 
 import es.dmoral.toasty.Toasty;
 import rutherfordit.com.instasalary.R;
+import rutherfordit.com.instasalary.activities.HomeActivity;
 import rutherfordit.com.instasalary.activities.PromoterDetails;
 import rutherfordit.com.instasalary.adapters.DashBoardAdapter;
 import rutherfordit.com.instasalary.extras.SharedPrefsManager;
@@ -129,7 +130,7 @@ public class DashboardFragment extends Fragment {
                         data.add(model);
                     }
 
-                    DashBoardAdapter dashBoardAdapter = new DashBoardAdapter(getContext(),data);
+                    DashBoardAdapter dashBoardAdapter = new DashBoardAdapter(getContext(),data,(HomeActivity)getActivity());
                     recdashboard.setAdapter(dashBoardAdapter);
 
                 } catch (JSONException e) {

@@ -54,21 +54,10 @@
         <activity android:name=".activities.CompanyDetails">
         </activity>
         <activity android:name=".activities.DocsUploadActivity" />
-        <activity android:name=".activities.partnership.ParCreditRequirementsActivity" />
-        <activity android:name=".activities.privatelimited.PlCreditRequirementsActivity" />
-        <activity android:name=".activities.sp.SpCreditRequirementsActivity" />
         <activity android:name=".activities.partnership.PartnershipDocUploadActivity" />
         <activity android:name=".activities.privatelimited.PrivateLimitedDocUploadActivity" />
         <activity android:name=".activities.sp.SPDocumentUploadActivity" />
-        <activity android:name=".activities.partnership.PartnershipPartnerSecondDetailsActivity" />
         <activity android:name=".activities.AdharAuthenticationActivity" />
-        <activity android:name=".activities.partnership.PartnershipPartnerFirstDetailsActivity" />
-        <activity android:name=".activities.partnership.PartnershipCompanyDetailsActivity" />
-        <activity android:name=".activities.privatelimited.PrivateLimitedDirectorSecondDetailsActivity" />
-        <activity android:name=".activities.privatelimited.PrivateLimitedDirectorFirstDetailsActivity" />
-        <activity android:name=".activities.privatelimited.PrivateLimitedCompanyDetailsActivity" />
-        <activity android:name=".activities.sp.SoleProprietorshipCompanyDetailsActivity" />
-        <activity android:name=".activities.sp.SoleProprietorshipDetailsActivity" />
         <activity android:name=".activities.HomeActivity" />
         <activity android:name=".activities.BankDetailsActivity">
 
@@ -89,6 +78,14 @@
 
         </activity>
         <activity android:name=".activities.DirectorDetails" />
+
+        <activity
+            android:name="in.digio.sdk.kyc.DigioMainActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize" />
+
+        <activity
+            android:name="com.digio.in.esign2sdk.DigioEsignActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize" />
     </application>
 
 </manifest>
