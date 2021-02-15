@@ -1,4 +1,4 @@
-package rutherfordit.com.instasalary.activities;
+ package rutherfordit.com.instasalary.activities;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;

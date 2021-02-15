@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F8F3F3F3"
@@ -34,13 +35,22 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="40dp"
+                    android:text="Company Details"
+                    android:textColor="@color/black"
+                    android:textSize="12dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:text="Full Name"
+                    android:text="Name"
                     android:textColor="@color/neopurple"
                     android:textSize="10dp" />
 
                 <TextView
-                    android:id="@+id/profile_fullname"
+                    android:id="@+id/profile1_company_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="7dp"
@@ -59,12 +69,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:text="Email ID"
+                    android:text="Email"
                     android:textColor="@color/neopurple"
                     android:textSize="10dp" />
 
                 <TextView
-                    android:id="@+id/profile_email"
+                    android:id="@+id/profile1_company_email"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="7dp"
@@ -83,36 +93,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:text="Phone Number"
+                    android:text="Landline"
                     android:textColor="@color/neopurple"
                     android:textSize="10dp" />
 
                 <TextView
-                    android:id="@+id/profile_phone"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="7dp"
-                    android:layout_marginBottom="3dp"
-                    android:paddingLeft="5dp"
-                    android:text=""
-                    android:textColor="@color/black"
-                    android:textSize="14dp" />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/neopurple" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:text="Aadhar Number"
-                    android:textColor="@color/neopurple"
-                    android:textSize="10dp" />
-
-                <TextView
-                    android:id="@+id/profile_aadhar"
+                    android:id="@+id/profile1_company_landline"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="7dp"
@@ -136,7 +122,7 @@
                     android:textSize="10dp" />
 
                 <TextView
-                    android:id="@+id/profile_pan"
+                    android:id="@+id/profile1_company_pan"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="7dp"
@@ -145,6 +131,7 @@
                     android:text=""
                     android:textColor="@color/black"
                     android:textSize="14dp" />
+
 
                 <View
                     android:layout_width="match_parent"
@@ -155,12 +142,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:text="Date Of Birth"
+                    android:text="Type of Service"
                     android:textColor="@color/neopurple"
                     android:textSize="10dp" />
 
                 <TextView
-                    android:id="@+id/profile_dob"
+                    android:id="@+id/profile1_company_service"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="7dp"
@@ -168,136 +155,8 @@
                     android:paddingLeft="5dp"
                     android:text=""
                     android:textColor="@color/black"
-                    android:textSize="14dp" />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/neopurple" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="40dp"
-                    android:text="Address ( as on Aadhar Card )"
-                    android:textColor="#0957D1"
-                    android:textSize="12dp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:text="Door Number"
-                    android:textColor="@color/neopurple"
-                    android:textSize="10dp" />
-
-                <TextView
-                    android:id="@+id/profile_doorno"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="7dp"
-                    android:layout_marginBottom="3dp"
-                    android:paddingLeft="5dp"
-                    android:text=""
-                    android:textColor="@color/black"
-                    android:textSize="14dp" />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/neopurple" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:text="Street"
-                    android:textColor="@color/neopurple"
-                    android:textSize="10dp" />
-
-                <TextView
-                    android:id="@+id/profile_street"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="7dp"
-                    android:layout_marginBottom="3dp"
-                    android:paddingLeft="5dp"
-                    android:text=""
-                    android:textColor="@color/black"
-                    android:textSize="14dp" />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/neopurple" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:text="City"
-                    android:textColor="@color/neopurple"
-                    android:textSize="10dp" />
-
-                <TextView
-                    android:id="@+id/profile_city"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="7dp"
-                    android:layout_marginBottom="3dp"
-                    android:paddingLeft="5dp"
-                    android:text=""
-                    android:textColor="@color/black"
-                    android:textSize="14dp" />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/neopurple" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:text="state"
-                    android:textColor="@color/neopurple"
-                    android:textSize="10dp" />
-
-                <TextView
-                    android:id="@+id/profile_state"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="7dp"
-                    android:layout_marginBottom="3dp"
-                    android:paddingLeft="5dp"
-                    android:text=""
-                    android:textColor="@color/black"
-                    android:textSize="14dp" />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/neopurple" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:text="Pincode"
-                    android:textColor="@color/neopurple"
-                    android:textSize="10dp" />
-
-                <TextView
-                    android:id="@+id/profile_pincode"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="7dp"
-                    android:layout_marginBottom="3dp"
-                    android:paddingLeft="5dp"
-                    android:text=""
-                    android:textColor="@color/black"
-                    android:textSize="14dp" />
+                    android:textSize="14dp"
+                    tools:ignore="DuplicateIds" />
 
                 <View
                     android:layout_width="match_parent"
@@ -308,8 +167,23 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="40dp"
-                    android:text="Current Address"
-                    android:textColor="#0957D1"
+                    android:text="Personal Details"
+                    android:textColor="@color/black"
+                    android:textSize="12dp"
+                    android:textStyle="bold" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/personalDeailsRec"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="11dp"
+                    android:layout_marginTop="40dp"
+                    android:text="Bank Details"
+                    android:textColor="@color/black"
                     android:textSize="12dp"
                     android:textStyle="bold" />
 
@@ -317,12 +191,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:text="Door No"
+                    android:text="Name"
                     android:textColor="@color/neopurple"
                     android:textSize="10dp" />
 
                 <TextView
-                    android:id="@+id/curr_profile_doorno"
+                    android:id="@+id/bank_name1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="7dp"
@@ -334,18 +208,20 @@
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="1dp" />
+                    android:layout_height="1dp"
+                    android:background="@color/neopurple"
+                    />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:text="Street"
+                    android:text="Branch"
                     android:textColor="@color/neopurple"
                     android:textSize="10dp" />
 
                 <TextView
-                    android:id="@+id/curr_profile_street"
+                    android:id="@+id/bank_branch1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="7dp"
@@ -364,12 +240,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:text="state"
+                    android:text="Account Number"
                     android:textColor="@color/neopurple"
                     android:textSize="10dp" />
 
                 <TextView
-                    android:id="@+id/curr_profile_state"
+                    android:id="@+id/ac_number1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="7dp"
@@ -388,12 +264,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:text="state"
+                    android:text="Bank IFSE"
                     android:textColor="@color/neopurple"
                     android:textSize="10dp" />
 
                 <TextView
-                    android:id="@+id/curr_profile_city"
+                    android:id="@+id/bank_ifcs1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="7dp"
@@ -406,31 +282,9 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@color/neopurple" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:text="Pincode"
-                    android:textColor="@color/neopurple"
-                    android:textSize="10dp" />
-
-                <TextView
-                    android:id="@+id/curr_profile_pincode"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="7dp"
-                    android:layout_marginBottom="3dp"
-                    android:paddingLeft="5dp"
-                    android:text=""
-                    android:textColor="@color/black"
-                    android:textSize="14dp" />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/neopurple" />
+                    android:background="@color/neopurple"
+                    android:layout_marginBottom="40dp"
+                    />
 
                 <LinearLayout
                     android:id="@+id/salary_profition"
@@ -668,74 +522,6 @@
 
                 </LinearLayout>
 
-                <LinearLayout
-                    android:id="@+id/driver_profition"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:visibility="visible">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="40dp"
-                        android:text="Driver Information"
-                        android:textColor="#0957D1"
-                        android:textSize="12dp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:text="Vehicle Number"
-                        android:textColor="@color/neopurple"
-                        android:textSize="10dp" />
-
-                    <TextView
-                        android:id="@+id/profile_d_vehiclenumber"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="7dp"
-                        android:layout_marginBottom="3dp"
-                        android:paddingLeft="5dp"
-                        android:text=""
-                        android:textColor="@color/black"
-                        android:textSize="14dp" />
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:background="@color/neopurple" />
-
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:text="Monthly Income"
-                        android:textColor="@color/neopurple"
-                        android:textSize="10dp" />
-
-                    <TextView
-                        android:id="@+id/profile_d_monthlyincome"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="7dp"
-                        android:layout_marginBottom="3dp"
-                        android:paddingLeft="5dp"
-                        android:text=""
-                        android:textColor="@color/black"
-                        android:textSize="14dp" />
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginBottom="50dp"
-                        android:background="@color/neopurple" />
-
-
-                </LinearLayout>
 
             </LinearLayout>
 
@@ -1149,6 +935,7 @@
             android:layout_margin="15dp"
             app:crs_pl_bg_color="#fff"
             app:crs_pl_fg_color="@color/neopurple"
+            android:visibility="gone"
             app:crs_pl_size="very_small"
             app:crs_pl_style="skype_balls" />
 

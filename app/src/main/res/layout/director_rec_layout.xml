@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginRight="40dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="Directors"
+        android:textColor="@color/black"
+        android:textSize="12dp"
+        android:textStyle="bold" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Full Name"
+        android:textColor="@color/neopurple"
+        android:textSize="10dp" />
+
+    <TextView
+        android:id="@+id/profile_fullname1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:layout_marginBottom="3dp"
+        android:paddingLeft="5dp"
+        android:text=""
+        android:textColor="@color/black"
+        android:textSize="14dp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/neopurple" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="9dp"
+        android:layout_marginTop="20dp"
+        android:text="Email ID"
+        android:textColor="@color/neopurple"
+        android:textSize="10dp" />
+
+    <TextView
+        android:id="@+id/profile_email1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:layout_marginBottom="3dp"
+        android:paddingLeft="5dp"
+        android:text=""
+        android:textColor="@color/black"
+        android:textSize="14dp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/neopurple" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Phone Number"
+        android:textColor="@color/neopurple"
+        android:textSize="10dp" />
+
+    <TextView
+        android:id="@+id/profile_phone1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:layout_marginBottom="3dp"
+        android:paddingLeft="5dp"
+        android:text=""
+        android:textColor="@color/black"
+        android:textSize="14dp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/neopurple" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Aadhar Number"
+        android:textColor="@color/neopurple"
+        android:textSize="10dp" />
+
+    <TextView
+        android:id="@+id/profile_aadhar1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:layout_marginBottom="3dp"
+        android:paddingLeft="5dp"
+        android:text=""
+        android:textColor="@color/black"
+        android:textSize="14dp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/neopurple" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="PAN Number"
+        android:textColor="@color/neopurple"
+        android:textSize="10dp" />
+
+    <TextView
+        android:id="@+id/profile_pan1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:layout_marginBottom="3dp"
+        android:paddingLeft="5dp"
+        android:text=""
+        android:textColor="@color/black"
+        android:textSize="14dp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/neopurple" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Current Address"
+        android:textColor="@color/neopurple"
+        android:textSize="10dp" />
+
+    <TextView
+        android:id="@+id/profile_address1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:layout_marginBottom="3dp"
+        android:paddingLeft="5dp"
+        android:text=""
+        android:textColor="@color/black"
+        android:textSize="14dp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/neopurple" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Date Of Birth"
+        android:textColor="@color/neopurple"
+        android:textSize="10dp" />
+
+    <TextView
+        android:id="@+id/profile_dob1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:layout_marginBottom="3dp"
+        android:paddingLeft="5dp"
+        android:text=""
+        android:textColor="@color/black"
+        android:textSize="14dp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/neopurple" />
+
+</LinearLayout>

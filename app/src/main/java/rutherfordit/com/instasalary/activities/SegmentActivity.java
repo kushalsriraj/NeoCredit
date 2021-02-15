@@ -20,9 +20,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import rutherfordit.com.instasalary.R;
-import rutherfordit.com.instasalary.activities.partnership.PartnershipCompanyDetailsActivity;
-import rutherfordit.com.instasalary.activities.privatelimited.PrivateLimitedCompanyDetailsActivity;
-import rutherfordit.com.instasalary.activities.sp.SoleProprietorshipDetailsActivity;
 import rutherfordit.com.instasalary.extras.Constants;
 import rutherfordit.com.instasalary.myinterfaces.ResponseHandler;
 import rutherfordit.com.instasalary.extras.SharedPrefsManager;
