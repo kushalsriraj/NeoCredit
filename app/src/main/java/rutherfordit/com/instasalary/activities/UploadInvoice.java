@@ -88,7 +88,7 @@ public class UploadInvoice extends AppCompatActivity implements ResponseHandler 
     Uri imguri;
     String status,filename;
     private boolean invoice_uploaded = false;
-    ImageView image_invoice;
+    ImageView image_invoice,back_credit_req;
     TextView text_invoice;
     CrystalPreloader loader_invoice_upload;
 
@@ -107,7 +107,7 @@ public class UploadInvoice extends AppCompatActivity implements ResponseHandler 
     }
 
     private void init() {
-
+        back_credit_req = findViewById(R.id.back_credit_req);
         loader_invoice_upload = findViewById(R.id.loader_invoice_upload);
         text_invoice = findViewById(R.id.text_invoice);
         image_invoice = findViewById(R.id.image_invoice);
@@ -199,6 +199,13 @@ public class UploadInvoice extends AppCompatActivity implements ResponseHandler 
                     loanApi();
                     loader_invoice.setVisibility(View.VISIBLE);
                 }
+            }
+        });
+
+        back_credit_req.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
             }
         });
 
@@ -348,8 +355,7 @@ public class UploadInvoice extends AppCompatActivity implements ResponseHandler 
                 loader_invoice.setVisibility(View.GONE);
                 new AestheticDialog.Builder(this, DialogStyle.FLAT, DialogType.SUCCESS)
                         .setTitle("Neo Credit")
-                        .setMessage("Your loan application is successfull.." +
-                                "")
+                        .setMessage("Your loan application is successfull..")
                         .setCancelable(false)
                         .setDarkMode(false)
                         .setGravity(Gravity.CENTER)
@@ -364,14 +370,6 @@ public class UploadInvoice extends AppCompatActivity implements ResponseHandler 
                         .show();
             }
         }
-    }
-
-    public void gotonext()
-    {
-
-
-
-
     }
 
     private void uploadFile(Uri uri) {

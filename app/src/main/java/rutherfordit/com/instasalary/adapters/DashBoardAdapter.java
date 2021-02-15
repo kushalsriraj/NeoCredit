@@ -9,24 +9,42 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.ncorti.slidetoact.SlideToActView;
 
-import java.util.ArrayList;
-import java.util.List;
+import org.json.JSONException;
+import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import es.dmoral.toasty.Toasty;
 import rutherfordit.com.instasalary.R;
+import rutherfordit.com.instasalary.extras.MySingleton;
 import rutherfordit.com.instasalary.extras.SharedPrefsManager;
+import rutherfordit.com.instasalary.extras.Urls;
 import rutherfordit.com.instasalary.models.LoanListModel;
 
 public class DashBoardAdapter extends RecyclerView.Adapter<DashBoardAdapter.MyViewHolder> {
 
     Context context;
     List<LoanListModel> data;
+    SharedPrefsManager sharedPrefsManager;
 
     public DashBoardAdapter(Context context, List<LoanListModel> data) {
 
         this.context = context;
         this.data = data;
+        sharedPrefsManager = new SharedPrefsManager(context);
 
     }
 
@@ -62,6 +80,64 @@ public class DashBoardAdapter extends RecyclerView.Adapter<DashBoardAdapter.MyVi
         holder.dash_amount.setText(model.getAmount());
         holder.dash_lan.setText(model.getId());
         holder.dash_date.setText(model.getJoined_on());
+
+        holder.swipe_to_disburse.setOnSlideCompleteListener(new SlideToActView.OnSlideCompleteListener() {
+            @Override
+            public void onSlideComplete(SlideToActView slideToActView) {
+
+                disburseAmount(model.getId());
+
+            }
+        });
+
+    }
+
+    private void disburseAmount(String id)
+    {
+
+        JSONObject jsonObject = new JSONObject();
+
+        try {
+            jsonObject.put("user_disbursed","1");
+            jsonObject.put("id",id);
+            jsonObject.put("company_id",sharedPrefsManager.getCOMPANY_ID());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, Urls.LOAN_DISBURSE, jsonObject, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+
+                Log.e("disburseapi", "onResponse: " + response );
+
+                try {
+                    Log.e("message", "onResponse: " + response.getString("message") );
+                    Toasty.success(context,"Loan Disbursed",Toasty.LENGTH_SHORT).show();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e("disburseapi", "onErrorResponse: " + error.getLocalizedMessage() );
+            }
+        }) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("Content-Type", "application/json");
+                params.put("Accept", "application/json");
+                params.put("Authorization",sharedPrefsManager.getAccessToken() );
+                return params;
+            }
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(context);
+        requestQueue.add(jsonObjectRequest);
 
     }
 

@@ -681,6 +681,7 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
                 if (sharedPrefsManager.getSegment().equals("1"))
                     {
                         Intent intent = new Intent(getApplicationContext(), PromoterDetails.class);
+                        intent.putExtra("id","1");
                         startActivity(intent);
                     }
                     else

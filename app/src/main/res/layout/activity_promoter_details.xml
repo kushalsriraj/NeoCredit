@@ -48,10 +48,17 @@
                 android:textSize="18dp"
                 android:textStyle="bold" />
 
+            <Button
+                android:layout_marginTop="25dp"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:id="@+id/AdharAuth"
+                android:text="Authenticate Adhaar"/>
+
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="30dp"
                 android:hint="Full Name">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -254,12 +261,7 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <Button
-                android:layout_marginTop="25dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/AdharAuth"
-                android:text="Authenticate Adhaar"/>
+
 
 
             <androidx.cardview.widget.CardView

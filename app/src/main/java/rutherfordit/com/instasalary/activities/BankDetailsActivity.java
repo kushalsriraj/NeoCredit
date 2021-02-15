@@ -11,6 +11,7 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Display;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.TranslateAnimation;
@@ -36,6 +37,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import es.dmoral.toasty.Toasty;
+import jp.wasabeef.blurry.Blurry;
 import rutherfordit.com.instasalary.R;
 import rutherfordit.com.instasalary.activities.privatelimited.PrivateLimitedCompanyDetailsActivity;
 import rutherfordit.com.instasalary.activities.privatelimited.PrivateLimitedDirectorFirstDetailsActivity;
@@ -53,6 +55,29 @@ public class BankDetailsActivity extends AppCompatActivity implements ResponseHa
     boolean click = false;
     VolleyRequest volleyRequest;
     SharedPrefsManager sharedPrefsManager;
+    private boolean blurred;
+
+    private void blurall() {
+
+
+        if (blurred) {
+            Blurry.delete((ViewGroup) findViewById(R.id.content));
+        } else {
+            long startMs = System.currentTimeMillis();
+            Blurry.with(BankDetailsActivity.this)
+                    .radius(25)
+                    .sampling(2)
+                    .async()
+                    .animate(500)
+                    .onto((ViewGroup) findViewById(R.id.content));
+            Log.d(getString(R.string.app_name),
+                    "TIME " + String.valueOf(System.currentTimeMillis() - startMs) + "ms");
+        }
+
+        blurred = !blurred;
+
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,7 +131,7 @@ public class BankDetailsActivity extends AppCompatActivity implements ResponseHa
                     String verified = response.getString("verified");
 
                     if(verified == "true"){
-                        bankApi();
+                      //  bankApi();
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -135,6 +160,7 @@ public class BankDetailsActivity extends AppCompatActivity implements ResponseHa
     }
 
     private void bankApi() {
+
         JSONObject jsonObjectBody = new JSONObject();
 
         try {
@@ -145,13 +171,16 @@ public class BankDetailsActivity extends AppCompatActivity implements ResponseHa
             jsonObjectBody.put("bank_ifcs", sp_bankifsc.getText().toString());
             jsonObjectBody.put("company_id", sharedPrefsManager.getCOMPANY_ID());
 
-            volleyRequest.JsonObjRequestAuthorization(BankDetailsActivity.this,jsonObjectBody, Urls.SAVE_BANK_DETAILS, Constants.bank_details,sharedPrefsManager.getAccessToken());
 
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
-        Toasty.success(getApplicationContext(), "Saved Successfully..", Toast.LENGTH_SHORT).show();
+        Log.d("json", "bankApi: " + jsonObjectBody );
+
+        volleyRequest.JsonObjRequestAuthorization(BankDetailsActivity.this,jsonObjectBody, Urls.SAVE_BANK_DETAILS, Constants.bank_details,sharedPrefsManager.getAccessToken());
+
+       // Toasty.success(getApplicationContext(), "Saved Successfully..", Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -161,11 +190,13 @@ public class BankDetailsActivity extends AppCompatActivity implements ResponseHa
 
             JSONObject response = (JSONObject) obj;
             Log.e("response", "responseHandlerBankDetails: " + response);
+
             if  (response!=null)
             {
 
                 Intent intent = new Intent(getApplicationContext(), UploadInvoice.class);
                 startActivity(intent);
+                blurall();
                 loader_bank_details.setVisibility(View.GONE);
 
             }
@@ -190,7 +221,7 @@ public class BankDetailsActivity extends AppCompatActivity implements ResponseHa
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
                 if(!sp_bankname.getText().toString().equals("") && !sp_bankbranch.getText().toString().equals("")
-                        && sp_accno.getText().toString().length() > 10 && sp_bankifsc.getText().toString().length() == 11 )
+                        && !sp_accno.getText().toString().equals("") && sp_bankifsc.getText().toString().length() == 11 )
                 {
                     //sp_submitBankDetails.setBackgroundColor(getResources().getColor(R.color.neopurple));
                     sp_submitBankDetails.setBackground(getDrawable(R.drawable.gradient_neocredit));
@@ -216,7 +247,7 @@ public class BankDetailsActivity extends AppCompatActivity implements ResponseHa
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
                 if(!sp_bankname.getText().toString().equals("") && !sp_bankbranch.getText().toString().equals("")
-                        && sp_accno.getText().toString().length() > 10 && sp_bankifsc.getText().toString().length() == 11 )
+                        && !sp_accno.getText().toString().equals("") && sp_bankifsc.getText().toString().length() == 11 )
                 {
                     sp_submitBankDetails.setBackground(getDrawable(R.drawable.gradient_neocredit));
                     click = true;
@@ -240,7 +271,7 @@ public class BankDetailsActivity extends AppCompatActivity implements ResponseHa
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
                 if(!sp_bankname.getText().toString().equals("") && !sp_bankbranch.getText().toString().equals("")
-                        && sp_accno.getText().toString().length() > 10 && sp_bankifsc.getText().toString().length() == 11 )
+                        && !sp_accno.getText().toString().equals("") && sp_bankifsc.getText().toString().length() == 11 )
                 {
                     sp_submitBankDetails.setBackground(getDrawable(R.drawable.gradient_neocredit));
                     click = true;
@@ -264,7 +295,7 @@ public class BankDetailsActivity extends AppCompatActivity implements ResponseHa
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
                 if(!sp_bankname.getText().toString().equals("") && !sp_bankbranch.getText().toString().equals("")
-                        && sp_accno.getText().toString().length() > 10 && sp_bankifsc.getText().toString().length() == 11 )
+                        && !sp_accno.getText().toString().equals("") && sp_bankifsc.getText().toString().length() == 11 )
                 {
                     sp_submitBankDetails.setBackground(getDrawable(R.drawable.gradient_neocredit));
                     click = true;
@@ -296,9 +327,11 @@ public class BankDetailsActivity extends AppCompatActivity implements ResponseHa
             public void onClick(View v) {
                 if (click)
                 {
+                    blurall();
                     loader_bank_details.setVisibility(View.VISIBLE);
-                    request();
 
+                    bankApi();
+                 //   request();
                 }
                 else
                 {
