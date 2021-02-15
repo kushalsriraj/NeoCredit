@@ -77,8 +77,8 @@
 
     <string-array name="address_proof">
         <item>-- Select Address Proof --</item>
-        <item>Current Bill</item>
-        <item>Landline Bill</item>
+        <item>Sale Deed</item>
+        <item>Rent / Lease Agreement</item>
         <item>Utility Bill</item>
     </string-array>
 
