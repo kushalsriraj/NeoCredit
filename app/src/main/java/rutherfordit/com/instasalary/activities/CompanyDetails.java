@@ -183,6 +183,16 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
 
         sharedPrefsManager = new SharedPrefsManager(getApplicationContext());
 
+        if (sharedPrefsManager.getSegment().equals("1")){
+
+            panCardLayput.setVisibility(View.GONE);
+            mobile_number_company.setVisibility(View.GONE);
+        }
+        else {
+            panCardLayput.setVisibility(View.VISIBLE);
+            mobile_number_company.setVisibility(View.VISIBLE);
+        }
+
         /*company_name.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -192,14 +202,6 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
             }
         });*/
 
-
-        if (sharedPrefsManager.getSegment() == "1"){
-
-            panCardLayput.setVisibility(View.GONE);
-            mobile_number_company.setVisibility(View.GONE);
-        }
-
-
         onClicks();
         SpinnersSelected();
         textWatchers();
@@ -208,7 +210,7 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
     private void textWatchers()
     {
 
-        mobile_number.addTextChangedListener(new TextWatcher() {
+        /*mobile_number.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
 
@@ -217,8 +219,6 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
 
                 if (!company_name.getText().toString().equals("")
                         &&!company_email.getText().toString().equals("")
-//                        && (mobile_number.getText().toString().length() == 10)
-//                        && !pancardnumber.getText().toString().equals("")
                         &&!company_address.getText().toString().equals("")
                         &&!typeOfService.getText().toString().equals("-- Select Type of Service --")
                         &&!howOldIsTheCompany.getText().toString().equals("-- Select Tenuraty the Company --")
@@ -237,7 +237,7 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
 
             @Override
             public void afterTextChanged(Editable s) { }
-        });
+        });*/
 
         company_name.addTextChangedListener(new TextWatcher() {
             @Override
@@ -248,8 +248,6 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
 
                 if (!company_name.getText().toString().equals("")
                         &&!company_email.getText().toString().equals("")
-//                        && (mobile_number.getText().toString().length() == 10)
-//                        && !pancardnumber.getText().toString().equals("")
                         &&!company_address.getText().toString().equals("")
                         &&!typeOfService.getText().toString().equals("-- Select Type of Service --")
                         &&!howOldIsTheCompany.getText().toString().equals("-- Select Tenuraty the Company --")
@@ -283,8 +281,6 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
 
                     if (!company_name.getText().toString().equals("")
                             && !company_email.getText().toString().equals("")
-//                            && (mobile_number.getText().toString().length() == 10)
-//                            && !pancardnumber.getText().toString().equals("")
                             &&!company_address.getText().toString().equals("")
                             &&!typeOfService.getText().toString().equals("-- Select Type of Service --")
                             &&!howOldIsTheCompany.getText().toString().equals("-- Select Tenuraty the Company --")
@@ -324,25 +320,6 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
                 if (matcher.matches())
                 {
                     invalidPan.setVisibility(View.GONE);
-
-//                    if (!company_name.getText().toString().equals("")
-//                            && !company_email.getText().toString().equals("")
-//                            && !pancardnumber.getText().toString().equals("")
-//                            && (mobile_number.getText().toString().length() == 10)
-//                            &&!company_address.getText().toString().equals("")
-//                            &&!typeOfService.getText().toString().equals("-- Select Type of Service --")
-//                            &&!howOldIsTheCompany.getText().toString().equals("-- Select Tenuraty the Company --")
-//                            && !annualTurnover.getText().toString().equals("-- Select Annual Turnover --")&&
-//                            !addressProof.getText().toString().equals("-- Select Address Proof --"))
-//                    {
-//                        submitCompanyInfo.setBackground(getDrawable(R.drawable.gradient_neocredit));
-//                        click=true;
-//                    }
-//                    else {
-//                        submitCompanyInfo.setBackgroundColor(getResources().getColor(R.color.colorash));
-//                        click=false;
-//                    }
-
                 }
                 else
                 {
@@ -354,6 +331,7 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
             @Override
             public void afterTextChanged(Editable s) { }
         });
+
         company_address.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
@@ -363,8 +341,6 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
 
                 if (!company_name.getText().toString().equals("")
                         &&!company_email.getText().toString().equals("")
-//                        && (mobile_number.getText().toString().length() == 10)
-//                        && !pancardnumber.getText().toString().equals("")
                         &&!company_address.getText().toString().equals("")
                         &&!typeOfService.getText().toString().equals("-- Select Type of Service --")
                         &&!howOldIsTheCompany.getText().toString().equals("-- Select Tenuraty the Company --")
@@ -385,6 +361,7 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
             @Override
             public void afterTextChanged(Editable s) { }
         });
+
         businessLandline.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
@@ -393,8 +370,6 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (!company_name.getText().toString().equals("")
                         &&!company_email.getText().toString().equals("")
-//                        && (mobile_number.getText().toString().length() == 10)
-//                        && !pancardnumber.getText().toString().equals("")
                         &&!company_address.getText().toString().equals("")
                         &&!typeOfService.getText().toString().equals("-- Select Type of Service --")
                         &&!howOldIsTheCompany.getText().toString().equals("-- Select Tenuraty the Company --")
@@ -430,8 +405,6 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
 
                 if (!company_name.getText().toString().equals("")
                         &&!company_email.getText().toString().equals("")
-//                        && (mobile_number.getText().toString().length() == 10)
-//                        && !pancardnumber.getText().toString().equals("")
                         &&!company_address.getText().toString().equals("")
                         &&!typeOfService.getText().toString().equals("-- Select Type of Service --")
                         &&!howOldIsTheCompany.getText().toString().equals("-- Select Tenuraty the Company --")
@@ -471,8 +444,6 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
 
                 if (!company_name.getText().toString().equals("")
                         &&!company_email.getText().toString().equals("")
-//                        && (mobile_number.getText().toString().length() == 10)
-//                        && !pancardnumber.getText().toString().equals("")
                         &&!company_address.getText().toString().equals("")
                         &&!typeOfService.getText().toString().equals("-- Select Type of Service --")
                         &&!howOldIsTheCompany.getText().toString().equals("-- Select Tenuraty the Company --")
@@ -513,8 +484,6 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
 
                 if (!company_name.getText().toString().equals("")
                         &&!company_email.getText().toString().equals("")
-//                        && (mobile_number.getText().toString().length() == 10)
-//                        && !pancardnumber.getText().toString().equals("")
                         &&!company_address.getText().toString().equals("")
                         &&!typeOfService.getText().toString().equals("-- Select Type of Service --")
                         &&!howOldIsTheCompany.getText().toString().equals("-- Select Tenuraty the Company --")
@@ -540,11 +509,11 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
 
                 addressProof.setText(parent.getItemAtPosition(pos).toString());
 
-                if (addressProof.getText().toString().equals("Current Bill"))
+                if (addressProof.getText().toString().equals("Sale Deed"))
                 {
                     addressProofNumber = "1";
                 }
-                else if (addressProof.getText().toString().equals("Landline Bill"))
+                else if (addressProof.getText().toString().equals("Rent / Lease Agreement"))
                 {
                     addressProofNumber = "2";
                 }
@@ -555,8 +524,6 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
 
                 if (!company_name.getText().toString().equals("")
                         &&!company_email.getText().toString().equals("")
-//                        && (mobile_number.getText().toString().length() == 10)
-//                        && !pancardnumber.getText().toString().equals("")
                         &&!company_address.getText().toString().equals("")
                         &&!typeOfService.getText().toString().equals("-- Select Type of Service --")
                         &&!howOldIsTheCompany.getText().toString().equals("-- Select Tenuraty the Company --")
@@ -618,7 +585,7 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
 
                 if (click)
                 {
-                    if (sharedPrefsManager.getSegment().equals("1")) {
+                    if (!sharedPrefsManager.getSegment().equals("1")) {
 
                         Pattern pattern = Pattern.compile("[A-Z]{5}[0-9]{4}[A-Z]{1}");
                         Matcher matcher = pattern.matcher(pancardnumber.getText().toString());
@@ -626,13 +593,19 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
                         if (matcher.matches())
                         {
                             invalidPan.setVisibility(View.GONE);
-                            companyAPI();
-                        } else
-                            {
-                            companyAPI();
+                            companyAPI(pancardnumber.getText().toString());
+                        }
+                        else
+                        {
+                            invalidPan.setVisibility(View.VISIBLE);
                             Toasty.warning(getApplicationContext(), "Pan format invalid", Toasty.LENGTH_LONG).show();
                         }
                     }
+                    else
+                    {
+                        companyAPI("ABCDE1234F");
+                    }
+
                 } else
                     {
                     Toasty.error(getApplicationContext(), "Please Check the fields.", Toasty.LENGTH_SHORT).show();
@@ -641,21 +614,13 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
         });
     }
 
-    private void companyAPI() {
-        String pan_dummy;
+    private void companyAPI(String pan) {
+
         JSONObject jsonObjectBody = new JSONObject();
 
-        if (sharedPrefsManager.getSegment() == "1") {
-
-            pan_dummy = "ABCDE1234F";
-        }
-        else {
-            pan_dummy = pancardnumber.getText().toString();
-        }
             try {
-
                 jsonObjectBody.put("name", company_name.getText().toString());
-                jsonObjectBody.put("pan_card", pan_dummy);
+                jsonObjectBody.put("pan_card", pan);
                 jsonObjectBody.put("type_of_services", typeOfService.getText().toString());
                 jsonObjectBody.put("business_reg_num", "1999-12-23");
                 jsonObjectBody.put("business_addr_proof", addressProofNumber);

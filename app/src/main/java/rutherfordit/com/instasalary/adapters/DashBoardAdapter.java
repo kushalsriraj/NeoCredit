@@ -69,6 +69,17 @@ public class DashBoardAdapter extends RecyclerView.Adapter<DashBoardAdapter.MyVi
 
         holder.dash_heading.setText(model.getApplication_number());
 
+        String auth_ok = model.getApplication_status();
+
+        if  (auth_ok.equals("1"))
+        {
+            holder.swipe_to_disburse.setVisibility(View.VISIBLE);
+        }
+        else if (auth_ok.equals("0"))
+        {
+            holder.swipe_to_disburse.setVisibility(View.GONE);
+        }
+
         String appstatus = model.getApplication_status();
 
         if (appstatus.equals("1"))
