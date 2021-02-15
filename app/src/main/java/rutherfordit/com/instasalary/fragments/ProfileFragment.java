@@ -50,7 +50,6 @@ public class ProfileFragment extends Fragment {
     View v;
     SharedPreferences sharedPreferences;
     String UserAccessToken;
-    LinearLayout layout_driver_profition, layout_salary_profiyion;
     TextView profile1_company_name, profile1_company_email, profile1_company_landline, profile1_company_pan, profile1_company_service;
     TextView bank_name1, bank_branch1, ac_number1, bank_ifcs1;
     List<MyProfileDirectorModel> myProfileDirectorModels;
@@ -97,8 +96,6 @@ public class ProfileFragment extends Fragment {
 
         myProfileDirectorModels = new ArrayList<>();
 
-        layout_salary_profiyion = v.findViewById(R.id.salary_profition);
-
         sharedPrefsManager = new SharedPrefsManager(getContext());
         token = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIyIiwianRpIjoiZDhiMGJhYjQzMmY0ZGNmYzExZjgwZDQ1MDNhOTVjMTljMjkwMjc2NjlhMTdlNWE0NzkxZGQxOWFjOWZiOGM0N2I0Zjg0YTE0Yzg3MzY1MzUiLCJpYXQiOjE2MTMxMjM1OTcsIm5iZiI6MTYxMzEyMzU5NywiZXhwIjoxNjQ0NjU5NTk3LCJzdWIiOiIyNiIsInNjb3BlcyI6WyIqIl19.As4N8G7d55PikPs9XGVRFv1X1LywpQyUVikfXIvxrNdLpi_W0KRq6T7DTM4dWKM2SN9wkZP15Bny_WwN4fXBrDol1M84dvjT_Hs7nQwxKNrFBv3FU6H5quedwwYrkI-F-RXanmXyS4wVOSdo44M3ArdxyA4GBvoFMa4MfmUx3lpjUN-X4lnAZ4_MBzQ06sw0rskI9VdfEAFPHHRVLbYsPYgV89T4sM5N0OZJ7fVvc4xJv8uvh-onv7reCFwZ-d9gEWNTmlmEzIxlfdzsSlj5Q_u4JfLF4g4gT_y_0SJuk2tyir3ml4DAawfa4EnGDPh1ITt4DfVNzb0iI8z0aRZLAOEPxbpkM8bsci-HucnSe4ZoQOkFyd49fnX2R_dLrgEsOn2VFgOvhgPPFg7VohFAZNpG5zQiA1po2QShIBIyxbXXV6zabxeHi4l7vekLd0jgNAM1fH7jfbGRCyl_HiTA-_HQYS6ZxS75hajcb0RRmnWmgRMp7wZev28UQVFQpj9DWfhhcEWKPB_GCTZhJSFOYc-XvjKJRpUI4kRosZ86cInKgbNW6BZ75b_lJK-Iegnz_lLvUpa3pd1hOQf5DijA3SIZZPzN2C4gg2Cvlq1-RUQsoCOFv7HlzPAqkUzWgivZIl6fYIyQ-3ChwYQTMkXlSQ8tWcapEFMDeaqgkRR6BlA";
 
@@ -127,7 +124,7 @@ public class ProfileFragment extends Fragment {
                             profile1_company_name.setText(jsonObjectI.getString("name"));
                             profile1_company_landline.setText(jsonObjectI.getString("landline_number"));
                             profile1_company_pan.setText(jsonObjectI.getString("pan_card"));
-                            profile1_company_email.setText(jsonObjectI.getString("pan_card"));
+                            profile1_company_email.setText(jsonObjectI.getString("email"));
                             profile1_company_service.setText(jsonObjectI.getString("type_of_services"));
 
                         }
@@ -167,6 +164,7 @@ public class ProfileFragment extends Fragment {
 
                         DirectorRecyclerViewAdapter directorRecyclerViewAdapter = new DirectorRecyclerViewAdapter(getContext(), myProfileDirectorModels);
                         personalDeailsRec.setAdapter(directorRecyclerViewAdapter);
+                        personalDeailsRec.setNestedScrollingEnabled(true);
 
 
                     } catch (JSONException e) {
