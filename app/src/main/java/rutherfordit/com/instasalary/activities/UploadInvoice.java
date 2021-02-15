@@ -37,11 +37,6 @@ import com.crystal.crystalpreloaders.widgets.CrystalPreloader;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
-import com.thecode.aestheticdialogs.AestheticDialog;
-import com.thecode.aestheticdialogs.DialogAnimation;
-import com.thecode.aestheticdialogs.DialogStyle;
-import com.thecode.aestheticdialogs.DialogType;
-import com.thecode.aestheticdialogs.OnDialogClickListener;
 import com.vincent.filepicker.Constant;
 import com.vincent.filepicker.activity.NormalFilePickActivity;
 import com.vincent.filepicker.filter.entity.NormalFile;
@@ -353,7 +348,7 @@ public class UploadInvoice extends AppCompatActivity implements ResponseHandler 
                 /*Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                 startActivity(intent);*/
                 loader_invoice.setVisibility(View.GONE);
-                new AestheticDialog.Builder(this, DialogStyle.FLAT, DialogType.SUCCESS)
+                /*new AestheticDialog.Builder(this, DialogStyle.FLAT, DialogType.SUCCESS)
                         .setTitle("Neo Credit")
                         .setMessage("Your loan application is successfull..")
                         .setCancelable(false)
@@ -367,7 +362,7 @@ public class UploadInvoice extends AppCompatActivity implements ResponseHandler 
                                 startActivity(intent);
                             }
                         })
-                        .show();
+                        .show();*/
             }
         }
     }

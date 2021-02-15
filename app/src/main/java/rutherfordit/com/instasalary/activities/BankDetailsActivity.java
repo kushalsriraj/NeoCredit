@@ -37,7 +37,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import es.dmoral.toasty.Toasty;
-import jp.wasabeef.blurry.Blurry;
 import rutherfordit.com.instasalary.R;
 import rutherfordit.com.instasalary.extras.Constants;
 import rutherfordit.com.instasalary.extras.SharedPrefsManager;
@@ -55,7 +54,7 @@ public class BankDetailsActivity extends AppCompatActivity implements ResponseHa
     SharedPrefsManager sharedPrefsManager;
     private boolean blurred;
 
-    private void blurall() {
+   /* private void blurall() {
 
 
         if (blurred) {
@@ -75,7 +74,7 @@ public class BankDetailsActivity extends AppCompatActivity implements ResponseHa
         blurred = !blurred;
 
 
-    }
+    }*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -194,7 +193,7 @@ public class BankDetailsActivity extends AppCompatActivity implements ResponseHa
 
                 Intent intent = new Intent(getApplicationContext(), UploadInvoice.class);
                 startActivity(intent);
-                blurall();
+               // blurall();
                 loader_bank_details.setVisibility(View.GONE);
 
             }
@@ -325,7 +324,7 @@ public class BankDetailsActivity extends AppCompatActivity implements ResponseHa
             public void onClick(View v) {
                 if (click)
                 {
-                    blurall();
+                  //  blurall();
                     loader_bank_details.setVisibility(View.VISIBLE);
 
                     bankApi();
