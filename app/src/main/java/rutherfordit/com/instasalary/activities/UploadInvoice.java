@@ -3,6 +3,7 @@ package rutherfordit.com.instasalary.activities;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.core.app.ActivityCompat;
@@ -11,10 +12,13 @@ import androidx.loader.content.CursorLoader;
 
 import android.app.Activity;
 import android.app.ActivityOptions;
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -26,6 +30,7 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.util.Pair;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -33,6 +38,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.crystal.crystalpreloaders.widgets.CrystalPreloader;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.textfield.TextInputEditText;
@@ -66,6 +72,9 @@ import rutherfordit.com.instasalary.myinterfaces.ResponseHandler;
 
 public class UploadInvoice extends AppCompatActivity implements ResponseHandler {
 
+    LayoutInflater inflater;
+    View dialogView;
+    AlertDialog dialogBuilder;
     View view, view1, view2;
     private final String[] REQUIRED_PERMISSIONS = new String[]{"android.permission.CAMERA", "android.permission.WRITE_EXTERNAL_STORAGE"};
     TextInputEditText enterAmount;
@@ -84,8 +93,9 @@ public class UploadInvoice extends AppCompatActivity implements ResponseHandler 
     String status,filename;
     private boolean invoice_uploaded = false;
     ImageView image_invoice,back_credit_req;
-    TextView text_invoice;
+    TextView text_invoice,ok;
     CrystalPreloader loader_invoice_upload;
+    ImageView giffy;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -112,6 +122,18 @@ public class UploadInvoice extends AppCompatActivity implements ResponseHandler 
         submitInvoice = findViewById(R.id.submitInvoice);
         loader_invoice = findViewById(R.id.loader_invoice);
 
+        dialogBuilder = new AlertDialog.Builder(UploadInvoice.this).create();
+        inflater = this.getLayoutInflater();
+        dialogView = inflater.inflate(R.layout.custom_dialog_adhar, null);
+        dialogBuilder.setView(dialogView);
+        dialogBuilder.setCancelable(false);
+
+        View mView =LayoutInflater.from(UploadInvoice.this).inflate(R.layout.success_dialog,null);
+        dialogBuilder.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        giffy = mView.findViewById(R.id.giffy);
+
+        dialogBuilder.setView(mView);
+        ok = mView.findViewById(R.id.ok);
         view = getLayoutInflater().inflate(R.layout.bottomsheetdialog_invoice, null);
         bottomSheetDialog = new BottomSheetDialog(UploadInvoice.this);
         bottomSheetDialog.setContentView(view);
@@ -345,24 +367,21 @@ public class UploadInvoice extends AppCompatActivity implements ResponseHandler 
             Log.e("response", "responseHandlerLoan: " + response);
             if  (response!=null)
             {
-                /*Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
-                startActivity(intent);*/
+
                 loader_invoice.setVisibility(View.GONE);
-                /*new AestheticDialog.Builder(this, DialogStyle.FLAT, DialogType.SUCCESS)
-                        .setTitle("Neo Credit")
-                        .setMessage("Your loan application is successfull..")
-                        .setCancelable(false)
-                        .setDarkMode(false)
-                        .setGravity(Gravity.CENTER)
-                        .setAnimation(DialogAnimation.SHRINK)
-                        .setOnClickListener(new OnDialogClickListener() {
-                            @Override
-                            public void onClick(AestheticDialog.Builder builder) {
-                                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
-                                startActivity(intent);
-                            }
-                        })
-                        .show();*/
+
+                dialogBuilder.show();
+                Glide.with(this)
+                        .load(R.raw.success)
+                        .into(giffy);
+
+                ok.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                        startActivity(intent);
+                    }
+                });
             }
         }
     }

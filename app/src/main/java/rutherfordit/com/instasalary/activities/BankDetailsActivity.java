@@ -128,7 +128,7 @@ public class BankDetailsActivity extends AppCompatActivity implements ResponseHa
                     String verified = response.getString("verified");
 
                     if(verified == "true"){
-                      //  bankApi();
+                        bankApi();
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -327,8 +327,8 @@ public class BankDetailsActivity extends AppCompatActivity implements ResponseHa
                   //  blurall();
                     loader_bank_details.setVisibility(View.VISIBLE);
 
-                    bankApi();
-                 //   request();
+                  //  bankApi();
+                    request();
                 }
                 else
                 {

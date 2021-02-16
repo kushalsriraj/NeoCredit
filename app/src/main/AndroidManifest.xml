@@ -12,33 +12,13 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission
-        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         tools:ignore="ScopedStorage" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.RECEIVE_SMS" />
-    <uses-permission android:name="android.permission.READ_SMS" />
-    <uses-permission android:name="android.permission.SEND_SMS" />
-    <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.READ_CONTACTS" />
-    <uses-permission android:name="android.permission.WRITE_CONTACTS" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
-    <uses-permission android:name="android.permission.READ_PROFILE" />
-    <uses-permission android:name="android.permission.READ_CONTACTS" />
-    <uses-permission
-        android:name="android.permission.ACCESS_MOCK_LOCATION"
-        tools:ignore="MockLocation,ProtectedPermissions" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.RECEIVE_SMS" />
-    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.CAMERA"/>
+
 
     <application
 
-        tools:node="replace"
-        android:appComponentFactory="android.support.v4.app.CoreComponentFactory"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning"
         tools:overrideLibrary="androidx.camera.extensions"
@@ -46,28 +26,43 @@
         android:requestLegacyExternalStorage="true"
         android:fullBackupContent="true"
         android:hardwareAccelerated="true"
-        android:allowBackup="true"
         android:supportsRtl="true"
+        android:allowBackup="true"
 
         android:roundIcon="@drawable/neocreditlogo"
         android:theme="@style/AppTheme"
         android:icon="@drawable/neocreditlogo"
         android:label="@string/app_name">
+        <activity
+            android:name="in.digio.sdk.kyc.DigioMainActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize" />
+
+        <activity
+            android:name="com.digio.in.esign2sdk.DigioEsignActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize" />
+
         <activity android:name=".activities.UploadInvoice">
+
         </activity>
         <activity android:name=".activities.CompanyDetails">
+
         </activity>
         <activity android:name=".activities.DocsUploadActivity" />
         <activity android:name=".activities.partnership.PartnershipDocUploadActivity" />
-        <activity android:name=".activities.privatelimited.PrivateLimitedDocUploadActivity" />
+        <activity android:name=".activities.privatelimited.PrivateLimitedDocUploadActivity" >
+
+        </activity>
         <activity android:name=".activities.sp.SPDocumentUploadActivity" >
+
         </activity>
         <activity android:name=".activities.AdharAuthenticationActivity" />
-        <activity android:name=".activities.HomeActivity" >
+        <activity android:name=".activities.HomeActivity" />
+        <activity android:name=".activities.BankDetailsActivity">
+
         </activity>
-        <activity android:name=".activities.BankDetailsActivity"></activity>
         <activity android:name=".activities.PersonalDetailsActivity" />
         <activity android:name=".activities.SegmentActivity">
+
         </activity>
         <activity android:name=".activities.EnterOTPActivity" />
         <activity android:name=".activities.LoginActivity" />
@@ -78,7 +73,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".activities.PromoterDetails">
+
         </activity>
         <activity android:name=".activities.DirectorDetails" />
+
+
     </application>
 </manifest>
