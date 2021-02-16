@@ -2,6 +2,7 @@ package rutherfordit.com.instasalary.activities;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.location.Address;
@@ -19,6 +20,13 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.gms.common.api.Status;
 import com.google.android.libraries.places.api.Places;
 import com.google.android.libraries.places.api.model.Place;
@@ -33,8 +41,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -66,6 +76,8 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
     private String annualTurnOverNumber;
     private String howOldIsTheCompanyNumber;
     TextInputLayout panCardLayput, mobile_number_company;
+    CardView loader_company_details;
+    String check = "1";
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -122,7 +134,7 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
                     e.printStackTrace();
                 }
 
-               // company_Data_Layout.setVisibility(View.VISIBLE);
+                // company_Data_Layout.setVisibility(View.VISIBLE);
 
 
             }
@@ -174,6 +186,8 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
         Spinner_annualTurnover = findViewById(R.id.Spinner_annualTurnover);
         Spinner_businessAddressProof = findViewById(R.id.Spinner_businessAddressProof);
         mobile_number = findViewById(R.id.mobile_number);
+
+        loader_company_details = findViewById(R.id.loader_company_details);
 
         panCardLayput = findViewById(R.id.panCardLayput);
         mobile_number_company = findViewById(R.id.mobile_number_company);
@@ -583,6 +597,9 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
             @Override
             public void onClick(View v) {
 
+                loader_company_details.setVisibility(View.VISIBLE);
+
+
                 if (click)
                 {
                     if (!sharedPrefsManager.getSegment().equals("1")) {
@@ -607,7 +624,7 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
                     }
 
                 } else
-                    {
+                {
                     Toasty.error(getApplicationContext(), "Please Check the fields.", Toasty.LENGTH_SHORT).show();
                 }
             }
@@ -618,28 +635,57 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
 
         JSONObject jsonObjectBody = new JSONObject();
 
-            try {
-                jsonObjectBody.put("name", company_name.getText().toString());
-                jsonObjectBody.put("pan_card", pan);
-                jsonObjectBody.put("type_of_services", typeOfService.getText().toString());
-                jsonObjectBody.put("business_reg_num", "1999-12-23");
-                jsonObjectBody.put("business_addr_proof", addressProofNumber);
-                jsonObjectBody.put("landline_number", businessLandline.getText().toString());
-                jsonObjectBody.put("mobile_number", sharedPrefsManager.getPhoneNumber());
-                jsonObjectBody.put("orgize_age", howOldIsTheCompanyNumber);
-                jsonObjectBody.put("email", company_email.getText().toString());
-                jsonObjectBody.put("company_address", company_address.getText().toString());
-                jsonObjectBody.put("annual_turnover", annualTurnOverNumber);
+        try {
+            jsonObjectBody.put("name", company_name.getText().toString());
+            jsonObjectBody.put("pan_card", pan);
+            jsonObjectBody.put("type_of_services", typeOfService.getText().toString());
+            jsonObjectBody.put("business_reg_num", "1999-12-23");
+            jsonObjectBody.put("business_addr_proof", addressProofNumber);
+            jsonObjectBody.put("landline_number", businessLandline.getText().toString());
+            jsonObjectBody.put("mobile_number", sharedPrefsManager.getPhoneNumber());
+            jsonObjectBody.put("orgize_age", howOldIsTheCompanyNumber);
+            jsonObjectBody.put("email", company_email.getText().toString());
+            jsonObjectBody.put("company_address", company_address.getText().toString());
+            jsonObjectBody.put("annual_turnover", annualTurnOverNumber);
 
-                Log.e("comapanyAPI", "comapanyAPI: " + jsonObjectBody);
+            Log.e("comapanyAPI", "comapanyAPI: " + jsonObjectBody);
 
 
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
-        volleyRequest.JsonObjRequestAuthorization(CompanyDetails.this,jsonObjectBody, Urls.COMPANY_DETAILS, Constants.company_details,sharedPrefsManager.getAccessToken());
+        if (check == "2")
+        {
+            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.PATCH, Urls.COMPANY_DETAILS, jsonObjectBody, new Response.Listener<JSONObject>() {
+                @Override
+                public void onResponse(JSONObject response) {
+                    Log.e("response", "response: " + response );
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
 
+                }
+            }) {
+                @Override
+                public Map<String, String> getHeaders() throws AuthFailureError {
+                    HashMap<String, String> headers = new HashMap<String, String>();
+                    headers.put("Content-type", "application/json");
+                    headers.put("Accept", "application/json");
+                    headers.put("Authorization" , sharedPrefsManager.getAccessToken());
+                    return headers;
+                }
+            };
+
+            RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+            requestQueue.add(jsonObjectRequest);
+        }
+        else {
+
+            volleyRequest.JsonObjRequestAuthorization(CompanyDetails.this,jsonObjectBody, Urls.COMPANY_DETAILS, Constants.company_details,sharedPrefsManager.getAccessToken());
+
+        }
     }
 
     @Override
@@ -648,42 +694,74 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
         if(i == Constants.company_details) {
 
             JSONObject response = (JSONObject) obj;
-//            if  (response!=null)
-//            {
 
-                try {
-                    JSONObject jsonObjectData = response.getJSONObject("data");
+            try {
+                JSONObject jsonObjectData = response.getJSONObject("data");
 
-                    JSONObject jsonObjectCompanyDetails = jsonObjectData.getJSONObject("companydetails");
+                JSONObject jsonObjectCompanyDetails = jsonObjectData.getJSONObject("companydetails");
 
-                    JSONArray arrayData = jsonObjectCompanyDetails.getJSONArray("data");
-                    for (int j = 0; j < arrayData.length(); j ++){
+                JSONArray arrayData = jsonObjectCompanyDetails.getJSONArray("data");
+                for (int j = 0; j < arrayData.length(); j ++){
 
-                        JSONObject idObj = arrayData.getJSONObject(j);
+                    JSONObject idObj = arrayData.getJSONObject(j);
 
-                        String id = idObj.getString("id");
+                    String id = idObj.getString("id");
 
-                        sharedPrefsManager.setCOMPANY_ID(id);
-                        Log.e("COMPANY_ID", "COMPANY_ID: " + sharedPrefsManager.getCOMPANY_ID() );
-                    }
-
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
+                    sharedPrefsManager.setCOMPANY_ID(id);
+                    Log.e("COMPANY_ID", "COMPANY_ID: " + sharedPrefsManager.getCOMPANY_ID() );
                 }
 
-                if (sharedPrefsManager.getSegment().equals("1"))
-                    {
-                        Intent intent = new Intent(getApplicationContext(), PromoterDetails.class);
-                        intent.putExtra("id","1");
-                        startActivity(intent);
-                    }
-                    else
-                    {
-                        Intent intent = new Intent(getApplicationContext(), DirectorDetails.class);
-                        startActivity(intent);
-                    }
-            //}
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            if (sharedPrefsManager.getSegment().equals("1"))
+            {
+                invalidPan.setVisibility(View.GONE);
+                Intent intent = new Intent(getApplicationContext(), PromoterDetails.class);
+                intent.putExtra("id","1");
+                startActivity(intent);
+                loader_company_details.setVisibility(View.GONE);
+
+            }
+            else
+            {
+                Intent intent = new Intent(getApplicationContext(), DirectorDetails.class);
+                startActivity(intent);
+                loader_company_details.setVisibility(View.GONE);
+            }
         }
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.e("onRestart", "onRestart: " + "onRestart Was Called" );
+        check = "2";
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.e("onStart", "onStart: " + "onStart Was Called" );
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.e("onPause", "onPause: " + "onPause Was Called");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.e("onStop", "onStop: " + "onStop Was Called");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.e("onDestroy", "onDestroy: " + "onDestroy Was Called");
     }
 }

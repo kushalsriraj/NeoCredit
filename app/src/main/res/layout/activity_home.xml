@@ -64,7 +64,7 @@
                     android:layout_width="18dp"
                     android:layout_height="18dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/reddashboard" />
+                    android:src="@drawable/greendashboard" />
 
                 <TextView
                     android:id="@+id/dashboardtext"
