@@ -51,9 +51,15 @@
             <Button
                 android:layout_marginTop="25dp"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="wrap_content"
                 android:id="@+id/AdharAuth"
-                android:text="Authenticate Adhaar"/>
+                android:text="Authenticate Using Adhaar"/>
+
+            <LinearLayout
+                android:id="@+id/layout_Adhar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
@@ -94,6 +100,57 @@
                     android:textSize="14dp" />
 
             </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp"
+                    android:hint="Address">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/dir_address"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/lato_regular"
+                        android:inputType="textCapWords"
+                        android:singleLine="true"
+                        android:textSize="14dp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Address Proof" >
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/dir_addressproof"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:ellipsize="end"
+                            android:focusableInTouchMode="false"
+                            android:singleLine="true"
+                            />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <Spinner
+                        android:id="@+id/dir_addressProofSpinner"
+                        style="@style/CustomSpinnerTheme"
+                        android:layout_width="30dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginRight="10dp"
+                        android:entries="@array/director_address_proof_array" />
+
+                </RelativeLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
@@ -167,6 +224,7 @@
 
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/adhar_card_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
@@ -183,56 +241,7 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
-                android:hint="Address">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/dir_address"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ellipsize="end"
-                    android:fontFamily="@font/lato_regular"
-                    android:inputType="textCapWords"
-                    android:singleLine="true"
-                    android:textSize="14dp" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="25dp">
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Address Proof" >
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/dir_addressproof"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:ellipsize="end"
-                        android:focusableInTouchMode="false"
-                        android:singleLine="true"
-                        />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <Spinner
-                    android:id="@+id/dir_addressProofSpinner"
-                    style="@style/CustomSpinnerTheme"
-                    android:layout_width="30dp"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginRight="10dp"
-                    android:entries="@array/director_address_proof_array" />
-
-            </RelativeLayout>
 
             <Spinner
                 android:visibility="gone"
@@ -304,6 +313,8 @@
                 </RelativeLayout>
 
             </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
 
         </LinearLayout>
 

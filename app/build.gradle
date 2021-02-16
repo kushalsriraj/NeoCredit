@@ -31,7 +31,7 @@ android {
 dependencies {
 
     implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'com.google.android.material:material:1.2.1'
+    implementation 'com.google.android.material:material:1.3.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
     implementation 'androidx.annotation:annotation:1.1.0'
     implementation project(path: ':digio-kyc-1.1.0')
@@ -42,10 +42,8 @@ dependencies {
     implementation 'com.android.volley:volley:1.1.1'
     implementation 'com.crystal:crystalpreloaders:1.0.0'
     implementation 'de.hdodenhof:circleimageview:3.1.0'
-    // OTP Pin View
     implementation 'com.chaos.view:pinview:1.4.3'
     implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.19'
-   // implementation "org.jetbrains.anko:anko:0.10.8"
     implementation 'com.facebook.shimmer:shimmer:0.5.0'
 
     def camerax_version = "1.0.0-beta05"
@@ -55,7 +53,7 @@ dependencies {
     implementation "androidx.camera:camera-extensions:1.0.0-alpha15"
 
     implementation 'androidx.multidex:multidex:2.0.1'
-    implementation 'com.vincent.filepicker:MultiTypeFilePicker:1.0.5'
+    implementation 'com.vincent.filepicker:MultiTypeFilePicker:1.0.8'
     implementation 'com.github.GrenderG:Toasty:1.5.0'
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
@@ -64,7 +62,6 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.9.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'
     implementation "com.ncorti:slidetoact:0.9.0"
-    implementation 'gun0912.ted:tedpermission:2.2.3'
     implementation 'com.google.android.libraries.places:places:2.4.0'
 
     /*implementation 'com.google.android.libraries.places:places:2.4.0'
