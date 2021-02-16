@@ -132,6 +132,7 @@ public class DashboardFragment extends Fragment {
 
                     DashBoardAdapter dashBoardAdapter = new DashBoardAdapter(getContext(),data,(HomeActivity)getActivity());
                     recdashboard.setAdapter(dashBoardAdapter);
+                    recdashboard.setNestedScrollingEnabled(false);
 
                 } catch (JSONException e) {
                     e.printStackTrace();
