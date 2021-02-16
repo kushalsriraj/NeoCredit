@@ -60,15 +60,14 @@
         <activity android:name=".activities.DocsUploadActivity" />
         <activity android:name=".activities.partnership.PartnershipDocUploadActivity" />
         <activity android:name=".activities.privatelimited.PrivateLimitedDocUploadActivity" />
-        <activity android:name=".activities.sp.SPDocumentUploadActivity" />
-        <activity android:name=".activities.AdharAuthenticationActivity" />
-        <activity android:name=".activities.HomeActivity" />
-        <activity android:name=".activities.BankDetailsActivity">
-
+        <activity android:name=".activities.sp.SPDocumentUploadActivity" >
         </activity>
+        <activity android:name=".activities.AdharAuthenticationActivity" />
+        <activity android:name=".activities.HomeActivity" >
+        </activity>
+        <activity android:name=".activities.BankDetailsActivity"></activity>
         <activity android:name=".activities.PersonalDetailsActivity" />
         <activity android:name=".activities.SegmentActivity">
-
         </activity>
         <activity android:name=".activities.EnterOTPActivity" />
         <activity android:name=".activities.LoginActivity" />
@@ -79,17 +78,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".activities.PromoterDetails">
-
         </activity>
         <activity android:name=".activities.DirectorDetails" />
-
-        <activity
-            android:name="in.digio.sdk.kyc.DigioMainActivity"
-            android:configChanges="keyboard|keyboardHidden|orientation|screenSize" />
-
-        <activity
-            android:name="com.digio.in.esign2sdk.DigioEsignActivity"
-            android:configChanges="keyboard|keyboardHidden|orientation|screenSize" />
     </application>
 
 </manifest>
