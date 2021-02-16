@@ -335,7 +335,7 @@ public class HomeActivity extends AppCompatActivity implements LoadDetailedData,
         loanbutton.setClickable(true);
         faqbutton.setClickable(true);
 
-        dashboardimage.setImageResource(R.drawable.reddashboard);
+        dashboardimage.setImageResource(R.drawable.greendashboard);
         dashboardtext.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.neopurple));
 
         loanimage.setImageResource(R.drawable.whitehistory);

@@ -67,20 +67,6 @@
             android:textSize="18dp"
             android:text="Enter OTP Sent To Your Mobile"/>
 
-<!--        <EditText-->
-<!--            android:paddingBottom="8dp"-->
-<!--            android:id="@+id/enteradharotp"-->
-<!--            android:textColor="#000"-->
-<!--            android:layout_marginLeft="50dp"-->
-<!--            android:layout_marginRight="50dp"-->
-<!--            android:layout_marginTop="40dp"-->
-<!--            android:gravity="center"-->
-<!--            android:textStyle="bold"-->
-<!--            android:textSize="20dp"-->
-<!--            android:inputType="number"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="50dp"/>-->
-
         <com.chaos.view.PinView
             android:state_selected="true"
             android:layout_marginTop="30dp"
