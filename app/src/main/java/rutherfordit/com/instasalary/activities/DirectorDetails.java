@@ -13,6 +13,8 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import com.google.android.material.snackbar.Snackbar;
+
 import es.dmoral.toasty.Toasty;
 import rutherfordit.com.instasalary.R;
 import rutherfordit.com.instasalary.activities.partnership.PartnershipDocUploadActivity;
@@ -37,9 +39,8 @@ public class DirectorDetails extends AppCompatActivity {
     @Override
     public void onBackPressed() {
 
-        Toast.makeText(getApplicationContext(), "Action denied", Toast.LENGTH_LONG).show();
-        Toast.makeText(getApplicationContext(), "Please Further to Process your application form.", Toast.LENGTH_LONG).show();
-
+        Toasty.error(getApplicationContext(), "Action denied.", Toast.LENGTH_SHORT).show();
+        Toasty.error(getApplicationContext(), "Please proceed further to Process your application form.", Toast.LENGTH_SHORT).show();
     }
 
     @Override
