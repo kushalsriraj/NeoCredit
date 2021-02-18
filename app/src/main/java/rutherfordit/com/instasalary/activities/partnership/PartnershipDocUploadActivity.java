@@ -155,6 +155,8 @@ public class PartnershipDocUploadActivity extends AppCompatActivity {
         text_partner_invoice = findViewById(R.id.text_partner_invoice);
         loader_partner_invoice = findViewById(R.id.loader_partner_invoice);
 
+        sharedPrefsManager.setCHECK_PAGE("6");
+
         Submit_partner_docs = findViewById(R.id.Submit_partner_docs);
 
         image_partner_pan.setOnClickListener(new View.OnClickListener() {

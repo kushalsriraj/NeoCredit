@@ -60,6 +60,8 @@ public class SegmentActivity extends AppCompatActivity implements ResponseHandle
         purplebackarrow = findViewById(R.id.purplebackarrow);
         loader_login = findViewById(R.id.loader_login);
 
+        sharedPrefsManager.setCHECK_PAGE("2");
+
         purplebackarrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

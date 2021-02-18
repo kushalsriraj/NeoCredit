@@ -1,126 +1,145 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<androidx.cardview.widget.CardView
     android:background="@color/white"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
+    app:cardCornerRadius="10dp"
+    android:elevation="20dp"
+    app:cardBackgroundColor="@color/neopurple"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <LinearLayout
-        android:layout_margin="10dp"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="wrap_content">
 
-        <ImageView
-            android:layout_marginTop="6dp"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:src="@drawable/neocreditlogo"
-            android:layout_gravity="center"
-            />
-
-        <TextView
-            android:textStyle="bold"
-            android:gravity="center"
-            android:textSize="20dp"
-            android:textColor="@color/black"
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:text="Adhar Authentication"/>
+            app:cardCornerRadius="10dp"
+            android:elevation="20dp"
+            android:layout_margin="5dp"
+            >
 
-        <EditText
-            android:textSize="16dp"
-            android:textColorHint="@color/colorash"
-            android:textStyle="bold"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:inputType="textCapWords"
-            android:layout_marginTop="25dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Name"
-            android:id="@+id/adharname_auth"/>
-
-        <EditText
-            android:textSize="16dp"
-            android:textColorHint="@color/colorash"
-            android:textStyle="bold"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:inputType="number"
-            android:maxLength="10"
-            android:layout_marginTop="15dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Enter Phone Number"
-            android:id="@+id/adharphone_auth"/>
-
-        <EditText
-            android:textSize="16dp"
-            android:textColorHint="@color/colorash"
-            android:textStyle="bold"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:inputType="number"
-            android:maxLength="12"
-            android:layout_marginTop="15dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Enter Adhar Number"
-            android:id="@+id/adharnumber_auth"/>
-
-        <LinearLayout
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginTop="25dp"
-            android:weightSum="2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <Button
-                android:layout_marginRight="10dp"
-                android:layout_weight="1"
+            <LinearLayout
+                android:layout_margin="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/cancel"
-                android:text="Cancel"/>
+                android:orientation="vertical">
 
-            <Button
-                android:layout_marginLeft="10dp"
-                android:layout_weight="1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/submit"
-                android:text="Submit"/>
+                <ImageView
+                    android:layout_marginTop="6dp"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:src="@drawable/neocreditlogo"
+                    android:layout_gravity="center"
+                    />
 
-        </LinearLayout>
+                <TextView
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:textSize="20dp"
+                    android:textColor="@color/black"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:text="Adhar Authentication"/>
 
-    </LinearLayout>
+                <EditText
+                    android:textSize="16dp"
+                    android:textColorHint="@color/colorash"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:inputType="textCapWords"
+                    android:layout_marginTop="25dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Name"
+                    android:id="@+id/adharname_auth"/>
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/loader_adhar_sheet"
-        app:cardCornerRadius="10dp"
-        app:cardElevation="10dp"
-        android:layout_centerInParent="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        >
+                <EditText
+                    android:textSize="16dp"
+                    android:textColorHint="@color/colorash"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:inputType="number"
+                    android:maxLength="10"
+                    android:layout_marginTop="15dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Enter Phone Number"
+                    android:id="@+id/adharphone_auth"/>
 
-        <com.crystal.crystalpreloaders.widgets.CrystalPreloader
-            android:layout_margin="15dp"
+                <EditText
+                    android:textSize="16dp"
+                    android:textColorHint="@color/colorash"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:inputType="number"
+                    android:maxLength="12"
+                    android:layout_marginTop="15dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Enter Adhar Number"
+                    android:id="@+id/adharnumber_auth"/>
+
+                <LinearLayout
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="25dp"
+                    android:weightSum="2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/cancel"
+                        android:text="Cancel"/>
+
+                    <Button
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/submit"
+                        android:text="Submit"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/loader_adhar_sheet"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="10dp"
             android:layout_centerInParent="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:crs_pl_style="skype_balls"
-            app:crs_pl_size="very_small"
-            app:crs_pl_fg_color="@color/neopurple"
-            app:crs_pl_bg_color="#fff"/>
+            android:visibility="gone"
+            >
 
-    </androidx.cardview.widget.CardView>
+            <com.crystal.crystalpreloaders.widgets.CrystalPreloader
+                android:layout_margin="15dp"
+                android:layout_centerInParent="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:crs_pl_style="skype_balls"
+                app:crs_pl_size="very_small"
+                app:crs_pl_fg_color="@color/neopurple"
+                app:crs_pl_bg_color="#fff"/>
 
-</RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

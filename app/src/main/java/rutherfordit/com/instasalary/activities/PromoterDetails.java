@@ -148,6 +148,8 @@ public class PromoterDetails extends AppCompatActivity implements DatePickerDial
         loader_adhar_sheet = dialogView.findViewById(R.id.loader_adhar_sheet);
         loader_adhar_sheet.setVisibility(View.GONE);
 
+        sharedPrefsManager.setCHECK_PAGE("9");
+
         if(sharedPrefsManager.getSegment().equals("1")){
 
             detailsTextView.setText("Proprietor Details");
@@ -858,9 +860,16 @@ public class PromoterDetails extends AppCompatActivity implements DatePickerDial
     @Override
     public void onBackPressed() {
         //super.onBackPressed();
-        Intent returnIntent = new Intent();
-        setResult(Activity.RESULT_CANCELED,returnIntent);
-        finish();
+
+        if (sharedPrefsManager.getSegment().equals("1"))
+        {
+            Toast.makeText(getApplicationContext(), "Action denied", Toast.LENGTH_LONG).show();
+        }
+        else {
+            Intent returnIntent = new Intent();
+            setResult(Activity.RESULT_CANCELED,returnIntent);
+            finish();
+        }
     }
 
     @Override

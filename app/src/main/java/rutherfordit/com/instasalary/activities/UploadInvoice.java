@@ -153,6 +153,8 @@ public class UploadInvoice extends AppCompatActivity implements ResponseHandler 
         view1 = view.findViewById(R.id.view1_invoice);
         view2 = view.findViewById(R.id.view2_invoice);
 
+        sharedPrefsManager.setCHECK_PAGE("8");
+
         enterAmount.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) { }

@@ -176,6 +176,8 @@ public class SPDocumentUploadActivity extends AppCompatActivity {
 
         Submit_sp_docs = findViewById(R.id.Submit_sp_docs);
 
+        sharedPrefsManager.setCHECK_PAGE("4");
+
         image_sp_pan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

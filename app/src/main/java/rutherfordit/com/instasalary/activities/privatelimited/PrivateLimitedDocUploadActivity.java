@@ -163,6 +163,9 @@ public class PrivateLimitedDocUploadActivity extends AppCompatActivity {
         text_pvt_invoice = findViewById(R.id.text_pvt_invoice);
         loader_pvt_invoice = findViewById(R.id.loader_pvt_invoice);
 
+        sharedPrefsManager.setCHECK_PAGE("5");
+
+
         Submit_pl_docs = findViewById(R.id.Submit_pl_docs);
 
         image_pvt_pan.setOnClickListener(new View.OnClickListener() {

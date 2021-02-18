@@ -18,6 +18,7 @@ public class SharedPrefsManager {
     String SEGMENT = "segment";
     String REQUIRED_AMOUNT = "required_amount";
     String COMPANY_ID = "company_id";
+    String CHECK_PAGE = "check_page";
 
     public SharedPrefsManager(Context context)
     {
@@ -109,6 +110,16 @@ public class SharedPrefsManager {
     public String getCOMPANY_ID()
     {
         return sharedPreferences.getString(COMPANY_ID,"");
+    }
+
+    public void setCHECK_PAGE(String check_page)
+    {
+        sharedPreferences.edit().putString(CHECK_PAGE, check_page).apply();
+    }
+
+    public String getCHECK_PAGE()
+    {
+        return sharedPreferences.getString(CHECK_PAGE,"");
     }
 
 }

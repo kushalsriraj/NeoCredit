@@ -34,6 +34,13 @@ public class DirectorDetails extends AppCompatActivity {
             pp1_before_details, pp1_after_details,
             pp2_before_details, pp2_after_details;
 
+    @Override
+    public void onBackPressed() {
+
+        Toast.makeText(getApplicationContext(), "Action denied", Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), "Please Further to Process your application form.", Toast.LENGTH_LONG).show();
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +69,8 @@ public class DirectorDetails extends AppCompatActivity {
 
         pp2_before_details = findViewById(R.id.pp2_before_details);
         pp2_after_details = findViewById(R.id.pp2_after_details);
+
+        sharedPrefsManager.setCHECK_PAGE("10");
 
         Log.e("getsegment", "onCreate: " + sharedPrefsManager.getSegment() );
 

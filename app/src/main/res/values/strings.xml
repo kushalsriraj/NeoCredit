@@ -43,7 +43,7 @@
     </string-array>
 
     <string-array name="how_old_is_company_array">
-        <item>-- Select Tenuraty the Company --</item>
+        <item>-- Select Tenure of the Company --</item>
         <item>Less than 1 Year</item>
         <item>1 -3 Years</item>
         <item>More than 3 Years</item>

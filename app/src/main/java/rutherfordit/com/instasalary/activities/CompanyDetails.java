@@ -3,8 +3,11 @@ package rutherfordit.com.instasalary.activities;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.core.content.ContextCompat;
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.Bundle;
@@ -136,8 +139,6 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
                 }
 
                 // company_Data_Layout.setVisibility(View.VISIBLE);
-
-
             }
             else if (resultCode == AutocompleteActivity.RESULT_ERROR) {
 
@@ -198,6 +199,8 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
 
         sharedPrefsManager = new SharedPrefsManager(getApplicationContext());
 
+        sharedPrefsManager.setCHECK_PAGE("3");
+
         if (sharedPrefsManager.getSegment().equals("1")){
 
             panCardLayput.setVisibility(View.GONE);
@@ -247,7 +250,6 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
                     submitCompanyInfo.setBackgroundColor(getResources().getColor(R.color.colorash));
                     click=false;
                 }
-
             }
 
             @Override
@@ -265,7 +267,7 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
                         &&!company_email.getText().toString().equals("")
                         &&!company_address.getText().toString().equals("")
                         &&!typeOfService.getText().toString().equals("-- Select Type of Service --")
-                        &&!howOldIsTheCompany.getText().toString().equals("-- Select Tenuraty the Company --")
+                        &&!howOldIsTheCompany.getText().toString().equals("-- Select Tenure of the Company --")
                         && !annualTurnover.getText().toString().equals("-- Select Annual Turnover --")&&
                         !addressProof.getText().toString().equals("-- Select Address Proof --"))
                 {
@@ -276,7 +278,6 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
                     submitCompanyInfo.setBackgroundColor(getResources().getColor(R.color.colorash));
                     click=false;
                 }
-
             }
 
             @Override
@@ -298,7 +299,7 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
                             && !company_email.getText().toString().equals("")
                             &&!company_address.getText().toString().equals("")
                             &&!typeOfService.getText().toString().equals("-- Select Type of Service --")
-                            &&!howOldIsTheCompany.getText().toString().equals("-- Select Tenuraty the Company --")
+                            &&!howOldIsTheCompany.getText().toString().equals("-- Select Tenure of the Company --")
                             && !annualTurnover.getText().toString().equals("-- Select Annual Turnover --")&&
                             !addressProof.getText().toString().equals("-- Select Address Proof --"))
                     {
@@ -315,7 +316,6 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
                 {
                     invalidEmail.setVisibility(View.VISIBLE);
                 }
-
             }
 
             @Override
@@ -340,7 +340,6 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
                 {
                     invalidPan.setVisibility(View.VISIBLE);
                 }
-
             }
 
             @Override
@@ -358,7 +357,7 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
                         &&!company_email.getText().toString().equals("")
                         &&!company_address.getText().toString().equals("")
                         &&!typeOfService.getText().toString().equals("-- Select Type of Service --")
-                        &&!howOldIsTheCompany.getText().toString().equals("-- Select Tenuraty the Company --")
+                        &&!howOldIsTheCompany.getText().toString().equals("-- Select Tenure of the Company --")
                         && !annualTurnover.getText().toString().equals("-- Select Annual Turnover --")&&
                         !addressProof.getText().toString().equals("-- Select Address Proof --"))
                 {
@@ -369,7 +368,6 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
                     submitCompanyInfo.setBackgroundColor(getResources().getColor(R.color.colorash));
                     click=false;
                 }
-
 
             }
 
@@ -387,7 +385,7 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
                         &&!company_email.getText().toString().equals("")
                         &&!company_address.getText().toString().equals("")
                         &&!typeOfService.getText().toString().equals("-- Select Type of Service --")
-                        &&!howOldIsTheCompany.getText().toString().equals("-- Select Tenuraty the Company --")
+                        &&!howOldIsTheCompany.getText().toString().equals("-- Select Tenure of the Company --")
                         && !annualTurnover.getText().toString().equals("-- Select Annual Turnover --")&&
                         !addressProof.getText().toString().equals("-- Select Address Proof --"))
                 {
@@ -418,20 +416,28 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
 
                 typeOfService.setText(parent.getItemAtPosition(pos).toString());
 
-                if (!company_name.getText().toString().equals("")
-                        &&!company_email.getText().toString().equals("")
-                        &&!company_address.getText().toString().equals("")
-                        &&!typeOfService.getText().toString().equals("-- Select Type of Service --")
-                        &&!howOldIsTheCompany.getText().toString().equals("-- Select Tenuraty the Company --")
-                        && !annualTurnover.getText().toString().equals("-- Select Annual Turnover --")&&
-                        !addressProof.getText().toString().equals("-- Select Address Proof --"))
-                {
-                    submitCompanyInfo.setBackground(getDrawable(R.drawable.gradient_neocredit));
-                    click=true;
+                if (typeOfService.getText().toString().equals("-- Select Type of Service --")){
+                    typeOfService.setTextColor(Color.parseColor("#FF0000"));
+
                 }
                 else {
-                    submitCompanyInfo.setBackgroundColor(getResources().getColor(R.color.colorash));
-                    click=false;
+                    typeOfService.setTextColor(Color.parseColor("#000000"));
+
+                    if (!company_name.getText().toString().equals("")
+                            &&!company_email.getText().toString().equals("")
+                            &&!company_address.getText().toString().equals("")
+                            &&!typeOfService.getText().toString().equals("-- Select Type of Service --")
+                            &&!howOldIsTheCompany.getText().toString().equals("-- Select Tenure of the Company --")
+                            && !annualTurnover.getText().toString().equals("-- Select Annual Turnover --")&&
+                            !addressProof.getText().toString().equals("-- Select Address Proof --"))
+                    {
+                        submitCompanyInfo.setBackground(getDrawable(R.drawable.gradient_neocredit));
+                        click=true;
+                    }
+                    else {
+                        submitCompanyInfo.setBackgroundColor(getResources().getColor(R.color.colorash));
+                        click=false;
+                    }
                 }
 
             }
@@ -444,35 +450,44 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
 
                 howOldIsTheCompany.setText(parent.getItemAtPosition(pos).toString());
 
-                if (howOldIsTheCompany.getText().toString().equals("Less than 1 year"))
-                {
-                    howOldIsTheCompanyNumber = "1";
-                }
-                else if (howOldIsTheCompany.getText().toString().equals("1 -3 years"))
-                {
-                    howOldIsTheCompanyNumber = "2";
-                }
-                else if (howOldIsTheCompany.getText().toString().equals("More than 3 years"))
-                {
-                    howOldIsTheCompanyNumber = "3";
+                if (howOldIsTheCompany.getText().toString().equals("-- Select Tenure of the Company --")){
+                    howOldIsTheCompany.setTextColor(Color.parseColor("#FF0000"));
+
                 }
 
-                if (!company_name.getText().toString().equals("")
-                        &&!company_email.getText().toString().equals("")
-                        &&!company_address.getText().toString().equals("")
-                        &&!typeOfService.getText().toString().equals("-- Select Type of Service --")
-                        &&!howOldIsTheCompany.getText().toString().equals("-- Select Tenuraty the Company --")
-                        && !annualTurnover.getText().toString().equals("-- Select Annual Turnover --")&&
-                        !addressProof.getText().toString().equals("-- Select Address Proof --"))
-                {
-                    submitCompanyInfo.setBackground(getDrawable(R.drawable.gradient_neocredit));
-                    click=true;
-                }
                 else {
-                    submitCompanyInfo.setBackgroundColor(getResources().getColor(R.color.colorash));
-                    click=false;
-                }
 
+                    howOldIsTheCompany.setTextColor(Color.parseColor("#000000"));
+
+                    if (howOldIsTheCompany.getText().toString().equals("Less than 1 year"))
+                    {
+                        howOldIsTheCompanyNumber = "1";
+                    }
+                    else if (howOldIsTheCompany.getText().toString().equals("1 -3 years"))
+                    {
+                        howOldIsTheCompanyNumber = "2";
+                    }
+                    else if (howOldIsTheCompany.getText().toString().equals("More than 3 years"))
+                    {
+                        howOldIsTheCompanyNumber = "3";
+                    }
+
+                    if (!company_name.getText().toString().equals("")
+                            &&!company_email.getText().toString().equals("")
+                            &&!company_address.getText().toString().equals("")
+                            &&!typeOfService.getText().toString().equals("-- Select Annual Turnover --")
+                            &&!howOldIsTheCompany.getText().toString().equals("-- Select Tenure of the Company --")
+                            && !annualTurnover.getText().toString().equals("-- Select Annual Turnover --")&&
+                            !addressProof.getText().toString().equals("-- Select Address Proof --"))
+                    {
+                        submitCompanyInfo.setBackground(getDrawable(R.drawable.gradient_neocredit));
+                        click=true;
+                    }
+                    else {
+                        submitCompanyInfo.setBackgroundColor(getResources().getColor(R.color.colorash));
+                        click=false;
+                    }
+                }
 
             }
             public void onNothingSelected(AdapterView<?> parent) { }
@@ -484,35 +499,45 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
 
                 annualTurnover.setText(parent.getItemAtPosition(pos).toString());
 
-                if (annualTurnover.getText().toString().equals("1lakhs - 50 lakhs"))
+                if (annualTurnover.getText().toString().equals("-- Select Annual Turnover --"))
                 {
-                    annualTurnOverNumber = "1";
-                }
-                else if (annualTurnover.getText().toString().equals("50lakhs  - 1 crore"))
-                {
-                    annualTurnOverNumber = "2";
-                }
-                else if (annualTurnover.getText().toString().equals("More than 50 crores"))
-                {
-                    annualTurnOverNumber = "3";
-                }
+                    annualTurnover.setTextColor(Color.parseColor("#FF0000"));
 
-                if (!company_name.getText().toString().equals("")
-                        &&!company_email.getText().toString().equals("")
-                        &&!company_address.getText().toString().equals("")
-                        &&!typeOfService.getText().toString().equals("-- Select Type of Service --")
-                        &&!howOldIsTheCompany.getText().toString().equals("-- Select Tenuraty the Company --")
-                        && !annualTurnover.getText().toString().equals("-- Select Annual Turnover --")&&
-                        !addressProof.getText().toString().equals("-- Select Address Proof --"))
+                }
+                else
                 {
-                    submitCompanyInfo.setBackground(getDrawable(R.drawable.gradient_neocredit));
-                    click=true;
-                }
-                else {
-                    submitCompanyInfo.setBackgroundColor(getResources().getColor(R.color.colorash));
-                    click=false;
-                }
 
+                    annualTurnover.setTextColor(Color.parseColor("#000000"));
+
+                    if (annualTurnover.getText().toString().equals("1lakhs - 50 lakhs"))
+                    {
+                        annualTurnOverNumber = "1";
+                    }
+                    else if (annualTurnover.getText().toString().equals("50lakhs  - 1 crore"))
+                    {
+                        annualTurnOverNumber = "2";
+                    }
+                    else if (annualTurnover.getText().toString().equals("More than 50 crores"))
+                    {
+                        annualTurnOverNumber = "3";
+                    }
+
+                    if (!company_name.getText().toString().equals("")
+                            &&!company_email.getText().toString().equals("")
+                            &&!company_address.getText().toString().equals("")
+                            &&!typeOfService.getText().toString().equals("-- Select Type of Service --")
+                            &&!howOldIsTheCompany.getText().toString().equals("-- Select Tenure of the Company --")
+                            && !annualTurnover.getText().toString().equals("-- Select Annual Turnover --")&&
+                            !addressProof.getText().toString().equals("-- Select Address Proof --"))
+                    {
+                        submitCompanyInfo.setBackground(getDrawable(R.drawable.gradient_neocredit));
+                        click=true;
+                    }
+                    else {
+                        submitCompanyInfo.setBackgroundColor(getResources().getColor(R.color.colorash));
+                        click=false;
+                    }
+                }
 
             }
             public void onNothingSelected(AdapterView<?> parent) { }
@@ -524,35 +549,36 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
 
                 addressProof.setText(parent.getItemAtPosition(pos).toString());
 
-                if (addressProof.getText().toString().equals("Sale Deed"))
-                {
-                    addressProofNumber = "1";
-                }
-                else if (addressProof.getText().toString().equals("Rent / Lease Agreement"))
-                {
-                    addressProofNumber = "2";
-                }
-                else if (addressProof.getText().toString().equals("Utility Bill"))
-                {
-                    addressProofNumber = "3";
-                }
+                if (addressProof.getText().toString().equals("-- Select Address Proof --")){
+                    addressProof.setTextColor(Color.parseColor("#FF0000"));
 
-                if (!company_name.getText().toString().equals("")
-                        &&!company_email.getText().toString().equals("")
-                        &&!company_address.getText().toString().equals("")
-                        &&!typeOfService.getText().toString().equals("-- Select Type of Service --")
-                        &&!howOldIsTheCompany.getText().toString().equals("-- Select Tenuraty the Company --")
-                        && !annualTurnover.getText().toString().equals("-- Select Annual Turnover --")&&
-                        !addressProof.getText().toString().equals("-- Select Address Proof --"))
-                {
-                    submitCompanyInfo.setBackground(getDrawable(R.drawable.gradient_neocredit));
-                    click=true;
                 }
                 else {
-                    submitCompanyInfo.setBackgroundColor(getResources().getColor(R.color.colorash));
-                    click=false;
-                }
 
+                    addressProof.setTextColor(Color.parseColor("#000000"));
+
+                    if (addressProof.getText().toString().equals("Sale Deed")) {
+                        addressProofNumber = "1";
+                    } else if (addressProof.getText().toString().equals("Rent / Lease Agreement")) {
+                        addressProofNumber = "2";
+                    } else if (addressProof.getText().toString().equals("Utility Bill")) {
+                        addressProofNumber = "3";
+                    }
+
+                    if (!company_name.getText().toString().equals("")
+                            && !company_email.getText().toString().equals("")
+                            && !company_address.getText().toString().equals("")
+                            && !typeOfService.getText().toString().equals("-- Select Type of Service --")
+                            && !howOldIsTheCompany.getText().toString().equals("-- Select Tenure of the Company --")
+                            && !annualTurnover.getText().toString().equals("-- Select Annual Turnover --") &&
+                            !addressProof.getText().toString().equals("-- Select Address Proof --")) {
+                        submitCompanyInfo.setBackground(getDrawable(R.drawable.gradient_neocredit));
+                        click = true;
+                    } else {
+                        submitCompanyInfo.setBackgroundColor(getResources().getColor(R.color.colorash));
+                        click = false;
+                    }
+                }
 
             }
             public void onNothingSelected(AdapterView<?> parent) { }
@@ -562,7 +588,7 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
 
     @Override
     public void onBackPressed() {
-       // Toasty.error(getApplicationContext(),"Action Denied. Please proceed forward.",Toasty.LENGTH_SHORT).show();
+        // Toasty.error(getApplicationContext(),"Action Denied. Please proceed forward.",Toasty.LENGTH_SHORT).show();
         super.onBackPressed();
     }
 
@@ -603,8 +629,6 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
         submitCompanyInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
 
 
                 if (click)

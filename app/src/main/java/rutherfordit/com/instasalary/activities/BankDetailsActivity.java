@@ -106,6 +106,8 @@ public class BankDetailsActivity extends AppCompatActivity implements ResponseHa
 
         loader_bank_details = findViewById(R.id.loader_bank_details);
 
+        sharedPrefsManager.setCHECK_PAGE("7");
+
     }
 
     private void request() {
