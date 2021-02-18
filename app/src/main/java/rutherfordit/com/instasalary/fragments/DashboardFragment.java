@@ -91,6 +91,8 @@ public class DashboardFragment extends Fragment {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false);
         recdashboard.setLayoutManager(linearLayoutManager);
 
+        Log.e("dashboard", "init: " + sharedPrefsManager.getAccessToken() );
+
         request();
 
     }
@@ -126,6 +128,7 @@ public class DashboardFragment extends Fragment {
                         model.setUser_id(obj.getString("user_id"));
                         model.setTransacation_enter_date(obj.getString("transacation_enter_date"));
                         model.setJoined_on_human(obj.getString("joined_on_human"));
+                        model.setEligible_amount(obj.getString("eligible_amount"));
 
                         data.add(model);
                     }

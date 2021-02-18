@@ -26,6 +26,7 @@ import android.provider.MediaStore;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -299,7 +300,7 @@ public class SPDocumentUploadActivity extends AppCompatActivity {
 
                 Intent intent4 = new Intent(SPDocumentUploadActivity.this, NormalFilePickActivity.class);
                 intent4.putExtra(Constant.MAX_NUMBER, 1);
-                intent4.putExtra(NormalFilePickActivity.SUFFIX, new String[]{"xlsx", "xls", "doc", "docx", "ppt", "pptx", "pdf"});
+                intent4.putExtra(NormalFilePickActivity.SUFFIX, new String[]{"pdf"});
                 startActivityForResult(intent4, Constant.REQUEST_CODE_PICK_FILE);
                 bottomSheetDialog.cancel();
             }
@@ -511,7 +512,7 @@ public class SPDocumentUploadActivity extends AppCompatActivity {
                                 text_sp_pan.setText(filename + ".png");
                                 loader_sp_pan.setVisibility(View.GONE);
                                 Toasty.info(getApplicationContext(), "Pan Uploaded", Toast.LENGTH_SHORT).show();
-
+                                getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                                 if ( registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
                                  && sla_uploaded && invoices_uploaded && rental_uploaded && itr_uploaded )
                                 {
@@ -536,7 +537,7 @@ public class SPDocumentUploadActivity extends AppCompatActivity {
                                 text_sp_adhar.setText(filename + ".png");
                                 loader_sp_adhar.setVisibility(View.GONE);
                                 Toasty.success(getApplicationContext(), "Adhar Uploaded", Toast.LENGTH_SHORT).show();
-
+                                getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                                 if ( registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
                                         && sla_uploaded && invoices_uploaded && rental_uploaded && itr_uploaded )
                                 {
@@ -561,7 +562,7 @@ public class SPDocumentUploadActivity extends AppCompatActivity {
                                 text_sp_registrationProof.setText(filename + ".png");
                                 loader_sp_registrationProof.setVisibility(View.GONE);
                                 Toasty.info(getApplicationContext(), "Registration Proof Uploaded", Toast.LENGTH_SHORT).show();
-
+                                getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                                 if ( registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
                                         && sla_uploaded && invoices_uploaded && rental_uploaded && itr_uploaded )
                                 {
@@ -585,7 +586,7 @@ public class SPDocumentUploadActivity extends AppCompatActivity {
                                 text_sp_bankStatement.setText(filename + ".png");
                                 loader_sp_bankStatement.setVisibility(View.GONE);
                                 Toasty.info(getApplicationContext(), "Bank Statement Uploaded", Toast.LENGTH_SHORT).show();
-
+                                getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                                 if ( registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
                                         && sla_uploaded && invoices_uploaded && rental_uploaded && itr_uploaded )
                                 {
@@ -609,7 +610,7 @@ public class SPDocumentUploadActivity extends AppCompatActivity {
                                 text_sp_gstr.setText(filename + ".png");
                                 loader_sp_gstr.setVisibility(View.GONE);
                                 Toasty.info(getApplicationContext(), "Gstr Uploaded", Toast.LENGTH_SHORT).show();
-
+                                getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                                 if ( registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
                                         && sla_uploaded && invoices_uploaded && rental_uploaded && itr_uploaded )
                                 {
@@ -633,7 +634,7 @@ public class SPDocumentUploadActivity extends AppCompatActivity {
                                 text_sp_sla.setText(filename + ".png");
                                 loader_sp_sla.setVisibility(View.GONE);
                                 Toasty.info(getApplicationContext(), "Sla Uploaded", Toast.LENGTH_SHORT).show();
-
+                                getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                                 if ( registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
                                         && sla_uploaded && invoices_uploaded && rental_uploaded && itr_uploaded )
                                 {
@@ -657,7 +658,7 @@ public class SPDocumentUploadActivity extends AppCompatActivity {
                                 text_sp_invoice.setText(filename + ".png");
                                 loader_sp_invoice.setVisibility(View.GONE);
                                 Toasty.info(getApplicationContext(), "Invoice Uploaded", Toast.LENGTH_SHORT).show();
-
+                                getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                                 if ( registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
                                         && sla_uploaded && invoices_uploaded && rental_uploaded && itr_uploaded )
                                 {
@@ -681,7 +682,7 @@ public class SPDocumentUploadActivity extends AppCompatActivity {
                                 text_sp_rentAggrement.setText(filename + ".png");
                                 loader_sp_rentAggrement.setVisibility(View.GONE);
                                 Toasty.info(getApplicationContext(), "Rent Agreement Uploaded", Toast.LENGTH_SHORT).show();
-
+                                getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                                 if ( registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
                                         && sla_uploaded && invoices_uploaded && rental_uploaded && itr_uploaded )
                                 {
@@ -705,7 +706,7 @@ public class SPDocumentUploadActivity extends AppCompatActivity {
                                 text_sp_itr.setText(filename + ".png");
                                 loader_sp_itr.setVisibility(View.GONE);
                                 Toasty.info(getApplicationContext(), "Itr Uploaded", Toast.LENGTH_SHORT).show();
-
+                                getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                                 if ( registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
                                         && sla_uploaded && invoices_uploaded && rental_uploaded && itr_uploaded )
                                 {
@@ -732,38 +733,47 @@ public class SPDocumentUploadActivity extends AppCompatActivity {
 
         switch (status) {
             case "pan":
+                getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                 loader_sp_pan.setVisibility(View.VISIBLE);
                 code = "8";
                 break;
             case "adhar":
+                getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                 loader_sp_adhar.setVisibility(View.VISIBLE);
                 code = "1";
                 break;
             case "registration":
+                getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                 loader_sp_registrationProof.setVisibility(View.VISIBLE);
                 code = "10";
                 break;
             case "bankstatement":
+                getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                 loader_sp_bankStatement.setVisibility(View.VISIBLE);
                 code = "11";
                 break;
             case "gstr":
+                getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                 loader_sp_gstr.setVisibility(View.VISIBLE);
                 code = "12";
                 break;
             case "sla":
+                getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                 loader_sp_sla.setVisibility(View.VISIBLE);
                 code = "13";
                 break;
             case "invoice":
+                getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                 loader_sp_invoice.setVisibility(View.VISIBLE);
                 code = "14";
                 break;
             case "rentaggrement":
+                getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                 loader_sp_rentAggrement.setVisibility(View.VISIBLE);
                 code = "15";
                 break;
             case "itr":
+                getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                 loader_sp_itr.setVisibility(View.VISIBLE);
                 code = "16";
                 break;
@@ -823,7 +833,7 @@ public class SPDocumentUploadActivity extends AppCompatActivity {
                                 text_sp_pan.setText(Pdf_name);
                                 image_sp_pan.setImageDrawable(getResources().getDrawable(R.drawable.pdfseticon));
                                 loader_sp_pan.setVisibility(View.GONE);
-
+                                getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                                 if ( registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
                                         && sla_uploaded && invoices_uploaded && rental_uploaded && itr_uploaded )
                                 {
@@ -844,7 +854,7 @@ public class SPDocumentUploadActivity extends AppCompatActivity {
                                 text_sp_adhar.setText(Pdf_name);
                                 image_sp_adhar.setImageDrawable(getResources().getDrawable(R.drawable.pdfseticon));
                                 loader_sp_adhar.setVisibility(View.GONE);
-
+                                getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                                 if ( registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
                                         && sla_uploaded && invoices_uploaded && rental_uploaded && itr_uploaded )
                                 {
@@ -865,7 +875,7 @@ public class SPDocumentUploadActivity extends AppCompatActivity {
                                 text_sp_registrationProof.setText(Pdf_name);
                                 image_sp_registrationProof.setImageDrawable(getResources().getDrawable(R.drawable.pdfseticon));
                                 loader_sp_registrationProof.setVisibility(View.GONE);
-
+                                getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                                 if ( registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
                                         && sla_uploaded && invoices_uploaded && rental_uploaded && itr_uploaded )
                                 {
@@ -886,7 +896,7 @@ public class SPDocumentUploadActivity extends AppCompatActivity {
                                 text_sp_bankStatement.setText(Pdf_name);
                                 image_sp_bankStatement.setImageDrawable(getResources().getDrawable(R.drawable.pdfseticon));
                                 loader_sp_bankStatement.setVisibility(View.GONE);
-
+                                getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                                 if ( registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
                                         && sla_uploaded && invoices_uploaded && rental_uploaded && itr_uploaded )
                                 {
@@ -907,7 +917,7 @@ public class SPDocumentUploadActivity extends AppCompatActivity {
                                 text_sp_gstr.setText(Pdf_name);
                                 image_sp_gstr.setImageDrawable(getResources().getDrawable(R.drawable.pdfseticon));
                                 loader_sp_gstr.setVisibility(View.GONE);
-
+                                getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                                 if ( registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
                                         && sla_uploaded && invoices_uploaded && rental_uploaded && itr_uploaded )
                                 {
@@ -928,7 +938,7 @@ public class SPDocumentUploadActivity extends AppCompatActivity {
                                 text_sp_sla.setText(Pdf_name);
                                 image_sp_sla.setImageDrawable(getResources().getDrawable(R.drawable.pdfseticon));
                                 loader_sp_sla.setVisibility(View.GONE);
-
+                                getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                                 if ( registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
                                         && sla_uploaded && invoices_uploaded && rental_uploaded && itr_uploaded )
                                 {
@@ -949,7 +959,7 @@ public class SPDocumentUploadActivity extends AppCompatActivity {
                                 text_sp_invoice.setText(Pdf_name);
                                 image_sp_invoice.setImageDrawable(getResources().getDrawable(R.drawable.pdfseticon));
                                 loader_sp_invoice.setVisibility(View.GONE);
-
+                                getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                                 if ( registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
                                         && sla_uploaded && invoices_uploaded && rental_uploaded && itr_uploaded )
                                 {
@@ -970,7 +980,7 @@ public class SPDocumentUploadActivity extends AppCompatActivity {
                                 text_sp_rentAggrement.setText(Pdf_name);
                                 image_sp_rentAggrement.setImageDrawable(getResources().getDrawable(R.drawable.pdfseticon));
                                 loader_sp_rentAggrement.setVisibility(View.GONE);
-
+                                getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                                 if ( registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
                                         && sla_uploaded && invoices_uploaded && rental_uploaded && itr_uploaded )
                                 {
@@ -991,7 +1001,7 @@ public class SPDocumentUploadActivity extends AppCompatActivity {
                                 text_sp_itr.setText(Pdf_name);
                                 image_sp_itr.setImageDrawable(getResources().getDrawable(R.drawable.pdfseticon));
                                 loader_sp_itr.setVisibility(View.GONE);
-
+                                getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                                 if ( registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
                                         && sla_uploaded && invoices_uploaded && rental_uploaded && itr_uploaded )
                                 {
@@ -1011,4 +1021,9 @@ public class SPDocumentUploadActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+        Toast.makeText(getApplicationContext(),"Action Denied.", Toast.LENGTH_SHORT).show();
+       // super.onBackPressed();
+    }
 }

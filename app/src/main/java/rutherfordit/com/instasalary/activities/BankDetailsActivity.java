@@ -77,6 +77,12 @@ public class BankDetailsActivity extends AppCompatActivity implements ResponseHa
     }*/
 
     @Override
+    public void onBackPressed() {
+        Toasty.error(getApplicationContext(),"Action Denied. Please proceed forward.",Toasty.LENGTH_SHORT).show();
+        // super.onBackPressed();
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bank_details);
@@ -127,7 +133,7 @@ public class BankDetailsActivity extends AppCompatActivity implements ResponseHa
                 try {
                     String verified = response.getString("verified");
 
-                    if(verified == "true"){
+                    if(verified.equals("true")){
                         bankApi();
                     }
                 } catch (JSONException e) {
@@ -198,13 +204,6 @@ public class BankDetailsActivity extends AppCompatActivity implements ResponseHa
 
             }
         }
-    }
-
-    @Override
-    public void onBackPressed()
-
-    {
-        super.onBackPressed();
     }
 
     private void textChangeListeners()
@@ -327,8 +326,8 @@ public class BankDetailsActivity extends AppCompatActivity implements ResponseHa
                   //  blurall();
                     loader_bank_details.setVisibility(View.VISIBLE);
 
-                  //  bankApi();
-                    request();
+                    bankApi();
+                   // request();
                 }
                 else
                 {

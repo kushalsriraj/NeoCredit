@@ -196,6 +196,7 @@ public class DirectorDetails extends AppCompatActivity {
                     pl2_before_details.setVisibility(View.GONE);
                     pl2_after_details.setVisibility(View.VISIBLE);
                     Log.e("dir2", "onActivityResult: " + dir2 );
+                    add_director2.setClickable(false);
 
                     if (dir1 && dir2)
                     {
@@ -210,7 +211,7 @@ public class DirectorDetails extends AppCompatActivity {
                     pp1_before_details.setVisibility(View.GONE);
                     pp1_after_details.setVisibility(View.VISIBLE);
                     Log.e("part1", "onActivityResult: " + part1 );
-
+                    add_partner1.setClickable(false);
                     if (part1 && part2)
                     {
                         Toast.makeText(getApplicationContext(),"Partner 1 & 2 details Uploaded.",Toast.LENGTH_SHORT).show();
@@ -222,7 +223,7 @@ public class DirectorDetails extends AppCompatActivity {
                     pp2_before_details.setVisibility(View.GONE);
                     pp2_after_details.setVisibility(View.VISIBLE);
                     Log.e("part2", "onActivityResult: " + part2 );
-
+                    add_partner2.setClickable(false);
                     if (part1 && part2)
                     {
                         partnerButton.setBackground(getDrawable(R.drawable.gradient_neocredit));

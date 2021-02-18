@@ -121,4 +121,14 @@ public class LoanListModel {
     String id;
     String user_id;
     String company_id;
+
+    public String getEligible_amount() {
+        return eligible_amount;
+    }
+
+    public void setEligible_amount(String eligible_amount) {
+        this.eligible_amount = eligible_amount;
+    }
+
+    String eligible_amount;
 }

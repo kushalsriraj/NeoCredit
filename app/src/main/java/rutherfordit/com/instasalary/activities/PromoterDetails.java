@@ -792,6 +792,25 @@ public class PromoterDetails extends AppCompatActivity implements DatePickerDial
             public void onClick(View v) {
                 if (click) {
 
+                    String dir_part_id="";
+
+                    if(getid.equals("1"))
+                    {
+                        dir_part_id = "1";
+                    }
+                    else if(getid.equals("2"))
+                    {
+                        dir_part_id = "2";
+                    }
+                    else if(getid.equals("3"))
+                    {
+                        dir_part_id = "1";
+                    }
+                    else if(getid.equals("4"))
+                    {
+                        dir_part_id = "2";
+                    }
+
                     loader_promoter.setVisibility(View.VISIBLE);
 
                     JSONObject jsonObjectBody = new JSONObject();
@@ -806,7 +825,7 @@ public class PromoterDetails extends AppCompatActivity implements DatePickerDial
                         jsonObjectBody.put("current_address_proof", dir_addressproof.getText().toString());
                         jsonObjectBody.put("mobile_number", dir_mobile.getText().toString());
                         jsonObjectBody.put("user_type", sharedPrefsManager.getSegment());
-                        jsonObjectBody.put("dirct_part_type", getid);
+                        jsonObjectBody.put("dirct_part_type", dir_part_id);
                         jsonObjectBody.put("company_id", sharedPrefsManager.getCOMPANY_ID());
 
 

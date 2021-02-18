@@ -73,7 +73,7 @@ public class HomeActivity extends AppCompatActivity implements LoadDetailedData,
     View headerview;
     LinearLayout gotoprofile, gotosettings, gotorefer, gotosupport, gotodisclaimer, gototerms, gotoabout, logout;
     String UserAccessToken;
-    CircleImageView profile_image;
+    ImageView profile_image;
     JSONObject data;
     SharedPrefsManager sharedPrefsManager;
     String conf = "";

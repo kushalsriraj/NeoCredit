@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.AuthFailureError;
@@ -69,10 +70,38 @@ public class DashBoardAdapter extends RecyclerView.Adapter<DashBoardAdapter.MyVi
 
         holder.dash_heading.setText(model.getApplication_number());
 
-        String auth_ok = model.getApplication_status();
+        String eligible = model.getEligible_amount();
+
+        Log.e("eligible", "onBindViewHolder: " + eligible );
+
+        if (model.getMaker_status().equals("3"))
+        {
+            holder.application_status.setBackgroundColor(ContextCompat.getColor(context, R.color.red));
+            holder.application_status.setTextColor(ContextCompat.getColor(context,R.color.white));
+            holder.application_status.setText("Loan Rejected");
+        }
+        else {
+            holder.application_status.setBackgroundColor(ContextCompat.getColor(context, R.color.orange));
+            holder.application_status.setTextColor(ContextCompat.getColor(context,R.color.white));
+            holder.application_status.setText("Under Review");
+        }
+
+        if (model.getEligible_amount().equals(null))
+        {
+            holder.dash_eligible_amount.setText("Will be updated..");
+        }
+        else
+        {
+            holder.dash_eligible_amount.setText(model.getEligible_amount());
+        }
+
+        String auth_ok = model.getAuthoriser_status();
 
         if  (auth_ok.equals("1"))
         {
+            holder.application_status.setBackgroundColor(ContextCompat.getColor(context, R.color.neogreen));
+            holder.application_status.setTextColor(ContextCompat.getColor(context,R.color.white));
+            holder.application_status.setText("Approved");
             holder.swipe_to_disburse.setVisibility(View.VISIBLE);
         }
         else if (auth_ok.equals("0"))
@@ -82,9 +111,9 @@ public class DashBoardAdapter extends RecyclerView.Adapter<DashBoardAdapter.MyVi
 
         String appstatus = model.getApplication_status();
 
-        if (appstatus.equals("1"))
+        /*if (appstatus.equals("1"))
         {
-            holder.application_status.setText("Maker Approved.");
+            holder.application_status.setText("Under Review");
         }
         else if  (appstatus.equals("2"))
         {
@@ -92,7 +121,7 @@ public class DashBoardAdapter extends RecyclerView.Adapter<DashBoardAdapter.MyVi
         }else if  (appstatus.equals("3"))
         {
             holder.application_status.setText("Authorizer Approved.");
-        }
+        }*/
 
         holder.dash_amount.setText(model.getAmount());
         holder.dash_lan.setText(model.getId());
@@ -166,7 +195,7 @@ public class DashBoardAdapter extends RecyclerView.Adapter<DashBoardAdapter.MyVi
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
-        TextView dash_heading, dash_date, dash_amount, dash_repay, application_status,dash_lan;
+        TextView dash_heading, dash_date, dash_amount, dash_repay, application_status,dash_lan,dash_eligible_amount;
         SlideToActView swipe_to_disburse;
 
         public MyViewHolder(@NonNull View itemView) {
@@ -179,7 +208,7 @@ public class DashBoardAdapter extends RecyclerView.Adapter<DashBoardAdapter.MyVi
             dash_amount = itemView.findViewById(R.id.dash_amount);
             dash_date = itemView.findViewById(R.id.dash_date);
             application_status = itemView.findViewById(R.id.application_status);
-
+            dash_eligible_amount = itemView.findViewById(R.id.dash_eligible_amount);
         }
     }
 }

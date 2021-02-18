@@ -18,6 +18,7 @@ import android.provider.MediaStore;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -347,6 +348,12 @@ public class PartnershipDocUploadActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void onBackPressed() {
+        Toast.makeText(getApplicationContext(),"Action Denied.", Toast.LENGTH_SHORT).show();
+        // super.onBackPressed();
+    }
+
     public void getImageUri(Bitmap inImage) {
 
         long tsLong = System.currentTimeMillis() / 1000;
@@ -376,30 +383,37 @@ public class PartnershipDocUploadActivity extends AppCompatActivity {
 
         switch (status) {
             case "pan":
+                getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                 loader_partner_pan.setVisibility(View.VISIBLE);
                 code = "8";
                 break;
             case "addressproof":
+                getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                 loader_partner_addressproof.setVisibility(View.VISIBLE);
                 code = "6";
                 break;
             case "registration":
+                getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                 loader_partner_businessproof.setVisibility(View.VISIBLE);
                 code = "10";
                 break;
             case "bankstatement":
+                getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                 loader_partner_bankstatement.setVisibility(View.VISIBLE);
                 code = "11";
                 break;
             case "gstr":
+                getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                 loader_partner_gst.setVisibility(View.VISIBLE);
                 code = "12";
                 break;
             case "invoice":
+                getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                 loader_partner_invoice.setVisibility(View.VISIBLE);
                 code = "14";
                 break;
             case "sla":
+                getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                 loader_partner_sla.setVisibility(View.VISIBLE);
                 code = "13";
                 break;
@@ -457,7 +471,7 @@ public class PartnershipDocUploadActivity extends AppCompatActivity {
                                 text_partner_pan.setText(filename + ".png");
                                 loader_partner_pan.setVisibility(View.GONE);
                                 Toasty.info(getApplicationContext(), "Pan Uploaded", Toast.LENGTH_SHORT).show();
-
+                                getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                                 if (pan_uploaded && addressproof_uploaded && registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
                                         && invoices_uploaded && sla_uploaded )
                                 {
@@ -482,7 +496,7 @@ public class PartnershipDocUploadActivity extends AppCompatActivity {
                                 text_partner_addressproof.setText(filename + ".png");
                                 loader_partner_addressproof.setVisibility(View.GONE);
                                 Toasty.info(getApplicationContext(), "Business Address Proof Uploaded", Toast.LENGTH_SHORT).show();
-
+                                getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                                 if (pan_uploaded && addressproof_uploaded && registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
                                         && invoices_uploaded && sla_uploaded )
                                 {
@@ -507,7 +521,7 @@ public class PartnershipDocUploadActivity extends AppCompatActivity {
                                 text_partner_businessproof.setText(filename + ".png");
                                 loader_partner_businessproof.setVisibility(View.GONE);
                                 Toasty.info(getApplicationContext(), "Registration Proof Uploaded", Toast.LENGTH_SHORT).show();
-
+                                getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                                 if (pan_uploaded && addressproof_uploaded && registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
                                         && invoices_uploaded && sla_uploaded )
                                 {
@@ -531,7 +545,7 @@ public class PartnershipDocUploadActivity extends AppCompatActivity {
                                 text_partner_bankstatement.setText(filename + ".png");
                                 loader_partner_bankstatement.setVisibility(View.GONE);
                                 Toasty.info(getApplicationContext(), "Bank Statement Uploaded", Toast.LENGTH_SHORT).show();
-
+                                getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                                 if (pan_uploaded && addressproof_uploaded && registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
                                         && invoices_uploaded && sla_uploaded )
                                 {
@@ -555,7 +569,7 @@ public class PartnershipDocUploadActivity extends AppCompatActivity {
                                 text_partner_gst.setText(filename + ".png");
                                 loader_partner_gst.setVisibility(View.GONE);
                                 Toasty.info(getApplicationContext(), "Gstr Uploaded", Toast.LENGTH_SHORT).show();
-
+                                getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                                 if (pan_uploaded && addressproof_uploaded && registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
                                         && invoices_uploaded && sla_uploaded )
                                 {
@@ -579,7 +593,7 @@ public class PartnershipDocUploadActivity extends AppCompatActivity {
                                 text_partner_invoice.setText(filename + ".png");
                                 loader_partner_invoice.setVisibility(View.GONE);
                                 Toasty.info(getApplicationContext(), "Invoice Uploaded", Toast.LENGTH_SHORT).show();
-
+                                getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                                 if (pan_uploaded && addressproof_uploaded && registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
                                         && invoices_uploaded && sla_uploaded )
                                 {
@@ -603,7 +617,7 @@ public class PartnershipDocUploadActivity extends AppCompatActivity {
                                 text_partner_sla.setText(filename + ".png");
                                 loader_partner_sla.setVisibility(View.GONE);
                                 Toasty.info(getApplicationContext(), "Sla Uploaded", Toast.LENGTH_SHORT).show();
-
+                                getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                                 if (pan_uploaded && addressproof_uploaded && registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
                                         && invoices_uploaded && sla_uploaded )
                                 {
@@ -630,30 +644,37 @@ public class PartnershipDocUploadActivity extends AppCompatActivity {
 
         switch (status) {
             case "pan":
+                getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                 loader_partner_pan.setVisibility(View.VISIBLE);
                 code = "8";
                 break;
             case "addressproof":
+                getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                 loader_partner_addressproof.setVisibility(View.VISIBLE);
                 code = "6";
                 break;
             case "registration":
+                getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                 loader_partner_businessproof.setVisibility(View.VISIBLE);
                 code = "10";
                 break;
             case "bankstatement":
+                getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                 loader_partner_bankstatement.setVisibility(View.VISIBLE);
                 code = "11";
                 break;
             case "gstr":
+                getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                 loader_partner_gst.setVisibility(View.VISIBLE);
                 code = "12";
                 break;
             case "invoice":
+                getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                 loader_partner_invoice.setVisibility(View.VISIBLE);
                 code = "14";
                 break;
             case "sla":
+                getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                 loader_partner_sla.setVisibility(View.VISIBLE);
                 code = "13";
                 break;
@@ -713,7 +734,7 @@ public class PartnershipDocUploadActivity extends AppCompatActivity {
                                 text_partner_pan.setText(Pdf_name);
                                 image_partner_pan.setImageDrawable(getResources().getDrawable(R.drawable.pdfseticon));
                                 loader_partner_pan.setVisibility(View.GONE);
-
+                                getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                                 if (pan_uploaded && addressproof_uploaded && registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
                                         && invoices_uploaded && sla_uploaded )
                                 {
@@ -734,7 +755,7 @@ public class PartnershipDocUploadActivity extends AppCompatActivity {
                                 text_partner_addressproof.setText(Pdf_name);
                                 image_partner_addressproof.setImageDrawable(getResources().getDrawable(R.drawable.pdfseticon));
                                 loader_partner_addressproof.setVisibility(View.GONE);
-
+                                getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                                 if (pan_uploaded && addressproof_uploaded && registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
                                         && invoices_uploaded && sla_uploaded )
                                 {
@@ -755,7 +776,7 @@ public class PartnershipDocUploadActivity extends AppCompatActivity {
                                 text_partner_businessproof.setText(Pdf_name);
                                 image_partner_businessproof.setImageDrawable(getResources().getDrawable(R.drawable.pdfseticon));
                                 loader_partner_businessproof.setVisibility(View.GONE);
-
+                                getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                                 if (pan_uploaded && addressproof_uploaded && registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
                                         && invoices_uploaded && sla_uploaded )
                                 {
@@ -776,7 +797,7 @@ public class PartnershipDocUploadActivity extends AppCompatActivity {
                                 text_partner_bankstatement.setText(Pdf_name);
                                 image_partner_bankstatement.setImageDrawable(getResources().getDrawable(R.drawable.pdfseticon));
                                 loader_partner_bankstatement.setVisibility(View.GONE);
-
+                                getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                                 if (pan_uploaded && addressproof_uploaded && registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
                                         && invoices_uploaded && sla_uploaded )
                                 {
@@ -797,7 +818,7 @@ public class PartnershipDocUploadActivity extends AppCompatActivity {
                                 text_partner_gst.setText(Pdf_name);
                                 image_partner_gst.setImageDrawable(getResources().getDrawable(R.drawable.pdfseticon));
                                 loader_partner_gst.setVisibility(View.GONE);
-
+                                getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                                 if (pan_uploaded && addressproof_uploaded && registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
                                         && invoices_uploaded && sla_uploaded )
                                 {
@@ -818,7 +839,7 @@ public class PartnershipDocUploadActivity extends AppCompatActivity {
                                 text_partner_invoice.setText(Pdf_name);
                                 image_partner_invoice.setImageDrawable(getResources().getDrawable(R.drawable.pdfseticon));
                                 loader_partner_invoice.setVisibility(View.GONE);
-
+                                getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                                 if (pan_uploaded && addressproof_uploaded && registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
                                         && invoices_uploaded && sla_uploaded )
                                 {
@@ -839,7 +860,7 @@ public class PartnershipDocUploadActivity extends AppCompatActivity {
                                 text_partner_sla.setText(Pdf_name);
                                 image_partner_sla.setImageDrawable(getResources().getDrawable(R.drawable.pdfseticon));
                                 loader_partner_sla.setVisibility(View.GONE);
-
+                                getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                                 if (pan_uploaded && addressproof_uploaded && registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
                                         && invoices_uploaded && sla_uploaded )
                                 {

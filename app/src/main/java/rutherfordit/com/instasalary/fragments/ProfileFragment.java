@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -46,7 +47,7 @@ public class ProfileFragment extends Fragment {
 
     ProgressDialog progressBar;
     CardView loader_profile;
-    CircleImageView img;
+    ImageView img;
     View v;
     SharedPreferences sharedPreferences;
     String UserAccessToken;
@@ -99,7 +100,7 @@ public class ProfileFragment extends Fragment {
         myProfileDirectorModels = new ArrayList<>();
 
         sharedPrefsManager = new SharedPrefsManager(getContext());
-        token = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIyIiwianRpIjoiZDhiMGJhYjQzMmY0ZGNmYzExZjgwZDQ1MDNhOTVjMTljMjkwMjc2NjlhMTdlNWE0NzkxZGQxOWFjOWZiOGM0N2I0Zjg0YTE0Yzg3MzY1MzUiLCJpYXQiOjE2MTMxMjM1OTcsIm5iZiI6MTYxMzEyMzU5NywiZXhwIjoxNjQ0NjU5NTk3LCJzdWIiOiIyNiIsInNjb3BlcyI6WyIqIl19.As4N8G7d55PikPs9XGVRFv1X1LywpQyUVikfXIvxrNdLpi_W0KRq6T7DTM4dWKM2SN9wkZP15Bny_WwN4fXBrDol1M84dvjT_Hs7nQwxKNrFBv3FU6H5quedwwYrkI-F-RXanmXyS4wVOSdo44M3ArdxyA4GBvoFMa4MfmUx3lpjUN-X4lnAZ4_MBzQ06sw0rskI9VdfEAFPHHRVLbYsPYgV89T4sM5N0OZJ7fVvc4xJv8uvh-onv7reCFwZ-d9gEWNTmlmEzIxlfdzsSlj5Q_u4JfLF4g4gT_y_0SJuk2tyir3ml4DAawfa4EnGDPh1ITt4DfVNzb0iI8z0aRZLAOEPxbpkM8bsci-HucnSe4ZoQOkFyd49fnX2R_dLrgEsOn2VFgOvhgPPFg7VohFAZNpG5zQiA1po2QShIBIyxbXXV6zabxeHi4l7vekLd0jgNAM1fH7jfbGRCyl_HiTA-_HQYS6ZxS75hajcb0RRmnWmgRMp7wZev28UQVFQpj9DWfhhcEWKPB_GCTZhJSFOYc-XvjKJRpUI4kRosZ86cInKgbNW6BZ75b_lJK-Iegnz_lLvUpa3pd1hOQf5DijA3SIZZPzN2C4gg2Cvlq1-RUQsoCOFv7HlzPAqkUzWgivZIl6fYIyQ-3ChwYQTMkXlSQ8tWcapEFMDeaqgkRR6BlA";
+       // token = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIyIiwianRpIjoiZDhiMGJhYjQzMmY0ZGNmYzExZjgwZDQ1MDNhOTVjMTljMjkwMjc2NjlhMTdlNWE0NzkxZGQxOWFjOWZiOGM0N2I0Zjg0YTE0Yzg3MzY1MzUiLCJpYXQiOjE2MTMxMjM1OTcsIm5iZiI6MTYxMzEyMzU5NywiZXhwIjoxNjQ0NjU5NTk3LCJzdWIiOiIyNiIsInNjb3BlcyI6WyIqIl19.As4N8G7d55PikPs9XGVRFv1X1LywpQyUVikfXIvxrNdLpi_W0KRq6T7DTM4dWKM2SN9wkZP15Bny_WwN4fXBrDol1M84dvjT_Hs7nQwxKNrFBv3FU6H5quedwwYrkI-F-RXanmXyS4wVOSdo44M3ArdxyA4GBvoFMa4MfmUx3lpjUN-X4lnAZ4_MBzQ06sw0rskI9VdfEAFPHHRVLbYsPYgV89T4sM5N0OZJ7fVvc4xJv8uvh-onv7reCFwZ-d9gEWNTmlmEzIxlfdzsSlj5Q_u4JfLF4g4gT_y_0SJuk2tyir3ml4DAawfa4EnGDPh1ITt4DfVNzb0iI8z0aRZLAOEPxbpkM8bsci-HucnSe4ZoQOkFyd49fnX2R_dLrgEsOn2VFgOvhgPPFg7VohFAZNpG5zQiA1po2QShIBIyxbXXV6zabxeHi4l7vekLd0jgNAM1fH7jfbGRCyl_HiTA-_HQYS6ZxS75hajcb0RRmnWmgRMp7wZev28UQVFQpj9DWfhhcEWKPB_GCTZhJSFOYc-XvjKJRpUI4kRosZ86cInKgbNW6BZ75b_lJK-Iegnz_lLvUpa3pd1hOQf5DijA3SIZZPzN2C4gg2Cvlq1-RUQsoCOFv7HlzPAqkUzWgivZIl6fYIyQ-3ChwYQTMkXlSQ8tWcapEFMDeaqgkRR6BlA";
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false);
         personalDeailsRec.setLayoutManager(linearLayoutManager);
@@ -185,7 +186,7 @@ public class ProfileFragment extends Fragment {
                     HashMap<String, String> headers = new HashMap<String, String>();
                     headers.put("Content-Type", "application/json");
                     headers.put("Accept", "application/json");
-                    headers.put("Authorization", token);
+                    headers.put("Authorization", sharedPrefsManager.getAccessToken());
 
                     return headers;
                 }

@@ -33,6 +33,7 @@ import com.google.android.libraries.places.api.model.Place;
 import com.google.android.libraries.places.api.net.PlacesClient;
 import com.google.android.libraries.places.widget.Autocomplete;
 import com.google.android.libraries.places.widget.AutocompleteActivity;
+import com.google.android.libraries.places.widget.model.AutocompleteActivityMode;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -41,6 +42,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -61,7 +63,7 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
     List<Address> addresses;
     Geocoder geocoder;
     private static final String TAG = "company";
-    String apikey = "AIzaSyAd8dm_HBq2pzHhVvzzD9dqBwR3K88jCEk";
+    String apikey = "AIzaSyDLJ5rQ5PzE-28JLE4VgAPCmSVFiy0jS38";
     PlacesClient placesClient;
     TextView invalidPan, invalidEmail;
     SharedPrefsManager sharedPrefsManager;
@@ -77,7 +79,8 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
     private String howOldIsTheCompanyNumber;
     TextInputLayout panCardLayput, mobile_number_company;
     CardView loader_company_details;
-    String check = "1";
+    String check = "1", lat,longi;
+    TextView Search_place;
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -91,14 +94,12 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
                 {
                     place = Autocomplete.getPlaceFromIntent(data);
                 }
-                Log.i(TAG, "Place: " + place.getName() + ", " + place.getId() + place.getLatLng() + place.getAddress());
-                /*Select_Place.setVisibility(View.GONE);
-                tip_search.setVisibility(View.GONE);
-                re_search.setVisibility(View.VISIBLE);*/
-                // Select_Place.setText("Name : " + place.getName() + "\n" + "LatLng" + place.getLatLng() +"\n" + "Address" + place.getAddress()+ "Phone" + place.getPhoneNumber());
 
-                /*entercompanyname.setText(place.getName());
-                entercompanystreet.setText(place.getAddress());*/
+                company_name.setText(place.getName());
+                company_address.setText(place.getAddress());
+                businessLandline.setText(place.getPhoneNumber());
+
+                Log.i(TAG, "address:  " + place.getAddress() + " Phone no " + place.getPhoneNumber() );
 
                 String latlng = String.valueOf(place.getLatLng());
 
@@ -108,8 +109,8 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
 
                 String[] namesList = latlng.split(",");
 
-                String lat = namesList[0];
-                String longi = namesList[1];
+                lat = namesList[0];
+                longi = namesList[1];
 
                 Log.e(TAG, "lat " + lat + " long " + longi);
 
@@ -186,7 +187,7 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
         Spinner_annualTurnover = findViewById(R.id.Spinner_annualTurnover);
         Spinner_businessAddressProof = findViewById(R.id.Spinner_businessAddressProof);
         mobile_number = findViewById(R.id.mobile_number);
-
+        Search_place = findViewById(R.id.Search_place);
         loader_company_details = findViewById(R.id.loader_company_details);
 
         panCardLayput = findViewById(R.id.panCardLayput);
@@ -207,14 +208,14 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
             mobile_number_company.setVisibility(View.VISIBLE);
         }
 
-        /*company_name.setOnClickListener(new View.OnClickListener() {
+        Search_place.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 List<Place.Field> fields = Arrays.asList(Place.Field.ID, Place.Field.NAME,Place.Field.LAT_LNG,Place.Field.PHONE_NUMBER,Place.Field.ADDRESS);
-                Intent intent = new Autocomplete.IntentBuilder(AutocompleteActivityMode.OVERLAY, fields).build(getApplicationContext());
+                Intent intent = new Autocomplete.IntentBuilder(AutocompleteActivityMode.OVERLAY, fields).setCountry("IN").build(getApplicationContext());
                 startActivityForResult(intent, AUTOCOMPLETE_REQUEST_CODE);
             }
-        });*/
+        });
 
         onClicks();
         SpinnersSelected();
@@ -559,6 +560,12 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
 
     }
 
+    @Override
+    public void onBackPressed() {
+       // Toasty.error(getApplicationContext(),"Action Denied. Please proceed forward.",Toasty.LENGTH_SHORT).show();
+        super.onBackPressed();
+    }
+
     private void onClicks() {
 
         typeOfService.setOnClickListener(new View.OnClickListener() {
@@ -597,7 +604,7 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
             @Override
             public void onClick(View v) {
 
-                loader_company_details.setVisibility(View.VISIBLE);
+
 
 
                 if (click)
@@ -609,22 +616,26 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
 
                         if (matcher.matches())
                         {
+                            loader_company_details.setVisibility(View.VISIBLE);
                             invalidPan.setVisibility(View.GONE);
                             companyAPI(pancardnumber.getText().toString());
                         }
                         else
                         {
+                            loader_company_details.setVisibility(View.GONE);
                             invalidPan.setVisibility(View.VISIBLE);
                             Toasty.warning(getApplicationContext(), "Pan format invalid", Toasty.LENGTH_LONG).show();
                         }
                     }
                     else
                     {
+                        loader_company_details.setVisibility(View.GONE);
                         companyAPI("ABCDE1234F");
                     }
 
                 } else
                 {
+                    loader_company_details.setVisibility(View.GONE);
                     Toasty.error(getApplicationContext(), "Please Check the fields.", Toasty.LENGTH_SHORT).show();
                 }
             }
@@ -647,6 +658,8 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
             jsonObjectBody.put("email", company_email.getText().toString());
             jsonObjectBody.put("company_address", company_address.getText().toString());
             jsonObjectBody.put("annual_turnover", annualTurnOverNumber);
+            jsonObjectBody.put("latitude",lat);
+            jsonObjectBody.put("longitude",longi);
 
             Log.e("comapanyAPI", "comapanyAPI: " + jsonObjectBody);
 

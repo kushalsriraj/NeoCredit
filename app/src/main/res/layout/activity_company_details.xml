@@ -70,10 +70,19 @@
                 android:textSize="18dp"
                 android:textStyle="bold" />
 
+            <TextView
+                android:layout_marginTop="40dp"
+                android:textSize="14dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Click here to Search for your company!"
+                android:id="@+id/Search_place"
+                android:textColor="#3F51B5"/>
+
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="20dp"
                 android:hint="Company Name">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -166,7 +175,7 @@
                     android:layout_height="wrap_content"
                     android:digits="123-4567890"
                     android:ellipsize="end"
-                    android:maxLength="12"
+                    android:maxLength="18"
                     android:inputType="number"
                     android:singleLine="true" />
 

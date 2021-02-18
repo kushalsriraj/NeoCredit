@@ -111,6 +111,12 @@ public class UploadInvoice extends AppCompatActivity implements ResponseHandler 
 
     }
 
+    @Override
+    public void onBackPressed() {
+        Toasty.error(getApplicationContext(),"Action Denied. Please proceed forward.",Toasty.LENGTH_SHORT).show();
+        // super.onBackPressed();
+    }
+
     private void init() {
         back_credit_req = findViewById(R.id.back_credit_req);
         loader_invoice_upload = findViewById(R.id.loader_invoice_upload);
@@ -122,17 +128,19 @@ public class UploadInvoice extends AppCompatActivity implements ResponseHandler 
         submitInvoice = findViewById(R.id.submitInvoice);
         loader_invoice = findViewById(R.id.loader_invoice);
 
-        dialogBuilder = new AlertDialog.Builder(UploadInvoice.this).create();
+        /*dialogBuilder = new AlertDialog.Builder(UploadInvoice.this).create();
         inflater = this.getLayoutInflater();
         dialogView = inflater.inflate(R.layout.custom_dialog_adhar, null);
         dialogBuilder.setView(dialogView);
-        dialogBuilder.setCancelable(false);
+        dialogBuilder.setCancelable(false);*/
 
+        dialogBuilder = new AlertDialog.Builder(UploadInvoice.this).create();
         View mView =LayoutInflater.from(UploadInvoice.this).inflate(R.layout.success_dialog,null);
         dialogBuilder.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         giffy = mView.findViewById(R.id.giffy);
-
         dialogBuilder.setView(mView);
+        dialogBuilder.setCancelable(false);
+
         ok = mView.findViewById(R.id.ok);
         view = getLayoutInflater().inflate(R.layout.bottomsheetdialog_invoice, null);
         bottomSheetDialog = new BottomSheetDialog(UploadInvoice.this);
