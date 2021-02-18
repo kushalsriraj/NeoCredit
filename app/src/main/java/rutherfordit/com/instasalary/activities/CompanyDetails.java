@@ -670,6 +670,12 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
 
         if (check == "2")
         {
+
+            try {
+                jsonObjectBody.put("companydetails_id", sharedPrefsManager.getCOMPANY_ID());
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
             JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.PATCH, Urls.COMPANY_DETAILS, jsonObjectBody, new Response.Listener<JSONObject>() {
                 @Override
                 public void onResponse(JSONObject response) {
@@ -752,6 +758,7 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
         super.onRestart();
         Log.e("onRestart", "onRestart: " + "onRestart Was Called" );
         check = "2";
+        sharedPrefsManager.getCOMPANY_ID();
     }
 
     @Override
@@ -770,11 +777,5 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
     protected void onStop() {
         super.onStop();
         Log.e("onStop", "onStop: " + "onStop Was Called");
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        Log.e("onDestroy", "onDestroy: " + "onDestroy Was Called");
     }
 }

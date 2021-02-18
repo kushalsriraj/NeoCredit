@@ -10,6 +10,8 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -124,10 +126,18 @@ public class PromoterDetails extends AppCompatActivity implements DatePickerDial
         volleyRequest = new VolleyRequest();
         sharedPrefsManager = new SharedPrefsManager(getApplicationContext());
 
+//        dialogBuilder = new AlertDialog.Builder(PromoterDetails.this).create();
+//        inflater = this.getLayoutInflater();
+//        dialogView = inflater.inflate(R.layout.custom_dialog_adhar, null);
+//        dialogBuilder.setView(dialogView);
+
         dialogBuilder = new AlertDialog.Builder(PromoterDetails.this).create();
-        inflater = this.getLayoutInflater();
-        dialogView = inflater.inflate(R.layout.custom_dialog_adhar, null);
+        View dialogView  =LayoutInflater.from(PromoterDetails.this).inflate(R.layout.custom_dialog_adhar,null);
+        dialogBuilder.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialogBuilder.setView(dialogView);
+        dialogBuilder.setCancelable(false);
+
+
         layout_Adhar = findViewById(R.id.layout_Adhar);
         layout_Adhar.setVisibility(View.GONE);
         submit = dialogView.findViewById(R.id.submit);
