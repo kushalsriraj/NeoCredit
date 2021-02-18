@@ -295,7 +295,7 @@
                         android:layout_marginTop="5dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Last 3years IT Returns"
+                        android:text="Service Level Agreement"
                         android:gravity="center"
                         android:textSize="12dp"
                         android:textColor="@color/black"/>

@@ -129,6 +129,7 @@ public class DashboardFragment extends Fragment {
                         model.setTransacation_enter_date(obj.getString("transacation_enter_date"));
                         model.setJoined_on_human(obj.getString("joined_on_human"));
                         model.setEligible_amount(obj.getString("eligible_amount"));
+                        model.setUser_disbursed(obj.getString("user_disbursed"));
 
                         data.add(model);
                     }

@@ -425,38 +425,47 @@ public class SPDocumentUploadActivity extends AppCompatActivity {
 
         switch (status) {
             case "pan":
+                getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                 loader_sp_pan.setVisibility(View.VISIBLE);
                 code = "8";
                 break;
             case "adhar":
+                getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                 loader_sp_adhar.setVisibility(View.VISIBLE);
                 code = "1";
                 break;
             case "registration":
+                getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                 loader_sp_registrationProof.setVisibility(View.VISIBLE);
-                code = "10";
+                code = "22";
                 break;
             case "bankstatement":
+                getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                 loader_sp_bankStatement.setVisibility(View.VISIBLE);
                 code = "11";
                 break;
             case "gstr":
+                getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                 loader_sp_gstr.setVisibility(View.VISIBLE);
-                code = "12";
+                code = "23";
                 break;
             case "sla":
+                getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                 loader_sp_sla.setVisibility(View.VISIBLE);
                 code = "13";
                 break;
             case "invoice":
+                getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                 loader_sp_invoice.setVisibility(View.VISIBLE);
                 code = "14";
                 break;
             case "rentaggrement":
+                getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                 loader_sp_rentAggrement.setVisibility(View.VISIBLE);
-                code = "15";
+                code = "24";
                 break;
             case "itr":
+                getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                 loader_sp_itr.setVisibility(View.VISIBLE);
                 code = "16";
                 break;
@@ -747,7 +756,7 @@ public class SPDocumentUploadActivity extends AppCompatActivity {
             case "registration":
                 getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                 loader_sp_registrationProof.setVisibility(View.VISIBLE);
-                code = "10";
+                code = "22";
                 break;
             case "bankstatement":
                 getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
@@ -757,7 +766,7 @@ public class SPDocumentUploadActivity extends AppCompatActivity {
             case "gstr":
                 getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                 loader_sp_gstr.setVisibility(View.VISIBLE);
-                code = "12";
+                code = "23";
                 break;
             case "sla":
                 getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
@@ -772,7 +781,7 @@ public class SPDocumentUploadActivity extends AppCompatActivity {
             case "rentaggrement":
                 getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                 loader_sp_rentAggrement.setVisibility(View.VISIBLE);
-                code = "15";
+                code = "24";
                 break;
             case "itr":
                 getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);

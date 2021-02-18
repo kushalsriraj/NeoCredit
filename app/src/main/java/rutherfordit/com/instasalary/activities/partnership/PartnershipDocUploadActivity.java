@@ -392,7 +392,7 @@ public class PartnershipDocUploadActivity extends AppCompatActivity {
             case "addressproof":
                 getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                 loader_partner_addressproof.setVisibility(View.VISIBLE);
-                code = "6";
+                code = "24";
                 break;
             case "registration":
                 getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
@@ -407,7 +407,7 @@ public class PartnershipDocUploadActivity extends AppCompatActivity {
             case "gstr":
                 getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                 loader_partner_gst.setVisibility(View.VISIBLE);
-                code = "12";
+                code = "23";
                 break;
             case "invoice":
                 getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);

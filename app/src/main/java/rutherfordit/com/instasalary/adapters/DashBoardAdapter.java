@@ -72,8 +72,6 @@ public class DashBoardAdapter extends RecyclerView.Adapter<DashBoardAdapter.MyVi
 
         String eligible = model.getEligible_amount();
 
-        Log.e("eligible", "onBindViewHolder: " + eligible );
-
         if (model.getMaker_status().equals("3"))
         {
             holder.application_status.setBackgroundColor(ContextCompat.getColor(context, R.color.red));
@@ -96,8 +94,17 @@ public class DashBoardAdapter extends RecyclerView.Adapter<DashBoardAdapter.MyVi
         }
 
         String auth_ok = model.getAuthoriser_status();
+        String user_disbursed = model.getUser_disbursed();
 
-        if  (auth_ok.equals("1"))
+        if (user_disbursed.equals("1") && auth_ok.equals("1"))
+        {
+            holder.swipe_to_disburse.setVisibility(View.GONE);
+            holder.application_status.setBackgroundColor(ContextCompat.getColor(context, R.color.neogreen));
+            holder.application_status.setTextColor(ContextCompat.getColor(context,R.color.white));
+            holder.application_status.setText("Loan Disbursed");
+        }
+
+        else if (auth_ok.equals("1"))
         {
             holder.application_status.setBackgroundColor(ContextCompat.getColor(context, R.color.neogreen));
             holder.application_status.setTextColor(ContextCompat.getColor(context,R.color.white));
@@ -131,7 +138,7 @@ public class DashBoardAdapter extends RecyclerView.Adapter<DashBoardAdapter.MyVi
             @Override
             public void onSlideComplete(SlideToActView slideToActView) {
 
-                createMandate.create();
+                createMandate.create(model.getEligible_amount(),model.getId());
                // disburseAmount(model.getId());
 
             }

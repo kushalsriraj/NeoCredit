@@ -2,7 +2,21 @@ package rutherfordit.com.instasalary.models;
 
 public class LoanListModel {
 
-
+    String application_number;
+    String amount;
+    String description;
+    String application_status;
+    String maker_status;
+    String authoriser_status;
+    String intrest;
+    String transacation_enter_date;
+    String joined_on;
+    String joined_on_human;
+    String id;
+    String user_id;
+    String company_id;
+    String eligible_amount;
+    String user_disbursed;
 
     public String getId() {
         return id;
@@ -108,20 +122,6 @@ public class LoanListModel {
         this.joined_on_human = joined_on_human;
     }
 
-    String application_number;
-    String amount;
-    String description;
-    String application_status;
-    String maker_status;
-    String authoriser_status;
-    String intrest;
-    String transacation_enter_date;
-    String joined_on;
-    String joined_on_human;
-    String id;
-    String user_id;
-    String company_id;
-
     public String getEligible_amount() {
         return eligible_amount;
     }
@@ -130,5 +130,11 @@ public class LoanListModel {
         this.eligible_amount = eligible_amount;
     }
 
-    String eligible_amount;
+    public String getUser_disbursed() {
+        return user_disbursed;
+    }
+
+    public void setUser_disbursed(String user_disbursed) {
+        this.user_disbursed = user_disbursed;
+    }
 }

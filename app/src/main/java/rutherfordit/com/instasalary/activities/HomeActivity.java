@@ -42,6 +42,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import es.dmoral.toasty.Toasty;
 import rutherfordit.com.instasalary.R;
 import rutherfordit.com.instasalary.extras.SharedPrefsManager;
 import rutherfordit.com.instasalary.extras.Urls;
@@ -77,6 +78,7 @@ public class HomeActivity extends AppCompatActivity implements LoadDetailedData,
     JSONObject data;
     SharedPrefsManager sharedPrefsManager;
     String conf = "";
+    String disburse_id = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -409,18 +411,20 @@ public class HomeActivity extends AppCompatActivity implements LoadDetailedData,
     }
 
     @Override
-    public void create() {
-        createMandateForm();
+    public void create(String amount, String id) {
+        createMandateForm(amount,id);
     }
 
-    private void createMandateForm() {
+    private void createMandateForm(String amount, String id) {
+
+        disburse_id = id;
 
         JSONObject jsonObject = new JSONObject();
 
         JSONObject mandate_obj = new JSONObject();
 
         try {
-            mandate_obj.put("maximum_amount", "26000");
+            mandate_obj.put("maximum_amount", amount);
             mandate_obj.put("instrument_type", "debit");
             mandate_obj.put("first_collection_date", "2021-01-10");
             mandate_obj.put("is_recurring", "false");
@@ -515,6 +519,59 @@ public class HomeActivity extends AppCompatActivity implements LoadDetailedData,
         {
             docUpload();
         }
+        else
+        {
+            disburseAmount(disburse_id);
+        }
+    }
+
+    private void disburseAmount(String id)
+    {
+
+        JSONObject jsonObject = new JSONObject();
+
+        try {
+            jsonObject.put("user_disbursed","1");
+            jsonObject.put("id",id);
+            jsonObject.put("company_id",sharedPrefsManager.getCOMPANY_ID());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, Urls.LOAN_DISBURSE, jsonObject, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+
+                Log.e("disburseapi", "onResponse: " + response );
+
+                try {
+                    Log.e("message", "onResponse: " + response.getString("message") );
+                    Toasty.success(getApplicationContext(),"Loan Disbursed",Toasty.LENGTH_SHORT).show();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e("disburseapi", "onErrorResponse: " + error.getLocalizedMessage() );
+            }
+        }) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("Content-Type", "application/json");
+                params.put("Accept", "application/json");
+                params.put("Authorization",sharedPrefsManager.getAccessToken() );
+                return params;
+            }
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(HomeActivity.this);
+        requestQueue.add(jsonObjectRequest);
+
     }
 
     public void onSigningFailure(String documentId, int code, String response){

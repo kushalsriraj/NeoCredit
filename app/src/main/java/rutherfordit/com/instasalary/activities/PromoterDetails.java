@@ -478,6 +478,7 @@ public class PromoterDetails extends AppCompatActivity implements DatePickerDial
     }
 
     public void onDigioKycFailure(String documentId, String message) {
+        Log.e("onDigioKycFailure", "onDigioKycFailure: " + message );
         Toast.makeText(getApplicationContext(), "onDigioKycFailures:  " + message, Toast.LENGTH_SHORT ).show();
     }
 

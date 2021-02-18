@@ -422,7 +422,7 @@ public class PrivateLimitedDocUploadActivity extends AppCompatActivity {
             case "addressproof":
                 getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                 loader_pvt_addressproof.setVisibility(View.VISIBLE);
-                code = "6";
+                code = "24";
                 break;
             case "registration":
                 getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
@@ -437,7 +437,7 @@ public class PrivateLimitedDocUploadActivity extends AppCompatActivity {
             case "gstr":
                 getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                 loader_pvt_gst.setVisibility(View.VISIBLE);
-                code = "12";
+                code = "23";
                 break;
             case "moa":
                 getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
@@ -457,7 +457,7 @@ public class PrivateLimitedDocUploadActivity extends AppCompatActivity {
             case "itr":
                 getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                 loader_pvt_itreturns.setVisibility(View.VISIBLE);
-                code = "16";
+                code = "13";
                 break;
         }
 
@@ -741,7 +741,7 @@ public class PrivateLimitedDocUploadActivity extends AppCompatActivity {
             case "addressproof":
                 getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                 loader_pvt_addressproof.setVisibility(View.VISIBLE);
-                code = "6";
+                code = "24";
                 break;
             case "registration":
                 getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
@@ -756,7 +756,7 @@ public class PrivateLimitedDocUploadActivity extends AppCompatActivity {
             case "gstr":
                 getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                 loader_pvt_gst.setVisibility(View.VISIBLE);
-                code = "12";
+                code = "23";
                 break;
             case "moa":
                 getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
@@ -776,7 +776,7 @@ public class PrivateLimitedDocUploadActivity extends AppCompatActivity {
             case "itr":
                 getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                 loader_pvt_itreturns.setVisibility(View.VISIBLE);
-                code = "16";
+                code = "13";
                 break;
         }
 
