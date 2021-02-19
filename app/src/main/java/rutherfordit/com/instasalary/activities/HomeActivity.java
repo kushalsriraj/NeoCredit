@@ -1,26 +1,34 @@
 package rutherfordit.com.instasalary.activities;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatRadioButton;
 import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -90,6 +98,14 @@ public class HomeActivity extends AppCompatActivity implements LoadDetailedData,
     EditText enter_adhar_phone;
     Button submit_phone;
     String myphone="",bank_name,bank_acc_no,bank_ifsc;
+    RadioGroup rg1;
+    AppCompatRadioButton thirty;
+    AppCompatRadioButton sixty;
+    AppCompatRadioButton ninety;
+    AlertDialog dialogBuilder1;
+    RelativeLayout SegmentsubmitButton1;
+    AlertDialog dialogBuilder;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -140,11 +156,18 @@ public class HomeActivity extends AppCompatActivity implements LoadDetailedData,
         logout = headerview.findViewById(R.id.logout);
         profile_image = headerview.findViewById(R.id.profile_image);
         name_text = headerview.findViewById(R.id.name_text);
+
         View view = getLayoutInflater().inflate(R.layout.enter_phone_layout, null);
         bottomSheetDialog = new BottomSheetDialog(HomeActivity.this);
         bottomSheetDialog.setContentView(view);
         bottomSheetDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         bottomSheetDialog.setCancelable(false);
+
+        dialogBuilder = new AlertDialog.Builder(HomeActivity.this).create();
+        View popupView =LayoutInflater.from(HomeActivity.this).inflate(R.layout.pop_up_for_days,null);
+        dialogBuilder.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialogBuilder.setView(popupView);
+        dialogBuilder.setCancelable(false);
 
         enter_adhar_phone = view.findViewById(R.id.enter_adhar_phone);
         submit_phone = view.findViewById(R.id.submit_phone);
@@ -158,6 +181,13 @@ public class HomeActivity extends AppCompatActivity implements LoadDetailedData,
         dashboardbutton.setClickable(false);
         loanbutton.setClickable(true);
         faqbutton.setClickable(false);
+
+        rg1 = popupView.findViewById(R.id.radio_group_transfer1);
+        thirty = popupView.findViewById(R.id.thirty);
+        sixty = popupView.findViewById(R.id.sixty);
+        ninety = popupView.findViewById(R.id.ninety);
+        SegmentsubmitButton1 = popupView.findViewById(R.id.SegmentsubmitButton1);
+
 
         gotoprofile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -542,12 +572,107 @@ public class HomeActivity extends AppCompatActivity implements LoadDetailedData,
                 {
                     myphone = enter_adhar_phone.getText().toString();
                     bottomSheetDialog.dismiss();
-                    createMandateForm(amount,id);
+                    popUpForDays(amount,id);
+                  //  createMandateForm(amount,id);
                 }
                 else
                 {
                     Toast.makeText(getApplicationContext(),"Please Enter a valid phone number",Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+
+    }
+
+    @SuppressLint("RestrictedApi")
+    private void popUpForDays(String amount, String id) {
+
+        /*dialogBuilder1 = new AlertDialog.Builder(HomeActivity.this).create();
+        View mView = LayoutInflater.from(HomeActivity.this).inflate(R.layout.pop_up_for_days,null);
+        dialogBuilder1.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialogBuilder1.setView(mView);
+        dialogBuilder1.setCancelable(false);*/
+
+        dialogBuilder.show();
+
+
+        if(Build.VERSION.SDK_INT>=21) {
+            ColorStateList colorStateList = new ColorStateList(
+                    new int[][]{
+                            new int[]{-android.R.attr.state_checked},
+                            new int[]{android.R.attr.state_checked}
+                    },
+                    new int[]{
+
+                            Color.rgb(23, 203, 133)
+                            ,Color.rgb(255, 255, 255),
+                    }
+            );
+
+            thirty.setSupportButtonTintList(colorStateList);
+            sixty.setSupportButtonTintList(colorStateList);
+            ninety.setSupportButtonTintList(colorStateList);
+
+            rg1.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+                @SuppressLint("ResourceAsColor")
+                @Override
+                public void onCheckedChanged(RadioGroup group, int checkedId) {
+
+                    if (thirty.isChecked())
+                    {
+                        sharedPrefsManager.setSegment("1");
+                        //SegmentsubmitButton.setBackgroundColor(getResources().getColor(R.color.neopurple));
+                        SegmentsubmitButton1.setBackground(getDrawable(R.drawable.gradient_neocredit));
+
+
+                        thirty.setTextColor(Color.WHITE);
+                        thirty.setBackground(getApplicationContext().getResources().getDrawable(R.drawable.radiobackgroundcolor));
+
+                        sixty.setTextColor(Color.BLACK);
+                        sixty.setBackground(getApplicationContext().getResources().getDrawable(R.drawable.radiobackground));
+
+                        ninety.setTextColor(Color.BLACK);
+                        ninety.setBackground(getApplicationContext().getResources().getDrawable(R.drawable.radiobackground));
+                    }
+                    else if (sixty.isChecked())
+                    {
+                        sharedPrefsManager.setSegment("2");
+
+                        SegmentsubmitButton1.setBackground(getDrawable(R.drawable.gradient_neocredit));
+
+                        sixty.setTextColor(Color.WHITE);
+                        sixty.setBackground(getApplicationContext().getResources().getDrawable(R.drawable.radiobackgroundcolor));
+
+                        ninety.setTextColor(Color.BLACK);
+                        ninety.setBackground(getApplicationContext().getResources().getDrawable(R.drawable.radiobackground));
+
+                        thirty.setTextColor(Color.BLACK);
+                        thirty.setBackground(getApplicationContext().getResources().getDrawable(R.drawable.radiobackground));
+                    }
+
+                    else if (ninety.isChecked())
+                    {
+                        sharedPrefsManager.setSegment("3");
+
+                        SegmentsubmitButton1.setBackground(getDrawable(R.drawable.gradient_neocredit));
+
+                        ninety.setTextColor(Color.WHITE);
+                        ninety.setBackground(getApplicationContext().getResources().getDrawable(R.drawable.radiobackgroundcolor));
+
+                        sixty.setTextColor(Color.BLACK);
+                        sixty.setBackground(getApplicationContext().getResources().getDrawable(R.drawable.radiobackground));
+
+                        thirty.setTextColor(Color.BLACK);
+                        thirty.setBackground(getApplicationContext().getResources().getDrawable(R.drawable.radiobackground));
+                    }
+                }
+            });
+        }
+
+        SegmentsubmitButton1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                createMandateForm(amount,id);
             }
         });
 

@@ -8,27 +8,66 @@
     android:elevation="10dp">
 
     <LinearLayout
-        android:layout_marginBottom="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginBottom="50dp"
+        android:layout_marginTop="30dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <ImageView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/neocreditlogo"
+            android:layout_gravity="center"/>
+
+        <TextView
+            android:paddingLeft="5dp"
+            android:layout_marginTop="50dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/neogreen"
+            android:text="Please Enter Your Aadhar Phone Number"
+            android:textSize="10dp"/>
+
         <EditText
+            android:layout_marginTop="5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/enter_adhar_phone"
             android:hint="Enter Phone Number"
             android:textSize="18dp"
+            android:inputType="number"
+            android:maxLength="10"
             android:textColor="@color/black"/>
 
-        <Button
-            android:id="@+id/submit_phone"
-            android:text="Submit"
-            android:layout_marginTop="20dp"
-            android:layout_gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+        <LinearLayout
+            android:layout_marginTop="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <Button
+                android:layout_marginRight="5dp"
+                android:layout_weight="1"
+                android:id="@+id/cancel_phone"
+                android:text="cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <Button
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1"
+                android:id="@+id/submit_phone"
+                android:text="Submit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+
 
     </LinearLayout>
 

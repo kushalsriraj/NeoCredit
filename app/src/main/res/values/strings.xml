@@ -58,8 +58,8 @@
 
     <string-array name="director_address_proof_array">
         <item>-- Select Address Proof --</item>
-        <item>Aadhar</item>
-        <item>PAN</item>
+        <item>Sale Deed</item>
+        <item>Rent / Lease Agreement</item>
         <item>Utility Bill</item>
     </string-array>
 

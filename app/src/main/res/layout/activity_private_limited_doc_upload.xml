@@ -595,7 +595,7 @@
                         android:layout_marginTop="5dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Upload AOA"
+                        android:text="AOA"
                         android:gravity="center"
                         android:textSize="12dp"
                         android:textColor="@color/black"/>
@@ -666,7 +666,7 @@
                         android:layout_marginTop="5dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Upload MOA"
+                        android:text="MOA"
                         android:gravity="center"
                         android:textSize="12dp"
                         android:textColor="@color/black"/>
@@ -745,7 +745,7 @@
                         android:layout_marginTop="5dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Last 6 Invoices"
+                        android:text="Last 6 Paid Invoices"
                         android:gravity="center"
                         android:textSize="12dp"
                         android:textColor="@color/black"/>
