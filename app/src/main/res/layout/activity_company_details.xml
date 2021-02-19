@@ -93,7 +93,6 @@
                     android:clickable="true"
                     android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz 0123456789 "
                     android:ellipsize="end"
-                    android:fontFamily="@font/lato_regular"
                     android:inputType="textCapWords"
                     android:singleLine="true"
                     android:textSize="14dp" />
@@ -111,7 +110,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
-                    android:fontFamily="@font/lato_regular"
                     android:inputType="textEmailAddress"
                     android:singleLine="true"
                     android:textSize="14dp" />
@@ -212,7 +210,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
-                    android:fontFamily="@font/lato_regular"
                     android:inputType="textCapWords"
                     android:singleLine="true"
                     android:textSize="14dp" />
@@ -238,7 +235,6 @@
                         android:ellipsize="end"
                         android:inputType="textCapWords"
                         android:focusableInTouchMode="false"
-                        android:fontFamily="@font/lato_regular"
                         android:singleLine="true"
                         android:textSize="14dp" />
 
@@ -274,7 +270,7 @@
                         android:ellipsize="end"
                         android:inputType="textCapWords"
                         android:focusableInTouchMode="false"
-                        android:fontFamily="@font/lato_regular"
+
                         android:singleLine="true"
                         android:textSize="14dp" />
 
@@ -310,7 +306,6 @@
                         android:ellipsize="end"
                         android:inputType="textCapWords"
                         android:focusableInTouchMode="false"
-                        android:fontFamily="@font/lato_regular"
                         android:singleLine="true"
                         android:textSize="14dp" />
 
@@ -346,7 +341,6 @@
                         android:ellipsize="end"
                         android:inputType="textCapWords"
                         android:focusableInTouchMode="false"
-                        android:fontFamily="@font/lato_regular"
                         android:singleLine="true"
                         android:textSize="14dp" />
 

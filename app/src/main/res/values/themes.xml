@@ -35,11 +35,11 @@
     </style>-->
 
     <style name="TextViewStyle" parent="android:Widget.TextView">
-        <item name="android:fontFamily">@font/montserratregular</item>
+        <item name="android:fontFamily">@font/lato_regular</item>
     </style>
 
     <style name="ButtonStyle" parent="android:Widget.Holo.Button">
-        <item name="android:fontFamily">@font/montserratregular</item>
+        <item name="android:fontFamily">@font/lato_regular</item>
         <item name="background">@color/neopurple</item>
     </style>
 
@@ -48,12 +48,12 @@
     </style>
 
     <style name="MyCustomTextInputStyle" parent="Widget.Design.TextInputLayout">
-        <item name="android:fontFamily">@font/montserratregular</item>
+        <item name="android:fontFamily">@font/lato_regular</item>
         <item name="android:textSize">15dp</item>
     </style>
 
     <style name="MyCustomEditTextStyle" parent="Widget.AppCompat.EditText">
-        <item name="android:fontFamily">@font/montserratregular</item>
+        <item name="android:fontFamily">@font/lato_regular</item>
         <item name="android:textSize">15dp</item>
     </style>
 

@@ -16,7 +16,6 @@
         tools:ignore="ScopedStorage" />
     <uses-permission android:name="android.permission.CAMERA"/>
 
-
     <application
 
         android:usesCleartextTraffic="true"
@@ -52,14 +51,14 @@
 
         </activity>
         <activity android:name=".activities.sp.SPDocumentUploadActivity" >
-
-        </activity>
-        <activity android:name=".activities.AdharAuthenticationActivity" />
-        <activity android:name=".activities.HomeActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".activities.AdharAuthenticationActivity" />
+        <activity android:name=".activities.HomeActivity" >
+
         </activity>
         <activity android:name=".activities.BankDetailsActivity">
 

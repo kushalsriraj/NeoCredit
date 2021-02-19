@@ -388,6 +388,7 @@ public class UploadInvoice extends AppCompatActivity implements ResponseHandler 
                 ok.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        sharedPrefsManager.setCHECK_PAGE("");
                         Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                         startActivity(intent);
                     }

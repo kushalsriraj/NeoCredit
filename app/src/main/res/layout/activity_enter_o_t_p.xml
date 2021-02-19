@@ -33,7 +33,7 @@
                 android:clipChildren="false"
                 app:shimmer_duration="1500"
                 android:layout_gravity="center_horizontal"
-                app:shimmer_auto_start="true"
+                app:shimmer_auto_start="false"
                 app:shimmer_shape="linear"
                 android:id="@+id/shimmer_view_container"
                 app:shimmer_intensity="500"

@@ -68,11 +68,11 @@ public class SPDocumentUploadActivity extends AppCompatActivity {
     String status,filename;
     RelativeLayout Submit_sp_docs;
     ImageView image_sp_pan,image_sp_adhar,image_sp_registrationProof,image_sp_bankStatement,image_sp_gstr,image_sp_sla
-                            ,image_sp_invoice,image_sp_rentAggrement,image_sp_itr;
+                            ,image_sp_invoice,image_sp_rentAggrement,image_sp_itr,image_sp_current_address;
     TextView text_sp_pan,text_sp_adhar,text_sp_registrationProof,text_sp_bankStatement,text_sp_gstr,text_sp_sla
-                            ,text_sp_invoice,text_sp_rentAggrement,text_sp_itr;
+                            ,text_sp_invoice,text_sp_rentAggrement,text_sp_itr,text_sp_current_address;
     CrystalPreloader loader_sp_pan,loader_sp_adhar,loader_sp_registrationProof,loader_sp_bankStatement,loader_sp_gstr
-                            ,loader_sp_sla,loader_sp_invoice,loader_sp_rentAggrement,loader_sp_itr;
+                            ,loader_sp_sla,loader_sp_invoice,loader_sp_rentAggrement,loader_sp_itr,loader_sp_current_address;
     View view, view1, view2;
     BottomSheetDialog bottomSheetDialog;
     LinearLayout upload_pdf, upload_from_camera, upload_from_gallery;
@@ -80,7 +80,8 @@ public class SPDocumentUploadActivity extends AppCompatActivity {
     private final int Request_Camera = 1;
     private final int Request_Gallery = 2;
     Uri imguri;
-    boolean pan_uploaded, adhar_uploaded, itr_uploaded, gstr_uploaded,rental_uploaded, invoices_uploaded,sla_uploaded, bankstatement_uploaded, registration_proof_uploaded = false;
+    boolean pan_uploaded, adhar_uploaded, itr_uploaded, gstr_uploaded,rental_uploaded, invoices_uploaded,sla_uploaded, bankstatement_uploaded, registration_proof_uploaded ,
+            current_address = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -173,6 +174,14 @@ public class SPDocumentUploadActivity extends AppCompatActivity {
         image_sp_itr = findViewById(R.id.image_sp_itr);
         text_sp_itr = findViewById(R.id.text_sp_itr);
         loader_sp_itr = findViewById(R.id.loader_sp_itr);
+
+        image_sp_itr = findViewById(R.id.image_sp_itr);
+        text_sp_itr = findViewById(R.id.text_sp_itr);
+        loader_sp_itr = findViewById(R.id.loader_sp_itr);
+
+        image_sp_current_address = findViewById(R.id.image_sp_current_address);
+        text_sp_current_address = findViewById(R.id.text_sp_current_address);
+        loader_sp_current_address = findViewById(R.id.loader_sp_current_address);
 
         Submit_sp_docs = findViewById(R.id.Submit_sp_docs);
 
@@ -286,6 +295,20 @@ public class SPDocumentUploadActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 status = "itr";
+                upload_pdf.setVisibility(View.VISIBLE);
+                view1.setVisibility(View.VISIBLE);
+                upload_from_camera.setVisibility(View.VISIBLE);
+                view2.setVisibility(View.VISIBLE);
+                upload_from_gallery.setVisibility(View.VISIBLE);
+                bottomSheetDialog.show();
+
+            }
+        });
+
+        image_sp_current_address.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                status = "current_address_proof";
                 upload_pdf.setVisibility(View.VISIBLE);
                 view1.setVisibility(View.VISIBLE);
                 upload_from_camera.setVisibility(View.VISIBLE);
@@ -469,6 +492,11 @@ public class SPDocumentUploadActivity extends AppCompatActivity {
                 loader_sp_itr.setVisibility(View.VISIBLE);
                 code = "16";
                 break;
+            case "current_address_proof":
+                getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+                loader_sp_current_address.setVisibility(View.VISIBLE);
+                code = "3";
+                break;
         }
 
         MultipartBody.Builder builder = new MultipartBody.Builder().setType(MultipartBody.FORM);
@@ -512,6 +540,31 @@ public class SPDocumentUploadActivity extends AppCompatActivity {
                 Log.e("response", "onResponse: " + response.body().string() );
 
                 switch (status) {
+                    case "current_address_proof":
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                current_address = true;
+                                image_sp_current_address.setPadding(20, 20, 20, 20);
+                                image_sp_current_address.setScaleType(ImageView.ScaleType.FIT_XY);
+                                image_sp_current_address.setImageURI(imguri);
+                                text_sp_current_address.setText(filename + ".png");
+                                loader_sp_current_address.setVisibility(View.GONE);
+                                Toasty.info(getApplicationContext(), "Address Proof Uploaded", Toast.LENGTH_SHORT).show();
+                                getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+                                if ( registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
+                                        && sla_uploaded && invoices_uploaded && rental_uploaded && itr_uploaded && current_address)
+                                {
+                                    Submit_sp_docs.setBackground(getDrawable(R.drawable.gradient_neocredit));
+                                }
+                                else
+                                {
+                                    Submit_sp_docs.setBackgroundColor(getResources().getColor(R.color.colorash));
+                                }
+
+                            }
+                        });
+                        break;
                     case "pan":
                         runOnUiThread(new Runnable() {
                             @Override

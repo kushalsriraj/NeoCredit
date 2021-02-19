@@ -10,10 +10,14 @@ import androidx.fragment.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -31,6 +35,7 @@ import com.digio.in.esign2sdk.Digio;
 import com.digio.in.esign2sdk.DigioConfig;
 import com.digio.in.esign2sdk.DigioEnvironment;
 import com.digio.in.esign2sdk.DigioResponseListener;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -44,6 +49,7 @@ import java.util.Map;
 import de.hdodenhof.circleimageview.CircleImageView;
 import es.dmoral.toasty.Toasty;
 import rutherfordit.com.instasalary.R;
+import rutherfordit.com.instasalary.adapters.DirectorRecyclerViewAdapter;
 import rutherfordit.com.instasalary.extras.SharedPrefsManager;
 import rutherfordit.com.instasalary.extras.Urls;
 import rutherfordit.com.instasalary.fragments.AboutFragment;
@@ -57,11 +63,13 @@ import rutherfordit.com.instasalary.fragments.ReferFragment;
 import rutherfordit.com.instasalary.fragments.SettingsFragment;
 import rutherfordit.com.instasalary.fragments.SupportFragment;
 import rutherfordit.com.instasalary.fragments.TermsFragment;
+import rutherfordit.com.instasalary.models.MyProfileDirectorModel;
 import rutherfordit.com.instasalary.myinterfaces.LoadDetailedData;
 import rutherfordit.com.instasalary.myinterfaces.CreateMandate;
 
 public class HomeActivity extends AppCompatActivity implements LoadDetailedData, CreateMandate, DigioResponseListener {
 
+    BottomSheetDialog bottomSheetDialog;
     String id, user_id, proof_type, image;
     TextView maintext, dashboardtext, loantext, faqtext, name_text;
     DrawerLayout drawer;
@@ -79,6 +87,9 @@ public class HomeActivity extends AppCompatActivity implements LoadDetailedData,
     SharedPrefsManager sharedPrefsManager;
     String conf = "";
     String disburse_id = "";
+    EditText enter_adhar_phone;
+    Button submit_phone;
+    String myphone="",bank_name,bank_acc_no,bank_ifsc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -129,8 +140,18 @@ public class HomeActivity extends AppCompatActivity implements LoadDetailedData,
         logout = headerview.findViewById(R.id.logout);
         profile_image = headerview.findViewById(R.id.profile_image);
         name_text = headerview.findViewById(R.id.name_text);
+        View view = getLayoutInflater().inflate(R.layout.enter_phone_layout, null);
+        bottomSheetDialog = new BottomSheetDialog(HomeActivity.this);
+        bottomSheetDialog.setContentView(view);
+        bottomSheetDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        bottomSheetDialog.setCancelable(false);
+
+        enter_adhar_phone = view.findViewById(R.id.enter_adhar_phone);
+        submit_phone = view.findViewById(R.id.submit_phone);
 
         snackbar = Snackbar.make(drawer, "Press Again To Exit", Snackbar.LENGTH_SHORT);
+
+        request_user_data();
 
         fragment = new DashboardFragment();
         replaceFragment(fragment, "dashboard");
@@ -249,7 +270,6 @@ public class HomeActivity extends AppCompatActivity implements LoadDetailedData,
             }
         });
 
-
         slider.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -288,6 +308,7 @@ public class HomeActivity extends AppCompatActivity implements LoadDetailedData,
                 dashboardtext.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.black));
 
                 loanimage.setImageResource(R.drawable.redhistory);
+                loanimage.setPadding(0,0,0,0);
                 loantext.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.neopurple));
 
                 faqimage.setImageResource(R.drawable.whitehelp);
@@ -315,6 +336,7 @@ public class HomeActivity extends AppCompatActivity implements LoadDetailedData,
                 dashboardtext.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.black));
 
                 loanimage.setImageResource(R.drawable.whitehistory);
+                loanimage.setPadding(5,5,5,5);
                 loantext.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.black));
 
                 faqimage.setImageResource(R.drawable.redhelp);
@@ -325,6 +347,103 @@ public class HomeActivity extends AppCompatActivity implements LoadDetailedData,
 
             }
         });
+    }
+
+    private void request_user_data() {
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, Urls.GET_USER, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+
+                Log.e("GETUSER", "response: " + response );
+
+                try {
+                    JSONObject jsonObjectData = response.getJSONObject("data");
+
+                    JSONObject jsonObjectCompany = jsonObjectData.getJSONObject("companydetails");
+
+                    JSONArray arrayCompany = jsonObjectCompany.getJSONArray("data");
+
+                    for (int i = 0; i < arrayCompany.length(); i++){
+
+                        JSONObject jsonObjectI = arrayCompany.getJSONObject(i);
+
+                        bank_name = jsonObjectI.getString("name");
+
+                        /*profile1_company_name.setText(jsonObjectI.getString("name"));
+                        profile1_company_landline.setText(jsonObjectI.getString("landline_number"));
+                        profile1_company_pan.setText(jsonObjectI.getString("pan_card"));
+                        profile1_company_email.setText(jsonObjectI.getString("email"));
+                        profile1_company_service.setText(jsonObjectI.getString("type_of_services"));*/
+
+                    }
+
+                    JSONObject jsonObjectBank = jsonObjectData.getJSONObject("bankdetails");
+                    Log.e("jsonObjectBank", "jsonObjectBank: " + jsonObjectBank );
+
+                    JSONObject jsonObjectBankData = jsonObjectBank.getJSONObject("data");
+
+                    bank_acc_no = jsonObjectBankData.getString("ac_number");
+                    bank_ifsc = jsonObjectBankData.getString("bank_ifcs");
+
+                    /*bank_name1.setText(jsonObjectBankData.getString("bank_name"));
+                    bank_branch1.setText(jsonObjectBankData.getString("bank_branch"));
+                    ac_number1.setText(jsonObjectBankData.getString("ac_number"));
+                    bank_ifcs1.setText(jsonObjectBankData.getString("bank_ifcs"));*/
+
+                    /*JSONObject jsonObjectDirector = jsonObjectData.getJSONObject("directorpartner");
+                    Log.e("jsonObjectDirector", "jsonObjectDirector: " + jsonObjectDirector );
+
+                    JSONArray jsonArrayData = jsonObjectDirector.getJSONArray("data");
+                    Log.e("jsonArrayData", "jsonArrayData: " + jsonArrayData );
+
+                    for (int i = 0; i < jsonArrayData.length(); i++){
+
+                        JSONObject jsonDataI = jsonArrayData.getJSONObject(i);
+
+                        MyProfileDirectorModel obj = new MyProfileDirectorModel();
+
+                        obj.setName(jsonDataI.getString("name"));
+                        obj.setEmail(jsonDataI.getString("email"));
+                        obj.setMobile_phone(jsonDataI.getString("mobile_number"));
+                        obj.setAadhar(jsonDataI.getString("aadhar"));
+                        obj.setPan_card(jsonDataI.getString("pan_card"));
+                        obj.setCurrent_address(jsonDataI.getString("current_address"));
+                        obj.setDob(jsonDataI.getString("dob"));
+
+                        myProfileDirectorModels.add(obj);
+                    }
+
+                    DirectorRecyclerViewAdapter directorRecyclerViewAdapter = new DirectorRecyclerViewAdapter(getContext(), myProfileDirectorModels);
+                    personalDeailsRec.setAdapter(directorRecyclerViewAdapter);
+                    personalDeailsRec.setNestedScrollingEnabled(true);*/
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e("onErrorResponse", "onErrorResponse: " + error.getLocalizedMessage() );
+            }
+        }){
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                HashMap<String, String> headers = new HashMap<String, String>();
+                headers.put("Content-Type", "application/json");
+                headers.put("Accept", "application/json");
+                headers.put("Authorization", sharedPrefsManager.getAccessToken());
+
+                return headers;
+            }
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(HomeActivity.this);
+        requestQueue.add(jsonObjectRequest);
+
     }
 
     private void mydashboard() {
@@ -341,6 +460,7 @@ public class HomeActivity extends AppCompatActivity implements LoadDetailedData,
         dashboardtext.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.neopurple));
 
         loanimage.setImageResource(R.drawable.whitehistory);
+        loanimage.setPadding(5,5,5,5);
         loantext.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.black));
 
         faqimage.setImageResource(R.drawable.whitehelp);
@@ -411,11 +531,31 @@ public class HomeActivity extends AppCompatActivity implements LoadDetailedData,
     }
 
     @Override
-    public void create(String amount, String id) {
-        createMandateForm(amount,id);
+    public void create(String amount, String id)
+    {
+        bottomSheetDialog.show();
+
+        submit_phone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (enter_adhar_phone.getText().toString().length()==10)
+                {
+                    myphone = enter_adhar_phone.getText().toString();
+                    bottomSheetDialog.dismiss();
+                    createMandateForm(amount,id);
+                }
+                else
+                {
+                    Toast.makeText(getApplicationContext(),"Please Enter a valid phone number",Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
     }
 
     private void createMandateForm(String amount, String id) {
+
+        Log.e("myphone", "createMandateForm: " + myphone );
 
         disburse_id = id;
 
@@ -430,16 +570,16 @@ public class HomeActivity extends AppCompatActivity implements LoadDetailedData,
             mandate_obj.put("is_recurring", "false");
             mandate_obj.put("frequency", "Monthly");
             mandate_obj.put("management_category", "L001");
-            mandate_obj.put("customer_name", "kushal");
-            mandate_obj.put("customer_account_number", "62207117005");
-            mandate_obj.put("destination_bank_id", "SBIN0020061");
+            mandate_obj.put("customer_name", bank_name);
+            mandate_obj.put("customer_account_number", bank_acc_no);
+            mandate_obj.put("destination_bank_id", "HDFC0009990");
             mandate_obj.put("customer_account_type", "savings");
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
         try {
-            jsonObject.put("customer_identifier", "9030007890");
+            jsonObject.put("customer_identifier", myphone);
             jsonObject.put("auth_mode", "esign");
             jsonObject.put("mandate_type", "create");
             jsonObject.put("corporate_config_id", "TSE2101051408016871BKE4F721CVNZ2");
@@ -502,12 +642,11 @@ public class HomeActivity extends AppCompatActivity implements LoadDetailedData,
 
         try {
             digio.init(HomeActivity.this, digioConfig);
-            digio.esign(m_Id, "9030007890");
+            digio.esign(m_Id, myphone);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-
 
     @Override
     public void onSigningSuccess(String s, String s1) {
@@ -517,10 +656,12 @@ public class HomeActivity extends AppCompatActivity implements LoadDetailedData,
 
         if (conf.equals("abcd"))
         {
+            Toast.makeText(getApplicationContext(),"Please Wait..",Toast.LENGTH_SHORT).show();
             docUpload();
         }
         else
         {
+            Toast.makeText(getApplicationContext(),"Signing Successfull..",Toast.LENGTH_SHORT).show();
             disburseAmount(disburse_id);
         }
     }
@@ -589,13 +730,13 @@ public class HomeActivity extends AppCompatActivity implements LoadDetailedData,
             JSONArray jsonArray = new JSONArray();
 
             JSONObject jsonObject1 = new JSONObject();
-            jsonObject1.put("identifier","9030007890");
+            jsonObject1.put("identifier",myphone);
 
             jsonArray.put(jsonObject1);
 
             jsonObject.put("signers",jsonArray);
 
-            jsonObject.put("file_name","abcd.pdf");
+            jsonObject.put("file_name","Official Agreement");
             jsonObject.put("file_data","JVBERi0xLjMNCiXi48/TDQoNCjEgMCBvYmoNCjw8DQovVHlwZSAvQ2F0YWxvZw0KL091dGxpbmVzIDIgMCBSDQovUGFnZXMgMyAwIFINCj4+DQplbmRvYmoNCg0KMiAwIG9iag0KPDwNCi9UeXBlIC9PdXRsaW5lcw0KL0NvdW50IDANCj4+DQplbmRvYmoNCg0KMyAwIG9iag0KPDwNCi9UeXBlIC9QYWdlcw0KL0NvdW50IDINCi9LaWRzIFsgNCAwIFIgNiAwIFIgXSANCj4+DQplbmRvYmoNCg0KNCAwIG9iag0KPDwNCi9UeXBlIC9QYWdlDQovUGFyZW50IDMgMCBSDQovUmVzb3VyY2VzIDw8DQovRm9udCA8PA0KL0YxIDkgMCBSIA0KPj4NCi9Qcm9jU2V0IDggMCBSDQo+Pg0KL01lZGlhQm94IFswIDAgNjEyLjAwMDAgNzkyLjAwMDBdDQovQ29udGVudHMgNSAwIFINCj4+DQplbmRvYmoNCg0KNSAwIG9iag0KPDwgL0xlbmd0aCAxMDc0ID4+DQpzdHJlYW0NCjIgSg0KQlQNCjAgMCAwIHJnDQovRjEgMDAyNyBUZg0KNTcuMzc1MCA3MjIuMjgwMCBUZA0KKCBBIFNpbXBsZSBQREYgRmlsZSApIFRqDQpFVA0KQlQNCi9GMSAwMDEwIFRmDQo2OS4yNTAwIDY4OC42MDgwIFRkDQooIFRoaXMgaXMgYSBzbWFsbCBkZW1vbnN0cmF0aW9uIC5wZGYgZmlsZSAtICkgVGoNCkVUDQpCVA0KL0YxIDAwMTAgVGYNCjY5LjI1MDAgNjY0LjcwNDAgVGQNCigganVzdCBmb3IgdXNlIGluIHRoZSBWaXJ0dWFsIE1lY2hhbmljcyB0dXRvcmlhbHMuIE1vcmUgdGV4dC4gQW5kIG1vcmUgKSBUag0KRVQNCkJUDQovRjEgMDAxMCBUZg0KNjkuMjUwMCA2NTIuNzUyMCBUZA0KKCB0ZXh0LiBBbmQgbW9yZSB0ZXh0LiBBbmQgbW9yZSB0ZXh0LiBBbmQgbW9yZSB0ZXh0LiApIFRqDQpFVA0KQlQNCi9GMSAwMDEwIFRmDQo2OS4yNTAwIDYyOC44NDgwIFRkDQooIEFuZCBtb3JlIHRleHQuIEFuZCBtb3JlIHRleHQuIEFuZCBtb3JlIHRleHQuIEFuZCBtb3JlIHRleHQuIEFuZCBtb3JlICkgVGoNCkVUDQpCVA0KL0YxIDAwMTAgVGYNCjY5LjI1MDAgNjE2Ljg5NjAgVGQNCiggdGV4dC4gQW5kIG1vcmUgdGV4dC4gQm9yaW5nLCB6enp6ei4gQW5kIG1vcmUgdGV4dC4gQW5kIG1vcmUgdGV4dC4gQW5kICkgVGoNCkVUDQpCVA0KL0YxIDAwMTAgVGYNCjY5LjI1MDAgNjA0Ljk0NDAgVGQNCiggbW9yZSB0ZXh0LiBBbmQgbW9yZSB0ZXh0LiBBbmQgbW9yZSB0ZXh0LiBBbmQgbW9yZSB0ZXh0LiBBbmQgbW9yZSB0ZXh0LiApIFRqDQpFVA0KQlQNCi9GMSAwMDEwIFRmDQo2OS4yNTAwIDU5Mi45OTIwIFRkDQooIEFuZCBtb3JlIHRleHQuIEFuZCBtb3JlIHRleHQuICkgVGoNCkVUDQpCVA0KL0YxIDAwMTAgVGYNCjY5LjI1MDAgNTY5LjA4ODAgVGQNCiggQW5kIG1vcmUgdGV4dC4gQW5kIG1vcmUgdGV4dC4gQW5kIG1vcmUgdGV4dC4gQW5kIG1vcmUgdGV4dC4gQW5kIG1vcmUgKSBUag0KRVQNCkJUDQovRjEgMDAxMCBUZg0KNjkuMjUwMCA1NTcuMTM2MCBUZA0KKCB0ZXh0LiBBbmQgbW9yZSB0ZXh0LiBBbmQgbW9yZSB0ZXh0LiBFdmVuIG1vcmUuIENvbnRpbnVlZCBvbiBwYWdlIDIgLi4uKSBUag0KRVQNCmVuZHN0cmVhbQ0KZW5kb2JqDQoNCjYgMCBvYmoNCjw8DQovVHlwZSAvUGFnZQ0KL1BhcmVudCAzIDAgUg0KL1Jlc291cmNlcyA8PA0KL0ZvbnQgPDwNCi9GMSA5IDAgUiANCj4+DQovUHJvY1NldCA4IDAgUg0KPj4NCi9NZWRpYUJveCBbMCAwIDYxMi4wMDAwIDc5Mi4wMDAwXQ0KL0NvbnRlbnRzIDcgMCBSDQo+Pg0KZW5kb2JqDQoNCjcgMCBvYmoNCjw8IC9MZW5ndGggNjc2ID4+DQpzdHJlYW0NCjIgSg0KQlQNCjAgMCAwIHJnDQovRjEgMDAyNyBUZg0KNTcuMzc1MCA3MjIuMjgwMCBUZA0KKCBTaW1wbGUgUERGIEZpbGUgMiApIFRqDQpFVA0KQlQNCi9GMSAwMDEwIFRmDQo2OS4yNTAwIDY4OC42MDgwIFRkDQooIC4uLmNvbnRpbnVlZCBmcm9tIHBhZ2UgMS4gWWV0IG1vcmUgdGV4dC4gQW5kIG1vcmUgdGV4dC4gQW5kIG1vcmUgdGV4dC4gKSBUag0KRVQNCkJUDQovRjEgMDAxMCBUZg0KNjkuMjUwMCA2NzYuNjU2MCBUZA0KKCBBbmQgbW9yZSB0ZXh0LiBBbmQgbW9yZSB0ZXh0LiBBbmQgbW9yZSB0ZXh0LiBBbmQgbW9yZSB0ZXh0LiBBbmQgbW9yZSApIFRqDQpFVA0KQlQNCi9GMSAwMDEwIFRmDQo2OS4yNTAwIDY2NC43MDQwIFRkDQooIHRleHQuIE9oLCBob3cgYm9yaW5nIHR5cGluZyB0aGlzIHN0dWZmLiBCdXQgbm90IGFzIGJvcmluZyBhcyB3YXRjaGluZyApIFRqDQpFVA0KQlQNCi9GMSAwMDEwIFRmDQo2OS4yNTAwIDY1Mi43NTIwIFRkDQooIHBhaW50IGRyeS4gQW5kIG1vcmUgdGV4dC4gQW5kIG1vcmUgdGV4dC4gQW5kIG1vcmUgdGV4dC4gQW5kIG1vcmUgdGV4dC4gKSBUag0KRVQNCkJUDQovRjEgMDAxMCBUZg0KNjkuMjUwMCA2NDAuODAwMCBUZA0KKCBCb3JpbmcuICBNb3JlLCBhIGxpdHRsZSBtb3JlIHRleHQuIFRoZSBlbmQsIGFuZCBqdXN0IGFzIHdlbGwuICkgVGoNCkVUDQplbmRzdHJlYW0NCmVuZG9iag0KDQo4IDAgb2JqDQpbL1BERiAvVGV4dF0NCmVuZG9iag0KDQo5IDAgb2JqDQo8PA0KL1R5cGUgL0ZvbnQNCi9TdWJ0eXBlIC9UeXBlMQ0KL05hbWUgL0YxDQovQmFzZUZvbnQgL0hlbHZldGljYQ0KL0VuY29kaW5nIC9XaW5BbnNpRW5jb2RpbmcNCj4+DQplbmRvYmoNCg0KMTAgMCBvYmoNCjw8DQovQ3JlYXRvciAoUmF2ZSBcKGh0dHA6Ly93d3cubmV2cm9uYS5jb20vcmF2ZVwpKQ0KL1Byb2R1Y2VyIChOZXZyb25hIERlc2lnbnMpDQovQ3JlYXRpb25EYXRlIChEOjIwMDYwMzAxMDcyODI2KQ0KPj4NCmVuZG9iag0KDQp4cmVmDQowIDExDQowMDAwMDAwMDAwIDY1NTM1IGYNCjAwMDAwMDAwMTkgMDAwMDAgbg0KMDAwMDAwMDA5MyAwMDAwMCBuDQowMDAwMDAwMTQ3IDAwMDAwIG4NCjAwMDAwMDAyMjIgMDAwMDAgbg0KMDAwMDAwMDM5MCAwMDAwMCBuDQowMDAwMDAxNTIyIDAwMDAwIG4NCjAwMDAwMDE2OTAgMDAwMDAgbg0KMDAwMDAwMjQyMyAwMDAwMCBuDQowMDAwMDAyNDU2IDAwMDAwIG4NCjAwMDAwMDI1NzQgMDAwMDAgbg0KDQp0cmFpbGVyDQo8PA0KL1NpemUgMTENCi9Sb290IDEgMCBSDQovSW5mbyAxMCAwIFINCj4+DQoNCnN0YXJ0eHJlZg0KMjcxNA0KJSVFT0YNCg==");
         }
         catch (JSONException e)
@@ -660,7 +801,7 @@ public class HomeActivity extends AppCompatActivity implements LoadDetailedData,
         }
 
         try {
-            digio.esign(DocID, "9030007890");// this refers DigioResponseListener
+            digio.esign(DocID, myphone);// this refers DigioResponseListener
         } catch (Exception e) {
             e.printStackTrace();
         }

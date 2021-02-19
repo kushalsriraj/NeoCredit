@@ -96,7 +96,7 @@ public class SplashScreenActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
 
-                else {
+                else if(sharedPrefsManager.getCHECK_PAGE().equals("")){
 
                     Intent intent = new Intent(SplashScreenActivity.this, LoginActivity.class);
 
