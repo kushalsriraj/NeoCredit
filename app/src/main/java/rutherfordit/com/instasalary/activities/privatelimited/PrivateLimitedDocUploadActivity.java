@@ -56,11 +56,11 @@ public class PrivateLimitedDocUploadActivity extends AppCompatActivity {
     String status,filename;
     RelativeLayout Submit_pl_docs;
     ImageView image_pvt_bankstatement,image_pvt_gst,image_pvt_itreturns,image_pvt_businessproof,image_pvt_pan,image_pvt_addressproof
-            ,image_pvt_aoa,image_pvt_moa,image_pvt_invoice;
+            ,image_pvt_aoa,image_pvt_moa,image_pvt_invoice,image_pvt_dir1,image_pvt_dir2;
     TextView text_pvt_bankstatement,text_pvt_gst,text_pvt_itreturns,text_pvt_businessproof,text_pvt_pan,text_pvt_addressproof
-            ,text_pvt_aoa,text_pvt_moa,text_pvt_invoice;
+            ,text_pvt_aoa,text_pvt_moa,text_pvt_invoice,text_pvt_dir1,text_pvt_dir2;
     CrystalPreloader loader_pvt_bankstatement,loader_pvt_gst,loader_pvt_itreturns,loader_pvt_businessproof,loader_pvt_pan
-            ,loader_pvt_addressproof,loader_pvt_aoa,loader_pvt_moa,loader_pvt_invoice;
+            ,loader_pvt_addressproof,loader_pvt_aoa,loader_pvt_moa,loader_pvt_invoice,loader_pvt_dir1,loader_pvt_dir2;
     View view, view1, view2;
     BottomSheetDialog bottomSheetDialog;
     LinearLayout upload_pdf, upload_from_camera, upload_from_gallery;
@@ -69,7 +69,7 @@ public class PrivateLimitedDocUploadActivity extends AppCompatActivity {
     private final int Request_Gallery = 2;
     Uri imguri;
     boolean bankstatement_uploaded ,registration_proof_uploaded ,pan_uploaded, invoices_uploaded,
-            itr_uploaded, gstr_uploaded, addressproof_uploaded,aoa_uploaded, moa_uploaded = false;
+            itr_uploaded, gstr_uploaded, addressproof_uploaded,aoa_uploaded, moa_uploaded, dir1_uploaded, dir2_uploaded = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -163,10 +163,43 @@ public class PrivateLimitedDocUploadActivity extends AppCompatActivity {
         text_pvt_invoice = findViewById(R.id.text_pvt_invoice);
         loader_pvt_invoice = findViewById(R.id.loader_pvt_invoice);
 
+        image_pvt_dir1 = findViewById(R.id.image_pvt_dir1);
+        text_pvt_dir1 = findViewById(R.id.text_pvt_dir1);
+        loader_pvt_dir1 = findViewById(R.id.loader_pvt_dir1);
+
+        image_pvt_dir2 = findViewById(R.id.image_pvt_dir2);
+        text_pvt_dir2 = findViewById(R.id.text_pvt_dir2);
+        loader_pvt_dir2 = findViewById(R.id.loader_pvt_dir2);
+
         sharedPrefsManager.setCHECK_PAGE("5");
 
-
         Submit_pl_docs = findViewById(R.id.Submit_pl_docs);
+
+        image_pvt_dir1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                status = "dir1";
+                upload_pdf.setVisibility(View.VISIBLE);
+                view1.setVisibility(View.VISIBLE);
+                upload_from_camera.setVisibility(View.VISIBLE);
+                view2.setVisibility(View.VISIBLE);
+                upload_from_gallery.setVisibility(View.VISIBLE);
+                bottomSheetDialog.show();
+            }
+        });
+
+        image_pvt_dir2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                status = "dir2";
+                upload_pdf.setVisibility(View.VISIBLE);
+                view1.setVisibility(View.VISIBLE);
+                upload_from_camera.setVisibility(View.VISIBLE);
+                view2.setVisibility(View.VISIBLE);
+                upload_from_gallery.setVisibility(View.VISIBLE);
+                bottomSheetDialog.show();
+            }
+        });
 
         image_pvt_pan.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -459,6 +492,16 @@ public class PrivateLimitedDocUploadActivity extends AppCompatActivity {
                 loader_pvt_itreturns.setVisibility(View.VISIBLE);
                 code = "13";
                 break;
+            case "dir1":
+                getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+                loader_pvt_itreturns.setVisibility(View.VISIBLE);
+                code = "28";
+                break;
+            case "dir2":
+                getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+                loader_pvt_itreturns.setVisibility(View.VISIBLE);
+                code = "29";
+                break;
         }
 
         MultipartBody.Builder builder = new MultipartBody.Builder().setType(MultipartBody.FORM);
@@ -502,6 +545,54 @@ public class PrivateLimitedDocUploadActivity extends AppCompatActivity {
                 Log.e("response", "onResponse: " + response.body().string() );
 
                 switch (status) {
+                    case "dir1":
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                dir1_uploaded = true;
+                                image_pvt_dir1.setPadding(20, 20, 20, 20);
+                                image_pvt_dir1.setScaleType(ImageView.ScaleType.FIT_XY);
+                                image_pvt_dir1.setImageURI(imguri);
+                                text_pvt_dir1.setText(filename + ".png");
+                                loader_pvt_dir1.setVisibility(View.GONE);
+                                getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+                                if (pan_uploaded && addressproof_uploaded && registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
+                                        && moa_uploaded && invoices_uploaded && aoa_uploaded && itr_uploaded && dir2_uploaded && dir1_uploaded)
+                                {
+                                    Submit_pl_docs.setBackground(getDrawable(R.drawable.gradient_neocredit));
+                                }
+                                else
+                                {
+                                    Submit_pl_docs.setBackgroundColor(getResources().getColor(R.color.colorash));
+                                }
+
+                            }
+                        });
+                        break;
+                    case "dir2":
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                dir2_uploaded = true;
+                                image_pvt_dir2.setPadding(20, 20, 20, 20);
+                                image_pvt_dir2.setScaleType(ImageView.ScaleType.FIT_XY);
+                                image_pvt_dir2.setImageURI(imguri);
+                                text_pvt_dir2.setText(filename + ".png");
+                                loader_pvt_dir2.setVisibility(View.GONE);
+                                getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+                                if (pan_uploaded && addressproof_uploaded && registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
+                                        && moa_uploaded && invoices_uploaded && aoa_uploaded && itr_uploaded && dir2_uploaded && dir1_uploaded )
+                                {
+                                    Submit_pl_docs.setBackground(getDrawable(R.drawable.gradient_neocredit));
+                                }
+                                else
+                                {
+                                    Submit_pl_docs.setBackgroundColor(getResources().getColor(R.color.colorash));
+                                }
+
+                            }
+                        });
+                        break;
                     case "pan":
                         runOnUiThread(new Runnable() {
                             @Override
@@ -515,7 +606,7 @@ public class PrivateLimitedDocUploadActivity extends AppCompatActivity {
                                 Toasty.info(getApplicationContext(), "Pan Uploaded", Toast.LENGTH_SHORT).show();
                                 getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                                 if (pan_uploaded && addressproof_uploaded && registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
-                                        && moa_uploaded && invoices_uploaded && aoa_uploaded && itr_uploaded )
+                                        && moa_uploaded && invoices_uploaded && aoa_uploaded && itr_uploaded && dir2_uploaded && dir1_uploaded)
                                 {
                                     Submit_pl_docs.setBackground(getDrawable(R.drawable.gradient_neocredit));
                                 }
@@ -540,7 +631,7 @@ public class PrivateLimitedDocUploadActivity extends AppCompatActivity {
                                 Toasty.info(getApplicationContext(), "Business Address Proof Uploaded", Toast.LENGTH_SHORT).show();
                                 getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                                 if (pan_uploaded && addressproof_uploaded && registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
-                                        && moa_uploaded && invoices_uploaded && aoa_uploaded && itr_uploaded )
+                                        && moa_uploaded && invoices_uploaded && aoa_uploaded && itr_uploaded && dir2_uploaded && dir1_uploaded)
                                 {
                                     Submit_pl_docs.setBackground(getDrawable(R.drawable.gradient_neocredit));
                                 }
@@ -565,7 +656,7 @@ public class PrivateLimitedDocUploadActivity extends AppCompatActivity {
                                 Toasty.info(getApplicationContext(), "Registration Proof Uploaded", Toast.LENGTH_SHORT).show();
                                 getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                                 if (pan_uploaded && addressproof_uploaded && registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
-                                        && moa_uploaded && invoices_uploaded && aoa_uploaded && itr_uploaded )
+                                        && moa_uploaded && invoices_uploaded && aoa_uploaded && itr_uploaded && dir2_uploaded && dir1_uploaded)
                                 {
                                     Submit_pl_docs.setBackground(getDrawable(R.drawable.gradient_neocredit));
                                 }
@@ -589,7 +680,7 @@ public class PrivateLimitedDocUploadActivity extends AppCompatActivity {
                                 Toasty.info(getApplicationContext(), "Bank Statement Uploaded", Toast.LENGTH_SHORT).show();
                                 getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                                 if (pan_uploaded && addressproof_uploaded && registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
-                                        && moa_uploaded && invoices_uploaded && aoa_uploaded && itr_uploaded )
+                                        && moa_uploaded && invoices_uploaded && aoa_uploaded && itr_uploaded && dir2_uploaded && dir1_uploaded)
                                 {
                                     Submit_pl_docs.setBackground(getDrawable(R.drawable.gradient_neocredit));
                                 }
@@ -613,7 +704,7 @@ public class PrivateLimitedDocUploadActivity extends AppCompatActivity {
                                 Toasty.info(getApplicationContext(), "Gstr Uploaded", Toast.LENGTH_SHORT).show();
                                 getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                                 if (pan_uploaded && addressproof_uploaded && registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
-                                        && moa_uploaded && invoices_uploaded && aoa_uploaded && itr_uploaded )
+                                        && moa_uploaded && invoices_uploaded && aoa_uploaded && itr_uploaded && dir2_uploaded && dir1_uploaded)
                                 {
                                     Submit_pl_docs.setBackground(getDrawable(R.drawable.gradient_neocredit));
                                 }
@@ -637,7 +728,7 @@ public class PrivateLimitedDocUploadActivity extends AppCompatActivity {
                                 Toasty.info(getApplicationContext(), "Moa Uploaded", Toast.LENGTH_SHORT).show();
                                 getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                                 if (pan_uploaded && addressproof_uploaded && registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
-                                        && moa_uploaded && invoices_uploaded && aoa_uploaded && itr_uploaded )
+                                        && moa_uploaded && invoices_uploaded && aoa_uploaded && itr_uploaded && dir2_uploaded && dir1_uploaded)
                                 {
                                     Submit_pl_docs.setBackground(getDrawable(R.drawable.gradient_neocredit));
                                 }
@@ -661,7 +752,7 @@ public class PrivateLimitedDocUploadActivity extends AppCompatActivity {
                                 Toasty.info(getApplicationContext(), "Invoice Uploaded", Toast.LENGTH_SHORT).show();
                                 getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                                 if (pan_uploaded && addressproof_uploaded && registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
-                                        && moa_uploaded && invoices_uploaded && aoa_uploaded && itr_uploaded )
+                                        && moa_uploaded && invoices_uploaded && aoa_uploaded && itr_uploaded && dir2_uploaded && dir1_uploaded)
                                 {
                                     Submit_pl_docs.setBackground(getDrawable(R.drawable.gradient_neocredit));
                                 }
@@ -685,7 +776,7 @@ public class PrivateLimitedDocUploadActivity extends AppCompatActivity {
                                 Toasty.info(getApplicationContext(), "Aoa Uploaded", Toast.LENGTH_SHORT).show();
                                 getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                                 if (pan_uploaded && addressproof_uploaded && registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
-                                        && moa_uploaded && invoices_uploaded && aoa_uploaded && itr_uploaded )
+                                        && moa_uploaded && invoices_uploaded && aoa_uploaded && itr_uploaded && dir2_uploaded && dir1_uploaded)
                                 {
                                     Submit_pl_docs.setBackground(getDrawable(R.drawable.gradient_neocredit));
                                 }
@@ -709,7 +800,7 @@ public class PrivateLimitedDocUploadActivity extends AppCompatActivity {
                                 Toasty.info(getApplicationContext(), "Itr Uploaded", Toast.LENGTH_SHORT).show();
                                 getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                                 if (pan_uploaded && addressproof_uploaded && registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
-                                        && moa_uploaded && invoices_uploaded && aoa_uploaded && itr_uploaded )
+                                        && moa_uploaded && invoices_uploaded && aoa_uploaded && itr_uploaded && dir2_uploaded && dir1_uploaded)
                                 {
                                     Submit_pl_docs.setBackground(getDrawable(R.drawable.gradient_neocredit));
                                 }
@@ -778,6 +869,16 @@ public class PrivateLimitedDocUploadActivity extends AppCompatActivity {
                 loader_pvt_itreturns.setVisibility(View.VISIBLE);
                 code = "13";
                 break;
+            case "dir1":
+                getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+                loader_pvt_itreturns.setVisibility(View.VISIBLE);
+                code = "28";
+                break;
+            case "dir2":
+                getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+                loader_pvt_itreturns.setVisibility(View.VISIBLE);
+                code = "29";
+                break;
         }
 
 
@@ -826,6 +927,48 @@ public class PrivateLimitedDocUploadActivity extends AppCompatActivity {
                 Log.e("httpresponse", "onResponse: " + body);
 
                 switch (status) {
+                    case "dir1":
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                dir1_uploaded = true;
+                                text_pvt_dir1.setText(Pdf_name);
+                                image_pvt_dir1.setImageDrawable(getResources().getDrawable(R.drawable.pdfseticon));
+                                loader_pvt_dir1.setVisibility(View.GONE);
+                                getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+                                if (pan_uploaded && addressproof_uploaded && registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
+                                        && moa_uploaded && invoices_uploaded && aoa_uploaded && itr_uploaded && dir2_uploaded && dir1_uploaded)
+                                {
+                                    Submit_pl_docs.setBackground(getDrawable(R.drawable.gradient_neocredit));
+                                }
+                                else
+                                {
+                                    Submit_pl_docs.setBackgroundColor(getResources().getColor(R.color.colorash));
+                                }
+                            }
+                        });
+                        break;
+                    case "dir2":
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                dir2_uploaded = true;
+                                text_pvt_dir2.setText(Pdf_name);
+                                image_pvt_dir2.setImageDrawable(getResources().getDrawable(R.drawable.pdfseticon));
+                                loader_pvt_dir2.setVisibility(View.GONE);
+                                getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+                                if (pan_uploaded && addressproof_uploaded && registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
+                                        && moa_uploaded && invoices_uploaded && aoa_uploaded && itr_uploaded && dir2_uploaded && dir1_uploaded)
+                                {
+                                    Submit_pl_docs.setBackground(getDrawable(R.drawable.gradient_neocredit));
+                                }
+                                else
+                                {
+                                    Submit_pl_docs.setBackgroundColor(getResources().getColor(R.color.colorash));
+                                }
+                            }
+                        });
+                        break;
                     case "pan":
                         runOnUiThread(new Runnable() {
                             @Override
@@ -836,7 +979,7 @@ public class PrivateLimitedDocUploadActivity extends AppCompatActivity {
                                 loader_pvt_pan.setVisibility(View.GONE);
                                 getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                                 if (pan_uploaded && addressproof_uploaded && registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
-                                        && moa_uploaded && invoices_uploaded && aoa_uploaded && itr_uploaded )
+                                        && moa_uploaded && invoices_uploaded && aoa_uploaded && itr_uploaded && dir2_uploaded && dir1_uploaded)
                                 {
                                     Submit_pl_docs.setBackground(getDrawable(R.drawable.gradient_neocredit));
                                 }
@@ -857,7 +1000,7 @@ public class PrivateLimitedDocUploadActivity extends AppCompatActivity {
                                 loader_pvt_addressproof.setVisibility(View.GONE);
                                 getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                                 if (pan_uploaded && addressproof_uploaded && registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
-                                        && moa_uploaded && invoices_uploaded && aoa_uploaded && itr_uploaded )
+                                        && moa_uploaded && invoices_uploaded && aoa_uploaded && itr_uploaded && dir2_uploaded && dir1_uploaded)
                                 {
                                     Submit_pl_docs.setBackground(getDrawable(R.drawable.gradient_neocredit));
                                 }
@@ -878,7 +1021,7 @@ public class PrivateLimitedDocUploadActivity extends AppCompatActivity {
                                 loader_pvt_businessproof.setVisibility(View.GONE);
                                 getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                                 if (pan_uploaded && addressproof_uploaded && registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
-                                        && moa_uploaded && invoices_uploaded && aoa_uploaded && itr_uploaded )
+                                        && moa_uploaded && invoices_uploaded && aoa_uploaded && itr_uploaded && dir2_uploaded && dir1_uploaded)
                                 {
                                     Submit_pl_docs.setBackground(getDrawable(R.drawable.gradient_neocredit));
                                 }
@@ -899,7 +1042,7 @@ public class PrivateLimitedDocUploadActivity extends AppCompatActivity {
                                 loader_pvt_bankstatement.setVisibility(View.GONE);
                                 getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                                 if (pan_uploaded && addressproof_uploaded && registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
-                                        && moa_uploaded && invoices_uploaded && aoa_uploaded && itr_uploaded )
+                                        && moa_uploaded && invoices_uploaded && aoa_uploaded && itr_uploaded && dir2_uploaded && dir1_uploaded)
                                 {
                                     Submit_pl_docs.setBackground(getDrawable(R.drawable.gradient_neocredit));
                                 }
@@ -920,7 +1063,7 @@ public class PrivateLimitedDocUploadActivity extends AppCompatActivity {
                                 loader_pvt_gst.setVisibility(View.GONE);
                                 getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                                 if (pan_uploaded && addressproof_uploaded && registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
-                                        && moa_uploaded && invoices_uploaded && aoa_uploaded && itr_uploaded )
+                                        && moa_uploaded && invoices_uploaded && aoa_uploaded && itr_uploaded && dir2_uploaded && dir1_uploaded)
                                 {
                                     Submit_pl_docs.setBackground(getDrawable(R.drawable.gradient_neocredit));
                                 }
@@ -941,7 +1084,7 @@ public class PrivateLimitedDocUploadActivity extends AppCompatActivity {
                                 loader_pvt_moa.setVisibility(View.GONE);
                                 getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                                 if (pan_uploaded && addressproof_uploaded && registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
-                                        && moa_uploaded && invoices_uploaded && aoa_uploaded && itr_uploaded )
+                                        && moa_uploaded && invoices_uploaded && aoa_uploaded && itr_uploaded && dir2_uploaded && dir1_uploaded)
                                 {
                                     Submit_pl_docs.setBackground(getDrawable(R.drawable.gradient_neocredit));
                                 }
@@ -962,7 +1105,7 @@ public class PrivateLimitedDocUploadActivity extends AppCompatActivity {
                                 loader_pvt_invoice.setVisibility(View.GONE);
                                 getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                                 if (pan_uploaded && addressproof_uploaded && registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
-                                        && moa_uploaded && invoices_uploaded && aoa_uploaded && itr_uploaded )
+                                        && moa_uploaded && invoices_uploaded && aoa_uploaded && itr_uploaded && dir2_uploaded && dir1_uploaded)
                                 {
                                     Submit_pl_docs.setBackground(getDrawable(R.drawable.gradient_neocredit));
                                 }
@@ -983,7 +1126,7 @@ public class PrivateLimitedDocUploadActivity extends AppCompatActivity {
                                 loader_pvt_aoa.setVisibility(View.GONE);
                                 getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                                 if (pan_uploaded && addressproof_uploaded && registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
-                                        && moa_uploaded && invoices_uploaded && aoa_uploaded && itr_uploaded )
+                                        && moa_uploaded && invoices_uploaded && aoa_uploaded && itr_uploaded && dir2_uploaded && dir1_uploaded)
                                 {
                                     Submit_pl_docs.setBackground(getDrawable(R.drawable.gradient_neocredit));
                                 }
@@ -1004,7 +1147,7 @@ public class PrivateLimitedDocUploadActivity extends AppCompatActivity {
                                 loader_pvt_itreturns.setVisibility(View.GONE);
                                 getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                                 if (pan_uploaded && addressproof_uploaded && registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
-                                        && moa_uploaded && invoices_uploaded && aoa_uploaded && itr_uploaded )
+                                        && moa_uploaded && invoices_uploaded && aoa_uploaded && itr_uploaded && dir2_uploaded && dir1_uploaded)
                                 {
                                     Submit_pl_docs.setBackground(getDrawable(R.drawable.gradient_neocredit));
                                 }
@@ -1016,7 +1159,6 @@ public class PrivateLimitedDocUploadActivity extends AppCompatActivity {
                         });
                         break;
                 }
-
             }
         });
 

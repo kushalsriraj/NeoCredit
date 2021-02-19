@@ -876,14 +876,14 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Address Proof"
+                android:text="Sole Proprietor Address Proof"
                 android:id="@+id/address_proof_key"
                 android:textColor="@color/black"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"/>
+                android:layout_marginTop="20dp"/>
 
             <LinearLayout
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
                 android:weightSum="2"

@@ -56,11 +56,11 @@ public class PartnershipDocUploadActivity extends AppCompatActivity {
     String status,filename;
     RelativeLayout Submit_partner_docs;
     ImageView image_partner_bankstatement,image_partner_gst,image_partner_businessproof,image_partner_pan,
-            image_partner_addressproof,image_partner_sla,image_partner_invoice;
+            image_partner_addressproof,image_partner_sla,image_partner_invoice,image_partner1,image_partner2;
     TextView text_partner_bankstatement,text_partner_gst,text_partner_businessproof,text_partner_pan,
-            text_partner_addressproof,text_partner_sla,text_partner_invoice;
+            text_partner_addressproof,text_partner_sla,text_partner_invoice,text_partner1,text_partner2;
     CrystalPreloader loader_partner_bankstatement,loader_partner_gst,loader_partner_businessproof,loader_partner_pan
-            ,loader_partner_addressproof,loader_partner_sla,loader_partner_invoice;
+            ,loader_partner_addressproof,loader_partner_sla,loader_partner_invoice,loader_partner1,loader_partner2;
     View view, view1, view2;
     BottomSheetDialog bottomSheetDialog;
     LinearLayout upload_pdf, upload_from_camera, upload_from_gallery;
@@ -69,7 +69,7 @@ public class PartnershipDocUploadActivity extends AppCompatActivity {
     private final int Request_Gallery = 2;
     Uri imguri;
     boolean bankstatement_uploaded ,registration_proof_uploaded ,pan_uploaded, invoices_uploaded,
-            gstr_uploaded, addressproof_uploaded,sla_uploaded = false;
+            gstr_uploaded, addressproof_uploaded,sla_uploaded, partner1_uploaded,partner2_uploaded = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -155,9 +155,43 @@ public class PartnershipDocUploadActivity extends AppCompatActivity {
         text_partner_invoice = findViewById(R.id.text_partner_invoice);
         loader_partner_invoice = findViewById(R.id.loader_partner_invoice);
 
+        image_partner1 = findViewById(R.id.image_partner1);
+        text_partner1 = findViewById(R.id.text_partner1);
+        loader_partner1 = findViewById(R.id.loader_partner1);
+
+        image_partner2 = findViewById(R.id.image_partner2);
+        text_partner2 = findViewById(R.id.text_partner2);
+        loader_partner2 = findViewById(R.id.loader_partner2);
+
         sharedPrefsManager.setCHECK_PAGE("6");
 
         Submit_partner_docs = findViewById(R.id.Submit_partner_docs);
+
+        image_partner1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                status = "part1";
+                upload_pdf.setVisibility(View.VISIBLE);
+                view1.setVisibility(View.VISIBLE);
+                upload_from_camera.setVisibility(View.VISIBLE);
+                view2.setVisibility(View.VISIBLE);
+                upload_from_gallery.setVisibility(View.VISIBLE);
+                bottomSheetDialog.show();
+            }
+        });
+
+        image_partner2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                status = "part2";
+                upload_pdf.setVisibility(View.VISIBLE);
+                view1.setVisibility(View.VISIBLE);
+                upload_from_camera.setVisibility(View.VISIBLE);
+                view2.setVisibility(View.VISIBLE);
+                upload_from_gallery.setVisibility(View.VISIBLE);
+                bottomSheetDialog.show();
+            }
+        });
 
         image_partner_pan.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -419,6 +453,16 @@ public class PartnershipDocUploadActivity extends AppCompatActivity {
                 loader_partner_sla.setVisibility(View.VISIBLE);
                 code = "13";
                 break;
+            case "part1":
+                getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+                loader_partner_invoice.setVisibility(View.VISIBLE);
+                code = "26";
+                break;
+            case "part2":
+                getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+                loader_partner_sla.setVisibility(View.VISIBLE);
+                code = "27";
+                break;
         }
 
         MultipartBody.Builder builder = new MultipartBody.Builder().setType(MultipartBody.FORM);
@@ -462,6 +506,54 @@ public class PartnershipDocUploadActivity extends AppCompatActivity {
                 Log.e("response", "onResponse: " + response.body().string() );
 
                 switch (status) {
+                    case "part1":
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                partner1_uploaded = true;
+                                image_partner1.setPadding(20, 20, 20, 20);
+                                image_partner1.setScaleType(ImageView.ScaleType.FIT_XY);
+                                image_partner1.setImageURI(imguri);
+                                text_partner1.setText(filename + ".png");
+                                loader_partner1.setVisibility(View.GONE);
+                                getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+                                if (pan_uploaded && addressproof_uploaded && registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
+                                        && invoices_uploaded && sla_uploaded && partner1_uploaded && partner2_uploaded)
+                                {
+                                    Submit_partner_docs.setBackground(getDrawable(R.drawable.gradient_neocredit));
+                                }
+                                else
+                                {
+                                    Submit_partner_docs.setBackgroundColor(getResources().getColor(R.color.colorash));
+                                }
+
+                            }
+                        });
+                        break;
+                    case "part2":
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                partner2_uploaded = true;
+                                image_partner2.setPadding(20, 20, 20, 20);
+                                image_partner2.setScaleType(ImageView.ScaleType.FIT_XY);
+                                image_partner2.setImageURI(imguri);
+                                text_partner2.setText(filename + ".png");
+                                loader_partner2.setVisibility(View.GONE);
+                                getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+                                if (pan_uploaded && addressproof_uploaded && registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
+                                        && invoices_uploaded && sla_uploaded && partner1_uploaded && partner2_uploaded)
+                                {
+                                    Submit_partner_docs.setBackground(getDrawable(R.drawable.gradient_neocredit));
+                                }
+                                else
+                                {
+                                    Submit_partner_docs.setBackgroundColor(getResources().getColor(R.color.colorash));
+                                }
+
+                            }
+                        });
+                        break;
                     case "pan":
                         runOnUiThread(new Runnable() {
                             @Override
@@ -475,7 +567,7 @@ public class PartnershipDocUploadActivity extends AppCompatActivity {
                                 Toasty.info(getApplicationContext(), "Pan Uploaded", Toast.LENGTH_SHORT).show();
                                 getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                                 if (pan_uploaded && addressproof_uploaded && registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
-                                        && invoices_uploaded && sla_uploaded )
+                                        && invoices_uploaded && sla_uploaded && partner1_uploaded && partner2_uploaded)
                                 {
                                     Submit_partner_docs.setBackground(getDrawable(R.drawable.gradient_neocredit));
                                 }
@@ -500,7 +592,7 @@ public class PartnershipDocUploadActivity extends AppCompatActivity {
                                 Toasty.info(getApplicationContext(), "Business Address Proof Uploaded", Toast.LENGTH_SHORT).show();
                                 getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                                 if (pan_uploaded && addressproof_uploaded && registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
-                                        && invoices_uploaded && sla_uploaded )
+                                        && invoices_uploaded && sla_uploaded && partner1_uploaded && partner2_uploaded)
                                 {
                                     Submit_partner_docs.setBackground(getDrawable(R.drawable.gradient_neocredit));
                                 }
@@ -525,7 +617,7 @@ public class PartnershipDocUploadActivity extends AppCompatActivity {
                                 Toasty.info(getApplicationContext(), "Registration Proof Uploaded", Toast.LENGTH_SHORT).show();
                                 getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                                 if (pan_uploaded && addressproof_uploaded && registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
-                                        && invoices_uploaded && sla_uploaded )
+                                        && invoices_uploaded && sla_uploaded && partner1_uploaded && partner2_uploaded)
                                 {
                                     Submit_partner_docs.setBackground(getDrawable(R.drawable.gradient_neocredit));
                                 }
@@ -549,7 +641,7 @@ public class PartnershipDocUploadActivity extends AppCompatActivity {
                                 Toasty.info(getApplicationContext(), "Bank Statement Uploaded", Toast.LENGTH_SHORT).show();
                                 getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                                 if (pan_uploaded && addressproof_uploaded && registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
-                                        && invoices_uploaded && sla_uploaded )
+                                        && invoices_uploaded && sla_uploaded && partner1_uploaded && partner2_uploaded)
                                 {
                                     Submit_partner_docs.setBackground(getDrawable(R.drawable.gradient_neocredit));
                                 }
@@ -573,7 +665,7 @@ public class PartnershipDocUploadActivity extends AppCompatActivity {
                                 Toasty.info(getApplicationContext(), "Gstr Uploaded", Toast.LENGTH_SHORT).show();
                                 getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                                 if (pan_uploaded && addressproof_uploaded && registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
-                                        && invoices_uploaded && sla_uploaded )
+                                        && invoices_uploaded && sla_uploaded && partner1_uploaded && partner2_uploaded)
                                 {
                                     Submit_partner_docs.setBackground(getDrawable(R.drawable.gradient_neocredit));
                                 }
@@ -597,7 +689,7 @@ public class PartnershipDocUploadActivity extends AppCompatActivity {
                                 Toasty.info(getApplicationContext(), "Invoice Uploaded", Toast.LENGTH_SHORT).show();
                                 getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                                 if (pan_uploaded && addressproof_uploaded && registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
-                                        && invoices_uploaded && sla_uploaded )
+                                        && invoices_uploaded && sla_uploaded && partner1_uploaded && partner2_uploaded)
                                 {
                                     Submit_partner_docs.setBackground(getDrawable(R.drawable.gradient_neocredit));
                                 }
@@ -621,7 +713,7 @@ public class PartnershipDocUploadActivity extends AppCompatActivity {
                                 Toasty.info(getApplicationContext(), "Sla Uploaded", Toast.LENGTH_SHORT).show();
                                 getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                                 if (pan_uploaded && addressproof_uploaded && registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
-                                        && invoices_uploaded && sla_uploaded )
+                                        && invoices_uploaded && sla_uploaded && partner1_uploaded && partner2_uploaded)
                                 {
                                     Submit_partner_docs.setBackground(getDrawable(R.drawable.gradient_neocredit));
                                 }
@@ -680,6 +772,16 @@ public class PartnershipDocUploadActivity extends AppCompatActivity {
                 loader_partner_sla.setVisibility(View.VISIBLE);
                 code = "13";
                 break;
+            case "part1":
+                getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+                loader_partner_invoice.setVisibility(View.VISIBLE);
+                code = "26";
+                break;
+            case "part2":
+                getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+                loader_partner_sla.setVisibility(View.VISIBLE);
+                code = "27";
+                break;
         }
 
 
@@ -728,6 +830,48 @@ public class PartnershipDocUploadActivity extends AppCompatActivity {
                 Log.e("httpresponse", "onResponse: " + body);
 
                 switch (status) {
+                    case "part1":
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                partner1_uploaded = true;
+                                text_partner1.setText(Pdf_name);
+                                image_partner1.setImageDrawable(getResources().getDrawable(R.drawable.pdfseticon));
+                                loader_partner1.setVisibility(View.GONE);
+                                getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+                                if (pan_uploaded && addressproof_uploaded && registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
+                                        && invoices_uploaded && sla_uploaded && partner1_uploaded && partner2_uploaded)
+                                {
+                                    Submit_partner_docs.setBackground(getDrawable(R.drawable.gradient_neocredit));
+                                }
+                                else
+                                {
+                                    Submit_partner_docs.setBackgroundColor(getResources().getColor(R.color.colorash));
+                                }
+                            }
+                        });
+                        break;
+                    case "part2":
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                partner2_uploaded = true;
+                                text_partner2.setText(Pdf_name);
+                                image_partner2.setImageDrawable(getResources().getDrawable(R.drawable.pdfseticon));
+                                loader_partner2.setVisibility(View.GONE);
+                                getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+                                if (pan_uploaded && addressproof_uploaded && registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
+                                        && invoices_uploaded && sla_uploaded && partner1_uploaded && partner2_uploaded)
+                                {
+                                    Submit_partner_docs.setBackground(getDrawable(R.drawable.gradient_neocredit));
+                                }
+                                else
+                                {
+                                    Submit_partner_docs.setBackgroundColor(getResources().getColor(R.color.colorash));
+                                }
+                            }
+                        });
+                        break;
                     case "pan":
                         runOnUiThread(new Runnable() {
                             @Override
@@ -738,7 +882,7 @@ public class PartnershipDocUploadActivity extends AppCompatActivity {
                                 loader_partner_pan.setVisibility(View.GONE);
                                 getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                                 if (pan_uploaded && addressproof_uploaded && registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
-                                        && invoices_uploaded && sla_uploaded )
+                                        && invoices_uploaded && sla_uploaded && partner1_uploaded && partner2_uploaded)
                                 {
                                     Submit_partner_docs.setBackground(getDrawable(R.drawable.gradient_neocredit));
                                 }
@@ -759,7 +903,7 @@ public class PartnershipDocUploadActivity extends AppCompatActivity {
                                 loader_partner_addressproof.setVisibility(View.GONE);
                                 getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                                 if (pan_uploaded && addressproof_uploaded && registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
-                                        && invoices_uploaded && sla_uploaded )
+                                        && invoices_uploaded && sla_uploaded && partner1_uploaded && partner2_uploaded)
                                 {
                                     Submit_partner_docs.setBackground(getDrawable(R.drawable.gradient_neocredit));
                                 }
@@ -780,7 +924,7 @@ public class PartnershipDocUploadActivity extends AppCompatActivity {
                                 loader_partner_businessproof.setVisibility(View.GONE);
                                 getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                                 if (pan_uploaded && addressproof_uploaded && registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
-                                        && invoices_uploaded && sla_uploaded )
+                                        && invoices_uploaded && sla_uploaded && partner1_uploaded && partner2_uploaded )
                                 {
                                     Submit_partner_docs.setBackground(getDrawable(R.drawable.gradient_neocredit));
                                 }
@@ -801,7 +945,7 @@ public class PartnershipDocUploadActivity extends AppCompatActivity {
                                 loader_partner_bankstatement.setVisibility(View.GONE);
                                 getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                                 if (pan_uploaded && addressproof_uploaded && registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
-                                        && invoices_uploaded && sla_uploaded )
+                                        && invoices_uploaded && sla_uploaded && partner1_uploaded && partner2_uploaded)
                                 {
                                     Submit_partner_docs.setBackground(getDrawable(R.drawable.gradient_neocredit));
                                 }
@@ -822,7 +966,7 @@ public class PartnershipDocUploadActivity extends AppCompatActivity {
                                 loader_partner_gst.setVisibility(View.GONE);
                                 getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                                 if (pan_uploaded && addressproof_uploaded && registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
-                                        && invoices_uploaded && sla_uploaded )
+                                        && invoices_uploaded && sla_uploaded && partner1_uploaded && partner2_uploaded)
                                 {
                                     Submit_partner_docs.setBackground(getDrawable(R.drawable.gradient_neocredit));
                                 }
@@ -843,7 +987,7 @@ public class PartnershipDocUploadActivity extends AppCompatActivity {
                                 loader_partner_invoice.setVisibility(View.GONE);
                                 getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                                 if (pan_uploaded && addressproof_uploaded && registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
-                                        && invoices_uploaded && sla_uploaded )
+                                        && invoices_uploaded && sla_uploaded && partner1_uploaded && partner2_uploaded)
                                 {
                                     Submit_partner_docs.setBackground(getDrawable(R.drawable.gradient_neocredit));
                                 }
@@ -864,7 +1008,7 @@ public class PartnershipDocUploadActivity extends AppCompatActivity {
                                 loader_partner_sla.setVisibility(View.GONE);
                                 getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                                 if (pan_uploaded && addressproof_uploaded && registration_proof_uploaded && bankstatement_uploaded && gstr_uploaded
-                                        && invoices_uploaded && sla_uploaded )
+                                        && invoices_uploaded && sla_uploaded && partner1_uploaded && partner2_uploaded)
                                 {
                                     Submit_partner_docs.setBackground(getDrawable(R.drawable.gradient_neocredit));
                                 }
