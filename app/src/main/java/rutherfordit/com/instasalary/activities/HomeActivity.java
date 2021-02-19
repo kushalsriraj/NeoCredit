@@ -51,6 +51,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -105,7 +107,7 @@ public class HomeActivity extends AppCompatActivity implements LoadDetailedData,
     AlertDialog dialogBuilder1;
     RelativeLayout SegmentsubmitButton1;
     AlertDialog dialogBuilder;
-
+    String repay_Date="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -620,10 +622,18 @@ public class HomeActivity extends AppCompatActivity implements LoadDetailedData,
 
                     if (thirty.isChecked())
                     {
-                        sharedPrefsManager.setSegment("1");
-                        //SegmentsubmitButton.setBackgroundColor(getResources().getColor(R.color.neopurple));
-                        SegmentsubmitButton1.setBackground(getDrawable(R.drawable.gradient_neocredit));
 
+                        Calendar c = Calendar.getInstance();
+                        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");// HH:mm:ss");
+                        String reg_date = df.format(c.getTime());
+                        Log.e("date", "Currrent Date Time : "+reg_date);
+                        c.add(Calendar.DATE, 30);  // number of days to add
+                        String end_date = df.format(c.getTime());
+                        Log.e("date", "End Dat : "+end_date);
+                        repay_Date = end_date;
+
+                        sharedPrefsManager.setSegment("1");
+                        SegmentsubmitButton1.setBackground(getDrawable(R.drawable.gradient_neocredit));
 
                         thirty.setTextColor(Color.WHITE);
                         thirty.setBackground(getApplicationContext().getResources().getDrawable(R.drawable.radiobackgroundcolor));
@@ -633,9 +643,21 @@ public class HomeActivity extends AppCompatActivity implements LoadDetailedData,
 
                         ninety.setTextColor(Color.BLACK);
                         ninety.setBackground(getApplicationContext().getResources().getDrawable(R.drawable.radiobackground));
+
+
                     }
                     else if (sixty.isChecked())
                     {
+
+                        Calendar c = Calendar.getInstance();
+                        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");// HH:mm:ss");
+                        String reg_date = df.format(c.getTime());
+                        Log.e("date", "Currrent Date Time : "+reg_date);
+                        c.add(Calendar.DATE, 60);  // number of days to add
+                        String end_date = df.format(c.getTime());
+                        Log.e("date", "End Dat : "+end_date);
+                        repay_Date = end_date;
+
                         sharedPrefsManager.setSegment("2");
 
                         SegmentsubmitButton1.setBackground(getDrawable(R.drawable.gradient_neocredit));
@@ -652,6 +674,16 @@ public class HomeActivity extends AppCompatActivity implements LoadDetailedData,
 
                     else if (ninety.isChecked())
                     {
+
+                        Calendar c = Calendar.getInstance();
+                        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");// HH:mm:ss");
+                        String reg_date = df.format(c.getTime());
+                        Log.e("date", "Currrent Date Time : "+reg_date);
+                        c.add(Calendar.DATE, 90);  // number of days to add
+                        String end_date = df.format(c.getTime());
+                        Log.e("date", "End Dat : "+end_date);
+                        repay_Date = end_date;
+
                         sharedPrefsManager.setSegment("3");
 
                         SegmentsubmitButton1.setBackground(getDrawable(R.drawable.gradient_neocredit));
@@ -691,7 +723,7 @@ public class HomeActivity extends AppCompatActivity implements LoadDetailedData,
         try {
             mandate_obj.put("maximum_amount", amount);
             mandate_obj.put("instrument_type", "debit");
-            mandate_obj.put("first_collection_date", "2021-01-10");
+            mandate_obj.put("first_collection_date", repay_Date);
             mandate_obj.put("is_recurring", "false");
             mandate_obj.put("frequency", "Monthly");
             mandate_obj.put("management_category", "L001");
