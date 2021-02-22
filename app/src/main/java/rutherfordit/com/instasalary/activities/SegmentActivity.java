@@ -1,5 +1,6 @@
 package rutherfordit.com.instasalary.activities;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatRadioButton;
 import androidx.cardview.widget.CardView;
@@ -15,6 +16,10 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -61,6 +66,20 @@ public class SegmentActivity extends AppCompatActivity implements ResponseHandle
         loader_login = findViewById(R.id.loader_login);
 
         sharedPrefsManager.setCHECK_PAGE("2");
+
+        /*FirebaseMessaging.getInstance().getToken()
+                .addOnCompleteListener(new OnCompleteListener<String>() {
+                    @Override
+                    public void onComplete(@NonNull Task<String> task) {
+                        if (!task.isSuccessful()) {
+                            Log.e("EnterOTP", "Fetching FCM registration token failed", task.getException());
+                            return;
+                        }
+                        String token = task.getResult();
+                        Log.e("FCM TOKEN", token);
+                       // sendToken(token);
+                    }
+                });*/
 
         purplebackarrow.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -152,6 +171,21 @@ public class SegmentActivity extends AppCompatActivity implements ResponseHandle
 
     }
 
+    private void sendToken(String token) {
+
+        JSONObject jsonObject = new JSONObject();
+
+        try {
+            jsonObject.put("androidfcm_id", token);
+        }
+        catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        volleyRequest.JsonObjRequest(SegmentActivity.this,jsonObject,Urls.SEND_FCM_TOKEN, Constants.fcm_token);
+
+    }
+
     private void segmentApi() {
 
         JSONObject segmentJsonObject = new JSONObject();
@@ -180,41 +214,37 @@ public class SegmentActivity extends AppCompatActivity implements ResponseHandle
     @Override
     public void responseHandler(Object obj, int i) {
 
+        JSONObject response = (JSONObject) obj;
+
         if (i == Constants.segment)
         {
-
-            JSONObject response = (JSONObject) obj;
-
             Log.e("resp", "responseHandler: " + response );
 
             if (response.has("message"))
             {
-
-
                 Intent intent = new Intent(getApplicationContext(), CompanyDetails.class);
                 startActivity(intent);
                 loader_login.setVisibility(View.GONE);
-
-//                if (soleProprietorship.isChecked())
-//                {
-//
-//
-//                }
-//                else if (privateLimited.isChecked())
-//                {
-//                    loader_login.setVisibility(View.GONE);
-//
-//                    Intent intent = new Intent(getApplicationContext(), PrivateLimitedCompanyDetailsActivity.class);
-//                    startActivity(intent);
-//                }
-//                else if (partnershipForm.isChecked())
-//                {
-//                    loader_login.setVisibility(View.GONE);
-//
-//                    Intent intent = new Intent(getApplicationContext(), PartnershipCompanyDetailsActivity.class);
-//                    startActivity(intent);
-//                }
             }
         }
+        /*else if ( i == Constants.fcm_token)
+        {
+            try
+            {
+                String message = response.getString("message");
+                if (message.equals("success"))
+                {
+                    Log.e("EnterOTP", "SuccessresponseHandler: "+ message );
+                }
+                else
+                {
+                    Log.e("EnterOTP", "errorresponseHandler: "+ message );
+                }
+            }
+            catch (JSONException e)
+            {
+                e.printStackTrace();
+            }
+        }*/
     }
 }

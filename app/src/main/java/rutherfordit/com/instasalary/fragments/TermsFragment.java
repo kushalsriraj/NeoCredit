@@ -34,7 +34,7 @@ public class TermsFragment extends Fragment {
     private void init() {
 
         mWebView = (WebView) v.findViewById(R.id.terms_web_view);
-        mWebView.loadUrl("https://google.com");
+        mWebView.loadUrl("http://neocredit.in/");
 
         WebSettings webSettings = mWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);

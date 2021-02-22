@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "784025727885",
+    "project_id": "neocreditapp",
+    "storage_bucket": "neocreditapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:784025727885:android:b07bfcafd4a04da6f6c3c4",
+        "android_client_info": {
+          "package_name": "rutherfordit.com.instasalary"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "784025727885-ad42mbi94f5l6gvacu9lag9m75diiifg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBXgP8IEhR3seRLbl79jy2BQNFZ-m0Sx90"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "784025727885-ad42mbi94f5l6gvacu9lag9m75diiifg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

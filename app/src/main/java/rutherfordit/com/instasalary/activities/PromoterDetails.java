@@ -88,6 +88,7 @@ public class PromoterDetails extends AppCompatActivity implements DatePickerDial
     String parsedDate;
     TextInputLayout adhar_card_layout;
     CardView loader_adhar_sheet;
+    String dir_part_id="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -316,6 +317,23 @@ public class PromoterDetails extends AppCompatActivity implements DatePickerDial
                             e.printStackTrace();
                         }
 
+                        if(getid.equals("1"))
+                        {
+                            dir_part_id = "1";
+                        }
+                        else if(getid.equals("2"))
+                        {
+                            dir_part_id = "2";
+                        }
+                        else if(getid.equals("3"))
+                        {
+                            dir_part_id = "1";
+                        }
+                        else if(getid.equals("4"))
+                        {
+                            dir_part_id = "2";
+                        }
+
 
                         Log.e("adhar", "onResponse: " + adharObj.getString("name") );
                         Log.e("adhar", "onResponse: " + adharObj.getString("current_address") );
@@ -371,7 +389,15 @@ public class PromoterDetails extends AppCompatActivity implements DatePickerDial
                         obj.put("pan_name",adharObj.getString("name"));
                         obj.put("pan_dob","");
 
-                        Log.e("obj", "onResponse: " + obj );
+                        obj.put("user_type", sharedPrefsManager.getSegment());
+                        obj.put("part_dirct_type", dir_part_id);
+                        obj.put("company_id", sharedPrefsManager.getCOMPANY_ID());
+
+                        obj.put("pan_user_type", sharedPrefsManager.getSegment());
+                        obj.put("pan_part_dirct_type", dir_part_id);
+                        obj.put("pan_company_id", sharedPrefsManager.getCOMPANY_ID());
+
+                        Log.e("Promoter Details", "object adhar: " + obj );
 
                         JsonObjectRequest jsonObjectRequest1 = new JsonObjectRequest(Request.Method.POST, Urls.SEND_ADHAR, obj, new Response.Listener<JSONObject>() {
                             @Override
@@ -805,8 +831,6 @@ public class PromoterDetails extends AppCompatActivity implements DatePickerDial
             public void onClick(View v) {
                 if (click) {
 
-                    String dir_part_id="";
-
                     if(getid.equals("1"))
                     {
                         dir_part_id = "1";
@@ -837,8 +861,9 @@ public class PromoterDetails extends AppCompatActivity implements DatePickerDial
                         jsonObjectBody.put("current_address", dir_address.getText().toString());
                         jsonObjectBody.put("current_address_proof", dir_addressproof.getText().toString());
                         jsonObjectBody.put("mobile_number", dir_mobile.getText().toString());
+
                         jsonObjectBody.put("user_type", sharedPrefsManager.getSegment());
-                        jsonObjectBody.put("dirct_part_type", dir_part_id);
+                        jsonObjectBody.put("part_dirct_type", dir_part_id);
                         jsonObjectBody.put("company_id", sharedPrefsManager.getCOMPANY_ID());
 
                         jsonObjectBody.put("pan_user_type", sharedPrefsManager.getSegment());
@@ -850,7 +875,7 @@ public class PromoterDetails extends AppCompatActivity implements DatePickerDial
                         e.printStackTrace();
                     }
 
-                    Log.e("jsonObjectBody", "onClick:  " + jsonObjectBody );
+                    Log.e("Promoter Details", "director details: " + jsonObjectBody );
 
                     volleyRequest.JsonObjRequestAuthorization(PromoterDetails.this,jsonObjectBody, Urls.DIRECTOR_DETAILS, Constants.director_details,sharedPrefsManager.getAccessToken());
 

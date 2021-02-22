@@ -39,8 +39,9 @@ public class DirectorDetails extends AppCompatActivity {
     @Override
     public void onBackPressed() {
 
-        Toasty.error(getApplicationContext(), "Action denied.", Toast.LENGTH_SHORT).show();
-        Toasty.error(getApplicationContext(), "Please proceed further to Process your application form.", Toast.LENGTH_SHORT).show();
+        super.onBackPressed();
+       // Toasty.error(getApplicationContext(), "Action denied.", Toast.LENGTH_SHORT).show();
+       // Toasty.error(getApplicationContext(), "Please proceed further to Process your application form.", Toast.LENGTH_SHORT).show();
     }
 
     @Override

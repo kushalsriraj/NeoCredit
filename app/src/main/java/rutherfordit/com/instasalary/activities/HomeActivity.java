@@ -98,7 +98,7 @@ public class HomeActivity extends AppCompatActivity implements LoadDetailedData,
     String conf = "";
     String disburse_id = "";
     EditText enter_adhar_phone;
-    Button submit_phone;
+    Button submit_phone,cancel_phone;
     String myphone="",bank_name,bank_acc_no,bank_ifsc;
     RadioGroup rg1;
     AppCompatRadioButton thirty;
@@ -108,6 +108,7 @@ public class HomeActivity extends AppCompatActivity implements LoadDetailedData,
     RelativeLayout SegmentsubmitButton1;
     AlertDialog dialogBuilder;
     String repay_Date="";
+    ImageView img_cancel_popup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -173,6 +174,15 @@ public class HomeActivity extends AppCompatActivity implements LoadDetailedData,
 
         enter_adhar_phone = view.findViewById(R.id.enter_adhar_phone);
         submit_phone = view.findViewById(R.id.submit_phone);
+        cancel_phone = view.findViewById(R.id.cancel_phone);
+
+        cancel_phone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                bottomSheetDialog.dismiss();
+                mydashboard();
+            }
+        });
 
         snackbar = Snackbar.make(drawer, "Press Again To Exit", Snackbar.LENGTH_SHORT);
 
@@ -189,7 +199,7 @@ public class HomeActivity extends AppCompatActivity implements LoadDetailedData,
         sixty = popupView.findViewById(R.id.sixty);
         ninety = popupView.findViewById(R.id.ninety);
         SegmentsubmitButton1 = popupView.findViewById(R.id.SegmentsubmitButton1);
-
+        img_cancel_popup = popupView.findViewById(R.id.img_cancel_popup);
 
         gotoprofile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -708,6 +718,13 @@ public class HomeActivity extends AppCompatActivity implements LoadDetailedData,
             }
         });
 
+        img_cancel_popup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialogBuilder.cancel();
+            }
+        });
+
     }
 
     private void createMandateForm(String amount, String id) {
@@ -820,6 +837,9 @@ public class HomeActivity extends AppCompatActivity implements LoadDetailedData,
         {
             Toast.makeText(getApplicationContext(),"Signing Successfull..",Toast.LENGTH_SHORT).show();
             disburseAmount(disburse_id);
+            bottomSheetDialog.dismiss();
+            dialogBuilder.dismiss();
+
         }
     }
 
@@ -845,7 +865,8 @@ public class HomeActivity extends AppCompatActivity implements LoadDetailedData,
 
                 try {
                     Log.e("message", "onResponse: " + response.getString("message") );
-                    Toasty.success(getApplicationContext(),"Loan Disbursed",Toasty.LENGTH_SHORT).show();
+                    Toasty.success(getApplicationContext(),"Your application has been submitted successfully.",Toasty.LENGTH_SHORT).show();
+                    mydashboard();
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -873,8 +894,11 @@ public class HomeActivity extends AppCompatActivity implements LoadDetailedData,
     }
 
     public void onSigningFailure(String documentId, int code, String response){
+        bottomSheetDialog.dismiss();
+        dialogBuilder.dismiss();
         Toast.makeText(getApplicationContext(),"Failure..",Toast.LENGTH_SHORT).show();
         Toast.makeText(this, response, Toast.LENGTH_SHORT).show();
+        mydashboard();
     }
 
     private void docUpload()

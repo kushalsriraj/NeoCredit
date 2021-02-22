@@ -1,5 +1,6 @@
 package rutherfordit.com.instasalary.activities;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.core.content.res.ResourcesCompat;
@@ -16,6 +17,9 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.chaos.view.PinView;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -34,6 +38,7 @@ public class EnterOTPActivity extends AppCompatActivity implements ResponseHandl
     SharedPrefsManager sharedPrefsManager;
     VolleyRequest volleyRequest;
     CardView loader_otp;
+    String Fcm_Token = "";
 
     @SuppressLint("ResourceAsColor")
     @Override
@@ -54,6 +59,22 @@ public class EnterOTPActivity extends AppCompatActivity implements ResponseHandl
         pinView.setCursorVisible(true);
         pinView.setCursorWidth(getResources().getDimensionPixelSize(R.dimen.pv_pin_view_cursor_width));
         pinView.setCursorColor(Color.BLACK);
+
+        FirebaseMessaging.getInstance().getToken()
+                .addOnCompleteListener(new OnCompleteListener<String>() {
+                    @Override
+                    public void onComplete(@NonNull Task<String> task) {
+                        if (!task.isSuccessful()) {
+                            Log.e("EnterOTP", "Fetching FCM registration token failed", task.getException());
+                            return;
+                        }
+                        String token = task.getResult();
+                        Log.e("FCM TOKEN", token);
+                        Fcm_Token = token;
+
+                      //  Toast.makeText(EnterOTPActivity.this, token, Toast.LENGTH_SHORT).show();
+                    }
+                });
 
         submitadharotp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,6 +122,21 @@ public class EnterOTPActivity extends AppCompatActivity implements ResponseHandl
                 onBackPressed();
             }
         });
+    }
+
+    private void sendToken(String token) {
+
+        JSONObject jsonObject = new JSONObject();
+
+        try {
+            jsonObject.put("androidfcm_id", token);
+        }
+        catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        volleyRequest.JsonObjRequestAuthorization(EnterOTPActivity.this,jsonObject,Urls.SEND_FCM_TOKEN, Constants.fcm_token,sharedPrefsManager.getAccessToken());
+
     }
 
     private void signUp()
@@ -157,6 +193,7 @@ public class EnterOTPActivity extends AppCompatActivity implements ResponseHandl
                 String access_token_signUp = tokenJsonObject.getString("access_token");
                 sharedPrefsManager.setAccessToken("Bearer " +access_token_signUp);
                 loader_otp.setVisibility(View.GONE);
+                sendToken(Fcm_Token);
                 Intent intent = new Intent(getApplicationContext(), SegmentActivity.class);
                 startActivity(intent);
             }
@@ -173,6 +210,7 @@ public class EnterOTPActivity extends AppCompatActivity implements ResponseHandl
                 sharedPrefsManager.setAccessToken("Bearer " + access_token);
                 Log.e("access", "responseHandler: " + "Bearer " + access_token);
                 loader_otp.setVisibility(View.GONE);
+                sendToken(Fcm_Token);
                 Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                 startActivity(intent);
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
@@ -182,6 +220,24 @@ public class EnterOTPActivity extends AppCompatActivity implements ResponseHandl
                 e.printStackTrace();
             }
         }
-
+        else if ( i == Constants.fcm_token)
+        {
+            try
+            {
+                String message = response.getString("message");
+                if (message.equals("success"))
+                {
+                    Log.e("EnterOTP", "SuccessresponseHandler: "+ message );
+                }
+                else
+                {
+                    Log.e("EnterOTP", "errorresponseHandler: "+ message );
+                }
+            }
+            catch (JSONException e)
+            {
+                e.printStackTrace();
+            }
+        }
     }
 }

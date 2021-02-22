@@ -58,6 +58,7 @@
 
     <string-array name="director_address_proof_array">
         <item>-- Select Address Proof --</item>
+        <item>Aadhar</item>
         <item>Sale Deed</item>
         <item>Rent / Lease Agreement</item>
         <item>Utility Bill</item>
@@ -121,5 +122,6 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
+    <string name="msg_token_fmt">" New Token"</string>
 
 </resources>

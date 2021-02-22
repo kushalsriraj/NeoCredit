@@ -83,7 +83,7 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
     TextInputLayout panCardLayput, mobile_number_company;
     CardView loader_company_details;
     String check = "1", lat,longi;
-    TextView Search_place;
+    CardView Search_place;
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -417,7 +417,7 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
                 typeOfService.setText(parent.getItemAtPosition(pos).toString());
 
                 if (typeOfService.getText().toString().equals("-- Select Type of Service --")){
-                    typeOfService.setTextColor(Color.parseColor("#FF0000"));
+                    typeOfService.setTextColor(getResources().getColor(R.color.red));
 
                 }
                 else {
@@ -451,7 +451,7 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
                 howOldIsTheCompany.setText(parent.getItemAtPosition(pos).toString());
 
                 if (howOldIsTheCompany.getText().toString().equals("-- Select Tenure of the Company --")){
-                    howOldIsTheCompany.setTextColor(Color.parseColor("#FF0000"));
+                    howOldIsTheCompany.setTextColor(getResources().getColor(R.color.red));
 
                 }
 
@@ -501,7 +501,7 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
 
                 if (annualTurnover.getText().toString().equals("-- Select Annual Turnover --"))
                 {
-                    annualTurnover.setTextColor(Color.parseColor("#FF0000"));
+                    annualTurnover.setTextColor(getResources().getColor(R.color.red));
 
                 }
                 else
@@ -550,7 +550,7 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
                 addressProof.setText(parent.getItemAtPosition(pos).toString());
 
                 if (addressProof.getText().toString().equals("-- Select Address Proof --")){
-                    addressProof.setTextColor(Color.parseColor("#FF0000"));
+                    addressProof.setTextColor(getResources().getColor(R.color.red));
 
                 }
                 else {
@@ -650,6 +650,7 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
                             invalidPan.setVisibility(View.VISIBLE);
                             Toasty.warning(getApplicationContext(), "Pan format invalid", Toasty.LENGTH_LONG).show();
                         }
+
                     }
                     else
                     {
@@ -692,7 +693,7 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
             e.printStackTrace();
         }
 
-        if (check == "2")
+        if (check.equals("2"))
         {
 
             try {
@@ -703,7 +704,7 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
             JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.PATCH, Urls.COMPANY_DETAILS, jsonObjectBody, new Response.Listener<JSONObject>() {
                 @Override
                 public void onResponse(JSONObject response) {
-                    Log.e("response", "response: " + response );
+                    Log.e("check2", "response: " + response );
                 }
             }, new Response.ErrorListener() {
                 @Override
@@ -738,42 +739,59 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
 
             JSONObject response = (JSONObject) obj;
 
-            try {
-                JSONObject jsonObjectData = response.getJSONObject("data");
+            if (response!=null)
+            {
+                try {
+                    JSONObject jsonObjectData = response.getJSONObject("data");
 
-                JSONObject jsonObjectCompanyDetails = jsonObjectData.getJSONObject("companydetails");
+                    JSONObject jsonObjectCompanyDetails = jsonObjectData.getJSONObject("companydetails");
 
-                JSONArray arrayData = jsonObjectCompanyDetails.getJSONArray("data");
-                for (int j = 0; j < arrayData.length(); j ++){
+                    JSONArray arrayData = jsonObjectCompanyDetails.getJSONArray("data");
+                    for (int j = 0; j < arrayData.length(); j ++){
 
-                    JSONObject idObj = arrayData.getJSONObject(j);
+                        JSONObject idObj = arrayData.getJSONObject(j);
 
-                    String id = idObj.getString("id");
+                        String id = idObj.getString("id");
 
-                    sharedPrefsManager.setCOMPANY_ID(id);
-                    Log.e("COMPANY_ID", "COMPANY_ID: " + sharedPrefsManager.getCOMPANY_ID() );
+                        sharedPrefsManager.setCOMPANY_ID(id);
+                        Log.e("COMPANY_ID", "COMPANY_ID: " + sharedPrefsManager.getCOMPANY_ID() );
+                    }
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
 
+                if (sharedPrefsManager.getSegment().equals("1"))
+                {
+                    invalidPan.setVisibility(View.GONE);
+                    Intent intent = new Intent(getApplicationContext(), PromoterDetails.class);
+                    intent.putExtra("id","1");
+                    startActivity(intent);
+                    loader_company_details.setVisibility(View.GONE);
 
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-
-            if (sharedPrefsManager.getSegment().equals("1"))
-            {
-                invalidPan.setVisibility(View.GONE);
-                Intent intent = new Intent(getApplicationContext(), PromoterDetails.class);
-                intent.putExtra("id","1");
-                startActivity(intent);
-                loader_company_details.setVisibility(View.GONE);
-
+                }
+                else
+                {
+                    Intent intent = new Intent(getApplicationContext(), DirectorDetails.class);
+                    startActivity(intent);
+                    loader_company_details.setVisibility(View.GONE);
+                }
             }
             else
             {
-                Intent intent = new Intent(getApplicationContext(), DirectorDetails.class);
-                startActivity(intent);
-                loader_company_details.setVisibility(View.GONE);
+                if (!sharedPrefsManager.getSegment().equals("1"))
+                {
+                    companyAPI(pancardnumber.getText().toString());
+                }
+                else
+                {
+
+                }
+
+                Log.e(TAG, "responseHandler: " + " no response in company.." );
             }
+
         }
     }
 
@@ -782,7 +800,7 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
         super.onRestart();
         Log.e("onRestart", "onRestart: " + "onRestart Was Called" );
         check = "2";
-        sharedPrefsManager.getCOMPANY_ID();
+       // sharedPrefsManager.getCOMPANY_ID();
     }
 
     @Override

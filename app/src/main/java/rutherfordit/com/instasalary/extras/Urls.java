@@ -25,5 +25,6 @@ public class Urls {
     public static String LOAN_DISBURSE = "http://console.grantlending.in/api/userdisbured";
     public static String REQUEST_MANDATE_FORM = "https://ext.digio.in:444/v3/client/mandate/create_form";
     public static String UPLOAD_PDF_ESIGN = "https://ext.digio.in:444/v2/client/document/uploadpdf";
+    public static String SEND_FCM_TOKEN = "http://console.grantlending.in/api/updatefcmtoken";
 
 }
