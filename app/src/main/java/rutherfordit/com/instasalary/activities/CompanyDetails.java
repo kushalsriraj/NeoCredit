@@ -76,7 +76,7 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
     TextInputEditText businessLandline, company_name, typeOfService, howOldIsTheCompany, annualTurnover, company_address, addressProof, company_email, pancardnumber, mobile_number;
     Spinner Spinner_typeOfService, Spinner_howOldIsTheCompany, Spinner_annualTurnover, Spinner_businessAddressProof;
     boolean click = false;
-    private static int AUTOCOMPLETE_REQUEST_CODE = 1;
+    private static final int AUTOCOMPLETE_REQUEST_CODE = 1;
     private String addressProofNumber;
     private String annualTurnOverNumber;
     private String howOldIsTheCompanyNumber;

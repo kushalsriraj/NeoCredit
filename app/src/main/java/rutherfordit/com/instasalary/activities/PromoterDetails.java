@@ -102,7 +102,7 @@ public class PromoterDetails extends AppCompatActivity implements DatePickerDial
 
         getid = getIntent().getStringExtra("id");
 
-        Log.e("getid", "init: " + getid );
+        Log.e("getid", "first in init " + getid );
         loader_promoter = findViewById(R.id.loader_promoter);
         loader_promoter.setVisibility(View.GONE);
         dir_fullName = findViewById(R.id.dir_fullName);
@@ -376,7 +376,7 @@ public class PromoterDetails extends AppCompatActivity implements DatePickerDial
                         obj.put("dob",adharObj.getString("dob"));
                         obj.put("gender",adharObj.getString("gender"));
                         obj.put("permanent_address",adharObj.getString("permanent_address"));
-                        obj.put("image",image);
+                      //  obj.put("image",image);
                         obj.put("id_proof_type","ID_AND_ADDRESS_PROOF");
                         obj.put("doc_type",adharObj.getString("document_type"));
                         obj.put("id_no",adharObj.getString("id_number"));
@@ -396,6 +396,8 @@ public class PromoterDetails extends AppCompatActivity implements DatePickerDial
                         obj.put("pan_user_type", sharedPrefsManager.getSegment());
                         obj.put("pan_part_dirct_type", dir_part_id);
                         obj.put("pan_company_id", sharedPrefsManager.getCOMPANY_ID());
+
+                        Log.e("getid", "second in init " + dir_part_id );
 
                         Log.e("Promoter Details", "object adhar: " + obj );
 
@@ -874,6 +876,8 @@ public class PromoterDetails extends AppCompatActivity implements DatePickerDial
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
+
+                    Log.e("Promoter Details", "Third: " + dir_part_id );
 
                     Log.e("Promoter Details", "director details: " + jsonObjectBody );
 

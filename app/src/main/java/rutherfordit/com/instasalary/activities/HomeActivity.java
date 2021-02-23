@@ -107,7 +107,7 @@ public class HomeActivity extends AppCompatActivity implements LoadDetailedData,
     AlertDialog dialogBuilder1;
     RelativeLayout SegmentsubmitButton1;
     AlertDialog dialogBuilder;
-    String repay_Date="";
+    String repay_Date="",tenure = "";
     ImageView img_cancel_popup;
 
     @Override
@@ -641,6 +641,7 @@ public class HomeActivity extends AppCompatActivity implements LoadDetailedData,
                         String end_date = df.format(c.getTime());
                         Log.e("date", "End Dat : "+end_date);
                         repay_Date = end_date;
+                        tenure = "1";
 
                         sharedPrefsManager.setSegment("1");
                         SegmentsubmitButton1.setBackground(getDrawable(R.drawable.gradient_neocredit));
@@ -667,6 +668,7 @@ public class HomeActivity extends AppCompatActivity implements LoadDetailedData,
                         String end_date = df.format(c.getTime());
                         Log.e("date", "End Dat : "+end_date);
                         repay_Date = end_date;
+                        tenure = "2";
 
                         sharedPrefsManager.setSegment("2");
 
@@ -693,6 +695,7 @@ public class HomeActivity extends AppCompatActivity implements LoadDetailedData,
                         String end_date = df.format(c.getTime());
                         Log.e("date", "End Dat : "+end_date);
                         repay_Date = end_date;
+                        tenure = "3";
 
                         sharedPrefsManager.setSegment("3");
 
@@ -852,6 +855,8 @@ public class HomeActivity extends AppCompatActivity implements LoadDetailedData,
             jsonObject.put("user_disbursed","1");
             jsonObject.put("id",id);
             jsonObject.put("company_id",sharedPrefsManager.getCOMPANY_ID());
+            jsonObject.put("repayable_date",repay_Date);
+            jsonObject.put("days",tenure);
         } catch (JSONException e) {
             e.printStackTrace();
         }
