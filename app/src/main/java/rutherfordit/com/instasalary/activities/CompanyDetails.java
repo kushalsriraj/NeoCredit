@@ -77,9 +77,9 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
     Spinner Spinner_typeOfService, Spinner_howOldIsTheCompany, Spinner_annualTurnover, Spinner_businessAddressProof;
     boolean click = false;
     private static final int AUTOCOMPLETE_REQUEST_CODE = 1;
-    private String addressProofNumber;
-    private String annualTurnOverNumber;
-    private String howOldIsTheCompanyNumber;
+    String addressProofNumber;
+    String annualTurnOverNumber= "";
+    String howOldIsTheCompanyNumber = "";
     TextInputLayout panCardLayput, mobile_number_company;
     CardView loader_company_details;
     String check = "1", lat,longi;
@@ -459,15 +459,15 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
 
                     howOldIsTheCompany.setTextColor(Color.parseColor("#000000"));
 
-                    if (howOldIsTheCompany.getText().toString().equals("Less than 1 year"))
+                    if (howOldIsTheCompany.getText().toString().equals("Less than 1 Year"))
                     {
                         howOldIsTheCompanyNumber = "1";
                     }
-                    else if (howOldIsTheCompany.getText().toString().equals("1 -3 years"))
+                    else if (howOldIsTheCompany.getText().toString().equals("1 -3 Years"))
                     {
                         howOldIsTheCompanyNumber = "2";
                     }
-                    else if (howOldIsTheCompany.getText().toString().equals("More than 3 years"))
+                    else if (howOldIsTheCompany.getText().toString().equals("More than 3 Years"))
                     {
                         howOldIsTheCompanyNumber = "3";
                     }
@@ -509,15 +509,15 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
 
                     annualTurnover.setTextColor(Color.parseColor("#000000"));
 
-                    if (annualTurnover.getText().toString().equals("1lakhs - 50 lakhs"))
+                    if (annualTurnover.getText().toString().equals("1 Lakh - 50 Lakhs"))
                     {
                         annualTurnOverNumber = "1";
                     }
-                    else if (annualTurnover.getText().toString().equals("50lakhs  - 1 crore"))
+                    else if (annualTurnover.getText().toString().equals("50 Lakhs  - 1 Crore"))
                     {
                         annualTurnOverNumber = "2";
                     }
-                    else if (annualTurnover.getText().toString().equals("More than 50 crores"))
+                    else if (annualTurnover.getText().toString().equals("More than 50 Crores"))
                     {
                         annualTurnOverNumber = "3";
                     }
@@ -630,7 +630,6 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
             @Override
             public void onClick(View v) {
 
-
                 if (click)
                 {
                     if (!sharedPrefsManager.getSegment().equals("1")) {
@@ -642,6 +641,8 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
                         {
                             loader_company_details.setVisibility(View.VISIBLE);
                             invalidPan.setVisibility(View.GONE);
+                            Log.e(TAG, "onClick:1 " + annualTurnOverNumber + " " + howOldIsTheCompanyNumber);
+
                             companyAPI(pancardnumber.getText().toString());
                         }
                         else
@@ -655,6 +656,7 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
                     else
                     {
                         loader_company_details.setVisibility(View.GONE);
+                        Log.e(TAG, "onClick: 2 " + annualTurnOverNumber + " " + howOldIsTheCompanyNumber);
                         companyAPI("ABCDE1234F");
                     }
 
@@ -679,12 +681,12 @@ public class CompanyDetails extends AppCompatActivity implements ResponseHandler
             jsonObjectBody.put("business_addr_proof", addressProofNumber);
             jsonObjectBody.put("landline_number", businessLandline.getText().toString());
             jsonObjectBody.put("mobile_number", sharedPrefsManager.getPhoneNumber());
-            jsonObjectBody.put("orgize_age", howOldIsTheCompanyNumber);
             jsonObjectBody.put("email", company_email.getText().toString());
             jsonObjectBody.put("company_address", company_address.getText().toString());
-            jsonObjectBody.put("annual_turnover", annualTurnOverNumber);
             jsonObjectBody.put("latitude",lat);
             jsonObjectBody.put("longitude",longi);
+            jsonObjectBody.put("orgize_age", howOldIsTheCompanyNumber);
+            jsonObjectBody.put("annual_turnover", annualTurnOverNumber);
 
             Log.e("comapanyAPI", "comapanyAPI: " + jsonObjectBody);
 

@@ -376,7 +376,7 @@ public class PromoterDetails extends AppCompatActivity implements DatePickerDial
                         obj.put("dob",adharObj.getString("dob"));
                         obj.put("gender",adharObj.getString("gender"));
                         obj.put("permanent_address",adharObj.getString("permanent_address"));
-                      //  obj.put("image",image);
+                        obj.put("image",image);
                         obj.put("id_proof_type","ID_AND_ADDRESS_PROOF");
                         obj.put("doc_type",adharObj.getString("document_type"));
                         obj.put("id_no",adharObj.getString("id_number"));
@@ -865,12 +865,8 @@ public class PromoterDetails extends AppCompatActivity implements DatePickerDial
                         jsonObjectBody.put("mobile_number", dir_mobile.getText().toString());
 
                         jsonObjectBody.put("user_type", sharedPrefsManager.getSegment());
-                        jsonObjectBody.put("part_dirct_type", dir_part_id);
+                        jsonObjectBody.put("dirct_part_type", dir_part_id);
                         jsonObjectBody.put("company_id", sharedPrefsManager.getCOMPANY_ID());
-
-                        jsonObjectBody.put("pan_user_type", sharedPrefsManager.getSegment());
-                        jsonObjectBody.put("pan_part_dirct_type", dir_part_id);
-                        jsonObjectBody.put("pan_company_id", sharedPrefsManager.getCOMPANY_ID());
 
 
                     } catch (JSONException e) {
