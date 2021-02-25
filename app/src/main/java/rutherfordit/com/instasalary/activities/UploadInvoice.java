@@ -126,6 +126,7 @@ public class UploadInvoice extends AppCompatActivity implements ResponseHandler 
         sharedPrefsManager = new SharedPrefsManager(getApplicationContext());
         volleyRequest = new VolleyRequest();
         submitInvoice = findViewById(R.id.submitInvoice);
+
         loader_invoice = findViewById(R.id.loader_invoice);
 
         /*dialogBuilder = new AlertDialog.Builder(UploadInvoice.this).create();
