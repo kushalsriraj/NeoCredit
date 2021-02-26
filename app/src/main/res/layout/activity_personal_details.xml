@@ -174,7 +174,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="State"
-                    android:textColorHint="@color/neopurple">
+                    android:textColorHint="@color/neoOg">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/enterstate"
@@ -208,7 +208,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="City"
-                    android:textColorHint="@color/neopurple">
+                    android:textColorHint="@color/neoOg">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/entercity"
@@ -312,7 +312,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="State"
-                    android:textColorHint="@color/neopurple">
+                    android:textColorHint="@color/neoOg">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/entercur_state"
@@ -346,7 +346,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="City"
-                    android:textColorHint="@color/neopurple">
+                    android:textColorHint="@color/neoOg">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/entercur_city"
@@ -398,7 +398,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="House Type"
-                    android:textColorHint="@color/neopurple">
+                    android:textColorHint="@color/neoOg">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/entercur_housetype"
@@ -473,7 +473,7 @@
             android:layout_height="wrap_content"
             app:crs_pl_style="skype_balls"
             app:crs_pl_size="very_small"
-            app:crs_pl_fg_color="@color/neopurple"
+            app:crs_pl_fg_color="@color/neoOg"
             app:crs_pl_bg_color="#fff"/>
 
     </androidx.cardview.widget.CardView>

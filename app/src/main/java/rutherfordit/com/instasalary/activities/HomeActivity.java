@@ -10,9 +10,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -56,10 +54,8 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
-import de.hdodenhof.circleimageview.CircleImageView;
 import es.dmoral.toasty.Toasty;
 import rutherfordit.com.instasalary.R;
-import rutherfordit.com.instasalary.adapters.DirectorRecyclerViewAdapter;
 import rutherfordit.com.instasalary.extras.SharedPrefsManager;
 import rutherfordit.com.instasalary.extras.Urls;
 import rutherfordit.com.instasalary.fragments.AboutFragment;
@@ -73,7 +69,6 @@ import rutherfordit.com.instasalary.fragments.ReferFragment;
 import rutherfordit.com.instasalary.fragments.SettingsFragment;
 import rutherfordit.com.instasalary.fragments.SupportFragment;
 import rutherfordit.com.instasalary.fragments.TermsFragment;
-import rutherfordit.com.instasalary.models.MyProfileDirectorModel;
 import rutherfordit.com.instasalary.myinterfaces.LoadDetailedData;
 import rutherfordit.com.instasalary.myinterfaces.CreateMandate;
 
@@ -351,7 +346,7 @@ public class HomeActivity extends AppCompatActivity implements LoadDetailedData,
 
                 loanimage.setImageResource(R.drawable.redhistory);
                 loanimage.setPadding(0,0,0,0);
-                loantext.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.neopurple));
+                loantext.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.neoOg));
 
                 faqimage.setImageResource(R.drawable.whitehelp);
                 faqtext.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.black));
@@ -382,7 +377,7 @@ public class HomeActivity extends AppCompatActivity implements LoadDetailedData,
                 loantext.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.black));
 
                 faqimage.setImageResource(R.drawable.redhelp);
-                faqtext.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.neopurple));
+                faqtext.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.neoOg));
 
                 fragment = new FaqFragment();
                 replaceFragment(fragment, "faq");
@@ -499,7 +494,7 @@ public class HomeActivity extends AppCompatActivity implements LoadDetailedData,
         faqbutton.setClickable(true);
 
         dashboardimage.setImageResource(R.drawable.greendashboard);
-        dashboardtext.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.neopurple));
+        dashboardtext.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.neoOg));
 
         loanimage.setImageResource(R.drawable.whitehistory);
         loanimage.setPadding(5,5,5,5);

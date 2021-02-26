@@ -7,7 +7,7 @@
         android:width="1dp"
         android:color="@color/colorash" />
     <gradient
-        android:startColor="@color/neopurple"
+        android:startColor="@color/neoOg"
         android:endColor="@color/neogreen"
         android:angle="180"/>
 

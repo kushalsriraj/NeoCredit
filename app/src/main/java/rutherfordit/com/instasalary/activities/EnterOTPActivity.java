@@ -53,7 +53,7 @@ public class EnterOTPActivity extends AppCompatActivity implements ResponseHandl
         loader_otp = findViewById(R.id.loader_otp);
         loader_otp.setVisibility(View.GONE);
         final PinView pinView = findViewById(R.id.pinView);
-        pinView.setLineColor(ResourcesCompat.getColorStateList(getResources(), R.color.neopurple, getTheme()));
+        pinView.setLineColor(ResourcesCompat.getColorStateList(getResources(), R.color.neoOg, getTheme()));
         pinView.setItemCount(4);
         pinView.setAnimationEnable(true);
         pinView.setCursorVisible(true);

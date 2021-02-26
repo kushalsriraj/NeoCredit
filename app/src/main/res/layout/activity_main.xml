@@ -23,7 +23,7 @@
             android:layout_margin="10dp"
             android:gravity="center"
             android:text="Hello User.. Please grant the location permission to proceed forward.."
-            android:textColor="@color/neopurple"
+            android:textColor="@color/neoOg"
             android:textSize="15dp" />
 
         <TextView

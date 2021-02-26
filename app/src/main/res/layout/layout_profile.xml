@@ -50,7 +50,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:text="Name"
-                    android:textColor="@color/neopurple"
+                    android:textColor="@color/neoOg"
                     android:textSize="10dp" />
 
                 <TextView
@@ -67,14 +67,14 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@color/neopurple" />
+                    android:background="@color/neoOg" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:text="Email"
-                    android:textColor="@color/neopurple"
+                    android:textColor="@color/neoOg"
                     android:textSize="10dp" />
 
                 <TextView
@@ -91,14 +91,14 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@color/neopurple" />
+                    android:background="@color/neoOg" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:text="Landline"
-                    android:textColor="@color/neopurple"
+                    android:textColor="@color/neoOg"
                     android:textSize="10dp" />
 
                 <TextView
@@ -115,14 +115,14 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@color/neopurple" />
+                    android:background="@color/neoOg" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:text="PAN Number"
-                    android:textColor="@color/neopurple"
+                    android:textColor="@color/neoOg"
                     android:textSize="10dp" />
 
                 <TextView
@@ -140,14 +140,14 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@color/neopurple" />
+                    android:background="@color/neoOg" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:text="Type of Service"
-                    android:textColor="@color/neopurple"
+                    android:textColor="@color/neoOg"
                     android:textSize="10dp" />
 
                 <TextView
@@ -165,7 +165,7 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@color/neopurple" />
+                    android:background="@color/neoOg" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -185,7 +185,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:text="Name"
-                    android:textColor="@color/neopurple"
+                    android:textColor="@color/neoOg"
                     android:textSize="10dp" />
 
                 <TextView
@@ -202,7 +202,7 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@color/neopurple"
+                    android:background="@color/neoOg"
                     />
 
                 <TextView
@@ -210,7 +210,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:text="Branch"
-                    android:textColor="@color/neopurple"
+                    android:textColor="@color/neoOg"
                     android:textSize="10dp" />
 
                 <TextView
@@ -227,14 +227,14 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@color/neopurple" />
+                    android:background="@color/neoOg" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:text="Account Number"
-                    android:textColor="@color/neopurple"
+                    android:textColor="@color/neoOg"
                     android:textSize="10dp" />
 
                 <TextView
@@ -251,14 +251,14 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@color/neopurple" />
+                    android:background="@color/neoOg" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:text="Bank IFSE"
-                    android:textColor="@color/neopurple"
+                    android:textColor="@color/neoOg"
                     android:textSize="10dp" />
 
                 <TextView
@@ -275,7 +275,7 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@color/neopurple"
+                    android:background="@color/neoOg"
                     />
 
                 <TextView
@@ -319,7 +319,7 @@
             android:layout_centerInParent="true"
             android:layout_margin="15dp"
             app:crs_pl_bg_color="#fff"
-            app:crs_pl_fg_color="@color/neopurple"
+            app:crs_pl_fg_color="@color/neoOg"
             android:visibility="gone"
             app:crs_pl_size="very_small"
             app:crs_pl_style="skype_balls" />

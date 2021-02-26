@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".activities.EnterOTPActivity"
     android:orientation="vertical"
-    android:background="@color/neopurple"
+    android:background="@color/neoOg"
     >
 
     <androidx.cardview.widget.CardView
@@ -67,7 +67,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="30dp"
                     android:text="Phone Number"
-                    android:textColor="@color/neopurple"
+                    android:textColor="@color/neoOg"
                     android:textSize="12dp" />
 
                 <LinearLayout
@@ -171,7 +171,7 @@
             android:layout_height="wrap_content"
             app:crs_pl_style="skype_balls"
             app:crs_pl_size="very_small"
-            app:crs_pl_fg_color="@color/neopurple"
+            app:crs_pl_fg_color="@color/neoOg"
             app:crs_pl_bg_color="#fff"/>
 
     </androidx.cardview.widget.CardView>

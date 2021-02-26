@@ -43,9 +43,9 @@ public class LoginActivity extends AppCompatActivity implements ResponseHandler 
         setContentView(R.layout.activity_login);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            getWindow().setStatusBarColor(getResources().getColor(R.color.neopurple));
+            getWindow().setStatusBarColor(getResources().getColor(R.color.neoOg));
         } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            getWindow().setStatusBarColor(getResources().getColor(R.color.neopurple));
+            getWindow().setStatusBarColor(getResources().getColor(R.color.neoOg));
         }
 
         volleyRequest = new VolleyRequest();

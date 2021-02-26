@@ -47,7 +47,7 @@ public class FaqAdapter extends RecyclerView.Adapter<FaqAdapter.MyViewHolder> {
             public void onClick(View v) {
 
                 if (holder.faqanswers.getVisibility() == View.GONE) {
-                    holder.faqquestions.setTextColor(ContextCompat.getColor(context, R.color.neopurple));
+                    holder.faqquestions.setTextColor(ContextCompat.getColor(context, R.color.neoOg));
                     holder.faqanswers.setVisibility(View.VISIBLE);
                     holder.faqanswers.setText((CharSequence) answers.get(position));
                 } else {

@@ -103,7 +103,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="20,000"
-                android:textColor="@color/neopurple"
+                android:textColor="@color/neoOg"
                 android:textSize="14dp" />
 
         </LinearLayout>
@@ -126,7 +126,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="20,000"
-                android:textColor="@color/neopurple"
+                android:textColor="@color/neoOg"
                 android:textSize="14dp" />
 
         </LinearLayout>
@@ -194,7 +194,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:background="@color/neopurple"
+                android:background="@color/neoOg"
                 android:gravity="center"
                 android:paddingLeft="10dp"
                 android:paddingTop="5dp"
@@ -218,7 +218,7 @@
             app:animation_duration="250"
             app:area_margin="4dp"
             app:inner_color="@color/background"
-            app:outer_color="@color/neopurple"
+            app:outer_color="@color/neoOg"
             app:slider_height="50dp"
             app:slider_locked="false"
             app:text="Swipe To Disburse Amount.."

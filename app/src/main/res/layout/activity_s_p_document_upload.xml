@@ -174,7 +174,7 @@
                                     android:layout_centerInParent="true"
                                     android:visibility="gone"
                                     app:crs_pl_bg_color="#fff"
-                                    app:crs_pl_fg_color="@color/neopurple"
+                                    app:crs_pl_fg_color="@color/neoOg"
                                     app:crs_pl_size="very_small"
                                     app:crs_pl_style="circular" />
 
@@ -245,7 +245,7 @@
                                     android:layout_centerInParent="true"
                                     android:visibility="gone"
                                     app:crs_pl_bg_color="#fff"
-                                    app:crs_pl_fg_color="@color/neopurple"
+                                    app:crs_pl_fg_color="@color/neoOg"
                                     app:crs_pl_size="very_small"
                                     app:crs_pl_style="circular" />
 
@@ -324,7 +324,7 @@
                                     android:layout_centerInParent="true"
                                     android:visibility="gone"
                                     app:crs_pl_bg_color="#fff"
-                                    app:crs_pl_fg_color="@color/neopurple"
+                                    app:crs_pl_fg_color="@color/neoOg"
                                     app:crs_pl_size="very_small"
                                     app:crs_pl_style="circular" />
 
@@ -395,7 +395,7 @@
                                     android:layout_centerInParent="true"
                                     android:visibility="gone"
                                     app:crs_pl_bg_color="#fff"
-                                    app:crs_pl_fg_color="@color/neopurple"
+                                    app:crs_pl_fg_color="@color/neoOg"
                                     app:crs_pl_size="very_small"
                                     app:crs_pl_style="circular" />
 
@@ -474,7 +474,7 @@
                                     android:layout_centerInParent="true"
                                     android:visibility="gone"
                                     app:crs_pl_bg_color="#fff"
-                                    app:crs_pl_fg_color="@color/neopurple"
+                                    app:crs_pl_fg_color="@color/neoOg"
                                     app:crs_pl_size="very_small"
                                     app:crs_pl_style="circular" />
 
@@ -545,7 +545,7 @@
                                     android:layout_centerInParent="true"
                                     android:visibility="gone"
                                     app:crs_pl_bg_color="#fff"
-                                    app:crs_pl_fg_color="@color/neopurple"
+                                    app:crs_pl_fg_color="@color/neoOg"
                                     app:crs_pl_size="very_small"
                                     app:crs_pl_style="circular" />
 
@@ -624,7 +624,7 @@
                                     android:layout_centerInParent="true"
                                     android:visibility="gone"
                                     app:crs_pl_bg_color="#fff"
-                                    app:crs_pl_fg_color="@color/neopurple"
+                                    app:crs_pl_fg_color="@color/neoOg"
                                     app:crs_pl_size="very_small"
                                     app:crs_pl_style="circular" />
 
@@ -695,7 +695,7 @@
                                     android:layout_centerInParent="true"
                                     android:visibility="gone"
                                     app:crs_pl_bg_color="#fff"
-                                    app:crs_pl_fg_color="@color/neopurple"
+                                    app:crs_pl_fg_color="@color/neoOg"
                                     app:crs_pl_size="very_small"
                                     app:crs_pl_style="circular" />
 
@@ -774,7 +774,7 @@
                                     android:layout_centerInParent="true"
                                     android:visibility="gone"
                                     app:crs_pl_bg_color="#fff"
-                                    app:crs_pl_fg_color="@color/neopurple"
+                                    app:crs_pl_fg_color="@color/neoOg"
                                     app:crs_pl_size="very_small"
                                     app:crs_pl_style="circular" />
 
@@ -844,7 +844,7 @@
                                     android:layout_centerInParent="true"
                                     android:visibility="gone"
                                     app:crs_pl_bg_color="#fff"
-                                    app:crs_pl_fg_color="@color/neopurple"
+                                    app:crs_pl_fg_color="@color/neoOg"
                                     app:crs_pl_size="very_small"
                                     app:crs_pl_style="circular" />
 
@@ -931,7 +931,7 @@
                                     android:layout_centerInParent="true"
                                     android:visibility="gone"
                                     app:crs_pl_bg_color="#fff"
-                                    app:crs_pl_fg_color="@color/neopurple"
+                                    app:crs_pl_fg_color="@color/neoOg"
                                     app:crs_pl_size="very_small"
                                     app:crs_pl_style="circular" />
 
@@ -1001,7 +1001,7 @@
                                     android:layout_centerInParent="true"
                                     android:visibility="gone"
                                     app:crs_pl_bg_color="#fff"
-                                    app:crs_pl_fg_color="@color/neopurple"
+                                    app:crs_pl_fg_color="@color/neoOg"
                                     app:crs_pl_size="very_small"
                                     app:crs_pl_style="circular" />
 

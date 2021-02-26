@@ -58,7 +58,7 @@
             android:layout_centerInParent="true"
             android:layout_margin="15dp"
             app:crs_pl_bg_color="#fff"
-            app:crs_pl_fg_color="@color/neopurple"
+            app:crs_pl_fg_color="@color/neoOg"
             app:crs_pl_size="very_small"
             app:crs_pl_style="skype_balls" />
 

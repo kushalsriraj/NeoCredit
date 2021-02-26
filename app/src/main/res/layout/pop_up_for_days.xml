@@ -40,7 +40,7 @@
                 android:layout_height="wrap_content"
                 app:crs_pl_style="skype_balls"
                 app:crs_pl_size="very_small"
-                app:crs_pl_fg_color="@color/neopurple"
+                app:crs_pl_fg_color="@color/neoOg"
                 app:crs_pl_bg_color="#fff"/>
 
         </androidx.cardview.widget.CardView>
@@ -56,7 +56,7 @@
                 android:layout_marginLeft="30dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Choose Tenure"
+                android:text="Choose Repayment Tenure"
                 android:textColor="#000"
                 android:textSize="20dp"
                 android:textStyle="bold" />

@@ -31,7 +31,7 @@
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:text="Upload PDF"
-                    android:textColor="@color/neopurple"
+                    android:textColor="@color/neoOg"
                     android:textSize="18dp" />
 
                 <ImageView
@@ -48,7 +48,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="0.5dp"
                 android:layout_margin="20dp"
-                android:background="@color/neopurple" />
+                android:background="@color/neoOg" />
 
             <LinearLayout
                 android:id="@+id/upload_from_camera_partner"
@@ -61,7 +61,7 @@
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:text="Upload From Camera"
-                    android:textColor="@color/neopurple"
+                    android:textColor="@color/neoOg"
                     android:textSize="18dp" />
 
                 <ImageView
@@ -78,7 +78,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="0.5dp"
                 android:layout_margin="20dp"
-                android:background="@color/neopurple" />
+                android:background="@color/neoOg" />
 
             <LinearLayout
                 android:id="@+id/upload_from_gallery_partner"
@@ -91,7 +91,7 @@
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:text="Upload From Gallery"
-                    android:textColor="@color/neopurple"
+                    android:textColor="@color/neoOg"
                     android:textSize="18dp" />
 
                 <ImageView

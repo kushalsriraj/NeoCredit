@@ -2,15 +2,15 @@
     <!-- Base application theme. -->
     <style name="Theme.NeoCredit" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/neopurple</item>
-        <item name="colorPrimaryVariant">@color/neopurple</item>
+        <item name="colorPrimary">@color/neoOg</item>
+        <item name="colorPrimaryVariant">@color/neoOg</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/neopurple</item>
+        <item name="colorSecondary">@color/neoOg</item>
         <item name="colorSecondaryVariant">@color/teal_700</item>
         <item name="colorOnSecondary">@color/white</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">@color/neopurple</item>
+        <item name="android:statusBarColor" tools:targetApi="l">@color/neoOg</item>
         <!-- Customize your theme here. -->
     </style>
 
@@ -40,7 +40,7 @@
 
     <style name="ButtonStyle" parent="android:Widget.Holo.Button">
         <item name="android:fontFamily">@font/lato_regular</item>
-        <item name="background">@color/neopurple</item>
+        <item name="background">@color/neoOg</item>
     </style>
 
     <style name="CustomSpinnerTheme" parent="android:Widget.Spinner">
@@ -58,9 +58,9 @@
     </style>
 
     <style name="MyCustomRadio" parent="Widget.AppCompat.CompoundButton.RadioButton">
-        <item name="colorOnPrimary">@color/neopurple</item>
+        <item name="colorOnPrimary">@color/neoOg</item>
         <item name="colorSecondary">@color/neoappcolor</item>
-        <item name="colorPrimary">@color/neopurple</item>
+        <item name="colorPrimary">@color/neoOg</item>
         <item name="colorOnSurface">@color/neoappcolor</item>
     </style>
 </resources>
